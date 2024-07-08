@@ -16,6 +16,10 @@ td {
     width: 25%;
 }
 
+tr {
+    width: 100%;
+}
+
 .search-container {
     display: flex;
     align-items: center;
