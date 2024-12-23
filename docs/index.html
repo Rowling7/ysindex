@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" >
 
 <head>
-    <title>My Website</title>
-    <linkm rel="shortcut icon" href="http://192.168.110.199:8013/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" type="text/css" href="static/css/styles.css">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="dist/css/WebsiteLink.css">
+    <script src="dist/js/bootstrap.bundle.min.js"></script>
+    <script src="dist/js/WebsiteLink.js"></script>
+    <title>Site</title>
 </head>
 
-<body>
-    <h1>YSong Cao</h1>
+<body data-bs-theme="dark">
+    <blockquote class="blockquote text-center">
+    <h1 id="theme-toggle">Website Link </h1>
     <div class="search-container" style="width: 100%">
         <form action="" method="get" id="searchForm" style="width: 100%">
             <select name="engine" id="engineSelect" style="width: 100px">
@@ -19,1099 +23,239 @@
             <input type="submit" value="搜索" style="width: 100px" />
         </form>
     </div>
+    </blockquote>
+    <!-- 新增表格容器，包裹所有表格相关内容 -->
+    <div class="table-container">
+        <!-- 用户表格对应的collapse容器，默认显示，添加show类 -->
+        <div id="userTableCollapse" class="collapse show" data-bs-parent="#accordion">
+            <div id="userTable">
+                <table class="table table-striped">
+                    <tbody>
+                        <tr style="width: 100%;">
+                            <td>
+                                <a href="https://www.bilibili.com/" class="link">
+                                    <div class="linkContainer">
+                                        <img src="dist\icon\bilibili.ico" class="favicon-img" />
+                                        <span class="linkText">哔哩哔哩</span>
+                                    </div>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="https://www.zhihu.com/" class="link">
+                                    <div class="linkContainer">
+                                        <img src="dist\icon\zhihu.ico"  class="favicon-img" />
+                                        <span class="linkText">知乎</span>
+                                    </div>
+                                </a>
+                            </td>
+                           <td>
+                                <a href="https://ddys.one/" class="link">
+                                    <div class="linkContainer">
+                                        <img src="dist\icon\dd.ico"  class="favicon-img" />
+                                        <span class="linkText">低端影视</span>
+                                    </div>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="https://www.douyin.com/" class="link">
+                                    <div class="linkContainer">
+                                        <img src="dist\icon\douyin.ico"  class="favicon-img" />
+                                        <span class="linkText">抖音</span>
+                                    </div>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="http://www.msn.cn/zh-cn/weather" class="link">
+                                    <div class="linkContainer">
+                                        <img src="dist\icon\MSNweather.ico"  class="favicon-img" />
+                                        <span class="linkText" data-bs-toggle="tooltip" data-bs-placement="top" title="MSN天气">MSN天气</span>
+                                    </div>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="http://www.douban.com" class="link">
+                                    <div class="linkContainer">
+                                        <img src="dist\icon\douban.ico"  class="favicon-img" />
+                                        <span class="linkText">豆瓣</span>
+                                    </div>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="https://ffis.me/baidu/index.html" class="link" >
+                                    <div class="linkContainer">
+                                        <img src="dist\icon\ff.ico" class="favicon-img" />
+                                        <span class="linkText" data-bs-toggle="tooltip" data-bs-placement="top" title="让我帮你百度一下">让我帮你百度一下</span>
+                                    </div>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="https://weibo.com" class="link">
+                                    <div class="linkContainer">
+                                        <img src="dist\icon\weibo.ico"  class="favicon-img" />
+                                        <span class="linkText">微博</span>
+                                    </div>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="https://saltsgod.com" class="link">
+                                    <div class="linkContainer">
+                                        <img src="dist\icon\yanshenju.png"  class="favicon-img" />
+                                        <span class="linkText">盐神居</span>
+                                    </div>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="https://www.yuque.com/dayuyu-ualcu/azo1ge" class="link">
+                                    <div class="linkContainer">
+                                        <img src="dist\icon\yuque.png"  class="favicon-img" />
+                                        <span class="linkText" data-bs-toggle="tooltip" data-bs-placement="top" title="密码:rydw">语雀</span>
+                                    </div>
+                                </a>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-    <script>
-        document.getElementById("searchForm").onsubmit = function () {
-            var engine = document.getElementById("engineSelect").value;
-            var query = document.querySelector('input[name="query"]').value;
-            window.location.href = engine + encodeURIComponent(query);
-            return false;
-        };
-    </script>
-    <table>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://www.bilibili.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.bilibili.com/">哔哩哔哩 (゜-゜)つロ 干杯~-bilibili
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.52pojie.cn/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.52pojie.cn/">吾爱破解
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://ddys.one/favicon.ico" alt="Website favicon" /><a href=" https://ddys.one/">低端影视
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.douyin.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.douyin.com/">抖音
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://ad.doubleclick.net/favicon.ico" alt="Website favicon" /><a href="
-                        http://www.msn.cn/zh-cn/weather">MSN天气
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://www.douban.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.douban.com/">豆瓣
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://ffis.me/favicon.ico" alt="Website favicon" /><a href="
-                        https://ffis.me/baidu/index.html">让我帮你百度一下
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://weibo.com/favicon.ico" alt="Website favicon" /><a href=" https://weibo.com/">微博
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://saltsgod.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://saltsgod.com/">盐神居
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.yuque.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.yuque.com/dayuyu-ualcu/azo1ge">语雀（知乎盐选库pwd：rydw）
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://www.zhihu.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.zhihu.com/">知乎
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.izuiyou.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.izuiyou.com/">最右
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://bing.ee123.net/favicon.ico" alt="Website favicon" /><a href="
-                        https://bing.ee123.net/">必应壁纸
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://github.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://github.com/">GitHub
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://greasyfork.org/vite/assets/blacklogo96-sWE0jP07.png" alt="Website favicon" /><a
-                        href="
-                        https://greasyfork.org/zh-CN/">Greasy Fork - 安全、实用的用户脚本大全
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://bbs.nga.cn/favicon.ico" alt="Website favicon" /><a href="
-                        https://bbs.nga.cn/">NGA玩家社区
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://yun.daxiaamu.com/OnePlus_Roms/favicon.ico" alt="Website favicon" /><a href="
-                        https://yun.daxiaamu.com/OnePlus_Roms/">一加手机官方ROM
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.ikukk.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.ikukk.com/">爱酷看看
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.mvcat.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.mvcat.com/">电影推荐MVCAT
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.douyu.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.douyu.com/">斗鱼
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://www.huya.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.huya.com/">虎牙直播
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.yinfans.me/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.yinfans.me/">音范丝|影音集|精选4K蓝光原盘下载
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="http://www.mogudong.com/templets/80/images/img/favicon.ico" alt="Website favicon" /><a
-                        href="
-                        http://www.mogudong.com/">策驰影视
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.petalmail.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.petalmail.com/#/">花瓣邮箱
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://mail.qq.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://mail.qq.com/">QQ邮箱
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://qinggongju.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://qinggongju.com/">轻工具
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.urlc.cn/userfavicon.ico" alt="Website favicon" /><a href="
-                        https://www.urlc.cn/user">短网址
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.423down.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.423down.com/">423Down
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://img.alicdn.com/imgextra/i1/O1CN01JDQCi21Dc8EfbRwvF_!!6000000000236-73-tps-64-64.ico"
-                        alt="Website favicon" /><a href="
-                        https://www.aliyundrive.com/">阿里云盘
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://nd-static.bdstatic.com/m-static/wp-brand/favicon.ico" alt="Website favicon" /><a
-                        href="
-                        https://pan.baidu.com/">百度网盘
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://iao.su/favicon.ico" alt="Website favicon" /><a href=" https://iao.su/">不死鸟分享
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.pc528.net/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.pc528.net/">不忘初心系统
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://search.chongbuluo.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://search.chongbuluo.com/">虫部落快搜
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://ditu.amap.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://ditu.amap.com/">高德地图
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.world68.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.world68.com/">国外网站大全
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://www.ghxi.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.ghxi.com/">果核剥壳
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://fuliba123.net/favicon.ico" alt="Website favicon" /><a href="
-                        https://fuliba123.net/">FLB导航
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://bz.zzzmh.cn/favicon.ico" alt="Website favicon" /><a href="
-                        https://bz.zzzmh.cn/">极简壁纸
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://imyshare.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://imyshare.com/">精品网站导航-iMyShare
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://kaifa.baidu.com/images/logo.png" alt="Website favicon" /><a href="
-                        https://kaifa.baidu.com/">开发者搜索
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://www.coolapk.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.coolapk.com/">酷安
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://pan.quark.cn/favicon.ico" alt="Website favicon" /><a href="
-                        https://pan.quark.cn/">夸克网盘
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.lsapk.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.lsapk.com/">蓝鲨应用库
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.xdowns.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.xdowns.com/">绿色软件
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://mpyit.com/favicon.ico" alt="Website favicon" /><a href=" https://mpyit.com/">殁漂遥
-                        mpyit.com 老殁
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://modao.cc/favicon.ico" alt="Website favicon" /><a href=" https://modao.cc/">墨刀
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://mubu.com/favicon.ico" alt="Website favicon" /><a href=" https://mubu.com/">幕布
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://a.maorx.cn/favicon.ico" alt="Website favicon" /><a href="
-                        https://limestart.cn//">青柠起始页
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://onehu.xyz/favicon.ico" alt="Website favicon" /><a href=" https://onehu.xyz/">我不是盐神
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="http://www.downza.cn/favicon.ico" alt="Website favicon" /><a href="
-                        http://www.downza.cn/">下载之家
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://www.ypojie.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.ypojie.com/">易破解
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://bbs.rainmeter.cn/favicon.ico" alt="Website favicon" /><a href="
-                        https://bbs.rainmeter.cn/">雨滴美化社区|Rainmeter
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.getitfree.cn/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.getitfree.cn/">正版中国
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://zhutix.com/favicon.ico" alt="Website favicon" /><a href=" https://zhutix.com/">致美化
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://kyfw.12306.cn/favicon.ico" alt="Website favicon" /><a href="
-                        https://kyfw.12306.cn/">中国铁路12306网站
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://www.newxitong.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.newxitong.com/">专注于Win7 - 吻妻官网
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://apk.bot/favicon.ico" alt="Website favicon" /><a href=" https://apk.bot/">Apk Bot
-                        Downloader
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://wallpaperscraft.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://wallpaperscraft.com/">Desktop wallpapers
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.jiumodiary.com/images/favicon.png" alt="Website favicon" /><a href="
-                        https://www.jiumodiary.com/">Jiumo Search 鸠摩搜索
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.meiye.art/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.meiye.art/">Loading动图-移动UI-美叶
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://msdn.itellyou.cn/favicon.ico" alt="Website favicon" /><a href="
-                        https://msdn.itellyou.cn/">MSDN, 我告诉你
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.oschina.net/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.oschina.net/">OSCHINA
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.bugutv.cn/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.bugutv.cn/">一个主页
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://iwin10.net/favicon.ico" alt="Website favicon" /><a href="
-                        https://iwin10.net/">专注于Win10
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.yeyulingfeng.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.yeyulingfeng.com/">资源分享
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://sc.chinaz.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://sc.chinaz.com/">站长素材
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.landiannews.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.landiannews.com/">蓝点网
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="http://www.dayanzai.me/favicon.ico" alt="Website favicon" /><a href="
-                        http://www.dayanzai.me/">大眼仔旭-资源分享
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.ygdy8.net/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.ygdy8.net/">第一电影天堂
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://3dmgame.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://3dmgame.com/">3DMGAME
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://bbs.3dmgame.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://bbs.3dmgame.com/forum.php">3DMGAME单机游戏下载
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="http://www.9dmsgame.net/favicon.ico" alt="Website favicon" /><a href="
-                        http://www.9dmsgame.net/">单机游戏下载
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.csgo.com.cn/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.csgo.com.cn/">反恐精英CS2
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://buff.163.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://buff.163.com/">网易BUFF
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://fpsgo.net/favicon.ico" alt="Website favicon" /><a href=" https://fpsgo.net/">在线玩CS
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://kims3.xyz/favicon.ico" alt="Website favicon" /><a href=" https://kims3.xyz/">游戏下载
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.gamersky.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.gamersky.com/z/pvz/down/">植物大战僵尸下载专题
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://poki.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://poki.com/zh">Poki (宝玩) - 免费在线小游戏
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="http://rutracker.org/favicon.ico" alt="Website favicon" /><a href="
-                        http://rutracker.org/forum/index.php">rutracker.org
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://steamdb.info/favicon.ico" alt="Website favicon" /><a href="
-                        https://steamdb.info/">SteamDB
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="http://steamworkshop.download/favicon.ico" alt="Website favicon" /><a
-                        href=" http://steamworkshop.download/download/view/1637663252">TM:PE 11.7.2.0 STABLE (Traffic
-                        Manager: President Edition) -
-                        SteamWorkshop.download
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://yorg.io/favicon.ico" alt="Website favicon" /><a href=" https://yorg.io/">YORG.io
-                        Game
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.25game.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.25game.com/">爱吾游戏宝盒
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="http://gbtgame.ysepan.com/favicon.ico" alt="Website favicon" /><a href="
-                        http://gbtgame.ysepan.com/">GBT乐赏游戏空间
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://truckgame.cn/favicon.ico" alt="Website favicon" /><a href="
-                        https://truckgame.cn/">TruckGame游戏分享站
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://mp.weixin.qq.com/favicon.ico" alt="Website favicon" /><a
-                        href="
-                        https://mp.weixin.qq.com/s?search_click_id=11299323951797130343-1664954421252-7791756929&__biz=MzI5MjU5Nzk1Ng==&mid=2247491996&idx=1&sn=cb91e942c408134cb250ee5eb2c31806&chksm=ec7c5837db0bd12166ed5f2b65b7b1919ce34589c3cbc0c4ac93263a4f61c962f991f8028e9d&scene=0&subscene=10000&clicktime=1664954421&enterid=1664954421&sessionid=0&ascene=65&fasttmpl_type=0&fasttmpl_fullversion=6353696-zh_CN-zip&fasttmpl_flag=0&realreporttime=1664954421302#rd">[历史]渤海小吏的封建脉络百战
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.runoob.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.runoob.com/">菜鸟教程
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="http://www.dzkbw.com/favicon.ico" alt="Website favicon" /><a href="
-                        http://www.dzkbw.com/">电子课本-电子课本网
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.asklib.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.asklib.com/">问答库
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.csdn.net/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.csdn.net/">CSDN
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://gitee.com/favicon.ico" alt="Website favicon" /><a href=" https://gitee.com/">Gitee
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.openeuler.org/favicon.ico" alt="Website favicon" /><a
-                        href=" https://www.openeuler.org/zh/learn/mooc/detail/">openEuler | openEuler社区官网
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://forum.ubuntu.org.cn/favicon.ico" alt="Website favicon" /><a href="
-                        https://forum.ubuntu.org.cn/">Ubuntu中文论坛
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://cowtransfer.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://cowtransfer.com/">奶牛快传
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://fanyi.youdao.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://fanyi.youdao.com/">有道翻译
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://cn.bing.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://cn.bing.com/translator/">Bing翻译
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://transmart.qq.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://transmart.qq.com/zh-CN/index">腾讯交互翻译
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://0cili.net/favicon.ico" alt="Website favicon" /><a href=" https://0cili.net/">无极磁链
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://tool.lu/favicon.ico" alt="Website favicon" /><a href=" https://tool.lu/">在线工具
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.wenshushu.cn/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.wenshushu.cn/">文叔叔
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://embedy.cc/favicon.ico" alt="Website favicon" /><a href=" https://embedy.cc/">视频下载
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="http://24mail.chacuo.net/favicon.ico" alt="Website favicon" /><a href="
-                        http://24mail.chacuo.net/">临时邮箱
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.lanzoui.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.lanzoui.com/">蓝奏云盘
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.fabiaoqing.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.fabiaoqing.com/">表情包大全
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="http://cha.buyiju.com/favicon.ico" alt="Website favicon" /><a href="
-                        http://cha.buyiju.com/tool/color.html">颜色代码对照大全
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="http://cha.buyiju.com/favicon.ico" alt="Website favicon" /><a href="
-                        http://cha.buyiju.com/">实用工具大全
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.iconfont.cn/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.iconfont.cn/">阿里巴巴矢量图标库
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://uupdump.net/favicon.ico" alt="Website favicon" /><a href="
-                        https://uupdump.net/">UUP dump
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://blog.csdn.net/favicon.ico" alt="Website favicon" /><a
-                        href="
-                        https://blog.csdn.net/qq_32120667/article/details/74599953?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.control&dist_request_id=1328679.27805.16162497381802871&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.control">安卓使用Mob实现短信验证登录代码
-                        很简单
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://bbs.deepin.org/favicon.ico" alt="Website favicon" /><a href="
-                        https://bbs.deepin.org/zh/post/217934">关于部分用户反馈升级20.2失败的临时解决办法－论坛－深度科技
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://www.cnblogs.com/favicon.ico" alt="Website favicon" /><a
-                        href=" https://www.cnblogs.com/LiQingsong/p/8653486.html">关于html表单的disabled属性的设置问题 - dumbness° -
-                        博客园
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://zhuanlan.zhihu.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://zhuanlan.zhihu.com/p/128110703">华为 P40 Pro 安装谷歌服务
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.bilibili.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.bilibili.com/video/av242510037">数据内部存储外部存储及保存登录信息示例-直播录像_哔哩哔哩
-                        (゜-゜)つロ 干杯~-bilibili
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://blog.csdn.net/favicon.ico" alt="Website favicon" /><a
-                        href="
-                        https://blog.csdn.net/wsln_123456/article/details/109451923">微信小程序页面之间传递数据_花铛的博客-CSDN博客_微信小程序页面传递数据
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.zhipin.com/favicon.ico" alt="Website favicon" /><a
-                        href=" https://www.zhipin.com/wage/m_z_100010000/6800.html">武汉工资6800元税后到手能拿多少_要交多少个税-BOSS直聘
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://www.zhihu.com/favicon.ico" alt="Website favicon" /><a
-                        href="
-                        https://www.zhihu.com/question/61366488#:~:text=%E6%B3%A8%E5%86%8C%E8%A1%A8%EF%BC%8C%E6%89%BE%E5%88%B0,Explorer%5CMyComputer%5CNameSpace">怎样删除我的电脑里的wps云文档图标？ - 知乎
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://blog.csdn.net/favicon.ico" alt="Website favicon" /><a
-                        href="
-                        https://blog.csdn.net/u012864297/article/details/102523050?utm_term=android%E5%B8%83%E5%B1%80%E6%98%BE%E7%A4%BA%E8%A7%92%E6%A0%87&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-1-102523050&spm=3001.4430">Android
-                        控件右上角角标的实现方案
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.bilibili.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.bilibili.com/video/BV1sK411s7Vp?p=47">Android安卓开发30小时从零搞定百度地图（2020安卓开发全套教程）_哔哩哔哩
-                        (゜-゜)つロ 干杯~-bilibili
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://stackoverflow.com/favicon.ico" alt="Website favicon" /><a
-                        href="
-                        https://stackoverflow.com/questions/33678272/attempt-to-invoke-virtual-method-boolean-android-os-handler-postdelayedjava-la">Attempt to invoke virtual method
-                        &#39;boolean
-                        android.os.Handler.postDelayed(java.lang.Runnable, long)&#39; on a
-                        null object reference - Stack Overflow
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://blog.csdn.net/favicon.ico" alt="Website favicon" /><a
-                        href="
-                        https://blog.csdn.net/qq_43676817/article/details/107441429?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_baidulandingword-12&spm=1001.2101.3001.4242">bootstrap
-                        fileupload插件实现文件上传与前端回显图片
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://blog.csdn.net/favicon.ico" alt="Website favicon" /><a href="
-                        https://blog.csdn.net/weixin_42635233/article/details/107480402">IDEA连接Oracle数据库报[08006][17002]
-                        IO错误_Tolvena的博客-CSDN博客_17002 08006 oracle
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://blog.csdn.net/favicon.ico" alt="Website favicon" /><a
-                        href="
-                        https://blog.csdn.net/deel_feel/article/details/79910935">layui分页控件field参数接收对象问题_deel_feel的博客-CSDN博客
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://blog.csdn.net/favicon.ico" alt="Website favicon" /><a
-                        href=" https://blog.csdn.net/mxskymx/article/details/88765072">mysql 8 设置允许远程连接 You are not
-                        allowed to create a user
-                        with GRANT_mxskymx的专栏-CSDN博客
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.jb51.net/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.jb51.net/article/215879.htm">MySQL的安装与配置详细教程
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.cnblogs.com/favicon.ico" alt="Website favicon" /><a
-                        href=" https://www.cnblogs.com/Lints/p/11506902.html">MySQL忘记密码或修改密码的方法
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://blog.csdn.net/favicon.ico" alt="Website favicon" /><a href="
-                        https://blog.csdn.net/zhangyang_2015/article/details/88864480">Web server failed to start. Port
-                        9601 was already in
-                        use._隔壁张同学-CSDN博客_web server failed to start. port 8081 was
-                        already
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://onedrive.live.com/favicon.ico" alt="Website favicon" /><a
-                        href=" https://onedrive.live.com/?id=root&cid=AAA25158966479EE">我的文件 - OneDrive
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://chrome.google.com/favicon.ico" alt="Website favicon" /><a
-                        href=" https://chrome.google.com/webstore/category/extensions">Chrome 网上应用店 - 扩展程序
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://mail.google.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://mail.google.com/mail/u/0/#inbox">Gmail
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://www.youtube.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.youtube.com/">YouTube
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://www.instagram.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://www.instagram.com/?hl=zh-cn">Instagram
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://twitter.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://twitter.com/home">Twitter
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://play.google.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://play.google.com/">GooglePlay
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://open.spotify.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://open.spotify.com/">Spotify
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://fuliba2024.net/favicon.ico" alt="Website favicon" /><a href="
-                        https://fuliba2024.net/">百家姓吧
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://fuliba2024.net/favicon.ico" alt="Website favicon" /><a href="
-                        https://fuliba2024.net/anhao.html">百家姓暗号
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://twitterxz.com/%20twitterxz.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://twitterxz.com/%20twitterxz.com">视频下载 TX
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="http://106.39.56.38:8998/favicon.ico" alt="Website favicon" /><a href="
-                        http://106.39.56.38:8998/">养护统计数据报送
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="http://sparkhub.work/favicon.ico" alt="Website favicon" /><a href="
-                        http://sparkhub.work/">OYDWork工作日志
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="http://u5a.cn/SmATw/favicon.ico" alt="Website favicon" /><a href="
-                        http://u5a.cn/SmATw">OYDHRP
-                    </a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <img src="https://doc.weixin.qq.com/smartsheet/s3_AbcAFgb7AKMwYZLA4KxRpeGYdEsXz?scode=AE4AmAexAAcF54zoz0AbcAFgb7AKM&journal_source=chat&roomid=Room%3A3220049746&open_source=wecomgroup&version=4.1.26.5038&platform=win&tab=5v8j9u&viewId=v7bHfVfavicon.ico"
-                        alt="Website favicon" /><a
-                        href="
-                        https://doc.weixin.qq.com/smartsheet/s3_AbcAFgb7AKMwYZLA4KxRpeGYdEsXz?scode=AE4AmAexAAcF54zoz0AbcAFgb7AKM&journal_source=chat&roomid=Room%3A3220049746&open_source=wecomgroup&version=4.1.26.5038&platform=win&tab=5v8j9u&viewId=v7bHfV">湖北网络版HRP测试工作计划简表
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://doc.weixin.qq.com/home/recent/favicon.ico" alt="Website favicon" /><a href="
-                        https://doc.weixin.qq.com/home/recent">腾讯文档-企业
-                    </a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://423down.lanzouo.com/favicon.ico" alt="Website favicon" /><a href="
-                        https://423down.lanzouo.com/b0f199a5a">抖音APP下载</a>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <img src="https://nazo.one-story.cn/afavicon.ico" alt="Website favicon" /><a href="
-                        https://nazo.one-story.cn/">Nazo Game</a>
-                </div>
-            </td>
-        </tr>
-    </table>
-</body>
+        <!-- 订单表格对应的collapse容器，默认隐藏 -->
+        <div id="orderTableCollapse" class="collapse" data-bs-parent="#accordion">
+            <div id="orderTable">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>订单号</th>
+                            <th>金额</th>
+                            <th>日期</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1001</td>
+                            <td>$100</td>
+                            <td>2024-01-01</td>
+                        </tr>
+                        <tr>
+                            <td>1002</td>
+                            <td>$200</td>
+                            <td>2024-02-01</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
+        <!-- 商品表格对应的collapse容器，默认隐藏 -->
+        <div id="productTableCollapse" class="collapse" data-bs-parent="#accordion">
+            <div id="productTable">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>商品名称</th>
+                            <th>价格</th>
+                            <th>类别</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>手机</td>
+                            <td>$500</td>
+                            <th>电子产品</th>
+                        </tr>
+                        <tr>
+                            <td>书籍</td>
+                            <td>$30</td>
+                            <th>文化用品</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 商家表格对应的collapse容器，默认隐藏 -->
+        <div id="merchantTableCollapse" class="collapse" data-bs-parent="#accordion">
+            <div id="merchantTable">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th>商家名称</th>
+                            <th>地址</th>
+                            <th>联系方式</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>京东商城</td>
+                            <td>北京市海淀区</td>
+                            <td>400-606-5500</td>
+                        </tr>
+                        <tr>
+                            <td>淘宝店铺</td>
+                            <td>浙江省杭州市</td>
+                            <td>9510211</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 库存表格对应的collapse容器，默认隐藏 -->
+        <div id="stockTableCollapse" class="collapse" data-bs-parent="#accordion">
+            <div id="stockTable">
+                <table class="table table-light">
+                    <thead>
+                        <tr>
+                            <th>商品名称</th>
+                            <th>库存数量</th>
+                            <th>仓库位置</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>手机</td>
+                            <td>100</td>
+                            <td>上海仓库</td>
+                        </tr>
+                        <tr>
+                            <td>书籍</td>
+                            <td>500</td>
+                            <td>广州仓库</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- 按钮容器，包裹所有切换按钮 -->
+    <div class="button-container">
+        <!-- 按钮用于切换表格显示 -->
+        <button id="userTableBtn" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#userTableCollapse">
+            娱乐
+        </button>
+        <button id="orderTableBtn" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#orderTableCollapse">
+            网络
+        </button>
+        <button id="productTableBtn" class="btn btn-success" data-bs-toggle="collapse" data-bs-target="#productTableCollapse">
+            工具
+        </button>
+        <button id="merchantTableBtn" class="btn btn-warning" data-bs-toggle="collapse" data-bs-target="#merchantTableCollapse">
+            其他
+        </button>
+        <button id="stockTableBtn" class="btn btn-info" data-bs-toggle="collapse" data-bs-target="#stockTableCollapse">
+            临时
+        </button>
+    </div>
+
+<script>
+    document.getElementById("searchForm").onsubmit = function () {
+    var engine = document.getElementById("engineSelect").value;
+    var query = document.querySelector('input[name="query"]').value;
+    window.location.href = engine + encodeURIComponent(query);
+    return false;
+};
+</script>
+
+   
 </html>

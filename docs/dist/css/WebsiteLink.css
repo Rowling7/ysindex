@@ -1,0 +1,77 @@
+  /* 整体页面布局，设置为flex布局，列方向，占满视口高度 */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* 表格容器，设置为自动占满剩余空间，使其在顶部显示 */
+.table-container {
+    flex: 1;
+    overflow-y: auto;
+    width: 80%; /* 占页面宽度的80% */
+    max-height: 80vh; /* 可设置最大高度为视口高度的80%，防止内容过多撑破页面，可根据实际需求调整或去掉 */
+    overflow-y: auto; /* 内容超出时出现纵向滚动条 */
+    /*background-color: rgb(141, 141, 141);*/ /* 可以添加背景色便于查看布局效果，可选 */
+    justify-content: center; /* 实现水平居中 */
+    align-items: center; /* 实现垂直居中 */
+    margin: 0 auto; /* 元素在水平方向自动分配外边距，实现水平居中 */
+    padding: 0; /* 可以添加这个属性确保没有额外的内边距影响布局 */
+}
+
+/* 按钮容器样式，保持按钮水平居中、垂直底部 */
+.button-container {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+/* search-container样式，保持按钮水平居中、垂直底部 */
+.search-container {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.td {
+    width: 10%;
+    }
+
+.link {
+    white-space: nowrap;
+    text-overflow: clip;
+    overflow: hidden;
+    max-width: 20%;
+}
+
+.favicon-img {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.linkContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.linkText{
+    min-width: 66px;
+    max-width: 66px;
+    display: block ; 
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 5ch; /* 限制宽度为 5 个字符宽度，可根据实际情况调整 */
+}
