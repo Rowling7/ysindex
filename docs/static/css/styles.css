@@ -117,20 +117,20 @@ body {
     --card-bg: #f5f5f5;
     --button-bg: #007bff;
     --button-text: #ffffff;
-  }
+}
 
-  body.dark-mode {
+body.dark-mode {
     --bg-color: #1a1a1a;
     --text-color: #e0e0e0;
     --card-bg: #2d2d2d;
     --button-bg: #4a4a4a;
     --button-text: #ffffff;
-  }
+}
 
 
 
-  /* 新增切换按钮样式 */
-  .theme-toggle {
+/* 新增切换按钮样式 */
+.theme-toggle {
     position: absolute;
     top: 20px;
     right: 20px;
@@ -141,17 +141,121 @@ body {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
+}
 
-  .card {
+.card {
     background-color: var(--card-bg);
     /* 确保卡片使用变量 */
-  }
+}
 
-  /* 调整现有元素使用CSS变量 */
-  .search-container input,
-  .search-container select {
+/* 调整现有元素使用CSS变量 */
+.search-container input,
+.search-container select {
     background-color: var(--card-bg);
     color: var(--text-color);
     border: 1px solid var(--text-color);
+}
+
+
+
+/*dagengxin*/
+/* 页签容器样式 */
+/* 修改页签容器样式 */
+.tabs-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 15px 0;
+    background: transparent !important; /* 强制透明背景 */
+    box-shadow: none !important; /* 移除容器阴影 */
+    z-index: 1000;
+}
+
+/* 页签按钮样式改造 */
+.tab-button {
+    padding: 10px 25px;
+    border-radius: 25px;
+    border: none;
+    background: rgba(255,255,255,0.9);
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* 按钮单独添加阴影 */
+    backdrop-filter: blur(5px); /* 毛玻璃效果 */
+}
+
+/* 暗黑模式适配 */
+.dark-mode .tab-button {
+    background: rgba(45,45,45,0.9);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* 激活状态 */
+.tab-button.active {
+    background: #007bff;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0,123,255,0.3);
+}
+.dark-mode .tab-button.active {
+    background: #1a73e8;
+    box-shadow: 0 4px 15px rgba(26,115,232,0.4);
+}
+
+
+.container {
+    padding-bottom: 60px; /* 给页签留出空间 */
+}
+
+.tab-button {
+    padding: 10px 20px;
+    border: none;
+    background: #eee;
+    cursor: pointer;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+.tab-button.active {
+    background: #007bff;
+    color: white;
+}
+
+.content-wrapper {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    width: 100%;
+}
+
+.tab-content {
+    scroll-snap-align: start;
+    min-width: 100%;
+    display: none;
+    grid-template-columns: repeat(var(--column-count), minmax(0, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.tab-content.active {
+    display: grid;
+}
+
+.card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
+
+h3 {
+    white-space: nowrap;      /* 禁止换行 */
+    overflow: hidden;         /* 隐藏溢出内容 */
+    /*text-overflow: ellipsis; */ /* 显示省略号 */
+    max-width: 100%;          /* 限制最大宽度 */
+    cursor: help;             /* 改变鼠标指针形状 */
   }

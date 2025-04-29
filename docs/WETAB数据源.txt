@@ -5,7 +5,7 @@
     "updateTime": 1745819549059,
     "children": [
         {
-            "name": "哔哩哔哩 (゜-゜)つロ 干杯~-bilibili",
+            "name": "哔哩哔哩",
             "target": "http://www.bilibili.com/",
             "type": "site",
             "bgType": "image",
