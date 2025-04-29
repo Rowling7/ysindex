@@ -1510,7 +1510,7 @@
             "name": "中国省份",
             "target": "https://vultr.youmu.moe/quiz/",
             "bgType": "color",
-            "bgImage": "",
+            "bgImage": "static/ico/chinap.ico",
             "bgColor": "rgba(125, 171, 136, 1)",
             "type": "site",
             "bgText": "省份",
