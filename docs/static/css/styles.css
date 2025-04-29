@@ -249,13 +249,21 @@ body.dark-mode {
     color: inherit;
     display: block;
     height: 100%;
+    justify-items: anchor-center;
 }
 
 
-h3 {
+h5 {
     white-space: nowrap;      /* 禁止换行 */
     overflow: hidden;         /* 隐藏溢出内容 */
     /*text-overflow: ellipsis; */ /* 显示省略号 */
     max-width: 100%;          /* 限制最大宽度 */
     cursor: help;             /* 改变鼠标指针形状 */
+    margin: inherit;
+  }
+
+  .card img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover; /* 可选：保持图片比例并填充容器 */
   }
