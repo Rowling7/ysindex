@@ -98,9 +98,9 @@
 
       /* 初始列数设置 */
       if (isMobile()) {
-        columnControl.value = 4;
+        columnControl.value = Math.min(8, Math.max(1, Math.floor(window.innerWidth / columnBaseWidth)));
       } else {
-        columnControl.value = 8;
+        columnControl.value = Math.min(8, Math.max(1, Math.floor(window.innerWidth / columnBaseWidth)));
       }
       // 唯一updateColumns函数
       function updateColumns() {
