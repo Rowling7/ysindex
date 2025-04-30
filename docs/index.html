@@ -5,16 +5,18 @@
   <meta charset="UTF-8">
   <title>YsongCao's Sitemap</title>
   <link rel="stylesheet" href="static/css/styles.css">
-  <!--<script src="static/js/WebsiteLink.js"></script>-->
+  <script src="static/js/WebsiteMap.js"></script>
 </head>
 
 <body>
+
+  <!--抬头-->
   <div class="header-container">
-    <!--抬头-->
     <h1 class="site-title">YsongCao's Sitemap</h1>
     <!-- 新增切换按钮 -->
     <button class="theme-toggle" id="themeToggle">暗黑模式</button>
   </div>
+
   <!--搜索框-->
   <div class="search-container" id="search-container">
     <form action="" method="get" class="searchForm" id="searchForm">
@@ -28,186 +30,153 @@
     </form>
   </div>
 
-  <!-- 在container div内添加控制栏 （!已经隐藏但仍起作用!）-->
+  <!-- 在container内添加控制栏 （!已经隐藏但仍起作用!）-->
   <div class="container">
+    <!-- 已经隐藏但仍起作用-->
     <div class="controls">
       <label>每行显示数量：</label>
-      <input type="number" id="columnCount" min="1" max="14" value="9">
+      <input type="number" id="columnCount" min="1" max="14" value="8">
     </div>
 
     <!--快捷方式部分-->
     <div id="content-container" class="grid-container"></div>
-
-
   </div>
+
   <!--底栏部分-->
-  <div class="tabs-container" id="tabsContainer"></div>
-  <script>
-    //搜索功能
-    document.getElementById("searchForm").onsubmit = function () {
-      var engine = document.getElementById("engineSelect").value;
-      var query = document.querySelector('input[name="query"]').value;
-      window.location.href = engine + encodeURIComponent(query);
-      return false;
-    };
+  <div class="tabs-container" id="tabsContainer">
 
-    //列表展示
-    // 初始化元素引用
-    const columnControl = document.getElementById('columnCount');
-    const gridContainer = document.getElementById('content-container');
+    <script>
+      //列表展示
+      // 初始化元素引用
+      const columnControl = document.getElementById('columnCount');
+      const gridContainer = document.getElementById('content-container');
 
-    // 唯一updateColumns函数
-    function updateColumns() {
-      const count = parseInt(columnControl.value);
-      const containerWidth = gridContainer.offsetWidth;
+      // 唯一updateColumns函数
+      function updateColumns() {
+        const count = parseInt(columnControl.value);
+        const containerWidth = gridContainer.offsetWidth;
 
-      // 动态计算卡片宽度
-      const gapTotal = 200 * (count - 1);
-      const cardWidth = Math.max(20, (containerWidth - gapTotal) / count);
+        // 动态计算卡片宽度
+        const gapTotal = 200 * (count - 1);
+        const cardWidth = Math.max(20, (containerWidth - gapTotal) / count);
 
-      // 同时设置CSS变量和具体宽度
-      gridContainer.style.setProperty('--column-count', count);
-      gridContainer.style.gridTemplateColumns = `repeat(${count}, minmax(${cardWidth}px, 1fr))`;
-    }
+        // 同时设置CSS变量和具体宽度
+        gridContainer.style.setProperty('--column-count', count);
+        gridContainer.style.gridTemplateColumns = `repeat(${count}, minmax(${cardWidth}px, 1fr))`;
+      }
 
-    // 事件监听
-    columnControl.addEventListener('input', updateColumns);
-    columnControl.addEventListener('change', updateColumns);
+      // 事件监听
+      columnControl.addEventListener('input', updateColumns);
+      columnControl.addEventListener('change', updateColumns);
 
-    // 防抖的resize处理
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(updateColumns, 200);
-    });
-
-    // 新增暗黑模式切换功能
-    const themeToggle = document.getElementById('themeToggle');
-
-    // 从本地存储加载主题设置
-    function loadTheme() {
-      const isDark = localStorage.getItem('theme') === 'dark';
-      document.body.classList.toggle('dark-mode', isDark);
-      themeToggle.textContent = isDark ? '亮色模式' : '暗黑模式';
-    }
-
-    // 切换主题并保存设置
-    function toggleTheme() {
-      document.body.classList.toggle('dark-mode');
-      const isDark = document.body.classList.contains('dark-mode');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      themeToggle.textContent = isDark ? '亮色模式' : '暗黑模式';
-    }
-
-    // 初始化主题设置
-    loadTheme();
-    themeToggle.addEventListener('click', toggleTheme);
-
-
-
-    // 修改后的数据加载逻辑
-    fetch('data.json')
-      .then(response => response.json())
-      .then(data => {
-        const tabsContainer = document.getElementById('tabsContainer');
-        const contentContainer = document.getElementById('content-container');
-        let currentIndex = 0;
-        let startX = 0;
-
-        // 清空容器
-        contentContainer.innerHTML = '';
-        tabsContainer.innerHTML = '';
-
-        // 创建内容容器
-        const wrapper = document.createElement('div');
-        wrapper.className = 'content-wrapper';
-        contentContainer.appendChild(wrapper);
-
-        // 生成页签和内容
-        data.forEach((category, index) => {
-          // 创建页签按钮
-          const tabBtn = document.createElement('button');
-          tabBtn.className = `tab-button ${index === 0 ? 'active' : ''}`;
-          tabBtn.textContent = category.name;
-          tabBtn.onclick = () => switchTab(index);
-          tabsContainer.appendChild(tabBtn);
-
-          // 创建内容区
-          const tabContent = document.createElement('div');
-          tabContent.className = `tab-content ${index === 0 ? 'active' : ''}`;
-
-          category.children.forEach(item => {
-            tabContent.innerHTML += `
-          <div class="card">
-            <a href="${item.target}" target="_blank">
-              <img src="${item.bgImage}" alt="${item.name.slice(0, 8)}">
-              <h5>${item.name.slice(0, 8)}</h5>
-            </a>
-          </div>`;
-          });
-
-          wrapper.appendChild(tabContent);
-        });
-
-        // 初始化列数
-        updateColumns();
-
-        // 添加触摸事件
-        wrapper.addEventListener('touchstart', e => {
-          startX = e.touches.clientX;
-        });
-
-        wrapper.addEventListener('touchend', e => {
-          const endX = e.changedTouches.clientX;
-          const diff = startX - endX;
-
-          if (Math.abs(diff) > 50) {
-            if (diff > 0 && currentIndex < data.length - 1) {
-              switchTab(currentIndex + 1);
-            } else if (diff < 0 && currentIndex > 0) {
-              switchTab(currentIndex - 1);
-            }
-          }
-        });
-
-        // 页签切换函数
-        function switchTab(index) {
-          currentIndex = index;
-          const tabs = document.querySelectorAll('.tab-button');
-          const contents = document.querySelectorAll('.tab-content');
-
-          tabs.forEach((tab, i) => {
-            tab.classList.toggle('active', i === index);
-          });
-
-          contents.forEach((content, i) => {
-            content.classList.toggle('active', i === index);
-          });
-
-          wrapper.scrollTo({
-            left: window.innerWidth * index,
-            behavior: 'smooth'
-          });
-
-          updateColumns();
-        }
-      })
-      .catch(error => console.error('数据加载失败:', error));
-
-    //列数更新函数
-    function updateColumns() {
-      const count = parseInt(columnControl.value);
-      const containerWidth = gridContainer.offsetWidth;
-      const gapTotal = 20 * (count - 1);
-      const cardWidth = Math.max(20, (containerWidth - gapTotal) / count);
-
-      document.querySelectorAll('.tab-content').forEach(content => {
-        content.style.gridTemplateColumns = `repeat(${count}, minmax(${cardWidth}px, 1fr))`;
+      // 防抖的resize处理
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(updateColumns, 200);
       });
-    }
 
+      // 数据加载逻辑
+      fetch('data.json')
+        .then(response => response.json())
+        .then(data => {
+          const tabsContainer = document.getElementById('tabsContainer');
+          const contentContainer = document.getElementById('content-container');
+          let currentIndex = 0;
+          let startX = 0;
 
-  </script>
+          // 清空容器
+          contentContainer.innerHTML = '';
+          tabsContainer.innerHTML = '';
+
+          // 创建内容容器
+          const wrapper = document.createElement('div');
+          wrapper.className = 'content-wrapper';
+          contentContainer.appendChild(wrapper);
+
+          // 生成页签和内容
+          data.forEach((category, index) => {
+            // 创建页签按钮
+            const tabBtn = document.createElement('button');
+            tabBtn.className = `tab-button ${index === 0 ? 'active' : ''}`;
+            tabBtn.textContent = category.name;
+            tabBtn.onclick = () => switchTab(index);
+            tabsContainer.appendChild(tabBtn);
+
+            // 创建内容区
+            const tabContent = document.createElement('div');
+            tabContent.className = `tab-content ${index === 0 ? 'active' : ''}`;
+
+            category.children.forEach(item => {
+              tabContent.innerHTML += `
+            <div class="card">
+              <a href="${item.target}" target="_blank">
+                <img src="${item.bgImage}" alt="${item.name.slice(0, 8)}">
+                <h5>${item.name.slice(0, 8)}</h5>
+              </a>
+            </div>`;
+            });
+
+            wrapper.appendChild(tabContent);
+          });
+
+          // 初始化列数
+          updateColumns();
+
+          // 添加触摸事件
+          wrapper.addEventListener('touchstart', e => {
+            startX = e.touches.clientX;
+          });
+
+          wrapper.addEventListener('touchend', e => {
+            const endX = e.changedTouches.clientX;
+            const diff = startX - endX;
+
+            if (Math.abs(diff) > 50) {
+              if (diff > 0 && currentIndex < data.length - 1) {
+                switchTab(currentIndex + 1);
+              } else if (diff < 0 && currentIndex > 0) {
+                switchTab(currentIndex - 1);
+              }
+            }
+          });
+
+          // 页签切换函数
+          function switchTab(index) {
+            currentIndex = index;
+            const tabs = document.querySelectorAll('.tab-button');
+            const contents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach((tab, i) => {
+              tab.classList.toggle('active', i === index);
+            });
+
+            contents.forEach((content, i) => {
+              content.classList.toggle('active', i === index);
+            });
+
+            wrapper.scrollTo({
+              left: window.innerWidth * index,
+              behavior: 'smooth'
+            });
+
+            updateColumns();
+          }
+        })
+        .catch(error => console.error('数据加载失败:', error));
+
+      //列数更新函数
+      function updateColumns() {
+        const count = parseInt(columnControl.value);
+        const containerWidth = gridContainer.offsetWidth;
+        const gapTotal = 20 * (count - 1);
+        const cardWidth = Math.max(20, (containerWidth - gapTotal) / count);
+
+        document.querySelectorAll('.tab-content').forEach(content => {
+          content.style.gridTemplateColumns = `repeat(${count}, minmax(${cardWidth}px, 1fr))`;
+        });
+      }
+    </script>
 </body>
 
 </html>
