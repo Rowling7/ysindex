@@ -88,18 +88,19 @@
       // 列表展示
       /* 新增设备检测函数 */
       function isMobile() {
-        return window.innerWidth <= 768;
+        return window.innerWidth <= 1100;
       }
 
       // 列表展示
       const columnControl = document.getElementById('columnCount');
       const gridContainer = document.getElementById('content-container');
+      const columnBaseWidth = 200; // 单列基准宽度
 
       /* 初始列数设置 */
       if (isMobile()) {
-        columnControl.value = 4;  // 手机默认4列
+        columnControl.value = 4;
       } else {
-        columnControl.value = 8;  // 电脑默认8列
+        columnControl.value = 8;
       }
       // 唯一updateColumns函数
       function updateColumns() {
@@ -126,9 +127,11 @@
         resizeTimer = setTimeout(() => {
           /* 根据当前设备类型调整列数 */
           if (isMobile()) {
-            columnControl.value = 4;
+            columnControl.value = Math.min(8, Math.max(1, Math.floor(window.innerWidth / columnBaseWidth)
+            ));  // 手机默认4列
           } else {
-            columnControl.value = 8;
+            columnControl.value = Math.min(8, Math.max(1, Math.floor(window.innerWidth / columnBaseWidth)
+            ));  // 电脑默认8列
           }
           updateColumns();
         }, 200);
