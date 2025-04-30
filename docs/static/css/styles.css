@@ -50,7 +50,7 @@ body {
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-12px);
 }
 
 .card img {
@@ -283,8 +283,11 @@ body.dark-mode {
     /* 移动端顺滑滚动 */
     padding-bottom: 140px;
     /* 为底栏留出空间 */
+    transition: transform 0.3s ease-in-out;
+    will-change: transform; /* 优化动画性能 */
 }
 
+/* 添加CSS过渡效果 */
 .tab-content {
     scroll-snap-align: start;
     min-width: 100%;
@@ -292,6 +295,9 @@ body.dark-mode {
     grid-template-columns: repeat(var(--column-count), minmax(0, 1fr));
     gap: 20px;
     padding: 20px 0;
+    flex: 0 0 100%;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .tab-content.active {
