@@ -97,24 +97,10 @@
       const columnBaseWidth = 200; // 单列基准宽度
 
       /* 初始列数设置 */
-      if (isMobile()) {
-        columnControl.value = Math.min(8, Math.max(1, Math.floor(window.innerWidth / columnBaseWidth)));
-      } else {
-        columnControl.value = Math.min(8, Math.max(1, Math.floor(window.innerWidth / columnBaseWidth)));
-      }
-      // 唯一updateColumns函数
-      function updateColumns() {
-        const count = parseInt(columnControl.value);
-        const containerWidth = gridContainer.offsetWidth;
-
-        // 动态计算卡片宽度
-        const gapTotal = 200 * (count - 1);
-        const cardWidth = Math.max(20, (containerWidth - gapTotal) / count);
-
-        // 同时设置CSS变量和具体宽度
-        gridContainer.style.setProperty('--column-count', count);
-        gridContainer.style.gridTemplateColumns = `repeat(${count}, minmax(${cardWidth}px, 1fr))`;
-      }
+      const calculateColumns = () => {
+        return Math.min(8, Math.max(1, Math.floor(window.innerWidth / columnBaseWidth)));
+      };
+      columnControl.value = calculateColumns(); // 统一调用
 
       // 事件监听（新增resize时的列数调整）
       columnControl.addEventListener('input', updateColumns);
@@ -137,6 +123,17 @@
         }, 200);
       });
 
+      function updateColumns() {
+        const count = parseInt(columnControl.value);
+        const containerWidth = gridContainer.offsetWidth;
+        // 动态计算卡片宽度
+        const gapTotal = 20 * (count - 1);
+        const cardWidth = Math.max(20, (containerWidth - gapTotal) / count);
+        document.querySelectorAll('.tab-content').forEach(content => {
+          content.style.gridTemplateColumns = `repeat(${count}, minmax(${cardWidth}px, 1fr))`;
+        });
+      }
+
       // 数据加载逻辑
       fetch('data.json')
         .then(response => response.json())
@@ -153,29 +150,40 @@
           wrapper.className = 'content-wrapper';
           contentcontainer.appendChild(wrapper);
 
-          // 生成页签和内容
+          // 使用文档片段减少DOM操作
+          const tabFragment = document.createDocumentFragment();
+          const contentFragment = document.createDocumentFragment();
+
           data.forEach((category, index) => {
             // 创建页签按钮
             const tabBtn = document.createElement('button');
-            tabBtn.className = `tab-button ${index === 0 ? 'active' : ''}`;
+            tabBtn.className = `tab-button${index === 0 ? ' active' : ''}`;
             tabBtn.textContent = category.name;
-            tabBtn.onclick = () => switchTab(index);
-            tabscontainer.appendChild(tabBtn);
+            tabBtn.dataset.tabIndex = index; // 显式绑定索引
+            tabBtn.addEventListener('click', () => switchTab(index));
+            tabFragment.appendChild(tabBtn);
 
             // 创建内容区
             const tabContent = document.createElement('div');
-            tabContent.className = `tab-content ${index === 0 ? 'active' : ''}`;
-            category.children.forEach(item => {
-              tabContent.innerHTML += `
-          <div class="card">
-            <a href="${item.target}" target="_blank">
-              <img src="${item.bgImage}" alt="${item.name.slice(0, 8)}">
-              <h5>${item.name.slice(0, 8)}</h5>
-            </a>
-          </div>`;
-            });
-            wrapper.appendChild(tabContent);
+            tabContent.className = `tab-content${index === 0 ? ' active' : ''}`;
+
+            // 使用map+join优化字符串拼接
+            const cardsHTML = category.children.map(item => `
+              <div class="card">
+                  <a href="${item.target}" target="_blank" aria-label="${item.name}">
+                      <img src="${item.bgImage}" alt="${item.name}" loading="lazy">
+                      <h5>${item.name.slice(0, 8)}</h5>
+                  </a>
+              </div>
+              `).join('');
+
+            tabContent.innerHTML = cardsHTML; // 一次性插入
+            contentFragment.appendChild(tabContent);
           });
+
+          // 批量插入DOM元素
+          tabscontainer.append(tabFragment);
+          wrapper.append(contentFragment);
 
           // 初始化列数
           updateColumns();
@@ -195,16 +203,6 @@
         })
         .catch(error => console.error('数据加载失败:', error));
 
-      //列数更新函数
-      function updateColumns() {
-        const count = parseInt(columnControl.value);
-        const containerWidth = gridContainer.offsetWidth;
-        const gapTotal = 20 * (count - 1);
-        const cardWidth = Math.max(20, (containerWidth - gapTotal) / count);
-        document.querySelectorAll('.tab-content').forEach(content => {
-          content.style.gridTemplateColumns = `repeat(${count}, minmax(${cardWidth}px, 1fr))`;
-        });
-      }
     </script>
 </body>
 
