@@ -7,7 +7,7 @@ html {
 
 body {
     height: 100%;
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family: "Segoe UI", Arial, sans-serif;
     margin: 0;
     padding: 20px;
     background: #f0f2f5;
@@ -39,7 +39,6 @@ body {
     flex-grow: 1;
     /* 占据剩余空间 */
 }
-
 
 .card {
     background: white;
@@ -105,7 +104,6 @@ body {
     box-sizing: border-box;
 }
 
-
 /*搜索部分样式*/
 .search-container {
     width: fit-content;
@@ -170,8 +168,6 @@ body.dark-mode {
     --button-text: #ffffff;
 }
 
-
-
 /* 新增切换按钮样式 */
 .theme-toggle {
     /*position: absolute;*/
@@ -200,7 +196,6 @@ body.dark-mode {
     color: var(--text-color);
     border: 1px solid var(--text-color);
 }
-
 
 /* 页签容器样式 */
 .tabs-container {
@@ -244,7 +239,6 @@ body.dark-mode {
     white-space: nowrap;
 }
 
-
 /* 暗黑模式适配 */
 .dark-mode .tab-button {
     background: rgba(45, 45, 45, 0.9);
@@ -264,9 +258,6 @@ body.dark-mode {
     box-shadow: 0 4px 15px rgba(26, 115, 232, 0.4);
 }
 
-
-
-
 .tab-button.active {
     background: #007bff;
     color: white;
@@ -284,7 +275,15 @@ body.dark-mode {
     padding-bottom: 140px;
     /* 为底栏留出空间 */
     transition: transform 0.3s ease-in-out;
-    will-change: transform; /* 优化动画性能 */
+    will-change: transform;
+    /* 优化动画性能 */
+}
+
+/* 移动端适配 */
+@media (max-width: 1100px) {
+    .content-wrapper {
+        padding-bottom: 280px !important; /* 移动端强制生效 */
+    }
 }
 
 /* 添加CSS过渡效果 */
@@ -298,11 +297,23 @@ body.dark-mode {
     flex: 0 0 100%;
     width: 100%;
     box-sizing: border-box;
+    transition: transform 0.3s ease-in-out;
+    overscroll-behavior: contain;
+    scroll-behavior: smooth;
 }
 
 .tab-content.active {
     display: grid;
 }
+
+.swipe-left {
+    transform: translateX(-100%);
+}
+
+.swipe-right {
+    transform: translateX(100%);
+}
+
 
 .card a {
     text-decoration: none;
@@ -311,7 +322,6 @@ body.dark-mode {
     height: 100%;
     justify-items: anchor-center;
 }
-
 
 h5 {
     white-space: nowrap;
@@ -333,3 +343,4 @@ h5 {
     object-fit: cover;
     /* 可选：保持图片比例并填充容器 */
 }
+
