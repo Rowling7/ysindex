@@ -34,7 +34,7 @@
     <!-- 已经隐藏但仍起作用-->
     <div class="controls">
       <label>每行显示数量：</label>
-      <input type="number" id="columnCount" min="1" max="14" value="8">
+      <input type="number" id="columnCount" min="1" max="14" value="4">
     </div>
 
     <!--快捷方式部分-->
@@ -86,10 +86,21 @@
       /*结束--暗黑模式部分*/
 
       // 列表展示
-      // 初始化元素引用
+      /* 新增设备检测函数 */
+      function isMobile() {
+        return window.innerWidth <= 768;
+      }
+
+      // 列表展示
       const columnControl = document.getElementById('columnCount');
       const gridContainer = document.getElementById('content-container');
 
+      /* 初始列数设置 */
+      if (isMobile()) {
+        columnControl.value = 4;  // 手机默认4列
+      } else {
+        columnControl.value = 8;  // 电脑默认8列
+      }
       // 唯一updateColumns函数
       function updateColumns() {
         const count = parseInt(columnControl.value);
@@ -104,15 +115,23 @@
         gridContainer.style.gridTemplateColumns = `repeat(${count}, minmax(${cardWidth}px, 1fr))`;
       }
 
-      // 事件监听
+      // 事件监听（新增resize时的列数调整）
       columnControl.addEventListener('input', updateColumns);
       columnControl.addEventListener('change', updateColumns);
 
-      // 防抖的resize处理
+      // 优化后的防抖resize处理
       let resizeTimer;
       window.addEventListener('resize', () => {
         clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(updateColumns, 200);
+        resizeTimer = setTimeout(() => {
+          /* 根据当前设备类型调整列数 */
+          if (isMobile()) {
+            columnControl.value = 4;
+          } else {
+            columnControl.value = 8;
+          }
+          updateColumns();
+        }, 200);
       });
 
       // 数据加载逻辑
