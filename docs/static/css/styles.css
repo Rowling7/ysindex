@@ -22,6 +22,24 @@ body {
     display: none;
 }
 
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    /* 左右两端对齐 */
+    align-items: center;
+    /* 垂直居中 */
+    width: 100%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+.site-title {
+    margin: 0;
+    /* 清除默认外边距 */
+    flex-grow: 1;
+    /* 占据剩余空间 */
+}
+
 
 .grid-container {
     transition: grid-template-columns 0.3s ease;
@@ -85,7 +103,6 @@ body {
     /* 防止内容溢出 */
 }
 
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -99,31 +116,69 @@ body {
     box-sizing: border-box;
 }
 
+
 /*搜索部分样式*/
 .search-container {
-    margin-bottom: 20px;
-    padding: 20px;
-    border-radius: 8px;
+    width: fit-content;
+    /* 父容器宽度自适应内容 */
+    margin: 0 auto;
+    /* 居中显示 */
+    padding: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    /* 高斯模糊 */
+    -webkit-backdrop-filter: blur(10px);
+    /* Safari兼容 */
+    background-color: transparent;
+}
+
+.searchForm {
     display: flex;
     align-items: center;
-    justify-content: center;
 }
 
-.search-container select,
-.search-container input {
-    width: 30%;
+.search-container select {
+    width: 100px;
     padding: 10px;
     font-size: 16px;
-    border-radius: 6px;
+    border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.7);
-    display: inline-block;
+    flex-shrink: 0;
+    /* 禁止下拉框宽度压缩 */
 }
 
+.search-container input[type="text"] {
+    width: 40vw;
+    /* 输入框占视口宽度的40% */
+    max-width: 600px;
+    /* 防止过宽 */
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    margin-left: 10px;
+    margin-right: 10px;
+    flex-shrink: 0;
+    /* 禁止输入框宽度压缩 */
+}
+
+/*
 .search-container input[type="submit"] {
-    margin: auto;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
     cursor: pointer;
 }
+    */
+
+
 
 /*暗黑*/
 /* 新增暗黑模式样式 */
@@ -147,7 +202,7 @@ body.dark-mode {
 
 /* 新增切换按钮样式 */
 .theme-toggle {
-    position: absolute;
+    /*position: absolute;*/
     top: 20px;
     right: 20px;
     padding: 8px 16px;
@@ -157,6 +212,8 @@ body.dark-mode {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-left: auto;
+    /* 强制靠右对齐 */
 }
 
 .card {
@@ -173,24 +230,30 @@ body.dark-mode {
 }
 
 
-
-/*dagengxin*/
 /* 页签容器样式 */
-/* 修改页签容器样式 */
 .tabs-container {
     position: fixed;
     bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
+    left: 50%;
+    /* 水平居中定位 */
+    transform: translateX(-50%);
+    /* 精确居中 */
+    display: inline-flex;
+    /* 改为行内弹性盒 */
     gap: 15px;
-    padding: 15px 0;
+    padding: 15px;
     background: transparent !important;
-    /* 强制透明背景 */
     box-shadow: none !important;
-    /* 移除容器阴影 */
     z-index: 1000;
+    white-space: nowrap;
+    /* 防止按钮换行 */
+    max-width: 100%;
+    /* 防止超出屏幕 */
+    backdrop-filter: blur(10px);
+    /* 高斯模糊 */
+    -webkit-backdrop-filter: blur(10px);
+    /* Safari兼容 */
+    border-radius: 10px;
 }
 
 /* 页签按钮样式改造 */
