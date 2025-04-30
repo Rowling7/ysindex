@@ -9,28 +9,36 @@
 </head>
 
 <body>
-  <!-- 新增切换按钮 -->
-  <button class="theme-toggle" id="themeToggle">暗黑模式</button>
+  <div class="header-container">
+    <!--抬头-->
+    <h1 class="site-title">YsongCao's Sitemap</h1>
+    <!-- 新增切换按钮 -->
+    <button class="theme-toggle" id="themeToggle">暗黑模式</button>
+  </div>
+  <!--搜索框-->
+  <div class="search-container" id="search-container">
+    <form action="" method="get" class="searchForm" id="searchForm">
+      <select name="engine" id="engineSelect">
+        <option value="https://www.bing.com/search?q=">Bing</option>
+        <option value="https://www.baidu.com/s?wd=">Baidu</option>
+        <option value="https://xiaoyi.huawei.com/?q=">XiaoYi</option>
+      </select>
+      <input type="text" name="query" placeholder="Searching......" />
+      <!--<input type="submit" value="搜索" />-->
+    </form>
+  </div>
 
-  <!-- 在container div内添加控制栏 -->
+  <!-- 在container div内添加控制栏 （!已经隐藏但仍起作用!）-->
   <div class="container">
-    <div class="controls"><!--已经隐藏但仍起作用-->
+    <div class="controls">
       <label>每行显示数量：</label>
       <input type="number" id="columnCount" min="1" max="14" value="8">
     </div>
-    <h1 id="theme-toggle2">YsongCao's Sitemap</h1>
-    <div class="search-container">
-      <form action="" method="get" id="searchForm" style="width: 80%">
-        <select name="engine" id="engineSelect" style="width: 100px">
-          <option value="https://www.bing.com/search?q=">Bing</option>
-          <option value="https://www.baidu.com/s?wd=">Baidu</option>
-          <option value="https://xiaoyi.huawei.com/?q=">XiaoYi</option>
-        </select>
-        <input type="text" name="query" placeholder="请输入搜索内容" style="width: 60%" />
-        <input type="submit" value="搜索" style="width: 100px" />
-      </form>
-    </div>
+
+    <!--快捷方式部分-->
     <div id="content-container" class="grid-container"></div>
+
+    <!--底栏部分-->
     <div class="tabs-container" id="tabsContainer"></div>
   </div>
 
@@ -186,7 +194,7 @@
       })
       .catch(error => console.error('数据加载失败:', error));
 
-    // 修改后的列数更新函数
+    //列数更新函数
     function updateColumns() {
       const count = parseInt(columnControl.value);
       const containerWidth = gridContainer.offsetWidth;
