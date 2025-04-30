@@ -85,7 +85,7 @@
       themeToggle.addEventListener('click', toggleTheme);
       /*结束--暗黑模式部分*/
 
-      //列表展示
+      // 列表展示
       // 初始化元素引用
       const columnControl = document.getElementById('columnCount');
       const gridContainer = document.getElementById('content-container');
@@ -119,19 +119,17 @@
       fetch('data.json')
         .then(response => response.json())
         .then(data => {
-          const tabsContainer = document.getElementById('tabsContainer');
-          const contentContainer = document.getElementById('content-container');
-          let currentIndex = 0;
-          let startX = 0;
+          const tabscontainer = document.getElementById('tabsContainer');
+          const contentcontainer = document.getElementById('content-container');
 
           // 清空容器
-          contentContainer.innerHTML = '';
-          tabsContainer.innerHTML = '';
+          contentcontainer.innerHTML = '';
+          tabscontainer.innerHTML = '';
 
           // 创建内容容器
           const wrapper = document.createElement('div');
           wrapper.className = 'content-wrapper';
-          contentContainer.appendChild(wrapper);
+          contentcontainer.appendChild(wrapper);
 
           // 生成页签和内容
           data.forEach((category, index) => {
@@ -140,65 +138,36 @@
             tabBtn.className = `tab-button ${index === 0 ? 'active' : ''}`;
             tabBtn.textContent = category.name;
             tabBtn.onclick = () => switchTab(index);
-            tabsContainer.appendChild(tabBtn);
+            tabscontainer.appendChild(tabBtn);
 
             // 创建内容区
             const tabContent = document.createElement('div');
             tabContent.className = `tab-content ${index === 0 ? 'active' : ''}`;
-
             category.children.forEach(item => {
               tabContent.innerHTML += `
-            <div class="card">
-              <a href="${item.target}" target="_blank">
-                <img src="${item.bgImage}" alt="${item.name.slice(0, 8)}">
-                <h5>${item.name.slice(0, 8)}</h5>
-              </a>
-            </div>`;
+          <div class="card">
+            <a href="${item.target}" target="_blank">
+              <img src="${item.bgImage}" alt="${item.name.slice(0, 8)}">
+              <h5>${item.name.slice(0, 8)}</h5>
+            </a>
+          </div>`;
             });
-
             wrapper.appendChild(tabContent);
           });
 
           // 初始化列数
           updateColumns();
 
-          // 添加触摸事件
-          wrapper.addEventListener('touchstart', e => {
-            startX = e.touches.clientX;
-          });
-
-          wrapper.addEventListener('touchend', e => {
-            const endX = e.changedTouches.clientX;
-            const diff = startX - endX;
-
-            if (Math.abs(diff) > 50) {
-              if (diff > 0 && currentIndex < data.length - 1) {
-                switchTab(currentIndex + 1);
-              } else if (diff < 0 && currentIndex > 0) {
-                switchTab(currentIndex - 1);
-              }
-            }
-          });
-
           // 页签切换函数
           function switchTab(index) {
-            currentIndex = index;
             const tabs = document.querySelectorAll('.tab-button');
             const contents = document.querySelectorAll('.tab-content');
-
             tabs.forEach((tab, i) => {
               tab.classList.toggle('active', i === index);
             });
-
             contents.forEach((content, i) => {
               content.classList.toggle('active', i === index);
             });
-
-            wrapper.scrollTo({
-              left: window.innerWidth * index,
-              behavior: 'smooth'
-            });
-
             updateColumns();
           }
         })
@@ -210,7 +179,6 @@
         const containerWidth = gridContainer.offsetWidth;
         const gapTotal = 20 * (count - 1);
         const cardWidth = Math.max(20, (containerWidth - gapTotal) / count);
-
         document.querySelectorAll('.tab-content').forEach(content => {
           content.style.gridTemplateColumns = `repeat(${count}, minmax(${cardWidth}px, 1fr))`;
         });
