@@ -41,16 +41,6 @@ body {
 }
 
 
-.grid-container {
-    transition: grid-template-columns 0.3s ease;
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-}
-
 .card {
     background: white;
     border-radius: 10px;
@@ -93,14 +83,13 @@ body {
 }
 
 .grid-container {
+    transition: grid-template-columns 0.3s ease;
+    gap: 20px;
     display: grid;
     grid-template-columns: repeat(var(--column-count), minmax(0, 1fr));
-    /* 关键修改 */
-    gap: 20px;
     width: 100%;
     box-sizing: border-box;
     overflow: hidden;
-    /* 防止内容溢出 */
 }
 
 .container {
@@ -310,10 +299,8 @@ body.dark-mode {
     scroll-snap-type: x mandatory;
     width: 100%;
     flex: 1;
-    overflow: auto;
-    /* 允许垂直+水平双向滚动 */
-    -webkit-overflow-scrolling: touch;
-    /* 移动端顺滑滚动 */
+    overflow: auto;    /* 允许垂直+水平双向滚动 */
+    -webkit-overflow-scrolling: touch;    /* 移动端顺滑滚动 */
 }
 
 .tab-content {
