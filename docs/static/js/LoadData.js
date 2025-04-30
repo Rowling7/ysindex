@@ -83,7 +83,7 @@ fetch('data.json')
             // 使用map+join优化字符串拼接
             const cardsHTML = category.children.map(item => `
               <div class="card">
-                  <a href="${item.target}" target="_blank" aria-label="${item.name}">
+                  <a href="${item.target}" target="_blank" aria-label="${item.name}" title="${item.name}">
                       <img src="${item.bgImage}" alt="${item.name}" loading="lazy">
                       <h5>${item.name.slice(0, 8)}</h5>
                   </a>
@@ -113,5 +113,81 @@ fetch('data.json')
             });
             updateColumns();
         }
+
+        // 在loaddata.js的fetch().then()代码块末尾添加以下内容（在switchtab函数定义之后）
+        // 添加左右点击切换功能
+        if (!isMobile()) {
+            const contentContainer = document.getElementById('bodyId');
+
+            // 点击区域判断函数
+            const getClickZone = (container, clickX) => {
+                const rect = container.getBoundingClientRect();
+                const containerWidth = rect.width;
+                const clickPosition = clickX - rect.left;
+                return clickPosition < containerWidth / 2 ? 'left' : 'right';
+            };
+
+            // 点击事件处理
+            contentContainer.addEventListener('click', (e) => {
+                const currentTab = document.querySelector('.tab-button.active');
+                const currentIndex = parseInt(currentTab.dataset.tabIndex);
+                const totalTabs = document.querySelectorAll('.tab-button').length;
+
+                // 点击排除逻辑。排除头部、搜索、底栏
+                // 获取需要排除的三大容器元素
+                const headerContainer = document.getElementById('headerContainer');
+                const searchContainer = document.getElementById('search-container');
+                const tabsContainer = document.getElementById('tabsContainer');
+                // 定义通用区域检测函数
+                function isInExcludeZone(clientY, element) {
+                    if (!element) return false;
+                    const rect = element.getBoundingClientRect();
+                    return event.clientY >= rect.top && event.clientY <= rect.bottom;
+                }
+                // 在点击事件中执行检测
+                if (
+                    isInExcludeZone(event.clientY, headerContainer) ||    // 检测头部区域
+                    isInExcludeZone(event.clientY, searchContainer) ||    // 检测搜索区域
+                    isInExcludeZone(event.clientY, tabsContainer)         // 检测底部区域
+                ) {
+                    return; // 命中排除区域则终止执行
+                }
+
+                const zone = getClickZone(contentContainer, e.clientX);
+                let newIndex = currentIndex;
+
+                if (zone === 'left') {
+                    newIndex = (currentIndex - 1 + totalTabs) % totalTabs;
+                } else {
+                    newIndex = (currentIndex + 1) % totalTabs;
+                }
+                switchTab(newIndex);
+            });
+        }
     })
     .catch(error => console.error('数据加载失败:', error));
+
+
+/* 样式适配移动端 */
+function initMobileLayout() {
+    if (isMobile()) {
+        const tabsContainer = document.getElementById('tabsContainer');
+        tabsContainer.style.transform = 'translateX(-50%) scale(2.5)'; // 水平居中补偿+核心缩放属性
+        tabsContainer.style.transformOrigin = 'bottom center'; // 从底部中心点缩放
+        tabsContainer.style.margin = '20px 0'; // 防止内容挤压
+        tabsContainer.style.padding = '15px'; //触控友好间距
+        const searchContainer = document.getElementById('search-container');
+        searchContainer.style.transform = 'translateX(30%) scale(1.5)'; // 水平居中补偿+核心缩放属性
+        searchContainer.style.transformOrigin = 'bottom center'; // 从底部中心点缩放
+        searchContainer.style.margin = '20px 0'; // 防止内容挤压
+        searchContainer.style.padding = '15px'; //触控友好间距
+        searchContainer.style.margin = '30px'; //触控友好间距
+    }
+}
+
+// 在DOM加载完成后执行
+document.addEventListener('DOMContentLoaded', initMobileLayout);
+// 窗口大小变化时重新检测
+window.addEventListener('resize', initMobileLayout);
+
+
