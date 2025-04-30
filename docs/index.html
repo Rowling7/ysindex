@@ -1,52 +1,52 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 
-<head>
-  <meta charset="UTF-8">
-  <title>YsongCao's Sitemap</title>
-  <link rel="stylesheet" href="static/css/styles.css">
-  <script src="static/js/SearchDarkmod.js" defer></script>
-  <script src="static/js/LoadData.js" defer></script>
-  <script src="static/js/ForTest.js" defer></script>
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <title>YsongCao's Sitemap</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+    <script src="static/js/SearchDarkmod.js" defer></script>
+    <script src="static/js/LoadData.js" defer></script>
+    <script src="static/js/ForTest.js" defer></script>
+  </head>
 
-<body>
+  <body  id ="bodyId">
 
-  <!--抬头-->
-  <div class="header-container">
-    <h1 class="site-title">YsongCao's Sitemap</h1>
-    <!-- 新增切换按钮 -->
-    <button class="theme-toggle" id="themeToggle">暗黑模式</button>
-  </div>
-
-  <!--搜索框-->
-  <div class="search-container" id="search-container">
-    <form action="" method="get" class="searchForm" id="searchForm">
-      <select name="engine" id="engineSelect">
-        <option value="https://www.bing.com/search?q=">Bing</option>
-        <option value="https://www.baidu.com/s?wd=">Baidu</option>
-        <option value="https://xiaoyi.huawei.com/?q=">XiaoYi</option>
-      </select>
-      <input type="text" name="query" placeholder="Searching......" />
-      <!--<input type="submit" value="搜索" />-->
-    </form>
-  </div>
-
-  <!-- 在container内添加控制栏 （!已经隐藏但仍起作用!）-->
-  <div class="container">
-    <!-- 已经隐藏但仍起作用-->
-    <div class="controls">
-      <label>每行显示数量：</label>
-      <input type="number" id="columnCount" min="1" max="14" value="4">
+    <!--抬头-->
+    <div class="header-container" id="headerContainer">
+      <h1 class="site-title">YsongCao's Sitemap</h1>
+      <!-- 新增切换按钮 -->
+      <button class="theme-toggle" id="themeToggle">暗黑模式</button>
     </div>
 
-    <!--快捷方式部分-->
-    <div id="content-container" class="grid-container"></div>
-  </div>
+    <!--搜索框-->
+    <div class="search-container" id="search-container">
+      <form action method="get" class="searchForm" id="searchForm">
+        <select name="engine" id="engineSelect">
+          <option value="https://www.bing.com/search?q=">Bing</option>
+          <option value="https://www.baidu.com/s?wd=">Baidu</option>
+          <option value="https://xiaoyi.huawei.com/?q=">XiaoYi</option>
+        </select>
+        <input type="text" name="query" placeholder="Searching......" />
+        <!--<input type="submit" value="搜索" />-->
+      </form>
+    </div>
 
-  <!--底栏部分-->
-  <div class="tabs-container" id="tabsContainer">
+    <!-- 在container内添加控制栏 （!已经隐藏但仍起作用!）-->
+    <div class="container">
+      <!-- 已经隐藏但仍起作用-->
+      <div class="controls">
+        <label>每行显示数量：</label>
+        <input type="number" id="columnCount" min="1" max="14" value="4">
+      </div>
 
-</body>
+      <!--快捷方式部分-->
+      <div id="content-container" class="grid-container"></div>
+    </div>
 
-</html>
+    <!--底栏部分-->
+    <div class="tabs-container" id="tabsContainer"></div>
+
+    </body>
+
+  </html>
