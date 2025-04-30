@@ -1426,7 +1426,7 @@
             "name": "slowroads",
             "target": "https://slowroads.io/",
             "bgType": "color",
-            "bgImage": "static/ico/icon-1i5kk86ahldlfz6oueffudozc3y.SVG",
+            "bgImage": "static/ico/icon-1i5kk86ahldlfz6oueffudozc3y.png",
             "bgColor": "rgba(125, 171, 136, 1)",
             "type": "site",
             "bgText": "sw",
