@@ -1619,6 +1619,19 @@
             "updateTime": 1726724168749,
             "total": 0,
             "lasttime": 0
+        },
+        {
+            "name": "椰子",
+            "target": "https://rowling7.github.io/ysindex/",
+            "bgType": "image",
+            "bgImage": "static/ico/9fc01537e35ecf0a71416840097949cc.png",
+            "bgColor": "",
+            "type": "site",
+            "origin": "online",
+            "id": "icon-1i84cfn1dr5tqt6ycfeu9x2bv10",
+            "updateTime": 1726724168749,
+            "total": 0,
+            "lasttime": 0
         }
     ]
 }
