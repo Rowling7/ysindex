@@ -562,6 +562,19 @@
             "updateTime": 1745819549059,
             "total": 0,
             "lasttime": 0
+        },
+        {
+            "name": "盘库吧",
+            "target": "https://panku8.com/",
+            "bgType": "image",
+            "bgImage": "static/ico/pankuba.ico",
+            "bgColor": "",
+            "type": "site",
+            "origin": "online",
+            "id": "icon-1iptf8fc352ibz69zbpqfxv6w70",
+            "updateTime": 1745819549059,
+            "total": 0,
+            "lasttime": 0
         }
     ]
 },
