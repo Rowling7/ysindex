@@ -1,8 +1,11 @@
-// 列表展示
 /* 新增设备检测函数 */
 function isMobile() {
     return window.innerWidth <= 1100;
 }
+//其他的设备检测方法：
+//function isMobile() {
+//    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+//}
 
 // 列表展示
 const columnControl = document.getElementById('columnCount');
@@ -61,6 +64,7 @@ fetch('data.json')
         // 创建内容容器
         const wrapper = document.createElement('div');
         wrapper.className = 'content-wrapper';
+        wrapper.id = "containerWrapper"; // 添加 ID 属性
         contentcontainer.appendChild(wrapper);
 
         // 使用文档片段减少DOM操作
@@ -82,7 +86,7 @@ fetch('data.json')
 
             // 使用map+join优化字符串拼接
             const cardsHTML = category.children.map(item => `
-              <div class="card">
+              <div class="card" id="linkCard">
                   <a href="${item.target}" target="_blank" aria-label="${item.name}" title="${item.name}">
                       <img src="${item.bgImage}" alt="${item.name}" loading="lazy">
                       <h5>${item.name.slice(0, 8)}</h5>
@@ -129,6 +133,11 @@ fetch('data.json')
 
             // 点击事件处理
             contentContainer.addEventListener('click', (e) => {
+                // 新增：如果点击的是卡片链接则终止
+                if (e.target.closest('.card')) {
+                    console.log('点击的是卡片链接，跳过切换');
+                    return;
+                }
                 const currentTab = document.querySelector('.tab-button.active');
                 const currentIndex = parseInt(currentTab.dataset.tabIndex);
                 const totalTabs = document.querySelectorAll('.tab-button').length;
@@ -138,6 +147,8 @@ fetch('data.json')
                 const headerContainer = document.getElementById('headerContainer');
                 const searchContainer = document.getElementById('search-container');
                 const tabsContainer = document.getElementById('tabsContainer');
+                //const linkCard = document.getElementById('linkCard');
+                console.error("1linkCard");
                 // 定义通用区域检测函数
                 function isInExcludeZone(clientY, element) {
                     if (!element) return false;
@@ -148,8 +159,10 @@ fetch('data.json')
                 if (
                     isInExcludeZone(event.clientY, headerContainer) ||    // 检测头部区域
                     isInExcludeZone(event.clientY, searchContainer) ||    // 检测搜索区域
-                    isInExcludeZone(event.clientY, tabsContainer)         // 检测底部区域
+                    isInExcludeZone(event.clientY, tabsContainer) //||      // 检测底部区域
+                    //isInExcludeZone(event.clientY, linkCard)     // 检测头部区域
                 ) {
+                    console.error("2linkCard");
                     return; // 命中排除区域则终止执行
                 }
 
@@ -182,6 +195,9 @@ function initMobileLayout() {
         searchContainer.style.margin = '20px 0'; // 防止内容挤压
         searchContainer.style.padding = '15px'; //触控友好间距
         searchContainer.style.margin = '30px'; //触控友好间距
+        const contentWrapper = document.getElementById('content-wrapper');
+        contentWrapper.style.paddingBottom = document.getElementById('tabsContainer').getBoundingClientRect().height;
+        console.error(document.getElementById('tabsContainer').getBoundingClientRect().height);
     }
 }
 
@@ -189,5 +205,7 @@ function initMobileLayout() {
 document.addEventListener('DOMContentLoaded', initMobileLayout);
 // 窗口大小变化时重新检测
 window.addEventListener('resize', initMobileLayout);
+
+
 
 
