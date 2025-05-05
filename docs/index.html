@@ -10,7 +10,7 @@
     <script src="static/js/ForTest.js" defer></script>
   </head>
 
-  <body  id ="bodyId">
+  <body id="bodyId">
 
     <!--抬头-->
     <div class="header-container" id="headerContainer">
@@ -22,7 +22,7 @@
     <!--搜索框-->
     <div class="search-container" id="search-container">
       <form action method="get" class="searchForm" id="searchForm">
-        <select name="engine" id="engineSelect">
+        <select name="engine" id="engineSelect" title="engine">
           <option value="https://www.bing.com/search?q=">Bing</option>
           <option value="https://www.baidu.com/s?wd=">Baidu</option>
           <option value="https://xiaoyi.huawei.com/?q=">XiaoYi</option>
@@ -39,14 +39,14 @@
         <label>每行显示数量：</label>
         <input type="number" id="columnCount" min="1" max="14" value="4">
       </div>
-
       <!--快捷方式部分-->
       <div id="content-container" class="grid-container"></div>
     </div>
 
     <!--底栏部分-->
-    <div class="tabs-container" id="tabsContainer"></div>
+    <div class="tabs-container" id="tabsContainer">
+      <div class="tabs-container" id="tabsContainer"></div>
+    </div>
+  </body>
 
-    </body>
-
-  </html>
+</html>
