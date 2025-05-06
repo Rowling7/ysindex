@@ -135,7 +135,7 @@ fetch('data.json')
             contentContainer.addEventListener('click', (e) => {
                 // 新增：如果点击的是卡片链接则终止
                 if (e.target.closest('.card')) {
-                    console.log('点击的是卡片链接，跳过切换');
+                    //console.log('点击的是卡片链接，跳过切换');
                     return;
                 }
                 const currentTab = document.querySelector('.tab-button.active');
@@ -148,7 +148,7 @@ fetch('data.json')
                 const searchContainer = document.getElementById('search-container');
                 const tabsContainer = document.getElementById('tabsContainer');
                 //const linkCard = document.getElementById('linkCard');
-                console.error("1linkCard");
+                //console.error("1linkCard");
                 // 定义通用区域检测函数
                 function isInExcludeZone(clientY, element) {
                     if (!element) return false;
@@ -162,7 +162,7 @@ fetch('data.json')
                     isInExcludeZone(event.clientY, tabsContainer) //||      // 检测底部区域
                     //isInExcludeZone(event.clientY, linkCard)     // 检测头部区域
                 ) {
-                    console.error("2linkCard");
+                    //console.error("2linkCard");
                     return; // 命中排除区域则终止执行
                 }
 
