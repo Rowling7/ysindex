@@ -206,7 +206,7 @@ function switchTab(index) {
 // 添加搜索功能
 document.getElementById("searchData").addEventListener("click", () => {
   const savedIndex = currentActiveTabIndex; // 保存当前激活索引
-  const keyword = prompt("请输入要搜索的链接:");
+  const keyword = prompt("请输入要搜索的名称或链接:");
   if (!keyword) return;
 
   // 搜索所有分类的子项
