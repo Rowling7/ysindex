@@ -1,21 +1,21 @@
 html {
-    height: 100%;
-    margin: 0;
-    overflow: hidden;
-    /* 禁止全局滚动 */
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  /* 禁止全局滚动 */
 }
 
 body {
-    height: 100%;
-    font-family: "Segoe UI", Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background: #f0f2f5;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    transition: background-color 0.3s, color 0.3s;
-    overflow: hidden;
-    /* 背景图预留
+  height: 100%;
+  font-family: "Segoe UI", Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: #f0f2f5;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+  overflow: hidden;
+  /* 背景图预留
     background-image: url(https://bing.ee123.net/img/);
     background-repeat: no-repeat;
     background-size: cover;*/
@@ -23,331 +23,358 @@ body {
 
 /* 隐藏所有元素的滚动条 */
 ::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .header-container {
-    display: flex;
-    justify-content: space-between;
-    /* 左右两端对齐 */
-    align-items: center;
-    /* 垂直居中 */
-    width: 100%;
-    padding: 10px 20px;
-    box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  /* 左右两端对齐 */
+  align-items: center;
+  /* 垂直居中 */
+  width: 100%;
+  padding: 10px 20px;
+  box-sizing: border-box;
 }
 
 .site-title {
-    margin: 0;
-    /* 清除默认外边距 */
-    flex-grow: 1;
-    /* 占据剩余空间 */
+  margin: 0;
+  /* 清除默认外边距 */
+  flex-grow: 1;
+  /* 占据剩余空间 */
 }
 
 .card {
-    background: white;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
 }
 
 .card:hover {
-    transform: translateY(-12px);
+  transform: translateY(-12px);
 }
 
 .card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 5px;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
 }
 
 /* 新增控制栏样式 */
 .controls {
-    /*隐藏调整列数固定为14*/
-    /*margin-bottom: 20px;
+  /*隐藏调整列数固定为14*/
+  /*margin-bottom: 20px;
     padding: 10px;
     background: white;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);*/
-    position: absolute;
-    left: -9999px;
-    opacity: 0;
-    pointer-events: none;
-    /* 可选，防止误触 */
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  pointer-events: none;
+  /* 可选，防止误触 */
 }
 
 .controls input {
-    padding: 5px;
-    width: 60px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+  padding: 5px;
+  width: 60px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
 .grid-container {
-    transition: grid-template-columns 0.3s ease;
-    gap: 20px;
-    display: grid;
-    grid-template-columns: repeat(var(--column-count), minmax(0, 1fr));
-    width: 100%;
-    box-sizing: border-box;
-    overflow: hidden;
+  transition: grid-template-columns 0.3s ease;
+  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(var(--column-count), minmax(0, 1fr));
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding: 0 20px;
-    /* 添加两侧留白 */
-    padding-bottom: 60px;
-    /* 给页签留出空间 */
-    box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+  /* 添加两侧留白 */
+  padding-bottom: 60px;
+  /* 给页签留出空间 */
+  box-sizing: border-box;
 }
 
 /*搜索部分样式*/
 .search-container {
-    width: fit-content;
-    /* 父容器宽度自适应内容 */
-    margin: 0 auto;
-    /* 居中显示 */
-    padding: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-    /* 高斯模糊 */
-    -webkit-backdrop-filter: blur(10px);
-    /* Safari兼容 */
-    background-color: transparent;
+  width: fit-content;
+  /* 父容器宽度自适应内容 */
+  margin: 0 auto;
+  /* 居中显示 */
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  /* 高斯模糊 */
+  -webkit-backdrop-filter: blur(10px);
+  /* Safari兼容 */
+  background-color: transparent;
 }
 
 .searchForm {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .search-container select {
-    width: 100px;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.7);
-    flex-shrink: 0;
-    /* 禁止下拉框宽度压缩 */
+  width: 100px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  flex-shrink: 0;
+  /* 禁止下拉框宽度压缩 */
 }
 
 .search-container input[type="text"] {
-    width: 40vw;
-    /* 输入框占视口宽度的40% */
-    max-width: 600px;
-    /* 防止过宽 */
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.7);
-    margin-left: 10px;
-    margin-right: 10px;
-    flex-shrink: 0;
-    /* 禁止输入框宽度压缩 */
+  width: 40vw;
+  /* 输入框占视口宽度的40% */
+  max-width: 600px;
+  /* 防止过宽 */
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  margin-left: 10px;
+  margin-right: 10px;
+  flex-shrink: 0;
+  /* 禁止输入框宽度压缩 */
 }
 
 /*暗黑*/
 /* 新增暗黑模式样式 */
 :root {
-    --bg-color: #ffffff;
-    --text-color: #333333;
-    --card-bg: #f5f5f5;
-    --button-bg: #007bff;
-    --button-text: #ffffff;
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --card-bg: #f5f5f5;
+  --button-bg: #007bff;
+  --button-text: #ffffff;
 }
 
 body.dark-mode {
-    --bg-color: #1a1a1a;
-    --text-color: #e0e0e0;
-    --card-bg: #2d2d2d;
-    --button-bg: #4a4a4a;
-    --button-text: #ffffff;
+  --bg-color: #1a1a1a;
+  --text-color: #e0e0e0;
+  --card-bg: #2d2d2d;
+  --button-bg: #4a4a4a;
+  --button-text: #ffffff;
 }
 
 /* 新增切换按钮样式 */
 .theme-toggle {
-    /*position: absolute;*/
-    top: 20px;
-    right: 20px;
-    padding: 8px 16px;
-    background-color: var(--button-bg);
-    color: var(--button-text);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-left: auto;
-    /* 强制靠右对齐 */
+  /*position: absolute;*/
+  top: 20px;
+  right: 20px;
+  padding: 8px 16px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: auto;
+  /* 强制靠右对齐 */
 }
 
 .card {
-    background-color: var(--card-bg);
-    /* 确保卡片使用变量 */
+  background-color: var(--card-bg);
+  /* 确保卡片使用变量 */
 }
 
 /* 调整现有元素使用CSS变量 */
 .search-container input,
 .search-container select {
-    background-color: var(--card-bg);
-    color: var(--text-color);
-    border: 1px solid var(--text-color);
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
 }
 
 /* 页签容器样式 */
 .tabs-container {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    /* 水平居中定位 */
-    transform: translateX(-50%);
-    /* 精确居中 */
-    display: inline-flex;
-    /* 改为行内弹性盒 */
-    gap: 15px;
-    padding: 15px;
-    background: transparent !important;
-    box-shadow: none !important;
-    z-index: 1000;
-    white-space: nowrap;
-    /* 防止按钮换行 */
-    max-width: 100%;
-    /* 防止超出屏幕 */
-    backdrop-filter: blur(10px);
-    /* 高斯模糊 */
-    -webkit-backdrop-filter: blur(10px);
-    /* Safari兼容 */
-    border-radius: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  /* 水平居中定位 */
+  transform: translateX(-50%);
+  /* 精确居中 */
+  display: inline-flex;
+  /* 改为行内弹性盒 */
+  gap: 15px;
+  padding: 15px;
+  background: transparent !important;
+  box-shadow: none !important;
+  z-index: 1000;
+  white-space: nowrap;
+  /* 防止按钮换行 */
+  max-width: 100%;
+  /* 防止超出屏幕 */
+  backdrop-filter: blur(10px);
+  /* 高斯模糊 */
+  -webkit-backdrop-filter: blur(10px);
+  /* Safari兼容 */
+  border-radius: 10px;
 }
 
 /* 页签按钮样式改造 */
 .tab-button {
-    padding: 10px 25px;
-    border-radius: 10px;
-    border: none;
-    background: rgba(255, 255, 255, 0.9);
-    color: #333;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    /* 按钮单独添加阴影 */
-    backdrop-filter: blur(5px);
-    /* 毛玻璃效果 */
-    white-space: nowrap;
+  padding: 10px 25px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  /* 按钮单独添加阴影 */
+  backdrop-filter: blur(5px);
+  /* 毛玻璃效果 */
+  white-space: nowrap;
 }
 
 /* 暗黑模式适配 */
 .dark-mode .tab-button {
-    background: rgba(45, 45, 45, 0.9);
-    color: #fff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background: rgba(45, 45, 45, 0.9);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* 激活状态 */
 .tab-button.active {
-    background: #007bff;
-    color: white;
-    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+  background: #007bff;
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
 }
 
 .dark-mode .tab-button.active {
-    background: #1a73e8;
-    box-shadow: 0 4px 15px rgba(26, 115, 232, 0.4);
+  background: #1a73e8;
+  box-shadow: 0 4px 15px rgba(26, 115, 232, 0.4);
 }
 
 .tab-button.active {
-    background: #007bff;
-    color: white;
+  background: #007bff;
+  color: white;
 }
 
 .content-wrapper {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    width: 100%;
-    flex: 1;
-    overflow: auto;
-    /* 允许垂直+水平双向滚动 */
-    -webkit-overflow-scrolling: touch;
-    /* 移动端顺滑滚动 */
-    padding-bottom: 140px;
-    /* 为底栏留出空间 */
-    transition: transform 0.3s ease-in-out;
-    will-change: transform;
-    /* 优化动画性能 */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  width: 100%;
+  flex: 1;
+  overflow: auto;
+  /* 允许垂直+水平双向滚动 */
+  -webkit-overflow-scrolling: touch;
+  /* 移动端顺滑滚动 */
+  padding-bottom: 140px;
+  /* 为底栏留出空间 */
+  transition: transform 0.3s ease-in-out;
+  will-change: transform;
+  /* 优化动画性能 */
 }
 
 /* 移动端适配 */
 @media (max-width: 1100px) {
-    .content-wrapper {
-        padding-bottom: 280px !important;
-        /* 移动端强制生效 */
-    }
+  .content-wrapper {
+    padding-bottom: 280px !important;
+    /* 移动端强制生效 */
+  }
 }
 
 /* 添加CSS过渡效果 */
 .tab-content {
-    scroll-snap-align: start;
-    min-width: 100%;
-    display: none;
-    grid-template-columns: repeat(var(--column-count), minmax(0, 1fr));
-    gap: 20px;
-    padding: 20px 0;
-    flex: 0 0 100%;
-    width: 100%;
-    box-sizing: border-box;
-    transition: transform 0.3s ease-in-out;
-    overscroll-behavior: contain;
-    scroll-behavior: smooth;
+  scroll-snap-align: start;
+  min-width: 100%;
+  display: none;
+  grid-template-columns: repeat(var(--column-count), minmax(0, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+  flex: 0 0 100%;
+  width: 100%;
+  box-sizing: border-box;
+  transition: transform 0.3s ease-in-out;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
 }
 
 .tab-content.active {
-    display: grid;
+  display: grid;
 }
 
 .swipe-left {
-    transform: translateX(-100%);
+  transform: translateX(-100%);
 }
 
 .swipe-right {
-    transform: translateX(100%);
+  transform: translateX(100%);
 }
 
-
 .card a {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    height: 100%;
-    justify-items: anchor-center;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+  justify-items: anchor-center;
 }
 
 h5 {
-    white-space: nowrap;
-    /* 禁止换行 */
-    overflow: hidden;
-    /* 隐藏溢出内容 */
-    /*text-overflow: ellipsis; */
-    /* 显示省略号 */
-    max-width: 100%;
-    /* 限制最大宽度 */
-    cursor: help;
-    /* 改变鼠标指针形状 */
-    margin: inherit;
+  white-space: nowrap;
+  /* 禁止换行 */
+  overflow: hidden;
+  /* 隐藏溢出内容 */
+  /*text-overflow: ellipsis; */
+  /* 显示省略号 */
+  max-width: 100%;
+  /* 限制最大宽度 */
+  cursor: help;
+  /* 改变鼠标指针形状 */
+  margin: inherit;
 }
 
 .card img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    /* 可选：保持图片比例并填充容器 */
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  /* 可选：保持图片比例并填充容器 */
 }
 
+.search-results-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
 
+.back-button {
+  padding: 8px 16px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
 
+.search-results-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+}
+
+.searchDataIco {
+  height: 32px;
+  right: 10px; /* 距离右侧10px */
+  top: 50%; /* 垂直居中 */
+  aspect-ratio: 1/1;
+  margin: 8px;
+}

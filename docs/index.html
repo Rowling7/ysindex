@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>YsongCao's Sitemap</title>
-    <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="stylesheet" href="static/css/styles.css" />
     <script src="static/js/SearchDarkmod.js" defer></script>
     <script src="static/js/LoadData.js" defer></script>
     <!--<script src="static/js/ForTest.js" defer></script>-->
   </head>
 
   <body id="bodyId">
-
     <!--抬头-->
     <div class="header-container" id="headerContainer">
       <h1 class="site-title">YsongCao's Sitemap</h1>
+      <a class="searchData" id="searchData" href="#">
+        <img class="searchDataIco" src="static/ico/search.png" alt="搜索图标" />
+      </a>
       <!-- 新增切换按钮 -->
       <button class="theme-toggle" id="themeToggle">暗黑模式</button>
     </div>
@@ -37,7 +38,7 @@
       <!-- 已经隐藏但仍起作用-->
       <div class="controls">
         <label>每行显示数量：</label>
-        <input type="number" id="columnCount" min="1" max="14" value="4">
+        <input type="number" id="columnCount" min="1" max="14" value="4" />
       </div>
       <!--快捷方式部分-->
       <div id="content-container" class="grid-container"></div>
@@ -48,5 +49,4 @@
       <div class="tabs-container" id="tabsContainer"></div>
     </div>
   </body>
-
 </html>
