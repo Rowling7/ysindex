@@ -328,18 +328,13 @@ body.dark-mode {
 }
 
 h5 {
-  white-space: nowrap;
-  /* 禁止换行 */
-  overflow: hidden;
-  /* 隐藏溢出内容 */
-  /*text-overflow: ellipsis; */
-  /* 显示省略号 */
-  max-width: 100%;
-  /* 限制最大宽度 */
-  cursor: help;
-  /* 改变鼠标指针形状 */
+  white-space: nowrap;  /* 禁止换行 */
+  overflow: hidden;  /* 隐藏溢出内容 */
+  /*text-overflow: ellipsis; */  /* 显示省略号 */
+  max-width: 100%;  /* 限制最大宽度 */
+  cursor: progress;  /* 改变鼠标指针形状 */
   margin: inherit;
-}
+  }
 
 .card img {
   width: 60px;
