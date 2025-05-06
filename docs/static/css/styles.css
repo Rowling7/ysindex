@@ -15,6 +15,10 @@ body {
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
     overflow: hidden;
+    /* 背景图预留
+    background-image: url(https://bing.ee123.net/img/);
+    background-repeat: no-repeat;
+    background-size: cover;*/
 }
 
 /* 隐藏所有元素的滚动条 */
