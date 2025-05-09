@@ -382,41 +382,7 @@ h5 {
 }
 
 
-/* 默认样式：截断超出10字符的文本 */
-.scrollable {
-  display: inline-block;
-  max-width: 10ch;
-  /* 限制为约10个字符宽度 */
-  white-space: nowrap;
-  /* 禁止换行 */
-  overflow: hidden;
-  /* 隐藏溢出内容 */
-  text-overflow: clip;
-  /* 显示省略号 */
-}
-
-/* 悬停时触发滚动动画 */
-.scrollable:hover {
-  max-width: none;
-  /* 取消宽度限制 */
-  text-overflow: clip;
-  /* 禁用省略号 */
-  animation: scroll 5s linear infinite;
-}
-
-/* 定义横向滚动动画 */
-@keyframes scroll {
-  from {
-    transform: translateX(0%);
-  }
-
-  to {
-    transform: translateX(-100%);
-  }
-}
-
-
-
+/*搜索快捷方式css*/
 .search {
   --transition-time: 200ms;
   display: inline-block;

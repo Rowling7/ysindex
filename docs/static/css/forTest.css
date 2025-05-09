@@ -1,59 +1,33 @@
-.search {
-    --transition-time: 200ms;
-    display: inline-block;
-    position: relative;
-    height: 30px;
-    width: 30px;
-    margin: 0 8px 7px 0;
-    border: 3px solid #000;
-    border-radius: 25px;
-    transition: width var(--transition-time) ease,
-        border-color calc(var(--transition-time)/2) ease;
-    cursor: text;
+/*H5滚动CSS 会导致手机端排班错误*/
+/* 默认样式：截断超出10字符的文本 */
+.scrollable {
+  display: inline-block;
+  max-width: 10ch;
+  /* 限制为约10个字符宽度 */
+  white-space: nowrap;
+  /* 禁止换行 */
+  overflow: hidden;
+  /* 隐藏溢出内容 */
+  text-overflow: clip;
+  /* 显示省略号 */
 }
 
-.search::after {
-    content: "";
-    position: absolute;
-    width: 3px;
-    height: 14px;
-    right: -5px;
-    top: 21px;
-    background: #000;
-    border-radius: 3px;
-    transform: rotate(-45deg);
-    transition: height var(--transition-time) ease,
-        opacity calc(var(--transition-time)/2) linear;
+/* 悬停时触发滚动动画 */
+.scrollable:hover {
+  max-width: none;
+  /* 取消宽度限制 */
+  text-overflow: clip;
+  /* 禁用省略号 */
+  animation: scroll 5s linear infinite;
 }
 
-.search:is(.active, :hover, :focus-within) {
-    width: 200px;
-    margin-right: 0;
-    border-color: #2ecc71;
-}
+/* 定义横向滚动动画 */
+@keyframes scroll {
+  from {
+    transform: translateX(0%);
+  }
 
-.search:is(.active, :hover, :focus-within)::after {
-    height: 0;
-    opacity: 0;
-}
-
-.search input {
-    width: 100%;
-    border: none;
-    font: 15px Helvetica;
-    color: inherit;
-    padding-bottom: 6px;
-    background: transparent;
-    outline: none;
-}
-
-@media (hover: none) {
-    .search {
-        width: 200px !important;
-        transition: none;
-    }
-
-    .search::after {
-        display: none;
-    }
+  to {
+    transform: translateX(-100%);
+  }
 }
