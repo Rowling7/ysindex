@@ -59,6 +59,7 @@ function updateColumns() {
 // 在数据加载成功后保存数据到全局变量
 let globalData = []; // 新增全局变量存储数据
 let currentActiveTabIndex = 0; // 新增当前激活索引存储
+let contentfragment = null; // 新增全局变量
 
 // 数据加载逻辑
 fetch("data.json")
@@ -80,7 +81,7 @@ fetch("data.json")
 
     // 使用文档片段减少DOM操作
     const tabFragment = document.createDocumentFragment();
-    const contentFragment = document.createDocumentFragment();
+    contentFragment = document.createDocumentFragment();
 
     data.forEach((category, index) => {
       // 创建页签按钮
@@ -102,7 +103,7 @@ fetch("data.json")
         <div class="card" id="linkCard">
             <a href="${item.target}" target="_blank" aria-label="${item.name}" title="${item.name}">
                 <img src="${item.bgImage}" alt="${item.name}" loading="lazy">
-                <h5 class="${item.name.length > 10 ? 'scrollable' : ''}">${item.name}</h5>
+                <h5 class="${item.name.length > 10 ? "scrollable" : ""}">${item.name}</h5>
             </a>
         </div>
         `
@@ -198,91 +199,89 @@ function switchTab(index) {
   });
   updateColumns();
 }
+// 搜索功能实现
+document.getElementById("inpt_search").addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    const savedIndex = currentActiveTabIndex;
+    const keyword = e.target.value.trim();
+    if (!keyword) return;
 
-// 添加搜索功能
-document.getElementById("searchData").addEventListener("click", () => {
-  const savedIndex = currentActiveTabIndex; // 保存当前激活索引
-  const keyword = prompt("请输入要搜索的名称或链接:");
-  if (!keyword) return;
-
-  // 搜索所有分类的子项
-  const searchResults = [];
-  globalData.forEach((category) => {
-    category.children.forEach((item) => {
-      if (
-        item.name.toLowerCase().includes(keyword.toLowerCase()) ||
-        item.target.toLowerCase().includes(keyword.toLowerCase())
-      ) {
-        searchResults.push(item);
-      }
+    // 执行搜索逻辑
+    const searchResults = [];
+    globalData.forEach((category) => {
+      category.children.forEach((item) => {
+        if (
+          item.name.toLowerCase().includes(keyword.toLowerCase()) ||
+          item.target.toLowerCase().includes(keyword.toLowerCase())
+        ) {
+          searchResults.push(item);
+        }
+      });
     });
-  });
 
-  // 更新显示结果
-  const wrapper = document.getElementById("containerWrapper");
-  const tabsContainer = document.getElementById("tabsContainer");
+    // 更新界面显示
+    const wrapper = document.getElementById("containerWrapper");
+    const tabsContainer = document.getElementById("tabsContainer");
+    const cntr = document.querySelector(".cntr");
 
-  // 隐藏标签页
-  tabsContainer.style.display = "none";
+    // 隐藏原始内容（新增对底栏的隐藏）
+    tabsContainer.style.display = "none";  // 隐藏页签栏
+    cntr.style.display = "none";           // 隐藏底栏
 
-  // 生成结果卡片
-  const cardsHtml = searchResults
-    .map(
-      (item) => `
-      <div class="card" id="linkcard">
-        <a href="${item.target}" target="_blank" aria-label="${item.name
-        }" title="${item.name}">
-          <img src="${item.bgImage}" alt="${item.name}" loading="lazy">
-          <h5>${item.name.slice(0, 8)}</h5>
-        </a>
-      </div>
-    `
-    )
-    .join("");
+    // 生成结果卡片
+    const cardsHtml = searchResults
+      .map(
+        (item) => `
+                <div class="card" id="linkCard">
+                    <a href="${item.target}" target="_blank" aria-label="${item.name}" title="${item.name}">
+                        <img src="${item.bgImage}" alt="${item.name}" loading="lazy">
+                        <h5 class="${item.name.length > 10 ? "scrollable" : ""}">${item.name}</h5>
+                    </a>
+                </div>
+                `
+      )
+      .join("");
 
-  // 添加返回按钮和结果容器
-  wrapper.innerHTML = `
-      <div class="search-results-header" id="searchResultsHeader">
-        <button class="back-button" id="backButton">< 返回 </button>
-        <h3>找到 ${searchResults.length} 个匹配项</h3>
-      </div>
-      <div class="search-results-grid">${cardsHtml}</div>
-    `;
+    // 构建搜索结果界面
+    wrapper.innerHTML = `
+            <div class="search-results-header" id="searchResultsHeader">
+                <button class="back-button" id="backButton">< 返回</button>
+                <h3>找到 ${searchResults.length} 个匹配项</h3>
+            </div>
+            <div class="search-results-grid">${cardsHtml}</div>
+        `;
 
-  // 添加返回按钮事件
-  document.getElementById("backButton").addEventListener("click", () => {
-    tabsContainer.style.display = ""; // 恢复显示标签页
-    // 重新初始化原始内容
-    const contentFragment = document.createDocumentFragment();
-    globalData.forEach((category, index) => {
-      const tabContent = document.createElement("div");
-      tabContent.className = `tab-content${index === savedIndex ? " active" : ""
-        }`;
-      // 使用map+join优化字符串拼接
-      const cardsHTML = category.children
-        .map(
-          (item) => `
+    // 返回按钮功能
+    document.getElementById("backButton").addEventListener("click", () => {
+      tabsContainer.style.display = "";  // 恢复页签栏
+      cntr.style.display = "";           // 恢复底栏
+      wrapper.innerHTML = "";
+
+      // 重新生成内容
+      const newFragment = document.createDocumentFragment();
+      globalData.forEach((category, index) => {
+        const tabContent = document.createElement("div");
+        tabContent.className = `tab-content${index === currentActiveTabIndex ? " active" : ""}`;
+        tabContent.innerHTML = category.children
+          .map(
+            (item) => `
               <div class="card" id="linkCard">
-                  <a href="${item.target}" target="_blank" aria-label="${item.name
-            }" title="${item.name}">
-                      <img src="${item.bgImage}" alt="${item.name
-            }" loading="lazy">
-                      <h5>${item.name.slice(0, 8)}</h5>
+                  <a href="${item.target}" target="_blank" aria-label="${item.name}" title="${item.name}">
+                      <img src="${item.bgImage}" alt="${item.name}" loading="lazy">
+                      <h5 class="${item.name.length > 10 ? "scrollable" : ""}">${item.name}</h5>
                   </a>
               </div>
               `
-        )
-        .join("");
-      tabContent.innerHTML = cardsHTML; // 一次性插入
-      contentFragment.appendChild(tabContent);
+          )
+          .join("");
+        newFragment.appendChild(tabContent);
+      });
+      wrapper.appendChild(newFragment);
+      switchTab(savedIndex);
+      updateColumns();
     });
-    wrapper.innerHTML = "";
-    wrapper.appendChild(contentFragment);
-    switchTab(savedIndex); // 回到标签页
     updateColumns();
-  });
-
-  updateColumns();
+  }
 });
 
 /* 样式适配移动端 */
