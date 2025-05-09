@@ -1,4 +1,4 @@
-// 搜索功能
+// 搜索功能-----开始
 document.getElementById("searchForm").onsubmit = function () {
     var engine = document.getElementById("engineSelect").value;
     var query = document.querySelector('input[name="query"]').value; //  局部变量
@@ -15,8 +15,10 @@ document.querySelector('input[name="query"]').addEventListener("keypress", funct
 window.onload = function () {
     document.querySelector('input[name="query"]').focus(); //  直接获取元素
 }
-/*开始--暗黑模式部分*/
-// 新增暗黑模式切换功能
+// 搜索功能-----结束
+
+
+//暗黑模式部分-----开始
 const themeToggle = document.getElementById('themeToggle');
 // 从本地存储加载主题设置
 function loadTheme() {
@@ -34,10 +36,10 @@ function toggleTheme() {
 // 初始化主题设置
 loadTheme();
 themeToggle.addEventListener('click', toggleTheme);
-/*结束--暗黑模式部分*/
+//暗黑模式部分-----结束
 
 
-/*快速搜索链接功能*/
+//快速搜索链接功能-----开始
 const search = document.querySelector('.search');
 const input = document.getElementById('inpt_search');
 
@@ -57,3 +59,4 @@ input.addEventListener('compositionend', () => {
 input.addEventListener('blur', () => {
     if (!isComposing) search.classList.remove('active');
 });
+//快速搜索链接功能-----结束
