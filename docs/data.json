@@ -588,6 +588,19 @@
             "updateTime": 1745819549059,
             "total": 0,
             "lasttime": 0
+        },
+        {
+            "name": "Seedhub",
+            "target": "https://www.seedhub.cc/",
+            "bgType": "image",
+            "bgImage": "static/ico/seedhub.ico",
+            "bgColor": "",
+            "type": "site",
+            "origin": "online",
+            "id": "icon-1iptf8fc352ibz69zbpqfxv6w90",
+            "updateTime": 1745819549059,
+            "total": 0,
+            "lasttime": 0
         }
     ]
 },
