@@ -4,7 +4,7 @@ function isMobile() {
 }
 //其他的设备检测方法：
 //function isMobile() {
-//    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+//   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 //}
 
 // 列表展示
@@ -100,12 +100,10 @@ fetch("data.json")
         .map(
           (item) => `
               <div class="card" id="linkCard">
-                  <a href="${item.target}" target="_blank" aria-label="${
-            item.name
-          }" title="${item.name}">
-                      <img src="${item.bgImage}" alt="${
-            item.name
-          }" loading="lazy">
+                  <a href="${item.target}" target="_blank" aria-label="${item.name
+            }" title="${item.name}">
+                      <img src="${item.bgImage}" alt="${item.name
+            }" loading="lazy">
                       <h5>${item.name.slice(0, 8)}</h5>
                   </a>
               </div>
@@ -234,9 +232,8 @@ document.getElementById("searchData").addEventListener("click", () => {
     .map(
       (item) => `
       <div class="card" id="linkcard">
-        <a href="${item.target}" target="_blank" aria-label="${
-        item.name
-      }" title="${item.name}">
+        <a href="${item.target}" target="_blank" aria-label="${item.name
+        }" title="${item.name}">
           <img src="${item.bgImage}" alt="${item.name}" loading="lazy">
           <h5>${item.name.slice(0, 8)}</h5>
         </a>
@@ -261,20 +258,17 @@ document.getElementById("searchData").addEventListener("click", () => {
     const contentFragment = document.createDocumentFragment();
     globalData.forEach((category, index) => {
       const tabContent = document.createElement("div");
-      tabContent.className = `tab-content${
-        index === savedIndex ? " active" : ""
-      }`;
+      tabContent.className = `tab-content${index === savedIndex ? " active" : ""
+        }`;
       // 使用map+join优化字符串拼接
       const cardsHTML = category.children
         .map(
           (item) => `
               <div class="card" id="linkCard">
-                  <a href="${item.target}" target="_blank" aria-label="${
-            item.name
-          }" title="${item.name}">
-                      <img src="${item.bgImage}" alt="${
-            item.name
-          }" loading="lazy">
+                  <a href="${item.target}" target="_blank" aria-label="${item.name
+            }" title="${item.name}">
+                      <img src="${item.bgImage}" alt="${item.name
+            }" loading="lazy">
                       <h5>${item.name.slice(0, 8)}</h5>
                   </a>
               </div>

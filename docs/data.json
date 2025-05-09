@@ -575,6 +575,19 @@
             "updateTime": 1745819549059,
             "total": 0,
             "lasttime": 0
+        },
+        {
+            "name": "Greasy Fork 镜像站",
+            "target": "https://gf.qytechs.cn/zh-CN",
+            "bgType": "image",
+            "bgImage": "static/ico/43292772a9c7f4a13da9ce0e6f65e8e2.png",
+            "bgColor": "",
+            "type": "site",
+            "origin": "online",
+            "id": "icon-1iptf8fc352ibz69zbpqfxv6w90",
+            "updateTime": 1745819549059,
+            "total": 0,
+            "lasttime": 0
         }
     ]
 },
