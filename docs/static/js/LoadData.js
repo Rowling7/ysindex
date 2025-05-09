@@ -99,15 +99,13 @@ fetch("data.json")
       const cardsHTML = category.children
         .map(
           (item) => `
-              <div class="card" id="linkCard">
-                  <a href="${item.target}" target="_blank" aria-label="${item.name
-            }" title="${item.name}">
-                      <img src="${item.bgImage}" alt="${item.name
-            }" loading="lazy">
-                      <h5>${item.name.slice(0, 8)}</h5>
-                  </a>
-              </div>
-              `
+        <div class="card" id="linkCard">
+            <a href="${item.target}" target="_blank" aria-label="${item.name}" title="${item.name}">
+                <img src="${item.bgImage}" alt="${item.name}" loading="lazy">
+                <h5 class="${item.name.length > 10 ? 'scrollable' : ''}">${item.name}</h5>
+            </a>
+        </div>
+        `
         )
         .join("");
 
