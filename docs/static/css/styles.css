@@ -15,10 +15,10 @@ body {
   color: var(--text-color);
   transition: background-color 0.3s, color 0.3s;
   overflow: hidden;
-  /* 背景图预留
-    background-image: url(https://bing.ee123.net/img/);
-    background-repeat: no-repeat;
-    background-size: cover;*/
+  /*背景图预留
+  background-image: url(https://bing.ee123.net/img/);
+  background-repeat: no-repeat;
+  background-size: cover;*/
 }
 
 /* 隐藏所有元素的滚动条 */
@@ -114,7 +114,7 @@ body {
   /* 父容器宽度自适应内容 */
   margin: 0 auto;
   /* 居中显示 */
-  padding: 10px;
+  /*padding: 10px;*/
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   border-radius: 10px;
@@ -149,7 +149,7 @@ body {
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.7);
   margin-left: 10px;
-  margin-right: 10px;
+  /*margin-right: 10px;*/
   flex-shrink: 0;
   /* 禁止输入框宽度压缩 */
 }
@@ -328,13 +328,13 @@ body.dark-mode {
 }
 
 h5 {
-  white-space: nowrap;  /* 禁止换行 */
-  overflow: hidden;  /* 隐藏溢出内容 */
-  /*text-overflow: ellipsis; */  /* 显示省略号 */
-  max-width: 100%;  /* 限制最大宽度 */
-  cursor: progress;  /* 改变鼠标指针形状 */
+  white-space: nowrap; /* 禁止换行 */
+  overflow: hidden; /* 隐藏溢出内容 */
+  /*text-overflow: ellipsis; */ /* 显示省略号 */
+  max-width: 100%; /* 限制最大宽度 */
+  cursor: progress; /* 改变鼠标指针形状 */
   margin: inherit;
-  }
+}
 
 .card img {
   width: 60px;
