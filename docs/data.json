@@ -231,6 +231,11 @@
                 "name": "Seedhub",
                 "target": "https://www.seedhub.cc/",
                 "bgImage": "static/ico/seedhub.ico"
+            },
+            {
+                "name": "绿软小站",
+                "target": "https://www.gndown.com/",
+                "bgImage": "static/ico/gndown.ico"
             }
         ]
     },
