@@ -15,10 +15,6 @@ body {
   color: var(--text-color);
   transition: background-color 0.3s, color 0.3s;
   overflow: hidden;
-  /*背景图预留
-  background-image: url(https://bing.ee123.net/img/);
-  background-repeat: no-repeat;
-  background-size: cover;*/
 }
 
 /* 隐藏所有元素的滚动条 */
@@ -41,7 +37,22 @@ body {
   /* 清除默认外边距 */
   flex-grow: 1;
   /* 占据剩余空间 */
+
 }
+
+.siteFornt {
+  color: rgba(11, 14, 214, 0.959);
+}
+
+body.has-bg .siteFornt {
+  color: rgba(0, 0, 0, 0.959);
+}
+
+.siteFornt:hover {
+  opacity: 0.9;
+  /* 悬停时微调透明度 */
+}
+
 
 .card {
   background: white;
@@ -441,4 +452,18 @@ h5 {
   .search::after {
     display: none;
   }
+}
+
+/* 默认状态：无背景图时关闭模糊效果 */
+#linkCard {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 14px;
+}
+
+/* 背景图启用时的模糊效果 */
+body.has-bg #linkCard {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
 }
