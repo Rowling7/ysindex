@@ -103,7 +103,7 @@ fetch("data.json")
         <div class="card" id="linkCard">
             <a href="${item.target}" target="_blank" aria-label="${item.name}" title="${item.name}">
                 <img src="${item.bgImage}" alt="${item.name}" loading="lazy">
-                <h5>${item.name.slice(0, 8)}</h5>
+                <h5>${item.name.slice(0, 10)}</h5>
             </a>
         </div>
         `
@@ -235,7 +235,7 @@ document.getElementById("inpt_search").addEventListener("keypress", (e) => {
                 <div class="card" id="linkCard">
                     <a href="${item.target}" target="_blank" aria-label="${item.name}" title="${item.name}">
                         <img src="${item.bgImage}" alt="${item.name}" loading="lazy">
-                        <h5>${item.name.slice(0, 8)}</h5>
+                        <h5>${item.name.slice(0, 10)}</h5>
                     </a>
                 </div>
                 `
@@ -268,7 +268,7 @@ document.getElementById("inpt_search").addEventListener("keypress", (e) => {
               <div class="card" id="linkCard">
                   <a href="${item.target}" target="_blank" aria-label="${item.name}" title="${item.name}">
                       <img src="${item.bgImage}" alt="${item.name}" loading="lazy">
-                      <h5>${item.name.slice(0, 8)}</h5>
+                      <h5>${item.name.slice(0, 10)}</h5>
                   </a>
               </div>
               `
