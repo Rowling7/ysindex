@@ -144,7 +144,7 @@ function initWeightLayout() {
         tabsContainer.style.transform = `translateX(-50%) scale(1.2)`;
         tabsContainer.style.transformOrigin = "bottom center";
         tabsContainer.style.margin = "20px 0";
-        tabsContainer.style.padding = "15px";
+        tabsContainer.style.padding = "10px";
     } else {
         // 非移动端样式设置（恢复默认或初始样式）
         //搜索栏
@@ -158,7 +158,7 @@ function initWeightLayout() {
         tabsContainer.style.transform = "";
         tabsContainer.style.transformOrigin = "";
         tabsContainer.style.margin = "";
-        tabsContainer.style.padding = "15px";
+        tabsContainer.style.padding = "10px";
     }
 }
 
