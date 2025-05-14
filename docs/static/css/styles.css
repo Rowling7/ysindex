@@ -121,6 +121,32 @@ body.has-bg .siteFornt {
   box-sizing: border-box;
 }
 
+/* 让 content-container 撑满剩余高度 */
+#content-container {
+  flex: 1;
+  min-height: 0; /* 修复 flex 项溢出问题 */
+}
+
+/* 自定义网格布局 */
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+
+/* 移除 Bootstrap 列的内边距影响 */
+.grid-layout > .card {
+  margin: 0 !important;
+}
+
+@media (max-width: 576px) {
+  .grid-layout {
+    grid-template-columns: 1fr; /* 超小屏幕单列 */
+  }
+}
+
+
 /*搜索部分样式*/
 .search-container {
   width: fit-content;
