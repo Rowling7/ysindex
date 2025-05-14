@@ -139,6 +139,14 @@ function switchTab(index) {
     content.classList.toggle("active", i === index);
   });
   updateColumns();
+  // 滚动到顶部
+  const wrapper = document.getElementById("containerWrapper");
+  if (wrapper) {
+    wrapper.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    }); // 直接设置滚动位置
+  }
 }
 // 搜索功能实现
 document.getElementById("inpt_search").addEventListener("keypress", (e) => {

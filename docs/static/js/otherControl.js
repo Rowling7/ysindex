@@ -133,28 +133,32 @@ function updateColumns() {
 function initWeightLayout() {
     if (isMobile()) {
         // 移动端样式设置
-        tabsContainer.style.position = "absolute";  // 启用定位
-        tabsContainer.style.left = "50%";           // 基于父容器居中
-        tabsContainer.style.transform = `translateX(-50%) scale(2.5)`;
-        tabsContainer.style.transformOrigin = "bottom center";
-        tabsContainer.style.margin = "20px 0";
-        tabsContainer.style.padding = "15px";
-        searchContainer.style.transform = "translateX(24%) scale(1.2)";
+        //搜索栏
+        searchContainer.style.transform = "translateX(30%) scale(1.5)";
         searchContainer.style.transformOrigin = "bottom center";
         searchContainer.style.padding = "15px";
         searchContainer.style.margin = "30px";
+        //底栏
+        tabsContainer.style.position = "absolute";  // 启用定位
+        tabsContainer.style.left = "50%";           // 基于父容器居中
+        tabsContainer.style.transform = `translateX(-50%) scale(1.2)`;
+        tabsContainer.style.transformOrigin = "bottom center";
+        tabsContainer.style.margin = "20px 0";
+        tabsContainer.style.padding = "15px";
     } else {
         // 非移动端样式设置（恢复默认或初始样式）
+        //搜索栏
+        searchContainer.style.transform = "";
+        searchContainer.style.transformOrigin = "";
+        searchContainer.style.padding = "";
+        searchContainer.style.margin = "0 auto";
+        //底栏
         tabsContainer.style.position = "";  // 启用定位
         tabsContainer.style.left = "";
         tabsContainer.style.transform = "";
         tabsContainer.style.transformOrigin = "";
         tabsContainer.style.margin = "";
         tabsContainer.style.padding = "15px";
-        searchContainer.style.transform = "";
-        searchContainer.style.transformOrigin = "";
-        searchContainer.style.padding = "";
-        searchContainer.style.margin = "0 auto";
     }
 }
 
