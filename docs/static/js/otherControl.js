@@ -80,16 +80,21 @@ document.getElementById('siteTitle').addEventListener('click', function () {
 //壁纸背景启用禁用-----结束
 
 //动态调整-----开始
+/* 宽度检测函数 */
+function isMobile() {
+    return window.innerWidth <= 1100;
+}
+
 // 列表展示
 const columnControl = document.getElementById("columnCount");
 const gridContainer = document.getElementById("content-container");
 const columnBaseWidth = 200; // 单列基准宽度
+const tabsContainer = document.getElementById("tabsContainer");
+const searchContainer = document.getElementById("search-container");
 
 /* 初始列数设置 */
 const calculateColumns = () => {
-    return Math.min(
-        8,
-        Math.max(1, Math.floor(window.innerWidth / columnBaseWidth))
+    return Math.min(8, Math.max(1, Math.floor(window.innerWidth / columnBaseWidth))
     );
 };
 columnControl.value = calculateColumns(); // 统一调用
@@ -103,19 +108,14 @@ let resizeTimer;
 window.addEventListener("resize", () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
-        /* 根据当前设备类型调整列数 */
+        /* 根据当前设备宽度调整列数 */
         if (isMobile()) {
-            columnControl.value = Math.min(
-                10,
-                Math.max(1, Math.floor(window.innerWidth / columnBaseWidth))
-            ); // 手机默认4列
+            columnControl.value = Math.min(10, Math.max(1, Math.floor(window.innerWidth / columnBaseWidth)));
         } else {
-            columnControl.value = Math.min(
-                10,
-                Math.max(1, Math.floor(window.innerWidth / columnBaseWidth))
-            ); // 电脑默认8列
+            columnControl.value = Math.min(10, Math.max(1, Math.floor(window.innerWidth / columnBaseWidth)));
         }
         updateColumns();
+        initWeightLayout();
     }, 200);
 });
 
@@ -129,40 +129,38 @@ function updateColumns() {
         content.style.gridTemplateColumns = `repeat(${count}, minmax(${cardWidth}px, 1fr))`;
     });
 }
-/* 动态检测函数 */
-function isMobile() {
-    return window.innerWidth <= 1100;
-}
-//其他的设备检测方法：
-//function isMobile() {
-//   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-//}
 
-function initMobileLayout() {
+function initWeightLayout() {
     if (isMobile()) {
-        const tabsContainer = document.getElementById("tabsContainer");
-        tabsContainer.style.transform = "translateX(-50%) scale(2.5)"; // 水平居中补偿+核心缩放属性
-        tabsContainer.style.transformOrigin = "bottom center"; // 从底部中心点缩放
-        tabsContainer.style.margin = "20px 0"; // 防止内容挤压
-        tabsContainer.style.padding = "15px"; //触控友好间距
-        const searchContainer = document.getElementById("search-container");
-        searchContainer.style.transform = "translateX(30%) scale(1.5)"; // 水平居中补偿+核心缩放属性
-        searchContainer.style.transformOrigin = "bottom center"; // 从底部中心点缩放
-        searchContainer.style.padding = "15px"; //触控友好间距
-        searchContainer.style.margin = "30px"; //触控友好间距
-        const contentWrapper = document.getElementById("content-wrapper");
-        contentWrapper.style.paddingBottom = document
-            .getElementById("tabsContainer")
-            .getBoundingClientRect().height;
-        console.error(
-            document.getElementById("tabsContainer").getBoundingClientRect().height
-        );
+        // 移动端样式设置
+        tabsContainer.style.position = "absolute";  // 启用定位
+        tabsContainer.style.left = "50%";           // 基于父容器居中
+        tabsContainer.style.transform = `translateX(-50%) scale(2.5)`;
+        tabsContainer.style.transformOrigin = "bottom center";
+        tabsContainer.style.margin = "20px 0";
+        tabsContainer.style.padding = "15px";
+        searchContainer.style.transform = "translateX(24%) scale(1.2)";
+        searchContainer.style.transformOrigin = "bottom center";
+        searchContainer.style.padding = "15px";
+        searchContainer.style.margin = "30px";
+    } else {
+        // 非移动端样式设置（恢复默认或初始样式）
+        tabsContainer.style.position = "";  // 启用定位
+        tabsContainer.style.left = "";
+        tabsContainer.style.transform = "";
+        tabsContainer.style.transformOrigin = "";
+        tabsContainer.style.margin = "";
+        tabsContainer.style.padding = "15px";
+        searchContainer.style.transform = "";
+        searchContainer.style.transformOrigin = "";
+        searchContainer.style.padding = "";
+        searchContainer.style.margin = "0 auto";
     }
 }
 
 // 在DOM加载完成后执行
-document.addEventListener("DOMContentLoaded", initMobileLayout);
+document.addEventListener("DOMContentLoaded", initWeightLayout);
 // 窗口大小变化时重新检测
-window.addEventListener("resize", initMobileLayout);
+window.addEventListener("resize", initWeightLayout);
 
 //动态调整-----结束

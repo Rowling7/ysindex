@@ -456,13 +456,13 @@ h5 {
 
 /* 默认状态：无背景图时关闭模糊效果 */
 #linkCard {
-  border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 14px;
 }
 
 /* 背景图启用时的模糊效果 */
 body.has-bg #linkCard {
+  border: 1px solid rgba(255, 255, 255, 0.2);
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
