@@ -1,61 +1,3 @@
-/* 新增设备检测函数 */
-function isMobile() {
-  return window.innerWidth <= 1100;
-}
-//其他的设备检测方法：
-//function isMobile() {
-//   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-//}
-
-// 列表展示
-const columnControl = document.getElementById("columnCount");
-const gridContainer = document.getElementById("content-container");
-const columnBaseWidth = 200; // 单列基准宽度
-
-/* 初始列数设置 */
-const calculateColumns = () => {
-  return Math.min(
-    8,
-    Math.max(1, Math.floor(window.innerWidth / columnBaseWidth))
-  );
-};
-columnControl.value = calculateColumns(); // 统一调用
-
-// 事件监听（新增resize时的列数调整）
-columnControl.addEventListener("input", updateColumns);
-columnControl.addEventListener("change", updateColumns);
-
-// 优化后的防抖resize处理
-let resizeTimer;
-window.addEventListener("resize", () => {
-  clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(() => {
-    /* 根据当前设备类型调整列数 */
-    if (isMobile()) {
-      columnControl.value = Math.min(
-        10,
-        Math.max(1, Math.floor(window.innerWidth / columnBaseWidth))
-      ); // 手机默认4列
-    } else {
-      columnControl.value = Math.min(
-        10,
-        Math.max(1, Math.floor(window.innerWidth / columnBaseWidth))
-      ); // 电脑默认8列
-    }
-    updateColumns();
-  }, 200);
-});
-
-function updateColumns() {
-  const count = parseInt(columnControl.value);
-  const containerWidth = gridContainer.offsetWidth;
-  // 动态计算卡片宽度
-  const gapTotal = 20 * (count - 1);
-  const cardWidth = Math.max(20, (containerWidth - gapTotal) / count);
-  document.querySelectorAll(".tab-content").forEach((content) => {
-    content.style.gridTemplateColumns = `repeat(${count}, minmax(${cardWidth}px, 1fr))`;
-  });
-}
 // 在数据加载成功后保存数据到全局变量
 let globalData = []; // 新增全局变量存储数据
 let currentActiveTabIndex = 0; // 新增当前激活索引存储
@@ -121,7 +63,6 @@ fetch("data.json")
     // 初始化列数
     updateColumns();
 
-    // 在loaddata.js的fetch().then()代码块末尾添加以下内容（在switchtab函数定义之后）
     // 添加左右点击切换功能
     if (!isMobile()) {
       const contentContainer = document.getElementById("bodyId");
@@ -283,32 +224,3 @@ document.getElementById("inpt_search").addEventListener("keypress", (e) => {
     updateColumns();
   }
 });
-
-/* 样式适配移动端 */
-function initMobileLayout() {
-  if (isMobile()) {
-    const tabsContainer = document.getElementById("tabsContainer");
-    tabsContainer.style.transform = "translateX(-50%) scale(2.5)"; // 水平居中补偿+核心缩放属性
-    tabsContainer.style.transformOrigin = "bottom center"; // 从底部中心点缩放
-    tabsContainer.style.margin = "20px 0"; // 防止内容挤压
-    tabsContainer.style.padding = "15px"; //触控友好间距
-    const searchContainer = document.getElementById("search-container");
-    searchContainer.style.transform = "translateX(30%) scale(1.5)"; // 水平居中补偿+核心缩放属性
-    searchContainer.style.transformOrigin = "bottom center"; // 从底部中心点缩放
-    searchContainer.style.margin = "20px 0"; // 防止内容挤压
-    searchContainer.style.padding = "15px"; //触控友好间距
-    searchContainer.style.margin = "30px"; //触控友好间距
-    const contentWrapper = document.getElementById("content-wrapper");
-    contentWrapper.style.paddingBottom = document
-      .getElementById("tabsContainer")
-      .getBoundingClientRect().height;
-    console.error(
-      document.getElementById("tabsContainer").getBoundingClientRect().height
-    );
-  }
-}
-
-// 在DOM加载完成后执行
-document.addEventListener("DOMContentLoaded", initMobileLayout);
-// 窗口大小变化时重新检测
-window.addEventListener("resize", initMobileLayout);
