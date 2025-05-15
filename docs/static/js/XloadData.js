@@ -29,7 +29,7 @@ fetch('data.json')
                 card.href = child.target;
                 card.target = '_blank';
                 card.innerHTML = `
-                    <div class="card h-100 shadow-sm">
+                    <div class="card h-100 shadow-sm border-0 bg-light">
                     <div class="card-img-container" style="background-image: url('${child.bgImage}')"></div>
                     <div class="card-text-container">
                         <h6 class="card-title">${child.name}</h6>

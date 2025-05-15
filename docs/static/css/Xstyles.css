@@ -17,11 +17,11 @@
     /* 保持图标比例 */
 }
 
-
-.tab-content > .active {
+.tab-content>.active {
     display: block;
     width: 100%;
 }
+
 /* 外层A标签布局 */
 a.col {
     padding: 12px;
@@ -35,7 +35,8 @@ a.col {
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     gap: 1rem;
     width: 100%;
-    max-width: calc(100px * 10 + 1rem * 9); /* 10列x100px + 9个间隙x1rem */
+    max-width: calc(100px * 10 + 1rem * 9);
+    /* 10列x100px + 9个间隙x1rem */
     margin: 0 auto;
 }
 
@@ -53,10 +54,24 @@ a.col {
     padding: 8px;
     display: flex;
     flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* 平滑过渡动画 */
+    position: relative;
+    /* 防止布局偏移 */
+    z-index: 1;
+    /* 避免被其他元素遮挡 */
+    background-color: rgba(227, 232, 236, 0.801) !important;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    /* 上移 5px */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    /* 增强阴影效果 */
 }
 
 .card-img-container {
-    width:60px;
+    width: 60px;
     height: 60px;
     flex: 0 0 60px;
     background-size: contain;
@@ -72,6 +87,7 @@ a.col {
     align-items: center;
     justify-content: center;
     padding: 4px 0;
+    color: #000;
 }
 
 .card-title {
@@ -85,10 +101,6 @@ a.col {
     -webkit-box-orient: vertical;
 }
 
-
-
-
-
 /*搜索快捷方式css*/
 .search {
     --transition-time: 200ms;
@@ -100,7 +112,7 @@ a.col {
     border: 3px solid #0011ffbd;
     border-radius: 25px;
     transition: width var(--transition-time) ease,
-        border-color calc(var(--transition-time)/2) ease;
+        border-color calc(var(--transition-time) / 2) ease;
     cursor: text;
 }
 
@@ -115,7 +127,7 @@ a.col {
     border-radius: 3px;
     transform: rotate(-45deg);
     transition: height var(--transition-time) ease,
-        opacity calc(var(--transition-time)/2) linear;
+        opacity calc(var(--transition-time) / 2) linear;
 }
 
 .search:is(.active, :hover, :focus-within) {
