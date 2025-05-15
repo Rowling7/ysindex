@@ -1,3 +1,29 @@
+html {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    /* 隐藏滚动条 */
+}
+
+/* 针对不同浏览器的滚动条隐藏实现 */
+::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari and Opera */
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    overflow: -moz-scrollbars-none;
+    /* Older Firefox versions */
+    /*background-Image : url(https://bing.ee123.net/img/);*/
+}
+
 .btn-search {
     width: 40px;
     position: relative;
@@ -9,12 +35,27 @@
     justify-content: center;
 }
 
+#searchContainer {
+    height: 40px !important;
+    min-height: 40px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
 /* 搜索图标尺寸控制 */
 .btn-search img {
     width: 20px;
     height: 20px;
     object-fit: contain;
     /* 保持图标比例 */
+}
+#linkContainer{
+    margin: 6px auto !important;
+}
+/* 确保内容区域可以滚动 */
+.container {
+    max-height: 100vh;
+    overflow-y: auto;
 }
 
 .tab-content>.active {
@@ -60,7 +101,7 @@ a.col {
     /* 防止布局偏移 */
     z-index: 1;
     /* 避免被其他元素遮挡 */
-    background-color: rgba(227, 232, 236, 0.801) !important;
+    background-color: rgba(235, 241, 247, 0.801) !important;
 }
 
 .card:hover {
@@ -101,63 +142,14 @@ a.col {
     -webkit-box-orient: vertical;
 }
 
-/*搜索快捷方式css*/
-.search {
-    --transition-time: 200ms;
-    display: inline-block;
-    position: relative;
-    height: 30px;
-    width: 30px;
-    margin: 0 8px 7px 0;
-    border: 3px solid #0011ffbd;
-    border-radius: 25px;
-    transition: width var(--transition-time) ease,
-        border-color calc(var(--transition-time) / 2) ease;
-    cursor: text;
+.headerContainer {
+    background-color: transparent !important;
 }
 
-.search::after {
-    content: "";
-    position: absolute;
-    width: 3px;
-    height: 14px;
-    right: -5px;
-    top: 21px;
-    background: #0011ffbd;
-    border-radius: 3px;
-    transform: rotate(-45deg);
-    transition: height var(--transition-time) ease,
-        opacity calc(var(--transition-time) / 2) linear;
+footer {
+    background-color: transparent !important;
 }
 
-.search:is(.active, :hover, :focus-within) {
-    width: 200px;
-    margin-right: 0;
-    border-color: #8e21e7;
-}
-
-.search:is(.active, :hover, :focus-within)::after {
-    height: 0;
-    opacity: 0;
-}
-
-.search input {
-    width: 100%;
-    border: none;
-    font: 15px Helvetica;
-    color: inherit;
-    padding-bottom: 6px;
-    background: transparent;
-    outline: none;
-}
-
-@media (hover: none) {
-    .search {
-        width: 200px !important;
-        transition: none;
-    }
-
-    .search::after {
-        display: none;
-    }
+#footerContainer{
+    margin-bottom: 6px !important;
 }

@@ -53,6 +53,12 @@ body.has-bg .siteFornt {
   /* 悬停时微调透明度 */
 }
 
+.changePageIco {
+  height: 36px;
+  width: 36px;
+  margin-right: 10px;
+
+}
 
 .card {
   background: white;
