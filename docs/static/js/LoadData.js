@@ -193,11 +193,11 @@ document.getElementById("inpt_search").addEventListener("keypress", (e) => {
 
     // 构建搜索结果界面
     wrapper.innerHTML = `
-            <div class="search-results-header" id="searchResultsHeader">
+            <div class="search-results-header" id="searchResultsHeader" style="margin-bottom: 0px;">
                 <button class="back-button" id="backButton">< 返回</button>
                 <h3>找到 ${searchResults.length} 个匹配项</h3>
             </div>
-            <div class="search-results-grid">${cardsHtml}</div>
+            <div class="search-results-grid"style="padding: 20px;">${cardsHtml}</div>
         `;
 
     // 返回按钮功能
