@@ -360,8 +360,8 @@ h5 {
 }
 
 .card img {
-  width: 60px;
-  height: 60px;
+  width: 64px;
+  height: 64px;
   object-fit: cover;
   /* 可选：保持图片比例并填充容器 */
 }
