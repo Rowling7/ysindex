@@ -174,7 +174,7 @@ window.onload = function () {
     const isGitHub = window.location.hostname.includes('github.io');
 
     if (isGitHub) {
-        imgElement.src = 'static/ico/gif4head.png'; // 替换为 PNG 路径
+        imgElement.src = 'static/ico/favicon.ico'; // 替换为 PNG 路径
     } else {
         imgElement.src = 'static/ico/gif4head.gif';    // 本地保留 GIF
     }
