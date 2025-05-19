@@ -1,4 +1,4 @@
-fetch('data.json')
+fetch('static/data/data.json')
     .then(response => response.json())
     .then(data => {
         const navContainer = document.getElementById('category-nav');

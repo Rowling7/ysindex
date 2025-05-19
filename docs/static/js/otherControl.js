@@ -169,13 +169,14 @@ window.addEventListener("resize", initWeightLayout);
 
 //动态调整-----结束
 
+//根据访问的是localhost还是github决定图片加载gif还是icoico
 window.onload = function () {
     const imgElement = document.getElementById('image4Gif');
     const isGitHub = window.location.hostname.includes('github.io');
 
     if (isGitHub) {
-        imgElement.src = 'static/ico/favicon.ico'; // 替换为 PNG 路径
+        imgElement.src = 'static/ico/favicon.ico';
     } else {
-        imgElement.src = 'static/ico/gif4head.gif';    // 本地保留 GIF
+        imgElement.src = 'static/ico/gif4head.gif';
     }
 };
