@@ -5,7 +5,8 @@ html {
   /* 禁止全局滚动 */
 }
 
-#image4Gif {
+#image4Gif,
+#image4Png {
   width: 40px;
   height: 40px;
   border-radius: 4px;
