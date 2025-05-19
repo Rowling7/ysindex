@@ -648,5 +648,15 @@
                 "bgImage": "static/ico/github.png"
             }
         ]
+    },
+    {
+        "name": "临时",
+        "children": [
+            {
+                "name": "LS-低端影视",
+                "target": "https://ddys001.com/",
+                "bgImage": "static/ico/ddys001.png"
+            }
+        ]
     }
 ]
