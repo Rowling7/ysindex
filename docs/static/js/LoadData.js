@@ -4,7 +4,7 @@ let currentActiveTabIndex = 0; // 新增当前激活索引存储
 let contentfragment = null; // 新增全局变量
 
 // 数据加载逻辑
-fetch("data.json")
+fetch("static/data/data.json")
   .then((response) => response.json())
   .then((data) => {
     globalData = data; // 保存数据到全局变量

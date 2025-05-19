@@ -124,7 +124,7 @@ function updateColumns() {
     const containerWidth = gridContainer.offsetWidth;
     // 动态计算卡片宽度
     const gapTotal = 20 * (count - 1);
-    const cardWidth = Math.max(20, (containerWidth - gapTotal-40) / count);
+    const cardWidth = Math.max(20, (containerWidth - gapTotal - 40) / count);
     document.querySelectorAll(".tab-content").forEach((content) => {
         content.style.gridTemplateColumns = `repeat(${count}, minmax(${cardWidth}px, 1fr))`;
     });
@@ -168,3 +168,9 @@ document.addEventListener("DOMContentLoaded", initWeightLayout);
 window.addEventListener("resize", initWeightLayout);
 
 //动态调整-----结束
+
+fetch('static/data/gif-Base64.txt')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('image4Gif').src = data;
+    });
