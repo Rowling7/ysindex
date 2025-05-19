@@ -169,8 +169,13 @@ window.addEventListener("resize", initWeightLayout);
 
 //动态调整-----结束
 
-fetch('static/data/gif-Base64.txt')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('image4Gif').src = data;
-    });
+window.onload = function () {
+    const imgElement = document.getElementById('image4Gif');
+    const isGitHub = window.location.hostname.includes('github.io');
+
+    if (isGitHub) {
+        imgElement.src = 'static/ico/gif4head.png'; // 替换为 PNG 路径
+    } else {
+        imgElement.src = 'static/ico/gif4head.gif';    // 本地保留 GIF
+    }
+};
