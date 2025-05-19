@@ -90,20 +90,7 @@ body.has-bg .siteFornt {
   border-radius: 5px;
 }
 
-/* 新增控制栏样式 */
-.controls {
-  /*隐藏调整列数固定为14*/
-  /*margin-bottom: 20px;
-    padding: 10px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);*/
-  position: absolute;
-  left: -9999px;
-  opacity: 0;
-  pointer-events: none;
-  /* 可选，防止误触 */
-}
+
 
 .controls input {
   padding: 5px;

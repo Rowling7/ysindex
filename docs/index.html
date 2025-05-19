@@ -30,7 +30,7 @@
       <img class="changePageIco" src="static/ico/change.png" alt="搜索图标" />
     </a>
     <!-- 新增切换按钮 -->
-    <button class="theme-toggle" id="themeToggle">暗黑模式</button>
+    <button class="theme-toggle" id="themeToggle" aria-pressed="false">暗黑模式</button>
   </div>
 
   <!--搜索框-->
@@ -48,9 +48,9 @@
   </div>
 
   <!-- 在container内添加控制栏 （!已经隐藏但仍起作用!）-->
-  <div class="container">
+  <div class="container" >
     <!-- 已经隐藏但仍起作用-->
-    <div class="controls">
+    <div class="controls" hidden>
       <label>每行显示数量：</label>
       <input type="number" id="columnCount" min="1" max="14" value="4" />
     </div>
