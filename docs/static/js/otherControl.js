@@ -57,7 +57,10 @@ input.addEventListener('compositionend', () => {
 });
 
 input.addEventListener('blur', () => {
-    if (!isComposing) search.classList.remove('active');
+    if (!isComposing) {
+        search.classList.remove('active');
+        input.value = '';
+    }
 });
 //快速搜索链接功能-----结束
 
@@ -134,10 +137,7 @@ function initWeightLayout() {
     if (isMobile()) {
         // 移动端样式设置
         //搜索栏
-        searchContainer.style.transform = "translateX(30%) scale(1.5)";
         searchContainer.style.transformOrigin = "bottom center";
-        searchContainer.style.padding = "15px";
-        searchContainer.style.margin = "30px";
         //底栏
         tabsContainer.style.position = "absolute";  // 启用定位
         tabsContainer.style.left = "50%";           // 基于父容器居中
@@ -169,7 +169,7 @@ window.addEventListener("resize", initWeightLayout);
 
 //动态调整-----结束
 
-//根据访问的是localhost还是github决定图片加载gif还是icoico
+//根据访问的是localhost还是github决定图片加载gif还是icoico--开始
 window.onload = function () {
     const imgElement = document.getElementById('image4Gif');
     const isGitHub = window.location.hostname.includes('github.io');
@@ -180,3 +180,4 @@ window.onload = function () {
         imgElement.src = 'static/ico/gif4head.gif';
     }
 };
+//根据访问的是localhost还是github决定图片加载gif还是icoico--结束
