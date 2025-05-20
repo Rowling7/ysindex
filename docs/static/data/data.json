@@ -433,6 +433,11 @@
                 "bgImage": "static/ico/urlc.png"
             },
             {
+                "name": "ITDOG",
+                "target": "https://www.itdog.cn/",
+                "bgImage": "static/ico/itdog.ico"
+            },
+            {
                 "name": "各国网址",
                 "target": "http://www.world68.com/country.asp",
                 "bgImage": "static/ico/world68.png"
