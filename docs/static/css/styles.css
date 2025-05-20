@@ -5,7 +5,7 @@ html {
   /* 禁止全局滚动 */
 }
 
-#image4Gif{
+#image4Gif {
   width: 40px;
   height: 40px;
   border-radius: 4px;
@@ -22,6 +22,25 @@ body {
   color: var(--text-color);
   transition: background-color 0.3s, color 0.3s;
   overflow: hidden;
+}
+
+/*暗黑*/
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --card-bg: rgba(235, 241, 247, 0.801);
+  --button-bg: #007bff;
+  --button-text: #ffffff;
+  --underline-color: rgb(0,26,255);
+}
+
+body.dark-mode {
+  --bg-color: #1a1a1a;
+  --text-color: #e0e0e0;
+  --card-bg: #2d2d2d;
+  --button-bg: #4a4a4a;
+  --button-text: #ffffff;
+  --underline-color: rgb(255, 215, 0);
 }
 
 /* 隐藏所有元素的滚动条 */
@@ -44,7 +63,6 @@ body {
   /* 清除默认外边距 */
   flex-grow: 1;
   /* 占据剩余空间 */
-
 }
 
 .siteFornt {
@@ -64,7 +82,6 @@ body.has-bg .siteFornt {
   height: 36px;
   width: 36px;
   margin-right: 10px;
-
 }
 
 .card {
@@ -83,14 +100,60 @@ body.has-bg .siteFornt {
   box-shadow: 0 8px 24px rgb(179, 175, 175);
 }
 
-.card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 5px;
+.card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+  /*justify-items: anchor-center;*/
+  text-align: center;
+  /* 替代 justify-items 实现居中 */
 }
 
+h5 {
+  white-space: nowrap;
+  /* 禁止换行 */
+  overflow: hidden;
+  /* 隐藏溢出内容 */
+  /*text-overflow: ellipsis; */
+  /* 显示省略号 */
+  max-width: 100%;
+  /* 限制最大宽度 */
+  cursor: progress;
+  /* 改变鼠标指针形状 */
+  margin: inherit;
+  position: relative;
+  padding-bottom: 4px;
+}
 
+/* 动态下划线 */
+h5::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  transform: translateX(-50%);
+  /* 通过偏移实现居中定位 */
+  background: currentColor;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(90deg,
+      transparent 0%,
+      var(--underline-color) 50%,
+      transparent 100%);
+}
+
+/* 悬停触发 */
+.card:hover h5::after {
+  width: 100%;
+}
+
+.card img {
+  width: 64px;
+  height: 64px;
+  border-radius: 5px;
+}
 
 .controls input {
   padding: 5px;
@@ -168,23 +231,7 @@ body.has-bg .siteFornt {
   /* 禁止输入框宽度压缩 */
 }
 
-/*暗黑*/
-/* 新增暗黑模式样式 */
-:root {
-  --bg-color: #ffffff;
-  --text-color: #333333;
-  --card-bg: rgba(235, 241, 247, 0.801);
-  --button-bg: #007bff;
-  --button-text: #ffffff;
-}
 
-body.dark-mode {
-  --bg-color: #1a1a1a;
-  --text-color: #e0e0e0;
-  --card-bg: #2d2d2d;
-  --button-bg: #4a4a4a;
-  --button-text: #ffffff;
-}
 
 /* 新增切换按钮样式 */
 .theme-toggle {
@@ -201,7 +248,6 @@ body.dark-mode {
   margin-left: auto;
   /* 强制靠右对齐 */
 }
-
 
 /* 调整现有元素使用CSS变量 */
 .search-container input,
@@ -329,37 +375,6 @@ body.dark-mode {
   transform: translateX(100%);
 }
 
-.card a {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  height: 100%;
-  /*justify-items: anchor-center;*/
-  text-align: center;
-  /* 替代 justify-items 实现居中 */
-}
-
-h5 {
-  white-space: nowrap;
-  /* 禁止换行 */
-  overflow: hidden;
-  /* 隐藏溢出内容 */
-  /*text-overflow: ellipsis; */
-  /* 显示省略号 */
-  max-width: 100%;
-  /* 限制最大宽度 */
-  cursor: progress;
-  /* 改变鼠标指针形状 */
-  margin: inherit;
-}
-
-.card img {
-  width: 64px;
-  height: 64px;
-  object-fit: cover;
-  /* 可选：保持图片比例并填充容器 */
-}
-
 .search-results-header {
   display: flex;
   align-items: center;
@@ -393,7 +408,6 @@ h5 {
   margin: 8px;
 }
 
-
 /*搜索快捷方式css*/
 .search {
   --transition-time: 200ms;
@@ -405,7 +419,7 @@ h5 {
   border: 3px solid #0011ffbd;
   border-radius: 25px;
   transition: width var(--transition-time) ease,
-    border-color calc(var(--transition-time)/2) ease;
+    border-color calc(var(--transition-time) / 2) ease;
   cursor: text;
 }
 
@@ -420,7 +434,7 @@ h5 {
   border-radius: 3px;
   transform: rotate(-45deg);
   transition: height var(--transition-time) ease,
-    opacity calc(var(--transition-time)/2) linear;
+    opacity calc(var(--transition-time) / 2) linear;
 }
 
 .search:is(.active, :hover, :focus-within) {
