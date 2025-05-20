@@ -32,6 +32,8 @@ body {
   --button-bg: #007bff;
   --button-text: #ffffff;
   --underline-color: rgb(0, 26, 255);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --input-bg: rgba(255, 255, 255, 0.95);
 }
 
 body.dark-mode {
@@ -41,6 +43,8 @@ body.dark-mode {
   --button-bg: #4a4a4a;
   --button-text: #ffffff;
   --underline-color: rgb(255, 215, 0);
+  --shadow-color: rgba(255, 255, 255, 0.05);
+  --input-bg: #333333;
 }
 
 /* 隐藏所有元素的滚动条 */
@@ -185,54 +189,115 @@ h5::after {
   box-sizing: border-box;
 }
 
-/*搜索部分样式*/
-.search-container {
-  width: fit-content;
-  /* 父容器宽度自适应内容 */
-  margin: 0 auto;
-  /* 居中显示 */
-  /*padding: 10px;*/
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 10px;
-  /* 高斯模糊 */
-  -webkit-backdrop-filter: blur(10px);
-  /* Safari兼容 */
-  background-color: transparent;
-}
-
+/* 搜索容器整体样式 */
 .searchForm {
   display: flex;
+  /* 保持弹性布局 */
   align-items: center;
+  /* 垂直居中 */
+  white-space: nowrap;
+  /* 禁止文本换行 */
+  min-width: 40vw;
+  /* 最小视口宽度 */
+  max-width: 60vw;
+  /* 最大视口宽度 */
+  width: clamp(40vw, 50%, 60vw);
+  /* 自动宽度 */
+  margin: 8px;
 }
 
-.search-container select {
-  width: 112px;
-  height: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 18px;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
-  background-color: rgba(255, 255, 255, 0.7);
-  flex-shrink: 0;
+.search-container {
+  position: relative;
+  width: fit-content;
+  margin: 20px auto;
+  padding: 4px;
+  border-radius: 22px;
+  box-shadow: 0 4px 16px var(--shadow-color);
+  /* 阴影使用变量 */
+  background: linear-gradient(135deg, var(--card-bg), var(--card-bg));
+  /* 暗黑模式统一背景 */
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+  min-width: 40vw;
+  /* 与表单同步 */
+  max-width: 60vw;
+  /* 与表单同步 */
 }
 
-.search-container input[type="text"] {
-  width: 40vw;
-  /* 输入框占视口宽度的40% */
-  height: 19px;
-  max-width: 600px;
-  /* 防止过宽 */
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 18px;
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
-  background-color: rgba(255, 255, 255, 0.7);
-  margin-left: 0px;
-  /*margin-right: 10px;*/
+.search-container:hover {
+  box-shadow: 0 6px 24px var(--shadow-color);
+  /* 悬停阴影增强 */
+}
+
+/* 搜索引擎选择框 */
+.searchForm select {
+  width: 140px;
+  height: 48px;
   flex-shrink: 0;
+  padding: 0 16px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-color);
+  /* 文本颜色变量 */
+  border: none;
+  border-radius: 20px 0 0 20px;
+  background: var(--input-bg);
+  /* 输入背景变量 */
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.searchForm select:hover {
+  background-color: var(--input-bg);
+  /* 暗黑模式下的悬停色 */
+}
+
+/* 搜索输入框 */
+.searchForm input[type="text"] {
+  flex: 1;
+  /* 关键属性：占满剩余空间 */
+  min-width: 200px;
+  /* 防止内容过少时过度收缩 */
+  width: 100%;
+  /* 配合flex属性使用 */
+  height: 48px;
+  padding: 0 24px;
+  font-size: 16px;
+  color: var(--text-color);
+  /* 文本颜色变量 */
+  border: none;
+  border-radius: 0 20px 20px 0;
+  background: var(--input-bg);
+  /* 输入背景变量 */
+  outline: none;
+  margin-left: 6px;
+}
+
+.searchForm input[type="text"]::placeholder {
+  color: var(--text-color);
+  /* 提示文字颜色变量 */
+  opacity: 0.6;
+}
+
+.searchForm input[type="text"]:focus {
+  background-color: var(--input-bg);
+  /* 聚焦时深灰色背景 */
+}
+
+/* 图标装饰（暗黑模式下调整颜色） */
+.search-container::before,
+.search-container::after {
+  background: var(--button-bg);
+  /* 光斑颜色使用按钮背景变量 */
+}
+
+/* 适配暗黑模式的过渡效果 */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
 }
 
 /* 新增切换按钮样式 */
@@ -249,14 +314,6 @@ h5::after {
   transition: background-color 0.3s;
   margin-left: auto;
   /* 强制靠右对齐 */
-}
-
-/* 调整现有元素使用CSS变量 */
-.search-container input,
-.search-container select {
-  background-color: var(--card-bg);
-  color: var(--text-color);
-  border: 1px solid var(--text-color);
 }
 
 /* 页签容器样式 */
