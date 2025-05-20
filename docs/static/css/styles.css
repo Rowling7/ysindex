@@ -31,7 +31,7 @@ body {
   --card-bg: rgba(235, 241, 247, 0.801);
   --button-bg: #007bff;
   --button-text: #ffffff;
-  --underline-color: rgb(0,26,255);
+  --underline-color: rgb(0, 26, 255);
 }
 
 body.dark-mode {
@@ -207,31 +207,33 @@ h5::after {
 }
 
 .search-container select {
-  width: 100px;
+  width: 112px;
+  height: 100%;
   padding: 10px;
   font-size: 16px;
-  border-radius: 10px;
+  border-radius: 18px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
   background-color: rgba(255, 255, 255, 0.7);
   flex-shrink: 0;
-  /* 禁止下拉框宽度压缩 */
 }
 
 .search-container input[type="text"] {
   width: 40vw;
   /* 输入框占视口宽度的40% */
+  height: 19px;
   max-width: 600px;
   /* 防止过宽 */
   padding: 10px;
   font-size: 16px;
-  border-radius: 10px;
+  border-radius: 18px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
   background-color: rgba(255, 255, 255, 0.7);
-  margin-left: 10px;
+  margin-left: 0px;
   /*margin-right: 10px;*/
   flex-shrink: 0;
-  /* 禁止输入框宽度压缩 */
 }
-
-
 
 /* 新增切换按钮样式 */
 .theme-toggle {
