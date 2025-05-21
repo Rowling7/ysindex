@@ -18,7 +18,7 @@
     <div>
       <img id="image4Gif" src="static/ico/favicon.ico" alt="gifORpng" />
     </div>
-    <h1 class="site-title" ><a class="siteFornt" id="siteTitle">Sitemap</a></h1><!--YsongCao's -->
+    <h1 class="site-title"><a class="siteFornt" id="siteTitle">Sitemap</a></h1><!--YsongCao's -->
     <div class="cntr" style="margin-right: 10px; margin-top: 4px;">
       <div class="cntr-innr">
         <label class="search" for="inpt_search">
@@ -36,11 +36,19 @@
   <!--搜索框-->
   <div class="search-container" id="search-container">
     <form action method="get" class="searchForm" id="searchForm">
-      <select class="engine" name="engine" id="engineSelect" title="engine" >
+      <select class="engine" name="engine" id="engineSelect" title="engine">
         <option value="https://www.bing.com/search?q=">Bing</option>
         <option value="https://www.baidu.com/s?wd=">Baidu</option>
-        <option value="https://xiaoyi.huawei.com/?q=">XiaoYi</option>
+        <option value="https://xiaoyi.huawei.com/?q=">小艺</option>
         <option value="https://www.msn.cn/zh-cn/weather/forecast/">MSN天气</option>
+        <option value="https://www.sogou.com/web?ie={inputEncoding}&query=">搜狗</option>
+        <option value="https://www.so.com/s?ie={inputEncoding}&q=">360</option>
+        <option value="http://www.zhihu.com/search?type=content&q=">知乎</option>
+        <option value="https://s.weibo.com/weibo?q=">微博</option>
+        <option value="https://www.xiaohongshu.com/search_result?keyword=">小红书</option>
+        <option value="https://www.douban.com/search?source=suggest&q=">豆瓣</option>
+        <option value="https://www.douyin.com/root/search/">抖音</option>
+        <option value="https://search.bilibili.com/video?keyword=">B站</option>
       </select>
       <input type="text" name="query" placeholder="Type Something To Search ......" />
       <!--<input type="submit" value="搜索" />-->
@@ -48,7 +56,7 @@
   </div>
 
   <!-- 在container内添加控制栏 （!已经隐藏但仍起作用!）-->
-  <div class="container" >
+  <div class="container">
     <!-- 已经隐藏但仍起作用-->
     <div class="controls" hidden>
       <label>每行显示数量：</label>
