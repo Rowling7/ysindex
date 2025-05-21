@@ -1,20 +1,54 @@
 // 搜索功能-----开始
-document.getElementById("searchForm").onsubmit = function () {
-    var engine = document.getElementById("engineSelect").value;
-    var query = document.querySelector('input[name="query"]').value; //  局部变量
-    window.location.href = engine + encodeURIComponent(query);
-    return false;
+// 下拉菜单交互逻辑
+//const trigger = document.querySelector('.custom-select-trigger');
+const trigger = document.querySelector('.triggerName');
+const options = document.querySelector('.custom-options');
+const nativeSelect = document.getElementById('engineSelect');
+
+// 点击触发按钮
+trigger.addEventListener('click', function (e) {
+    e.stopPropagation();
+    options.style.display = options.style.display === 'flex' ? 'none' : 'flex';
+});
+
+// 选择选项
+document.querySelectorAll('.option').forEach(option => {
+    option.addEventListener('click', function () {
+        const value = this.textContent;
+        trigger.textContent = value;
+        nativeSelect.value = this.dataset.value;
+        options.style.display = 'none';
+    });
+});
+
+// 点击外部关闭
+document.addEventListener('click', function () {
+    options.style.display = 'none';
+});
+
+// 阻止表单冒泡
+options.addEventListener('click', function (e) {
+    e.stopPropagation();
+});
+// 监听窗口变化并同步宽度
+function updateOptionsWidth() {
+    const formWidth = document.querySelector('.searchForm').offsetWidth;
+    const optionsWidth = formWidth - 22;
+    console.error(optionsWidth);
+    document.querySelector('.custom-options').style.width = `${optionsWidth}px`;
 }
-// 添加键盘回车支持
-document.querySelector('input[name="query"]').addEventListener("keypress", function (e) { //  直接获取元素
-    if (e.key === "Enter") {
-        document.getElementById("searchForm").dispatchEvent(new Event("submit")); //  显式获取表单
+
+// 初始化及事件绑定
+window.addEventListener('resize', updateOptionsWidth);
+updateOptionsWidth();
+document.getElementById('searchForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const engineUrl = nativeSelect.value;
+    const query = document.querySelector('input[name="query"]').value.trim();
+    if (query) {
+        window.location.href = engineUrl + encodeURIComponent(query);
     }
 });
-// 添加输入框自动聚焦
-window.onload = function () {
-    document.querySelector('input[name="query"]').focus(); //  直接获取元素
-}
 // 搜索功能-----结束
 
 
