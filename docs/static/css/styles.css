@@ -325,13 +325,64 @@ h5::after {
   border-radius: 10px;
   margin-top: 5px;
   padding: 10px;
-  flex-wrap: wrap;
   gap: 8px;
   z-index: 1000;
   box-shadow: 0 4px 12px var(--shadow-color);
   outline: none;
-  transition: opacity 0.3s, transform 0.3s;
-  /* 新增展开动画 */
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.custom-options.flex {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  animation: slideDown 0.3s ease-in-out forwards;
+}
+
+@keyframes slideDown {
+  from {
+    z-index: -999;
+    opacity: 0;
+    /*完全透明*/
+    transform: translateY(-40%);
+  }
+
+  to {
+    z-index: 999;
+    opacity: 1;
+    /*完全不透明*/
+    transform: translateY(4%);
+  }
+}
+
+.custom-options.none {
+  display: none;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  animation: slideUp 0.3s ease-in-out forwards;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(4%);
+    z-index: 999;
+    opacity: 1;
+    /*完全不透明*/
+  }
+
+  to {
+    transform: translateY(-40%);
+    z-index: -999;
+    opacity: 0;
+    /*完全透明*/
+  }
 }
 
 /* 选项样式 */
