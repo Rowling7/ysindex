@@ -41,6 +41,7 @@ document.querySelectorAll('.option').forEach(option => {
     option.addEventListener('click', function () {
         const value = this.textContent;
         trigger.textContent = value;
+        nativeSelect.value = this.dataset.value;
         document.getElementById('engineselect').value = this.dataset.value;
         options.style.display = 'none';
         options.classList.remove('flex');
