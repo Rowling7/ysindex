@@ -472,6 +472,12 @@
                 "target": "https://vultr.youmu.moe/quiz/",
                 "bgImage": "static/ico/chinap.png"
             },
+                        {
+                "name": "OpenWeather",
+                "target": "https://home.openweathermap.org/",
+                "bgImage": "static/ico/openweather.png",
+                "note":"1ae4872158e8060bccba7715c340548a"
+            },
             {
                 "name": "XJJ",
                 "target": "https://xiaojiejie.me/",
