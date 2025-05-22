@@ -293,6 +293,11 @@
                 "bgImage": "static/ico/oppoyfw.png"
             },
             {
+                "name": "小布",
+                "target": "https://xiaobu.coloros.com/chat",
+                "bgImage": "static/ico/xiaobu.png"
+            },
+            {
                 "name": "豆包AI",
                 "target": "https://www.doubao.com",
                 "bgImage": "static/ico/doubao.png"

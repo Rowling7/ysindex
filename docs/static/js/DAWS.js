@@ -69,7 +69,6 @@ options.addEventListener('click', function (e) {
 function updateOptionsWidth() {
     const formWidth = document.querySelector('.searchForm').offsetWidth;
     const optionsWidth = formWidth - 22;
-    console.error(optionsWidth);
     document.querySelector('.custom-options').style.width = `${optionsWidth}px`;
 }
 
