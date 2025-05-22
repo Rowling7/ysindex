@@ -438,6 +438,11 @@
                 "bgImage": "static/ico/itdog.ico"
             },
             {
+                "name": "和风天气API",
+                "target": "https://console.qweather.com/",
+                "bgImage": "static/ico/qweather.png"
+            },
+            {
                 "name": "各国网址",
                 "target": "http://www.world68.com/country.asp",
                 "bgImage": "static/ico/world68.png"
@@ -472,11 +477,11 @@
                 "target": "https://vultr.youmu.moe/quiz/",
                 "bgImage": "static/ico/chinap.png"
             },
-                        {
+            {
                 "name": "OpenWeather",
                 "target": "https://home.openweathermap.org/",
                 "bgImage": "static/ico/openweather.png",
-                "note":"1ae4872158e8060bccba7715c340548a"
+                "note": "1ae4872158e8060bccba7715c340548a"
             },
             {
                 "name": "XJJ",
