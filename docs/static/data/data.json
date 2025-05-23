@@ -423,6 +423,11 @@
                 "bgImage": "static/ico/zzzmh.png"
             },
             {
+                "name": "哲风壁纸",
+                "target": "https://haowallpaper.com/",
+                "bgImage": "static/ico/haowallpaper.ico"
+            },
+            {
                 "name": "雨滴美化社区",
                 "target": "https://bbs.rainmeter.cn/forum.php",
                 "bgImage": "static/ico/rainmeter.png"
@@ -527,6 +532,26 @@
                 "name": "奶牛快传",
                 "target": "https://www.cowtransfer.com",
                 "bgImage": "static/ico/cowtransfer.png"
+            },
+            {
+                "name": "CPU天梯图",
+                "target": "https://topic.expreview.com/CPU/",
+                "bgImage": "static/ico/cpugpu.ico"
+            },
+            {
+                "name": "GPU天梯图",
+                "target": "https://topic.expreview.com/GPU/",
+                "bgImage": "static/ico/cpugpu.ico"
+            },
+            {
+                "name": "中科大测速",
+                "target": "https://test.ustc.edu.cn/",
+                "bgImage": "static/ico/zkdcs.ico"
+            },
+            {
+                "name": "鼠标测试",
+                "target": "https://www.mousetester.cn/",
+                "bgImage": "static/ico/mousetest.png"
             }
         ]
     },
