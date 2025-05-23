@@ -494,21 +494,6 @@
                 "note": "1ae4872158e8060bccba7715c340548a"
             },
             {
-                "name": "XJJ",
-                "target": "https://xiaojiejie.me/",
-                "bgImage": "static/ico/XJJ.png"
-            },
-            {
-                "name": "BJX",
-                "target": "https://fuliba2024.net/anhao.html",
-                "bgImage": "static/ico/anhao.png"
-            },
-            {
-                "name": "FLB",
-                "target": "https://fuliba2024.net/",
-                "bgImage": "static/ico/fuliba2024.png"
-            },
-            {
                 "name": "斗图",
                 "target": "https://www.doutupk.com/",
                 "bgImage": "static/ico/doutupk.png"
