@@ -13,7 +13,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 orbitRadius: 80,    // 目标环绕半径
                 centripetal: 0.08,  // 向心力系数
                 maxSpeed: 1.5,  // 最大运动速度
-                repulsion: 0.3  // 排斥力系数
+                repulsion: 0.3, // 排斥力系数
+                speedOvershoot: 1.2,   // 建议1.1-1.5之间
+                speedDecayRate: 0.9,   // 越小恢复越快（0.85-0.98）
+                speedRecoveryTime: [0.5, 3] // 恢复时间随机范围
             };
             this.canvas = document.getElementById("particleCanvas");
             this.ctx = this.canvas.getContext("2d");
@@ -55,6 +58,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             const colors = ["#4CAF50", "#2196F3", "#E91E63", "#FFC107", "#c20ab9", "#6b590a", "#ffffff", "#41f10c", "#df68b1f6"];
             for (let i = 0; i < particleCount; i++) {
+                const initSpeed = this.config.particleSpeed * (Math.random() * 0.4 + 0.8); // 初始速度浮动±20%
+                const angle = Math.random() * Math.PI * 2;
                 this.particles.push({
                     x: Math.random() * this.canvas.width,
                     y: Math.random() * this.canvas.height,
@@ -62,6 +67,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     vy: (Math.random() - 0.5) * this.config.particleSpeed,
                     radius: Math.random() * 2 + 1,    // 大小控制
                     color: colors[Math.floor(Math.random() * colors.length)],
+                    vx: Math.cos(angle) * initSpeed,
+                    vy: Math.sin(angle) * initSpeed,
+                    baseSpeed: initSpeed, // 记录个体基准速度
+                    speedRecovery: 1,     // 速度恢复系数(0~1)
+                    recoveryDuration: 0   // 恢复所需时间(帧数)
                 });
             }
         }
@@ -122,6 +132,36 @@ document.addEventListener('DOMContentLoaded', function () {
                         particle.vy += dy * force * 0.1;
                     }
                 });
+            }
+
+            // 添加速度恢复系统
+            const currentSpeed = Math.sqrt(particle.vx ** 2 + particle.vy ** 2);
+            const speedRatio = currentSpeed / particle.baseSpeed;
+            // 触发速度恢复条件
+            if (speedRatio > this.config.speedOvershoot) {
+                if (particle.recoveryDuration === 0) {
+                    // 随机生成恢复时间（秒转帧数）
+                    const randTime = this.config.speedRecoveryTime +
+                        Math.random() * (this.config.speedRecoveryTime - this.config.speedRecoveryTime);
+                    particle.recoveryDuration = Math.ceil(randTime * 60); // 60fps
+                }
+                // 指数衰减算法
+                const decay = Math.pow(this.config.speedDecayRate, 1 / 60);
+                particle.vx *= decay;
+                particle.vy *= decay;
+                // 更新恢复进度
+                particle.recoveryDuration = Math.max(0, particle.recoveryDuration - 1);
+            }
+            // 正常状态重置恢复系统
+            else if (particle.recoveryDuration > 0) {
+                particle.recoveryDuration = 0;
+            }
+            // 保持最小速度
+            const minSpeed = particle.baseSpeed * 0.6;
+            if (currentSpeed < minSpeed) {
+                const scale = minSpeed / currentSpeed;
+                particle.vx *= scale;
+                particle.vy *= scale;
             }
 
             particle.x += particle.vx;
