@@ -734,13 +734,13 @@
                 "bgImage": "static/ico/aigei.png"
             },
             {
-                "name": "LS-1",
-                "target": "http://localhost:9827/index2.html",
-                "bgImage": "static/ico/loading0_compressed.gif"
+                "name": "LKSSite",
+                "target": "https://lkssite.vip/",
+                "bgImage": "static/ico/LKSSite.ico"
             },
             {
                 "name": "LS-1",
-                "target": "",
+                "target": "http://localhost:9827/index2.html",
                 "bgImage": "static/ico/loading0_compressed.gif"
             },
             {

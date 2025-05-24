@@ -6,9 +6,11 @@
   <link rel="icon" href="static/ico/favicon.ico" type="image/x-icon">
   <title>YsongCao's Sitemap</title>
   <link rel="stylesheet" href="static/css/styles.css" />
+  <link rel="stylesheet" href="static/css/BGeffects.css" />
   <script src="static/js/HeaderControler.js" defer></script>
   <script src="static/js/LoadSearchData.js" defer></script>
   <script src="static/js/DAWS.js" defer></script>
+  <script src="static/js/BGeffects.js" defer></script>
   <!--<script src="static/js/LoadData.js" defer></script>-->
   <!--<script src="static/js/LoadData.js" defer></script>-->
   <!--<link rel="stylesheet" href="static/css/forTest.css" />-->
@@ -16,25 +18,26 @@
 </head>
 
 <body id="bodyId">
+  <canvas id="particleCanvas"> </canvas>
   <!--抬头-->
   <div class="header-container" id="headerContainer">
-    <div>
-      <a href="https://www.msn.cn/zh-cn/weather/forecast" target="_blank"><img id="image4Gif"
-          src="static/ico/favicon.ico" alt="gifORpng" /></a>
+  <div>
+    <a href="https://www.msn.cn/zh-cn/weather/forecast" target="_blank"><img id="image4Gif" src="static/ico/favicon.ico"
+        alt="gifORpng" /></a>
+  </div>
+  <h1 class="site-title"><a class="siteFornt" id="siteTitle">Sitemap</a></h1><!--YsongCao's -->
+  <div class="cntr" style="margin-right: 10px; margin-top: 4px;">
+    <div class="cntr-innr">
+      <label class="search" for="inpt_search">
+        <input id="inpt_search" type="text" style="padding-top: 6px;" />
+      </label>
     </div>
-    <h1 class="site-title"><a class="siteFornt" id="siteTitle">Sitemap</a></h1><!--YsongCao's -->
-    <div class="cntr" style="margin-right: 10px; margin-top: 4px;">
-      <div class="cntr-innr">
-        <label class="search" for="inpt_search">
-          <input id="inpt_search" type="text" style="padding-top: 6px;" />
-        </label>
-      </div>
-    </div>
-    <a class="changePage" id="changePage" href="Xindex.html">
-      <img class="changePageIco" src="static/ico/change.png" alt="搜索图标" />
-    </a>
-    <!-- 新增切换按钮 -->
-    <button class="theme-toggle" id="themeToggle" aria-pressed="false">暗黑</button>
+  </div>
+  <a class="changePage" id="changePage" href="Xindex.html">
+    <img class="changePageIco" src="static/ico/change.png" alt="搜索图标" />
+  </a>
+  <!-- 新增切换按钮 -->
+  <button class="theme-toggle" id="themeToggle" aria-pressed="false">暗黑</button>
   </div>
 
   <!--搜索框-->
@@ -89,6 +92,6 @@
 
   <!--底栏部分-->
   <div class="tabs-container" id="tabsContainer"></div>
-</body>
 
+</body>
 </html>
