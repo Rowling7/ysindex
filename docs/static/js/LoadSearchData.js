@@ -80,7 +80,8 @@ fetch("static/data/data.json")
         // 新增：如果点击的是卡片链接或搜索头部则终止
         if (
           e.target.closest(".card") ||
-          e.target.closest("#searchResultsHeader")
+          e.target.closest("#searchResultsHeader")||
+          e.target.closest("#settingsDropdown")
         ) {
           //console.log('点击的是卡片或搜索头部，跳过切换');
           return;

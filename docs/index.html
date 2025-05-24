@@ -6,15 +6,15 @@
   <link rel="icon" href="static/ico/favicon.ico" type="image/x-icon">
   <title>YsongCao's Sitemap</title>
   <link rel="stylesheet" href="static/css/styles.css" />
-  <link rel="stylesheet" href="static/css/BGeffects.css" />
+  <link rel="stylesheet" href="static/css/BGeffects.css" id="bgeffects-css" />
   <script src="static/js/HeaderControler.js" defer></script>
   <script src="static/js/LoadSearchData.js" defer></script>
   <script src="static/js/DAWS.js" defer></script>
-  <script src="static/js/BGeffects.js" defer></script>
+  <script src="static/js/BGeffectss.js" id="bgeffects-js" defer></script>
   <!--<script src="static/js/LoadData.js" defer></script>-->
   <!--<script src="static/js/LoadData.js" defer></script>-->
-  <!--<link rel="stylesheet" href="static/css/forTest.css" />-->
-  <!--<script src="static/js/ForTest.js" defer></script>-->
+  <link rel="stylesheet" href="static/css/forTest.css" />
+  <script src="static/js/ForTest.js" defer></script>
 </head>
 
 <body id="bodyId">
@@ -36,8 +36,18 @@
     <a class="changePage" id="changePage" href="Xindex.html">
       <img class="changePageIco" src="static/ico/change.png" alt="搜索图标" />
     </a>
-    <!-- 新增切换按钮 -->
-    <button class="theme-toggle" id="themeToggle" aria-pressed="false">暗黑</button>
+    <!-- 暗黑切换按钮 (已被设置按钮替代但仅隐藏仍生效)-->
+    <button class="theme-toggle" id="themeToggle" aria-pressed="false" hidden>暗黑</button>
+    <!-- 设置按钮 -->
+    <div class="settings-container">
+      <button class="settings-btn" id="settingsBtn">
+        <img class="steeingImg" src="static/ico/setting.png" alt="设置">
+      </button>
+      <div class="dropdown-menu" id="settingsDropdown">
+        <!-- 动态生成的下拉选项 -->
+      </div>
+    </div>
+
   </div>
 
   <!--搜索框-->
