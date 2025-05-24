@@ -211,6 +211,16 @@
                 "name": "游戏天堂",
                 "target": "https://www.zzzzz688.com/",
                 "bgImage": "static/ico/zzzzz688.png"
+            },
+            {
+                "name": "老男人游戏网",
+                "target": "https://www.oldmantvg.net/",
+                "bgImage": "static/ico/oldmantvg.ico"
+            },
+            {
+                "name": "play-cs",
+                "target": "https://play-cs.com/zh/servers",
+                "bgImage": "static/ico/play-cs.png"
             }
         ]
     },
@@ -366,6 +376,16 @@
                 "name": "沙雕新闻",
                 "target": "https://shadiao.plus/",
                 "bgImage": "static/ico/shadiao.png"
+            },
+            {
+                "name": "ACG港湾",
+                "target": "https://www.acggw.me/",
+                "bgImage": "static/ico/acggw.png"
+            },
+            {
+                "name": "iiice导航",
+                "target": "https://www.iiice.cn/",
+                "bgImage": "static/ico/iiice.ico"
             }
         ]
     },
@@ -443,6 +463,11 @@
                 "bgImage": "static/ico/zhutix.png"
             },
             {
+                "name": "背景生成",
+                "target": "https://bggenerator.com/",
+                "bgImage": "static/ico/bggenerator.jpg"
+            },
+            {
                 "name": "短网址",
                 "target": "https://www.urlc.cn/user",
                 "bgImage": "static/ico/urlc.png"
@@ -476,6 +501,11 @@
                 "name": "书签地球",
                 "target": "https://www.bookmarkearth.cn/",
                 "bgImage": "static/ico/bookmarkearth.png"
+            },
+            {
+                "name": "乐于分享",
+                "target": "https://fffxx.com/",
+                "bgImage": "static/ico/fffxx.png"
             },
             {
                 "name": "获取图标",
@@ -659,6 +689,11 @@
                 "bgImage": "static/ico/xdowns.png"
             },
             {
+                "name": "ihack软件",
+                "target": "https://ihacksoft.com/",
+                "bgImage": "static/ico/ihacksoft.ico"
+            },
+            {
                 "name": "亿破姐",
                 "target": "https://www.ypojie.com/",
                 "bgImage": "static/ico/ypojie.png"
@@ -689,53 +724,38 @@
         "name": "临时",
         "children": [
             {
+                "name": "Linux命令",
+                "target": "https://zhuanlan.zhihu.com/p/560751712",
+                "bgImage": "static/ico/zhihu.png"
+            },
+            {
+                "name": "aigei加载图标",
+                "target": "https://www.aigei.com/lib/gif/jia_zai_xu/",
+                "bgImage": "static/ico/aigei.png"
+            },
+            {
                 "name": "LS-1",
                 "target": "http://localhost:9827/index2.html",
                 "bgImage": "static/ico/loading0_compressed.gif"
             },
             {
                 "name": "LS-1",
-                "target": "https://bggenerator.com/",
+                "target": "",
                 "bgImage": "static/ico/loading0_compressed.gif"
             },
             {
                 "name": "LS-1",
-                "target": "https://www.acggw.me/",
+                "target": "",
                 "bgImage": "static/ico/loading0_compressed.gif"
             },
             {
                 "name": "LS-1",
-                "target": "https://www.iiice.cn/",
+                "target": "",
                 "bgImage": "static/ico/loading0_compressed.gif"
             },
             {
                 "name": "LS-1",
-                "target": "https://fffxx.com/",
-                "bgImage": "static/ico/loading0_compressed.gif"
-            },
-            {
-                "name": "LS-1",
-                "target": "https://play-cs.com/zh/servers",
-                "bgImage": "static/ico/loading0_compressed.gif"
-            },
-            {
-                "name": "LS-1",
-                "target": "https://zhuanlan.zhihu.com/p/560751712",
-                "bgImage": "static/ico/loading0_compressed.gif"
-            },
-            {
-                "name": "LS-1",
-                "target": "https://www.oldmantvg.net/",
-                "bgImage": "static/ico/loading0_compressed.gif"
-            },
-            {
-                "name": "LS-1",
-                "target": "https://ihacksoft.com/",
-                "bgImage": "static/ico/loading0_compressed.gif"
-            },
-            {
-                "name": "LS-1",
-                "target": "https://www.aigei.com/lib/gif/jia_zai_xu/",
+                "target": "",
                 "bgImage": "static/ico/loading0_compressed.gif"
             },
             {
