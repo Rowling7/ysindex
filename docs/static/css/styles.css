@@ -37,6 +37,7 @@ body {
   --option-color: rgba(26, 115, 232, 0.4);
   --border-color: rgb(221, 221, 221);
   --option-border-color: rgb(238, 238, 238);
+  --hover-bg:rgba(26, 115, 232, 0.4);
 }
 
 body.dark-mode {
