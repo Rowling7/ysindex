@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const isVisible = localStorage.getItem('bgEffectsVisible') !== 'false';
     const canvasContainer = document.querySelector('.canvas-container');
     if (canvasContainer) {
-        canvasContainer.style.display = isVisible ? 'block' : 'none';
+        canvasContainer.style.display = isVisible ? 'none':'block';
     }
     // 读取存储的状态（默认不显示壁纸）
     const isEnabled = localStorage.getItem("wallpaperEnabled") === "true";
