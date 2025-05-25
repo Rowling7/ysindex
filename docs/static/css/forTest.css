@@ -1,32 +1,3 @@
-:root {
-  --bg-color: rgb(255, 255, 255);
-  --text-color: rgb(51, 51, 51);
-  --card-bg: rgba(235, 241, 247, 0.801);
-  --button-bg: rgb(0, 123, 255);
-  --button-text: rgb(255, 255, 255);
-  --underline-color: rgb(0, 26, 255);
-  --shadow-color: rgba(0, 0, 0, 0.1);
-  --input-bg: rgba(255, 255, 255, 0.95);
-  --option-color: rgba(26, 115, 232, 0.4);
-  --border-color: rgb(221, 221, 221);
-  --option-border-color: rgb(238, 238, 238);
-}
-
-body.dark-mode {
-  --bg-color: rgb(26, 26, 26);
-  --text-color: rgb(224, 224, 224);
-  --card-bg: rgb(45, 45, 45);
-  --button-bg: rgb(74, 74, 74);
-  --button-text: rgb(255, 255, 255);
-  --underline-color: rgb(255, 215, 0);
-  --shadow-color: rgba(255, 255, 255, 0.05);
-  --input-bg: rgb(51, 51, 51);
-  --option-color: rgba(0, 0, 0, 0.658);
-  --border-color: rgba(255, 255, 255, 0.1);
-  --option-border-color: rgba(255, 255, 255, 0.15);
-  --hover-bg: rgba(0, 238, 255, 0.3);
-}
-
 .settings-container {
   position: relative;
   display: inline-block;
@@ -49,7 +20,7 @@ body.dark-mode {
   right: 0;
   top: 100%;
   background: #fff;
-  border: 1px solid var(--border-color, #ddd);
+  border: 1px solid var(--border-color, #dddddd);
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   display: none;

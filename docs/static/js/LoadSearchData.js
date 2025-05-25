@@ -78,55 +78,56 @@ fetch("static/data/data.json")
       // 点击事件处理
       contentContainer.addEventListener("click", (e) => {
         // 新增：如果点击的是卡片链接或搜索头部则终止
+        const dropdown = document.getElementById("settingsDropdown");
         if (
           e.target.closest(".card") ||
-          e.target.closest("#searchResultsHeader")||
-          e.target.closest("#settingsDropdown")
+          e.target.closest("#searchResultsHeader") ||
+          e.target.closest("#settingsDropdown") ||
+          (dropdown && dropdown.style.display === "block")
         ) {
-          //console.log('点击的是卡片或搜索头部，跳过切换');
-          return;
-        }
-        const currentTab = document.querySelector(".tab-button.active");
-        const currentIndex = parseInt(currentTab.dataset.tabIndex);
-        const totalTabs = document.querySelectorAll(".tab-button").length;
+        return;
+      }
+      const currentTab = document.querySelector(".tab-button.active");
+      const currentIndex = parseInt(currentTab.dataset.tabIndex);
+      const totalTabs = document.querySelectorAll(".tab-button").length;
 
-        // 点击排除逻辑。排除头部、搜索、底栏
-        // 获取需要排除的三大容器元素
-        const headerContainer = document.getElementById("headerContainer");
-        const searchContainer = document.getElementById("search-container");
-        const tabsContainer = document.getElementById("tabsContainer");
-        //const linkCard = document.getElementById('linkCard');searchResultsHeader
-        //console.error("1linkCard");
-        // 定义通用区域检测函数
-        function isInExcludeZone(clientY, element) {
-          if (!element) return false;
-          const rect = element.getBoundingClientRect();
-          return event.clientY >= rect.top && event.clientY <= rect.bottom;
-        }
-        // 在点击事件中执行检测
-        if (
-          isInExcludeZone(event.clientY, headerContainer) || // 检测头部区域
-          isInExcludeZone(event.clientY, searchContainer) || // 检测搜索区域
-          isInExcludeZone(event.clientY, tabsContainer) //||      // 检测底部区域
-          //isInExcludeZone(event.clientY, linkCard)     // 检测头部区域
-        ) {
-          //console.error("2linkCard");
-          return; // 命中排除区域则终止执行
-        }
+      // 点击排除逻辑。排除头部、搜索、底栏
+      // 获取需要排除的三大容器元素
+      const headerContainer = document.getElementById("headerContainer");
+      const searchContainer = document.getElementById("search-container");
+      const tabsContainer = document.getElementById("tabsContainer");
+      //const linkCard = document.getElementById('linkCard');searchResultsHeader
+      //console.error("1linkCard");
+      // 定义通用区域检测函数
+      function isInExcludeZone(clientY, element) {
+        if (!element) return false;
+        const rect = element.getBoundingClientRect();
+        return event.clientY >= rect.top && event.clientY <= rect.bottom;
+      }
+      // 在点击事件中执行检测
+      if (
+        isInExcludeZone(event.clientY, headerContainer) || // 检测头部区域
+        isInExcludeZone(event.clientY, searchContainer) || // 检测搜索区域
+        isInExcludeZone(event.clientY, tabsContainer) //||      // 检测底部区域
+        //isInExcludeZone(event.clientY, linkCard)     // 检测头部区域
+      ) {
+        //console.error("2linkCard");
+        return; // 命中排除区域则终止执行
+      }
 
-        const zone = getClickZone(contentContainer, e.clientX);
-        let newIndex = currentIndex;
+      const zone = getClickZone(contentContainer, e.clientX);
+      let newIndex = currentIndex;
 
-        if (zone === "left") {
-          newIndex = (currentIndex - 1 + totalTabs) % totalTabs;
-        } else {
-          newIndex = (currentIndex + 1) % totalTabs;
-        }
-        switchTab(newIndex);
-      });
+      if (zone === "left") {
+        newIndex = (currentIndex - 1 + totalTabs) % totalTabs;
+      } else {
+        newIndex = (currentIndex + 1) % totalTabs;
+      }
+      switchTab(newIndex);
+    });
     }
   })
-  .catch((error) => console.error("数据加载失败:", error));
+  .catch ((error) => console.error("数据加载失败:", error));
 
 // 页签切换函数
 function switchTab(index) {

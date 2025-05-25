@@ -10,15 +10,17 @@
   <script src="static/js/HeaderControler.js" defer></script>
   <script src="static/js/LoadSearchData.js" defer></script>
   <script src="static/js/DAWS.js" defer></script>
-  <script src="static/js/BGeffectss.js" id="bgeffects-js" defer></script>
+  <script src="static/js/BGeffects.js" id="bgeffects-js" defer></script>
+  <script src="static/js/Settings.js" defer></script>
   <!--<script src="static/js/LoadData.js" defer></script>-->
   <!--<script src="static/js/LoadData.js" defer></script>-->
-  <link rel="stylesheet" href="static/css/forTest.css" />
-  <script src="static/js/ForTest.js" defer></script>
+  <!--<link rel="stylesheet" href="static/css/forTest.css" />-->
 </head>
 
 <body id="bodyId">
-  <canvas id="particleCanvas"> </canvas>
+  <div class="canvas-container">
+    <canvas id="particleCanvas"></canvas>
+  </div>
   <!--抬头-->
   <div class="header-container" id="headerContainer">
     <div>
@@ -37,7 +39,7 @@
       <img class="changePageIco" src="static/ico/change.png" alt="搜索图标" />
     </a>
     <!-- 暗黑切换按钮 (已被设置按钮替代但仅隐藏仍生效)-->
-    <button class="theme-toggle" id="themeToggle" aria-pressed="false" hidden>暗黑</button>
+    <!--<button class="theme-toggle" id="themeToggle" aria-pressed="false" hidden>暗黑</button>-->
     <!-- 设置按钮 -->
     <div class="settings-container">
       <button class="settings-btn" id="settingsBtn">
