@@ -85,55 +85,57 @@ fetch("static/data/data.json")
           e.target.closest("#settingsDropdown") ||
           (dropdown && dropdown.style.display === "block")
         ) {
-        return;
-      }
-      const currentTab = document.querySelector(".tab-button.active");
-      const currentIndex = parseInt(currentTab.dataset.tabIndex);
-      const totalTabs = document.querySelectorAll(".tab-button").length;
+          return;
+        }
+        const currentTab = document.querySelector(".tab-button.active");
+        const currentIndex = parseInt(currentTab.dataset.tabIndex);
+        const totalTabs = document.querySelectorAll(".tab-button").length;
 
-      // 点击排除逻辑。排除头部、搜索、底栏
-      // 获取需要排除的三大容器元素
-      const headerContainer = document.getElementById("headerContainer");
-      const searchContainer = document.getElementById("search-container");
-      const tabsContainer = document.getElementById("tabsContainer");
-      //const linkCard = document.getElementById('linkCard');searchResultsHeader
-      //console.error("1linkCard");
-      // 定义通用区域检测函数
-      function isInExcludeZone(clientY, element) {
-        if (!element) return false;
-        const rect = element.getBoundingClientRect();
-        return event.clientY >= rect.top && event.clientY <= rect.bottom;
-      }
-      // 在点击事件中执行检测
-      if (
-        isInExcludeZone(event.clientY, headerContainer) || // 检测头部区域
-        isInExcludeZone(event.clientY, searchContainer) || // 检测搜索区域
-        isInExcludeZone(event.clientY, tabsContainer) //||      // 检测底部区域
-        //isInExcludeZone(event.clientY, linkCard)     // 检测头部区域
-      ) {
-        //console.error("2linkCard");
-        return; // 命中排除区域则终止执行
-      }
+        // 点击排除逻辑。排除头部、搜索、底栏
+        // 获取需要排除的三大容器元素
+        const headerContainer = document.getElementById("headerContainer");
+        const searchContainer = document.getElementById("search-container");
+        const tabsContainer = document.getElementById("tabsContainer");
+        //const linkCard = document.getElementById('linkCard');searchResultsHeader
+        //console.error("1linkCard");
+        // 定义通用区域检测函数
+        function isInExcludeZone(clientY, element) {
+          if (!element) return false;
+          const rect = element.getBoundingClientRect();
+          return event.clientY >= rect.top && event.clientY <= rect.bottom;
+        }
+        // 在点击事件中执行检测
+        if (
+          isInExcludeZone(event.clientY, headerContainer) || // 检测头部区域
+          isInExcludeZone(event.clientY, searchContainer) || // 检测搜索区域
+          isInExcludeZone(event.clientY, tabsContainer) //||      // 检测底部区域
+          //isInExcludeZone(event.clientY, linkCard)     // 检测头部区域
+        ) {
+          //console.error("2linkCard");
+          return; // 命中排除区域则终止执行
+        }
 
-      const zone = getClickZone(contentContainer, e.clientX);
-      let newIndex = currentIndex;
+        const zone = getClickZone(contentContainer, e.clientX);
+        let newIndex = currentIndex;
 
-      if (zone === "left") {
-        newIndex = (currentIndex - 1 + totalTabs) % totalTabs;
-      } else {
-        newIndex = (currentIndex + 1) % totalTabs;
-      }
-      switchTab(newIndex);
-    });
+        if (zone === "left") {
+          newIndex = (currentIndex - 1 + totalTabs) % totalTabs;
+        } else {
+          newIndex = (currentIndex + 1) % totalTabs;
+        }
+        switchTab(newIndex);
+      });
     }
   })
-  .catch ((error) => console.error("数据加载失败:", error));
+  .catch((error) => console.error("数据加载失败:", error));
 
 // 页签切换函数
 function switchTab(index) {
   currentActiveTabIndex = index; // 更新全局索引
   const tabs = document.querySelectorAll(".tab-button");
   const contents = document.querySelectorAll(".tab-content");
+  const newContent = document.querySelectorAll(".tab-content")[index]; // 获取新内容元素
+
   tabs.forEach((tab, i) => {
     tab.classList.toggle("active", i === index);
   });
@@ -149,7 +151,31 @@ function switchTab(index) {
       behavior: "smooth"
     }); // 直接设置滚动位置
   }
+  switchTab2(newContent); // 将新内容作为参数传递
 }
+//页面动画效果控制
+function switchTab2(newContent) {
+  const current = document.querySelector('.tab-content.active');
+  if (current) {
+    current.classList.add('exit');
+    current.addEventListener('animationend', () => {
+      current.classList.remove('active', 'exit');
+      // 确保旧内容动画完成后才激活新内容
+      activateNewContent(newContent);
+    }, { once: true }); // 使用一次性事件监听
+  } else {
+    activateNewContent(newContent);
+  }
+}
+//页面动画效果控制
+function activateNewContent(newContent) {
+  newContent.classList.add('enter', 'active'); // 同时激活状态
+  // 监听动画结束事件替代 setTimeout
+  newContent.addEventListener('animationend', () => {
+    newContent.classList.remove('enter');
+  }, { once: true });
+}
+
 // 搜索功能实现
 document.getElementById("inpt_search").addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
