@@ -1,8 +1,8 @@
 /* 当前内容离开动画 */
 @keyframes exitAnimation {
   to {
-    transform: scale(0.6);
-    /* 缩小到80% */
+    transform:scale(0.6);
+    /* 缩小到60% */
     opacity: 0;
     /* 透明度渐隐 */
     transform-origin: center;
@@ -14,7 +14,7 @@
 @keyframes enterAnimation {
   from {
     transform: scale(1.6);
-    /* 从120%开始 */
+    /* 从160%开始 */
     opacity: 0;
     /* 初始透明 */
     transform-origin: center;
@@ -49,7 +49,7 @@
 
 /* 离开动画类 */
 .exit {
-  animation: exitAnimation 0.3s forwards !important;
+  animation: exitAnimation 0.3s cubic-bezier(0.4, 0, 1, 1) !important;
   transform-origin: center;
   /* 统一使用关键帧中的值 */
 }
