@@ -97,7 +97,6 @@ fetch("static/data/data.json")
         const searchContainer = document.getElementById("search-container");
         const tabsContainer = document.getElementById("tabsContainer");
         //const linkCard = document.getElementById('linkCard');searchResultsHeader
-        //console.error("1linkCard");
         // 定义通用区域检测函数
         function isInExcludeZone(clientY, element) {
           if (!element) return false;
@@ -111,7 +110,6 @@ fetch("static/data/data.json")
           isInExcludeZone(event.clientY, tabsContainer) //||      // 检测底部区域
           //isInExcludeZone(event.clientY, linkCard)     // 检测头部区域
         ) {
-          //console.error("2linkCard");
           return; // 命中排除区域则终止执行
         }
 
@@ -134,15 +132,18 @@ function switchTab(index) {
   currentActiveTabIndex = index; // 更新全局索引
   const tabs = document.querySelectorAll(".tab-button");
   const contents = document.querySelectorAll(".tab-content");
+  const oldContent = document.querySelector(".tab-content.active"); // 获取旧内容元素
   const newContent = document.querySelectorAll(".tab-content")[index]; // 获取新内容元素
 
   tabs.forEach((tab, i) => {
     tab.classList.toggle("active", i === index);
   });
+  /* 删除此行，改为通过动画事件控制 active 类
   contents.forEach((content, i) => {
     content.classList.toggle("active", i === index);
-  });
-  updateColumns();
+  });*/
+  switchContent(oldContent, newContent);
+
   // 滚动到顶部
   const wrapper = document.getElementById("containerWrapper");
   if (wrapper) {
@@ -151,16 +152,15 @@ function switchTab(index) {
       behavior: "smooth"
     }); // 直接设置滚动位置
   }
-  switchTab2(newContent); // 将新内容作为参数传递
+  updateColumns();
 }
 //页面动画效果控制
-function switchTab2(newContent) {
-  const current = document.querySelector('.tab-content.active');
+function switchContent(oldContent, newContent) {
+  const current = oldContent;
   if (current) {
     current.classList.add('exit');
     current.addEventListener('animationend', () => {
-      current.classList.remove('active', 'exit');
-      // 确保旧内容动画完成后才激活新内容
+      current.classList.remove('active', 'exit');// 确保旧内容动画完成后才激活新内容
       activateNewContent(newContent);
     }, { once: true }); // 使用一次性事件监听
   } else {

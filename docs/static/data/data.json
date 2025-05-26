@@ -614,6 +614,11 @@
                 "bgImage": "static/ico/ubuntu.png"
             },
             {
+                "name": "Rocky Linux",
+                "target": "https://www.rockylinux.cn/",
+                "bgImage": "static/ico/rockylinux.png"
+            },
+            {
                 "name": "OpenEuler(linux)",
                 "target": "https://www.openeuler.org/zh/learn/mooc/detail/",
                 "bgImage": "static/ico/OpenEuler.png"

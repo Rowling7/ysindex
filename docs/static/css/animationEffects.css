@@ -5,7 +5,7 @@
     /* 缩小到80% */
     opacity: 0;
     /* 透明度渐隐 */
-    transform-origin: 30vw 50vh;
+    transform-origin: center;
     /* 视口中心定位 */
   }
 }
@@ -17,7 +17,7 @@
     /* 从120%开始 */
     opacity: 0;
     /* 初始透明 */
-    transform-origin: 30vw 50vh;
+    transform-origin: center;
     /* 视口中心定位 */
   }
 
@@ -26,7 +26,7 @@
     /* 缩放到正常大小 */
     opacity: 1;
     /* 完全显示 */
-    transform-origin: 30vw 50vh;
+    transform-origin: center;
     /* 视口中心定位 */
   }
 }
@@ -50,12 +50,12 @@
 /* 离开动画类 */
 .exit {
   animation: exitAnimation 0.3s forwards !important;
-  transform-origin: 30vw 50vh;
+  transform-origin: center;
   /* 统一使用关键帧中的值 */
 }
 
 .enter {
-  animation: enterAnimation 0.6s forwards !important;
-  transform-origin: 30vw 50vh;
+  animation: enterAnimation 0.5s forwards !important;
+  transform-origin: center;
   /* 避免类与关键帧定义冲突 */
 }
