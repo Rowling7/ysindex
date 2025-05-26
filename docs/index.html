@@ -5,18 +5,19 @@
   <meta charset="UTF-8" />
   <link rel="icon" href="static/ico/favicon.ico" type="image/x-icon">
   <title>YsongCao's Sitemap</title>
-  <link rel="stylesheet" href="static/css/styles.css" />  <!--全局样式-->
-  <link rel="stylesheet" href="static/css/BGeffects.css" id="bgeffects-css" />  <!--背景特效-->
-  <link rel="stylesheet" href="static/css/animationEffects.css" />  <!--动画效果-->
-  <script src="static/js/HeaderControler.js" defer></script>  <!--头部栏部分控制-->
+  <link rel="stylesheet" href="static/css/styles.css" /> <!--全局样式-->
+  <link rel="stylesheet" href="static/css/BGeffects.css" id="bgeffects-css" /> <!--背景特效-->
+  <link rel="stylesheet" href="static/css/animationEffects.css" /> <!--动画效果-->
+  <script src="static/js/HeaderControler.js" defer></script> <!--头部栏部分控制-->
   <script src="static/js/LoadSearchData.js" defer></script> <!--主要部分：数据载入-->
   <script src="static/js/DAWS.js" defer></script> <!--引擎选择和快捷方式动态响应-->
-  <script src="static/js/BGeffects.js" id="bgeffects-js" defer></script>  <!--背景特效-->
+  <script src="static/js/BGeffects.js" id="bgeffects-js" defer></script> <!--背景特效-->
   <script src="static/js/Settings.js" defer></script> <!--设置控制-->
+  <script src="static/js/OtherControler.js" defer></script> <!--其他控制-->
   <!--<script src="static/js/LoadData.js" defer></script>-->
   <!--<script src="static/js/LoadData.js" defer></script>-->
   <!--<link rel="stylesheet" href="static/css/forTest.css" />-->
-  <!--<script src="static/js/forTest.js" defer></script>-->
+
 </head>
 
 <body id="bodyId">
@@ -37,8 +38,11 @@
         </label>
       </div>
     </div>
-    <a class="changePage" id="changePage" href="Xindex.html">
+    <a class="changePage" id="changePage" href="Xindex.html" style="margin-right: 10px;">
       <img class="changePageIco" src="static/ico/change.png" alt="搜索图标" />
+    </a>
+    <a class="changeBG" id="changeBG" href="changeBG.html" style="margin-right: 6px;">
+      <img class="changeBGIco" src="static/ico/changeBG.png" alt="切换背景图" />
     </a>
     <!-- 暗黑切换按钮 (已被设置按钮替代)-->
     <!--<button class="theme-toggle" id="themeToggle" aria-pressed="false" hidden>暗黑</button>-->

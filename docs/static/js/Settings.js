@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const isVisible = localStorage.getItem('bgEffectsVisible') !== 'false';
     const canvasContainer = document.querySelector('.canvas-container');
     if (canvasContainer) {
-        canvasContainer.style.display = isVisible ? 'none':'block';
+        canvasContainer.style.display = isVisible ? 'none' : 'block';
     }
     // 读取存储的状态（默认不显示壁纸）
     const isEnabled = localStorage.getItem("wallpaperEnabled") === "true";
@@ -109,6 +109,7 @@ function resetSettingsItem() {
     localStorage.removeItem('bgEffectsVisible');
     localStorage.removeItem('theme');
     localStorage.removeItem('wallpaperEnabled');
+    localStorage.removeItem('selectedBackground');
 
     window.location.href = window.location.href; // 重新加载当前页面
 }

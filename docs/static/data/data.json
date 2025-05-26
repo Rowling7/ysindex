@@ -448,6 +448,11 @@
                 "bgImage": "static/ico/zzzmh.png"
             },
             {
+                "name": "阿里图标库",
+                "target": "https://www.iconfont.cn/",
+                "bgImage": "static/ico/iconfont.png"
+            },
+            {
                 "name": "哲风壁纸",
                 "target": "https://haowallpaper.com/",
                 "bgImage": "static/ico/haowallpaper.ico"
