@@ -39,6 +39,7 @@ input.addEventListener('blur', () => {
 
 //简洁模式-----开始
 // 获取需要动画控制的元素集合
+// 获取需要动画控制的元素集合
 const elements = [
     document.querySelector('.container'),
     document.querySelector('#content-container'),
@@ -46,32 +47,40 @@ const elements = [
     document.getElementById('tabsContainer'),
     document.getElementById('changePage'),
     document.getElementById('changeBG')
-    //document.getElementById('settingsBtn')
-].filter(Boolean); // 过滤空元素
+].filter(Boolean);
 
 // 初始化记录原始display值
 elements.forEach(element => {
     const originalDisplay = window.getComputedStyle(element).display;
-    element.dataset.originalDisplay = originalDisplay; // 存储原始显示状态
+    element.dataset.originalDisplay = originalDisplay;
+});
+
+// 读取存储状态并直接应用
+document.addEventListener('DOMContentLoaded', () => {
+    const savedState = localStorage.getItem('simpleModeState');
+    if (savedState === 'hidden') {
+        elements.forEach(element => {
+            element.style.display = 'none'; // 直接隐藏，不触发动画
+        });
+    }
 });
 
 function toggleElements(shouldHide) {
     elements.forEach(element => {
-        // 清理之前的动画类
         element.classList.remove('enter', 'exit');
 
         if (shouldHide) {
-            // 隐藏流程：触发退出动画
             element.classList.add('exit');
             element.addEventListener('animationend', () => {
                 element.style.display = 'none';
-            }, { once: true }); // 自动解绑事件
+                localStorage.setItem('simpleModeState', 'hidden'); // 状态存储
+            }, { once: true });
         } else {
-            // 显示流程：恢复显示后触发进入动画
             element.style.display = element.dataset.originalDisplay;
             element.classList.add('enter');
+            localStorage.setItem('simpleModeState', 'shown'); // 状态存储
             element.addEventListener('animationend', () => {
-                element.classList.remove('enter'); // 动画结束后清理类
+                element.classList.remove('enter');
             }, { once: true });
         }
     });
@@ -83,6 +92,7 @@ document.getElementById('siteTitle').addEventListener('click', () => {
         el.style.display !== 'none' &&
         !el.classList.contains('exit')
     );
-    toggleElements(isAnyVisible); // 智能判断显示状态
+    toggleElements(isAnyVisible);
 });
+
 //简洁模式-----结束

@@ -110,6 +110,7 @@ function resetSettingsItem() {
     localStorage.removeItem('theme');
     localStorage.removeItem('wallpaperEnabled');
     localStorage.removeItem('selectedBackground');
+    localStorage.removeItem('simpleModeState');
 
     window.location.href = window.location.href; // 重新加载当前页面
 }

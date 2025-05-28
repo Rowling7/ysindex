@@ -513,7 +513,7 @@ body {
 
 /* 激活状态 */
 .tab-button.active {
-    padding: 12px 26px;
+  padding: 10px 26px;
   background: rgb(0, 123, 255);
   color: white;
   font-size: large;
