@@ -245,6 +245,9 @@ h5::after {
   /* 高斯模糊 */
   -webkit-backdrop-filter: blur(10px);
   /* Safari兼容 */
+  position: relative !important;
+  z-index: 9999 !important;
+  margin: 0px auto !important;
 }
 
 .search-container:hover {
@@ -468,13 +471,15 @@ body {
   background: transparent;
   pointer-events: none;
   /* 穿透点击事件 */
+  padding-bottom: env(safe-area-inset-bottom);
+  bottom: env(safe-area-inset-bottom);
 }
 
 .tabs-container {
   display: inline-flex;
   /* 保持内容自适应宽度 */
   gap: 15px;
-  padding: 15px;
+  padding: 10px;
   background: transparent !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);

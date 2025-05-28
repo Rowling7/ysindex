@@ -96,7 +96,7 @@ function isMobile() {
 const columnControl = document.getElementById("columnCount");
 const gridContainer = document.getElementById("content-container");
 const columnBaseWidth = 200; // 单列基准宽度
-const tabsContainer = document.getElementById("tabsContainer");
+const tabsContainer = document.getElementById("bottomContainer");
 const searchContainer = document.getElementById("search-container");
 
 /* 初始列数设置 */
@@ -137,36 +137,37 @@ function updateColumns() {
     });
 }
 
-function initWeightLayout() {
-    if (isMobile()) {
+//function initWeightLayout() {
+//    if (isMobile()) {
         // 移动端样式设置
         //搜索栏
-        searchContainer.style.transformOrigin = "bottom center";
+        //searchContainer.style.transformOrigin = "bottom center";
         //底栏
-        tabsContainer.style.position = "absolute";  // 启用定位
-        tabsContainer.style.left = "50%";           // 基于父容器居中
-        tabsContainer.style.transform = `translateX(-50%) scale(1.2)`;
-        tabsContainer.style.transformOrigin = "bottom center";
-        tabsContainer.style.margin = "20px 0";
-        tabsContainer.style.padding = "10px";
-    } else {
+        //tabsContainer.style.position = "absolute";  // 启用定位
+        //tabsContainer.style.left = "50%";           // 基于父容器居中
+        //tabsContainer.style.transform = `translateX(-50%) scale(1.2)`;
+        //tabsContainer.style.transformOrigin = "bottom center";
+        //tabsContainer.style.margin = "20px 0";
+        //tabsContainer.style.padding = "10px";
+//    } else {
         // 非移动端样式设置（恢复默认或初始样式）
         //搜索栏
-        searchContainer.style.transform = "";
-        searchContainer.style.transformOrigin = "";
-        searchContainer.style.padding = "";
-        searchContainer.style.margin = "0 auto";
+        //searchContainer.style.transform = "";
+        //searchContainer.style.transformOrigin = "";
+        //searchContainer.style.padding = "";
+        //searchContainer.style.margin = "0 auto";
         //底栏
-        tabsContainer.style.position = "";  // 启用定位
-        tabsContainer.style.left = "";
-        tabsContainer.style.transform = "";
-        tabsContainer.style.transformOrigin = "";
-        tabsContainer.style.margin = "";
-        tabsContainer.style.padding = "10px";
-    }
-}
+        //tabsContainer.style.position = "";  // 启用定位
+        //tabsContainer.style.left = "";
+        //tabsContainer.style.transform = "";
+        //tabsContainer.style.transformOrigin = "";
+        //tabsContainer.style.margin = "";
+        //tabsContainer.style.padding = "10px";
+//    }
+//}
 
 // 在DOM加载完成后执行
+
 document.addEventListener("DOMContentLoaded", initWeightLayout);
 // 窗口大小变化时重新检测
 window.addEventListener("resize", initWeightLayout);
