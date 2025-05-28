@@ -42,7 +42,11 @@ input.addEventListener('blur', () => {
 const elements = [
     document.querySelector('.container'),
     document.querySelector('#content-container'),
-    document.getElementById('tabsContainer')
+    document.getElementById('cntrSearch'),
+    document.getElementById('tabsContainer'),
+    document.getElementById('changePage'),
+    document.getElementById('changeBG')
+    //document.getElementById('settingsBtn')
 ].filter(Boolean); // 过滤空元素
 
 // 初始化记录原始display值

@@ -457,35 +457,40 @@ body {
   /* 强制靠右对齐 */
 }
 
-/* 页签容器样式 */
-.tabs-container {
+/* 新增底部定位容器 */
+.bottom-container {
   position: fixed;
   bottom: 0;
-  left: 50%;
-  /* 水平居中定位 */
-  transform: translateX(-50%);
-  /* 精确居中 */
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  background: transparent;
+  pointer-events: none;
+  /* 穿透点击事件 */
+}
+
+.tabs-container {
   display: inline-flex;
-  /* 改为行内弹性盒 */
+  /* 保持内容自适应宽度 */
   gap: 15px;
   padding: 15px;
   background: transparent !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  pointer-events: auto;
+  /* 恢复点击事件 */
   box-shadow: none !important;
+  max-width: 100%;
+  /* 防止溢出屏幕 */
   z-index: 1000;
   white-space: nowrap;
-  /* 防止按钮换行 */
-  max-width: 100%;
-  /* 防止超出屏幕 */
-  backdrop-filter: blur(10px);
-  /* 高斯模糊 */
-  -webkit-backdrop-filter: blur(10px);
-  /* Safari兼容 */
-  border-radius: 10px;
 }
 
 /* 页签按钮样式改造 */
 .tab-button {
-  padding: 10px 25px;
+  padding: 10px 26px;
   border-radius: 10px;
   border: none;
   background: rgba(255, 255, 255, 0.9);
@@ -508,8 +513,10 @@ body {
 
 /* 激活状态 */
 .tab-button.active {
+    padding: 12px 26px;
   background: rgb(0, 123, 255);
   color: white;
+  font-size: large;
   box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
 }
 
