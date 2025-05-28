@@ -122,7 +122,7 @@ window.addEventListener("resize", () => {
             columnControl.value = Math.min(10, Math.max(1, Math.floor(window.innerWidth / columnBaseWidth)));
         }
         updateColumns();
-        initWeightLayout();
+        //initWeightLayout();
     }, 200);
 });
 
@@ -168,8 +168,8 @@ function updateColumns() {
 
 // 在DOM加载完成后执行
 
-document.addEventListener("DOMContentLoaded", initWeightLayout);
+//document.addEventListener("DOMContentLoaded", initWeightLayout);
 // 窗口大小变化时重新检测
-window.addEventListener("resize", initWeightLayout);
+//window.addEventListener("resize", initWeightLayout);
 
 //动态调整-----结束

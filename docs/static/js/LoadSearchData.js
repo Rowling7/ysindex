@@ -64,7 +64,6 @@ fetch("static/data/data.json")
     updateColumns();
 
     // 添加左右点击切换功能
-    if (!isMobile()) {
       const contentContainer = document.getElementById("bodyId");
 
       // 点击区域判断函数
@@ -123,7 +122,6 @@ fetch("static/data/data.json")
         }
         switchTab(newIndex);
       });
-    }
   })
   .catch((error) => console.error("数据加载失败:", error));
 
