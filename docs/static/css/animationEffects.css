@@ -1,12 +1,11 @@
 /* 当前内容离开动画 */
 @keyframes exitAnimation {
   to {
-    transform:scale(0.6);
+    transform: scale(0.6);
     /* 缩小到60% */
     opacity: 0;
     /* 透明度渐隐 */
     transform-origin: center;
-    /* 视口中心定位 */
   }
 }
 
@@ -18,7 +17,6 @@
     opacity: 0;
     /* 初始透明 */
     transform-origin: center;
-    /* 视口中心定位 */
   }
 
   to {
@@ -27,7 +25,6 @@
     opacity: 1;
     /* 完全显示 */
     transform-origin: center;
-    /* 视口中心定位 */
   }
 }
 
