@@ -521,6 +521,8 @@ body {
   padding: 10px 26px;
   background: rgb(0, 123, 255);
   color: white;
+  font: bold 16px "Segoe UI", sans-serif;
+  /* 使用粗体和更大字体 */
   font-size: large;
   box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
 }
@@ -744,7 +746,7 @@ body.has-bg #linkCard {
 
 .dropdown-item:hover {
   border-radius: 10px;
-  background: var(--hover-bg);
+  background-color: var(--hover-bg);
 }
 
 .steeingImg {
