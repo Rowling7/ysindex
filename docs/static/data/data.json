@@ -215,7 +215,7 @@
             {
                 "name": "老男人游戏网",
                 "target": "https://www.oldmantvg.net/",
-                "bgImage": "static/ico/oldmantvg.ico"
+                "bgImage": "static/ico/oldmantvg.png"
             },
             {
                 "name": "play-cs",
@@ -385,7 +385,7 @@
             {
                 "name": "iiice导航",
                 "target": "https://www.iiice.cn/",
-                "bgImage": "static/ico/iiice.ico"
+                "bgImage": "static/ico/iiice.png"
             }
         ]
     },
@@ -455,7 +455,7 @@
             {
                 "name": "哲风壁纸",
                 "target": "https://haowallpaper.com/",
-                "bgImage": "static/ico/haowallpaper.ico"
+                "bgImage": "static/ico/haowallpaper.png"
             },
             {
                 "name": "雨滴美化社区",
@@ -480,7 +480,7 @@
             {
                 "name": "ITDOG",
                 "target": "https://www.itdog.cn/",
-                "bgImage": "static/ico/itdog.ico"
+                "bgImage": "static/ico/itdog.png"
             },
             {
                 "name": "和风天气API",
@@ -561,17 +561,17 @@
             {
                 "name": "CPU天梯图",
                 "target": "https://topic.expreview.com/CPU/",
-                "bgImage": "static/ico/cpugpu.ico"
+                "bgImage": "static/ico/cpugpu.png"
             },
             {
                 "name": "GPU天梯图",
                 "target": "https://topic.expreview.com/GPU/",
-                "bgImage": "static/ico/cpugpu.ico"
+                "bgImage": "static/ico/cpugpu.png"
             },
             {
                 "name": "中科大测速",
                 "target": "https://test.ustc.edu.cn/",
-                "bgImage": "static/ico/zkdcs.ico"
+                "bgImage": "static/ico/zkdcs.png"
             },
             {
                 "name": "鼠标测试",
@@ -701,7 +701,7 @@
             {
                 "name": "ihack软件",
                 "target": "https://ihacksoft.com/",
-                "bgImage": "static/ico/ihacksoft.ico"
+                "bgImage": "static/ico/ihacksoft.png"
             },
             {
                 "name": "亿破姐",
@@ -746,7 +746,7 @@
             {
                 "name": "LKSSite",
                 "target": "https://lkssite.vip/",
-                "bgImage": "static/ico/LKSSite.ico"
+                "bgImage": "static/ico/LKSSite.png"
             },
             {
                 "name": "LS-1",
