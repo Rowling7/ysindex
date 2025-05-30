@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         body.classList.remove("has-bg");
     }
 });
+
 // 配置自定义选项（示例）
 const menuItems = [
     {

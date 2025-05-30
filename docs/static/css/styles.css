@@ -70,25 +70,48 @@ body.dark-mode {
   box-sizing: border-box;
   z-index: 99999;
 }
-
 .site-title {
   margin: 0;
-  /* 清除默认外边距 */
   flex-grow: 1;
-  /* 占据剩余空间 */
 }
-
 .siteFornt {
   color: rgba(11, 14, 214, 0.959);
+  display: inline-block;
+  position: relative;
+  transition: color 0.4s linear;
+  text-decoration: none;
+}
+.siteFornt:before,
+.siteFornt:after {
+  content: '';
+  width: 0;
+  height: 2px;
+  background-color: #ff3a85;
+  position: absolute;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.siteFornt:before {
+  top: -3px;
+  left: 0;
+}
+.siteFornt:after {
+  bottom: -3px;
+  right: 0;
+}
+.siteFornt:hover:before,
+.siteFornt:hover:after {
+  width: 100%;
+}
+.siteFornt:hover {
+  color: #ff3985;
+  text-shadow: 0 4px 10px rgba(238, 99, 150, 0.4);
 }
 
 body.has-bg .siteFornt {
   color: rgba(0, 0, 0, 0.959);
 }
-
-.siteFornt:hover {
-  opacity: 0.9;
-  /* 悬停时微调透明度 */
+body.has-bg .siteFornt:hover {
+  color: #ff3985 !important;
 }
 
 .changePageIco {
