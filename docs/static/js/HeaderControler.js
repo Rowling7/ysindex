@@ -87,12 +87,22 @@ function toggleElements(shouldHide) {
 }
 
 // 点击事件绑定
-document.getElementById('siteTitle').addEventListener('click', () => {
+document.getElementById('lightMod').addEventListener('click', () => {
     const isAnyVisible = elements.some(el =>
         el.style.display !== 'none' &&
         !el.classList.contains('exit')
     );
     toggleElements(isAnyVisible);
+
+    // 新增状态控制
+    const siteFront = document.querySelector('.siteFornt');
+    if (!isAnyVisible) {
+        siteFront.classList.remove('active');
+        localStorage.removeItem('hoverState');
+    } else {
+        siteFront.classList.add('active');
+        localStorage.setItem('hoverState', 'active');
+    }
 });
 
 //简洁模式-----结束

@@ -20,6 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
         body.style.backgroundImage = "none";
         body.classList.remove("has-bg");
     }
+    // hover状态
+    const siteFront = document.querySelector('.siteFornt');
+    if (localStorage.getItem('hoverState') === 'active') {
+        siteFront.classList.add('active');
+    }
 });
 
 // 配置自定义选项（示例）
@@ -107,11 +112,12 @@ function BGeffectsItem() {
 // ============= 重置设置 ==============
 function resetSettingsItem() {
     // 清除所有相关存储项
-    localStorage.removeItem('bgEffectsVisible');
-    localStorage.removeItem('theme');
-    localStorage.removeItem('wallpaperEnabled');
-    localStorage.removeItem('selectedBackground');
-    localStorage.removeItem('simpleModeState');
+    localStorage.removeItem('bgEffectsVisible');// 背景特效状态
+    localStorage.removeItem('theme');   // 主题状态
+    localStorage.removeItem('wallpaperEnabled');    //  壁纸状态
+    localStorage.removeItem('selectedBackground');  // 背景图片
+    localStorage.removeItem('simpleModeState'); // 简易模式状态
+    localStorage.removeItem('hoverState');  // hover状态
 
     window.location.href = window.location.href; // 重新加载当前页面
 }

@@ -70,10 +70,12 @@ body.dark-mode {
   box-sizing: border-box;
   z-index: 99999;
 }
+
 .site-title {
   margin: 0;
   flex-grow: 1;
 }
+
 .siteFornt {
   color: rgba(11, 14, 214, 0.959);
   display: inline-block;
@@ -81,6 +83,7 @@ body.dark-mode {
   transition: color 0.4s linear;
   text-decoration: none;
 }
+
 .siteFornt:before,
 .siteFornt:after {
   content: '';
@@ -90,21 +93,35 @@ body.dark-mode {
   position: absolute;
   transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .siteFornt:before {
   top: -3px;
   left: 0;
 }
+
 .siteFornt:after {
   bottom: -3px;
   right: 0;
 }
+/*  鼠标悬停*/
 .siteFornt:hover:before,
 .siteFornt:hover:after {
   width: 100%;
 }
+
 .siteFornt:hover {
   color: #ff3985;
   text-shadow: 0 4px 10px rgba(238, 99, 150, 0.4);
+}
+/*  激活*/
+.siteFornt.active:before,
+.siteFornt.active:after {
+  width: 100% !important;
+}
+
+.siteFornt.active {
+  color: #ff3985 !important;
+  text-shadow: 0 4px 10px rgba(238, 99, 150, 0.4) !important;
 }
 
 body.has-bg .siteFornt {
@@ -118,6 +135,14 @@ body.has-bg .siteFornt:hover {
   height: 36px;
   width: 36px;
 }
+.light-mod{
+  height: 44px;
+  width: 44px;
+}
+.lightModIco {
+  height: 44px;
+  width: 44px;
+}
 
 .changeBG {
   text-align: center;
@@ -128,8 +153,8 @@ body.has-bg .siteFornt:hover {
 }
 
 .changeBGIco {
-  height: 44px;
-  width: 44px;
+  height: 46px;
+  width: 46px;
 }
 
 .card {
