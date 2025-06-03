@@ -867,7 +867,7 @@ body.has-bg #linkCard {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-.widget-card {
+.weather-widget {
     background: var(--card-bg);
     border-radius: 10px;
     padding: 20px;
@@ -875,6 +875,6 @@ body.has-bg #linkCard {
     transition: transform 0.3s;
 }
 
-.widget-card:hover {
+.weather-widget:hover {
     transform: translateY(-5px);
 }

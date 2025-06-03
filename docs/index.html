@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="static/css/styles.css" /> <!--全局样式-->
   <link rel="stylesheet" href="static/css/BGeffects.css" id="bgeffects-css" /> <!--背景特效-->
   <link rel="stylesheet" href="static/css/animationEffects.css" /> <!--动画效果-->
+  <script src="static/js/weatherComponent.js"></script>
   <script src="static/js/LoadSearchData.js" defer></script> <!--主要部分：数据载入-->
   <script src="static/js/HeaderControler.js" defer></script> <!--头部栏部分控制-->
   <script src="static/js/DAWS.js" defer></script> <!--引擎选择和快捷方式动态响应-->
@@ -15,8 +16,7 @@
   <script src="static/js/Settings.js" defer></script> <!--设置控制-->
   <script src="static/js/OtherControler.js" defer></script> <!--其他控制-->
   <link rel="stylesheet" href="static/css/forTest.css" />
-  <!--<script src="static/js/LoadData.js" defer></script>-->
-  <!--<link rel="stylesheet" href="static/css/forTest.css" />-->
+  <link rel="stylesheet" href="static/css/weatherComponent.css" />
   <!--<script src="static/js/LoadData.js" defer></script>-->
   <!--<link rel="stylesheet" href="static/css/forTest.css" />-->
   <!--<script src="static/js/LoadData.js" defer></script>-->
@@ -117,14 +117,7 @@
       <!-- 这里可以放置你的小组件 -->
       <div class="widget-grid">
         <!-- 示例组件 -->
-        <div class="widget-card">
-          <h3>天气组件</h3>
-          <p>未来天气组件将显示在这里</p>
-        </div>
-        <div class="widget-card">
-          <h3>待办事项</h3>
-          <p>未来待办事项组件将显示在这里</p>
-        </div>
+        <div class="weather-widget" id="weatherContainer"></div>
       </div>
     </div>
 
@@ -142,6 +135,13 @@
   <div class="bottom-container" id="bottomContainer">
     <div class="tabs-container" id="tabsContainer"></div>
   </div>
+
+  <script>
+    // 初始化组件
+    new WeatherWidget({
+      containerId: 'weatherContainer', // 容器ID
+    });
+  </script>
 </body>
 
 </html>
