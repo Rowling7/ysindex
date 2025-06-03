@@ -749,8 +749,8 @@
                 "bgImage": "static/ico/LKSSite.png"
             },
             {
-                "name": "LS-1",
-                "target": "http://localhost:9827/index2.html",
+                "name": "LS-2",
+                "target": "/index2.html",
                 "bgImage": "static/ico/loading0_compressed.gif"
             },
             {
