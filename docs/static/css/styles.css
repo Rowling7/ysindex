@@ -808,3 +808,73 @@ body.has-bg #linkCard {
   float: right;
   color: #2196F3;
 }
+
+
+
+/* 视图切换相关样式 */
+.view-switcher {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.view-btn {
+    padding: 8px 16px;
+    background: var(--card-bg);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.view-btn.active {
+    background: var(--button-bg);
+    color: var(--button-text);
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+/* 视图容器样式 */
+.widget-view {
+    display: none;
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 60px;
+}
+
+.link-view {
+    display: block;
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 60px;
+}
+
+.link-view.active {
+    display: block;
+}
+
+.widget-view.active {
+    display: block;
+}
+
+/* 组件网格布局 */
+.widget-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.widget-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition: transform 0.3s;
+}
+
+.widget-card:hover {
+    transform: translateY(-5px);
+}
