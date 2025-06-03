@@ -749,8 +749,28 @@
                 "bgImage": "static/ico/LKSSite.png"
             },
             {
-                "name": "LS-2",
+                "name": "LS-my",
                 "target": "/index2.html",
+                "bgImage": "static/ico/loading0_compressed.gif"
+            },
+            {
+                "name": "LS-weather",
+                "target": "/static/Xproject/weather/index.html",
+                "bgImage": "static/ico/loading0_compressed.gif"
+            },
+            {
+                "name": "LS-trunOnOff",
+                "target": "/static/Xproject/trunOnOff/index.html",
+                "bgImage": "static/ico/loading0_compressed.gif"
+            },
+            {
+                "name": "LS-1",
+                "target": "",
+                "bgImage": "static/ico/loading0_compressed.gif"
+            },
+            {
+                "name": "LS-1",
+                "target": "",
                 "bgImage": "static/ico/loading0_compressed.gif"
             },
             {
