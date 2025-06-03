@@ -88,7 +88,7 @@ class WeatherWidget {
             <option value="Guangzhou">广州</option>
             <option value="Shenzhen">深圳</option>
           </select>
-          <input type="text" id="cityInput" list="citySuggestions" placeholder="输入中文城市名">
+          <input type="text" id="cityInput" list="citySuggestions" placeholder="城市">
           <datalist id="citySuggestions"></datalist>
           <button id="weatherBtn">查询</button>
         </div>
