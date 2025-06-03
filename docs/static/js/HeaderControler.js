@@ -21,6 +21,11 @@ let isComposing = false;
 input.addEventListener('compositionstart', () => {
     isComposing = true;
     search.classList.add('active'); // 强制锁定展开状态
+
+    // 新增：自动切换到搜索视图
+    if(typeof switchView === 'function') {
+        switchView('link');
+    }
 });
 
 input.addEventListener('compositionend', () => {
@@ -33,6 +38,13 @@ input.addEventListener('blur', () => {
     if (!isComposing) {
         search.classList.remove('active');
         input.value = '';
+    }
+});
+
+// 新增：监听输入事件，当有输入时切换到搜索视图
+input.addEventListener('input', (e) => {
+    if(e.target.value.trim() !== '' && typeof switchView === 'function') {
+        switchView('link');
     }
 });
 //快速搜索链接功能-----结束
