@@ -2,7 +2,7 @@
 let globalData = [];
 let currentActiveTabIndex = 0;
 let contentFragment = null;
-let currentView = 'widget'; // 'widget' 或 'link'
+let currentView = 'wszhwf'; // 替死鬼
 
 // DOM加载完成后初始化
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,15 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('widgetViewBtn')?.addEventListener('click', () => switchView('widget'));
   document.getElementById('linkViewBtn')?.addEventListener('click', () => switchView('link'));
 
-  // 默认显示搜索视图
-  currentView = 'link'; // 设置当前视图为搜索
-  switchView('link');   // 调用切换视图函数
-
   // 初始化底栏状态
   const bottomContainer = document.getElementById('bottomContainer');
   if (bottomContainer && currentView === 'widget') {
     bottomContainer.style.display = 'none';
   }
+
+  //可快速切换视图 link or widget
+  switchView('widget');
 
   // 加载数据
   loadData();
@@ -107,11 +106,12 @@ function initLinkView(data) {
 // 视图切换函数
 function switchView(view) {
   if (currentView === view) return;
-
   currentView = view;
   const bottomContainer = document.getElementById('bottomContainer');
   const tabsContainer = document.getElementById('tabsContainer');
   const contentContainer = document.getElementById('content-container');
+  const linkView = document.getElementById('link-container-view');
+  const widgetView = document.getElementById('widget-container');
 
   // 更新按钮状态
   document.getElementById('widgetViewBtn')?.classList?.toggle('active', view === 'widget');
@@ -127,11 +127,15 @@ function switchView(view) {
     if (bottomContainer) bottomContainer.style.display = 'none';
     if (tabsContainer) tabsContainer.style.display = 'none';
     if (contentContainer) contentContainer.style.display = 'none';
+    widgetView.classList.remove('hidden');
+    linkView.classList.add('hidden');
   } else {
     // 切换到搜索视图时显示所有相关内容
     if (bottomContainer) bottomContainer.style.display = 'flex';
     if (tabsContainer) tabsContainer.style.display = 'flex';
     if (contentContainer) contentContainer.style.display = 'block';
+    linkView.classList.remove('hidden');
+    widgetView.classList.add('hidden');
 
     // 如果是搜索视图且数据未加载，尝试重新加载
     if (globalData.length === 0) {

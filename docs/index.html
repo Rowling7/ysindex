@@ -18,8 +18,9 @@
   <link rel="stylesheet" href="static/css/forTest.css" />
   <link rel="stylesheet" href="static/css/weatherComponent.css" />
   <!--<script src="static/js/LoadData.js" defer></script>-->
-  <!--<link rel="stylesheet" href="static/css/forTest.css" />-->
+  <link rel="stylesheet" href="static/css/forTest.css" />
   <!--<script src="static/js/LoadData.js" defer></script>-->
+  <!--<link rel="stylesheet" href="static/css/forTest.css" />-->
 
 </head>
 
@@ -108,9 +109,9 @@
   <div class="container">
     <!-- 视图切换按钮 (放在顶部) -->
     <div class="view-switcher" id="viewSwitcher">
-      <a  id="widgetViewBtn" class="view-btn" role="button">组件</a>
+      <a id="widgetViewBtn" class="view-btn" role="button">组件</a>
       <span class="divider"></span>
-      <a  id="linkViewBtn" class="view-btn active" role="button">链接</a>
+      <a id="linkViewBtn" class="view-btn active" role="button">链接</a>
     </div>
 
     <!-- 组件视图 (首页) -->
@@ -120,10 +121,27 @@
         <!-- 示例组件 -->
         <div id="weatherContainer"></div>
       </div>
+
+      <div id="shortcutWidget">
+        <a href="http://www.bilibili.com" class="shortcut-icon">
+          <img src="static/ico/bilibili.png" alt="bilibili">
+        </a>
+        <a href="#" class="shortcut-icon">
+          <img src="static/ico/12306.png" alt="12306" >
+        </a>
+        <a href="#" class="shortcut-icon">
+          <img src="static/ico/163mail.png" alt="163邮箱">
+        </a>
+        <a href="#" class="shortcut-icon">
+          <img src="static/ico/3dm.png" alt="3DM"   >
+        </a>
+      </div>
+
     </div>
 
+
     <!-- 链接视图 (原内容) -->
-    <div id="link-container-view" class="link-view active">
+    <div id="link-container-view" class="link-view ">
       <div class="controls" hidden>
         <label>每行显示数量：</label>
         <input type="number" id="columnCount" min="1" max="14" value="4" />

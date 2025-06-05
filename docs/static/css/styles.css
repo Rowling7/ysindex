@@ -888,9 +888,14 @@ body.has-bg #linkCard {
 }
 
 /* 视图容器样式 */
+.hidden {
+  display: none !important;
+}
+
 .widget-view {
   display: none;
   flex: 1;
+  height: 100%;
   overflow-y: auto;
   padding-bottom: 60px;
 }
@@ -903,11 +908,13 @@ body.has-bg #linkCard {
 }
 
 .link-view.active {
-  display: block;
+  display: flex;
+  height: 100%;
 }
 
 .widget-view.active {
-  display: block;
+  display: flex;
+  height: 100%;
 }
 
 /* 组件网格布局 */

@@ -51,10 +51,8 @@ input.addEventListener('input', (e) => {
 
 //简洁模式-----开始
 // 获取需要动画控制的元素集合
-// 获取需要动画控制的元素集合
 const elements = [
     document.querySelector('.container'),
-    document.querySelector('#content-container'),
     document.getElementById('cntrSearch'),
     document.getElementById('tabsContainer'),
     document.getElementById('changePage'),
