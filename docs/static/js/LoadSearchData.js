@@ -133,7 +133,7 @@ function switchView(view) {
     // 切换到搜索视图时显示所有相关内容
     if (bottomContainer) bottomContainer.style.display = 'flex';
     if (tabsContainer) tabsContainer.style.display = 'flex';
-    if (contentContainer) contentContainer.style.display = 'block';
+    if (contentContainer) contentContainer.style.display = 'flex';
     linkView.classList.remove('hidden');
     widgetView.classList.add('hidden');
 
