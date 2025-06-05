@@ -936,3 +936,10 @@ body.has-bg #linkCard {
 .weather-widget:hover {
   transform: translateY(-5px);
 }
+
+.view-icon {
+  width: 28px;
+  height: 28px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
