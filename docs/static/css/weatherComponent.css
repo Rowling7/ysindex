@@ -10,7 +10,7 @@
 	background: var(#2c3e50);
 	color: var(#ecf0f1);
 	font-family: 'Noto Sans SC', sans-serif;
-	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
 	backdrop-filter: blur(10px);
 	border: 1px solid rgba(255, 255, 255, 0.1);
 	display: flex;
@@ -18,6 +18,8 @@
 	box-sizing: border-box;
 	overflow: hidden;
 	/* 防止内容溢出 */
+	transform: none !important; /* 确保没有变换效果 */
+	transition: none !important; /* 取消所有过渡效果 */
 }
 
 /* 温度区域 */

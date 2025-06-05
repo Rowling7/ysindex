@@ -187,6 +187,22 @@ class WeatherWidget {
       .catch(error => console.error('获取天气数据失败:', error));
   }
 
+  // 获取风力等级
+  getWindLevel(speed) {
+    if (speed < 0.3) return '0级';
+    if (speed < 1.6) return '1级';
+    if (speed < 3.4) return '2级';
+    if (speed < 5.5) return '3级';
+    if (speed < 8.0) return '4级';
+    if (speed < 10.8) return '5级';
+    if (speed < 13.9) return '6级';
+    if (speed < 17.2) return '7级';
+    if (speed < 20.8) return '8级';
+    if (speed < 24.5) return '9级';
+    if (speed < 28.5) return '10级';
+    if (speed < 32.7) return '11级';
+    return '12级';
+  }
   updateWeatherUI(weatherData) {
     // 天气描述翻译
     const weatherDescriptions = {
@@ -235,7 +251,10 @@ class WeatherWidget {
 
     const feelsLike = (weatherData.main.feels_like - 273.15).toFixed(0);
     document.getElementById("feelsLike").innerHTML = feelsLike + "°";
-    document.getElementById("windSpeed").innerHTML = weatherData.wind.speed + " m/s";
+    // 添加风力等级描述
+    const windSpeed = weatherData.wind.speed;
+    const windLevel = this.getWindLevel(windSpeed);
+    document.getElementById("windSpeed").innerHTML = `${windLevel} | ${windSpeed} m/s`;
     document.getElementById("clouds").innerHTML = weatherData.clouds.all + "%";
 
     const windDeg = weatherData.wind.deg;

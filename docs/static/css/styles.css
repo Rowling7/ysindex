@@ -923,7 +923,7 @@ body.has-bg #linkCard {
   padding: 20px;
   box-shadow: 0 2px 8px var(--shadow-color);
   transition: transform 0.3s;
-  margin: 10px;
+  margin: 20px;
 }
 
 .weather-widget:hover {
