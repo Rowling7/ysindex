@@ -108,8 +108,9 @@
   <div class="container">
     <!-- 视图切换按钮 (放在顶部) -->
     <div class="view-switcher" id="viewSwitcher">
-      <button id="widgetViewBtn" class="view-btn ">组件</button>
-      <button id="linkViewBtn" class="view-btn active">链接</button>
+      <a  id="widgetViewBtn" class="view-btn" role="button">组件</a>
+      <span class="divider"></span>
+      <a  id="linkViewBtn" class="view-btn active" role="button">链接</a>
     </div>
 
     <!-- 组件视图 (首页) -->
@@ -117,7 +118,7 @@
       <!-- 这里可以放置你的小组件 -->
       <div class="widget-grid">
         <!-- 示例组件 -->
-        <div  id="weatherContainer"></div>
+        <div id="weatherContainer"></div>
       </div>
     </div>
 

@@ -559,6 +559,11 @@
                 "bgImage": "static/ico/cowtransfer.png"
             },
             {
+                "name": "versus对比",
+                "target": "https://versus.com/cn",
+                "bgImage": "static/ico/versus.png"
+            },
+            {
                 "name": "CPU天梯图",
                 "target": "https://topic.expreview.com/CPU/",
                 "bgImage": "static/ico/cpugpu.png"
@@ -622,6 +627,11 @@
                 "name": "Rocky Linux",
                 "target": "https://www.rockylinux.cn/",
                 "bgImage": "static/ico/rockylinux.png"
+            },
+            {
+                "name": "达梦8下载",
+                "target": "https://eco.dameng.com/download/",
+                "bgImage": "static/ico/dameng.png"
             },
             {
                 "name": "OpenEuler(linux)",
@@ -724,8 +734,13 @@
                 "bgImage": "static/ico/zypuu.png"
             },
             {
-                "name": "SitemapOnline",
+                "name": "ysindex",
                 "target": "https://rowling7.github.io/ysindex/",
+                "bgImage": "static/ico/github.png"
+            },
+            {
+                "name": "PitahayaWeb",
+                "target": "https://rowling7.github.io/PitahayaWeb/",
                 "bgImage": "static/ico/github.png"
             }
         ]
