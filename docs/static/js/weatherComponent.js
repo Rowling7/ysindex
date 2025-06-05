@@ -6,7 +6,7 @@ class WeatherWidget {
       containerId: 'weatherWidgetContainer', // 默认容器ID
       apiKey: '269d058c99d1f3cdcd9232f62910df1d', // OpenWeatherMap API Key
       defaultCity: 'Weihai', // 默认城市
-      cityDataPath: '/static/data/city.json'  //城市数据路径
+      cityDataPath: 'static/data/city.json'  //城市数据路径
     };
 
     // 合并用户配置
