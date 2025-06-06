@@ -829,27 +829,28 @@ class CalendarWidget {
             margin: 0;
             font-size: 1.2rem;
             font-weight: 500;
+            color: var(--text-color);
         }
 
         .header button {
-            background: rgba(255, 255, 255, 0.3);
+            background: var(--option-color);
             border: none;
             padding: 6px 8px;
             border-radius: 20px;
             cursor: pointer;
             transition: all 0.3s ease;
-            color: #555;
+            color: var(--text-color);
         }
 
         .header button:hover {
-            background: rgba(255, 255, 255, 0.5);
+            background: var(--hover-bg);
         }
 
         .week {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             text-align: center;
-            color: #666;
+            color: var(--text-color);
             font-size: 0.9rem;
         }
         .week li::marker {
@@ -871,27 +872,27 @@ class CalendarWidget {
             border-radius: 50%;
             cursor: pointer;
             transition: all 0.3s ease;
-            color: #333;
+            color: var(--text-color);
             font-size: 0.95rem;
             padding: 1px 6px;
         }
 
         #content button:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: var(--hover-bg);
         }
 
         #content button.today {
             font-weight: bold;
-            color: #1a73e8;
+            color: var(--underline-color);
         }
 
         #content button.selected {
-            background: #1a73e8;
-            color: white !important;
+            background: var(--underline-color);
+            color: var(--button-text) !important;
         }
 
         #content button.grey {
-            color: #aaa;
+            color: var(--border-color);
             opacity: 0.7;
         }
         `;
@@ -1024,7 +1025,8 @@ class ClockWidget {
       containerId: 'clockContainer',
       use24HourFormat: true,  // 默认24小时制
       fontFamily: '"JetBrains Mono NL", monospace', // 指定字体
-      fontWeight: "bold" // 字体加粗
+      fontWeight: "bold", // 字体加粗
+      highlightColor: "#9c27b0" // 数字7的高亮颜色
     };
 
     // 合并用户配置
@@ -1066,15 +1068,34 @@ class ClockWidget {
       }
 
       .time-display {
-        font-size: 72px;
-        letter-spacing: 2px;
-        margin-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .hm-row {
         display: flex;
         align-items: baseline;
+        font-size: 72px;
+        line-height: 1;
       }
 
       .time-colon {
         animation: blink 1s infinite;
+        color: purple;
+        padding: 0 5px;
+      }
+
+      .seconds {
+        font-size: 36px;
+        color: var(--text-color);
+        margin-top: 10px;
+      }
+
+      .highlight-seven {
+        color: ${this.options.highlightColor} !important;
       }
 
       @keyframes blink {
@@ -1092,6 +1113,7 @@ class ClockWidget {
         font-size: 12px;
         cursor: pointer;
         transition: all 0.3s ease;
+        margin-top: 15px;
       }
 
       .format-toggle:hover {
@@ -1113,13 +1135,13 @@ class ClockWidget {
     // 渲染组件
     container.innerHTML = `
       <div id="clockWidget">
-        <div class="time-display" id="clockTime">
-          <span id="hours">00</span>
-          <span class="time-colon">:</span>
-          <span id="minutes">00</span>
-          <span class="time-colon">:</span>
-          <span id="seconds">00</span>
-          <span id="ampm"></span>
+        <div class="time-display">
+          <div class="hm-row">
+            <span id="hours">00</span>
+            <span class="time-colon">:</span>
+            <span id="minutes">00</span>
+          </div>
+          <div class="seconds" id="seconds">00</div>
         </div>
         <button class="format-toggle" id="toggleFormat">切换12/24小时制</button>
       </div>
@@ -1141,27 +1163,41 @@ class ClockWidget {
     let hours = now.getHours();
     const minutes = now.getMinutes().toString().padStart(2, '0');
     const seconds = now.getSeconds().toString().padStart(2, '0');
-    
+
+    // 处理小时显示
     if (this.options.use24HourFormat) {
       document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-      document.getElementById('ampm').textContent = '';
     } else {
       const ampm = hours >= 12 ? 'PM' : 'AM';
       hours = hours % 12;
       hours = hours ? hours : 12; // 转换为12小时制
       document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-      document.getElementById('ampm').textContent = ` ${ampm}`;
     }
-    
+
+    // 更新分钟和秒
     document.getElementById('minutes').textContent = minutes;
     document.getElementById('seconds').textContent = seconds;
+
+    // 高亮数字7
+    this.highlightNumber(document.getElementById('hours'));
+    this.highlightNumber(document.getElementById('minutes'));
+    this.highlightNumber(document.getElementById('seconds'));
+  }
+
+  highlightNumber(element) {
+    // 清除之前的高亮
+    Array.from(element.children).forEach(child => {
+      if (child.classList.contains('highlight-seven')) {
+        child.classList.remove('highlight-seven');
+      }
+    });
+
+    // 将数字拆分为单个字符并高亮7
+    const digits = element.textContent.split('');
+    element.innerHTML = digits.map(digit => {
+      return digit === '7'
+        ? `<span class="highlight-seven">${digit}</span>`
+        : digit;
+    }).join('');
   }
 }
-
-// 导出类
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-  module.exports = ClockWidget;
-} else {
-  window.ClockWidget = ClockWidget;
-}
-
