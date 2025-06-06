@@ -8,20 +8,12 @@
   <link rel="stylesheet" href="static/css/styles.css" /> <!--全局样式-->
   <link rel="stylesheet" href="static/css/BGeffects.css" id="bgeffects-css" /> <!--背景特效-->
   <link rel="stylesheet" href="static/css/animationEffects.css" /> <!--动画效果-->
-  <script src="static/js/weatherComponent.js"></script> <!--天气组件-->
+  <script src="static/js/widget.js"></script> <!--组件-->
   <script src="static/js/LoadSearchData.js" defer></script> <!--主要部分：数据载入-->
   <script src="static/js/HeaderControler.js" defer></script> <!--头部栏部分控制-->
   <script src="static/js/DAWS.js" defer></script> <!--引擎选择和快捷方式动态响应-->
   <script src="static/js/BGeffects.js" id="bgeffects-js" defer></script> <!--背景特效-->
   <script src="static/js/Settings.js" defer></script> <!--设置控制-->
-  <script src="static/js/OtherControler.js" defer></script> <!--其他控制-->
-  <link rel="stylesheet" href="static/css/otherWidget.css" />
-  <link rel="stylesheet" href="static/css/weatherComponent.css" />
-  <!--<script src="static/js/ForTest.js" defer></script>-->
-  <!--<link rel="stylesheet" href="static/css/forTest.css" />-->
-  <!--<script src="static/js/LoadData.js" defer></script>-->
-  <!--<link rel="stylesheet" href="static/css/forTest.css" />-->
-
 </head>
 
 <body id="bodyId">
@@ -123,22 +115,15 @@
         <!-- 示例组件 -->
         <div id="weatherContainer"></div>
       </div>
-
-      <div id="shortcutWidget">
-        <a href="http://www.bilibili.com" class="shortcut-icon">
-          <img src="static/ico/bilibili.png" alt="bilibili">
-        </a>
-        <a href="https://www.douyin.com/" class="shortcut-icon">
-          <img src="static/ico/douyin.png" alt="12306">
-        </a>
-        <a href="https://github.com/" class="shortcut-icon">
-          <img src="static/ico/github-black.png" alt="163邮箱">
-        </a>
-        <a href="#" class="shortcut-icon">
-          <img src="static/ico/loading0_compressed.gif" alt="3DM">
-        </a>
+      <div class="calendar-grid">
+        <!-- 示例组件 -->
+        <div id="calendarContainer"></div>
       </div>
 
+      <div class="shortcut-grid">
+        <!-- 示例组件 -->
+        <div id="shortcutContainer"></div>
+      </div>
     </div>
 
 
@@ -160,7 +145,15 @@
   <script>
     // 初始化组件
     new WeatherWidget({
-      containerId: 'weatherContainer', // 容器ID
+      containerId: 'weatherContainer' // 容器ID
+    });
+    // 初始化快捷方式组件
+    new ShortcutWidget({
+      containerId: 'shortcutContainer'
+    });
+    // 初始化日历插件
+    new CalendarWidget({
+      containerId: 'calendarContainer' // 容器ID
     });
   </script>
 </body>

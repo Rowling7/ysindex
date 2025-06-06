@@ -1,4 +1,4 @@
-// weatherComponent.js
+// WeatherWidget
 class WeatherWidget {
   constructor(options = {}) {
     // 默认配置

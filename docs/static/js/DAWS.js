@@ -136,40 +136,5 @@ function updateColumns() {
         content.style.gridTemplateColumns = `repeat(${count}, minmax(${cardWidth}px, 1fr))`;
     });
 }
-
-//function initWeightLayout() {
-//    if (isMobile()) {
-        // 移动端样式设置
-        //搜索栏
-        //searchContainer.style.transformOrigin = "bottom center";
-        //底栏
-        //tabsContainer.style.position = "absolute";  // 启用定位
-        //tabsContainer.style.left = "50%";           // 基于父容器居中
-        //tabsContainer.style.transform = `translateX(-50%) scale(1.2)`;
-        //tabsContainer.style.transformOrigin = "bottom center";
-        //tabsContainer.style.margin = "20px 0";
-        //tabsContainer.style.padding = "10px";
-//    } else {
-        // 非移动端样式设置（恢复默认或初始样式）
-        //搜索栏
-        //searchContainer.style.transform = "";
-        //searchContainer.style.transformOrigin = "";
-        //searchContainer.style.padding = "";
-        //searchContainer.style.margin = "0 auto";
-        //底栏
-        //tabsContainer.style.position = "";  // 启用定位
-        //tabsContainer.style.left = "";
-        //tabsContainer.style.transform = "";
-        //tabsContainer.style.transformOrigin = "";
-        //tabsContainer.style.margin = "";
-        //tabsContainer.style.padding = "10px";
-//    }
-//}
-
-// 在DOM加载完成后执行
-
-//document.addEventListener("DOMContentLoaded", initWeightLayout);
-// 窗口大小变化时重新检测
-//window.addEventListener("resize", initWeightLayout);
-
 //动态调整-----结束
+
