@@ -1078,7 +1078,7 @@ class ClockWidget {
       .hm-row {
         display: flex;
         align-items: baseline;
-        font-size: 72px;
+        font-size: 66px;
         line-height: 1;
       }
 
