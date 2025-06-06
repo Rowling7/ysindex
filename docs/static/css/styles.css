@@ -929,8 +929,8 @@ body.has-bg #linkCard {
 
 /* 每个 widget 保持正方形 */
 .widget-grid {
-  width: 300px !important;
-  height: 300px !important;
+  width: 240px !important;
+  height: 240px !important;
   margin: 0 auto;
 }
 

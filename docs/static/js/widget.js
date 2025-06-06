@@ -1014,3 +1014,154 @@ class ShortcutWidget {
     `;
   }
 }
+
+
+//  ClockWidget
+class ClockWidget {
+  constructor(options = {}) {
+    // 默认配置
+    this.defaultOptions = {
+      containerId: 'clockContainer',
+      use24HourFormat: true,  // 默认24小时制
+      fontFamily: '"JetBrains Mono NL", monospace', // 指定字体
+      fontWeight: "bold" // 字体加粗
+    };
+
+    // 合并用户配置
+    this.options = { ...this.defaultOptions, ...options };
+
+    // 注入样式
+    this.injectStyles();
+
+    // 初始化
+    this.init();
+  }
+
+  injectStyles() {
+    const styleId = 'clockWidgetStyles';
+    if (document.getElementById(styleId)) return;
+
+    const style = document.createElement('style');
+    style.id = styleId;
+    style.textContent = `
+      #clockWidget {
+        width: 240px;
+        height: 240px;
+        border-radius: 16px;
+        padding: 19px;
+        background: var(--card-bg) !important;
+        color: var(--text-color);
+        font-family: ${this.options.fontFamily};
+        font-weight: ${this.options.fontWeight};
+        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        overflow: hidden;
+        margin: 20px;
+      }
+
+      .time-display {
+        font-size: 72px;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: baseline;
+      }
+
+      .time-colon {
+        animation: blink 1s infinite;
+      }
+
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+      }
+
+      .format-toggle {
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        border-radius: 6px;
+        padding: 6px 12px;
+        color: inherit;
+        font-family: inherit;
+        font-size: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .format-toggle:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  init() {
+    // 创建容器
+    let container = document.getElementById(this.options.containerId);
+    if (!container) {
+      container = document.createElement('div');
+      container.id = this.options.containerId;
+      document.body.appendChild(container);
+    }
+
+    // 渲染组件
+    container.innerHTML = `
+      <div id="clockWidget">
+        <div class="time-display" id="clockTime">
+          <span id="hours">00</span>
+          <span class="time-colon">:</span>
+          <span id="minutes">00</span>
+          <span class="time-colon">:</span>
+          <span id="seconds">00</span>
+          <span id="ampm"></span>
+        </div>
+        <button class="format-toggle" id="toggleFormat">切换12/24小时制</button>
+      </div>
+    `;
+
+    // 绑定事件
+    document.getElementById('toggleFormat').addEventListener('click', () => {
+      this.options.use24HourFormat = !this.options.use24HourFormat;
+      this.updateTime();
+    });
+
+    // 开始计时
+    this.updateTime();
+    setInterval(() => this.updateTime(), 1000);
+  }
+
+  updateTime() {
+    const now = new Date();
+    let hours = now.getHours();
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+    
+    if (this.options.use24HourFormat) {
+      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('ampm').textContent = '';
+    } else {
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12; // 转换为12小时制
+      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('ampm').textContent = ` ${ampm}`;
+    }
+    
+    document.getElementById('minutes').textContent = minutes;
+    document.getElementById('seconds').textContent = seconds;
+  }
+}
+
+// 导出类
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+  module.exports = ClockWidget;
+} else {
+  window.ClockWidget = ClockWidget;
+}
+

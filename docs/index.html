@@ -122,6 +122,9 @@
       <div class="widget-grid">
         <div id="shortcutContainer"></div>
       </div>
+      <div class="widget-grid">
+        <div id="clockContainer"></div>
+      </div>
     </div>
 
 
@@ -152,6 +155,11 @@
     // 初始化日历插件
     new CalendarWidget({
       containerId: 'calendarContainer' // 容器ID
+    });
+    // 初始化时钟
+    new ClockWidget({
+      containerId: 'clockContainer',
+      use24HourFormat: false // 可选，默认true
     });
   </script>
 </body>
