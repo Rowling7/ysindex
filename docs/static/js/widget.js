@@ -670,7 +670,6 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 }
 
 
-
 // CalendarWidget
 class CalendarWidget {
   constructor(options = {}) {
@@ -768,7 +767,7 @@ class CalendarWidget {
     const day = this.date.getDate();
 
     // 更新标题显示年月
-    if (title) title.innerText = `${year}年${month}月`;
+    if (title) title.innerText = `${year}-${month}`;
 
     const content = document.getElementById('content');
     if (!content) return;
@@ -898,8 +897,7 @@ class CalendarWidget {
             border: 1px solid rgba(255, 255, 255, 0.1);
             display: grid;
             border-radius: 16px;
-            padding: 20px;
-            width: 350px;
+            padding: 15px;
             margin: 10px auto;
         }
 
@@ -907,7 +905,6 @@ class CalendarWidget {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
             color: #333;
         }
 
@@ -935,7 +932,6 @@ class CalendarWidget {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             text-align: center;
-            margin-bottom: 10px;
             color: #666;
             font-size: 0.9rem;
         }
