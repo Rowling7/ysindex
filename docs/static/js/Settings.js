@@ -130,7 +130,7 @@ function updateButtonText() {
     // 主题按钮文本更新
     const themeItem = document.getElementById('toggleThemeItem');
     const isDark = document.body.classList.contains('dark-mode');
-    themeItem.textContent = isDark ? '切换到亮色' : '切换到暗黑';
+    themeItem.textContent = isDark ? '亮色模式' : '暗黑模式';
     // 壁纸按钮文本更新
     const btn = document.getElementById('changeBgImage');
     btn.textContent = isWallpaperEnabled() ? '禁用壁纸' : '启用壁纸';
