@@ -79,9 +79,9 @@ function isWallpaperEnabled() {
 }
 function changeBgImage() {
     const body = document.body;
-    const currentBg = getComputedStyle(body).backgroundImage;
-    // 切换背景图状态
-    if (currentBg === "none" || currentBg === "") {
+    const isEnabled = localStorage.getItem("wallpaperEnabled") === "true"; //网页加载时，默认添加false,且不随手动设置壁纸改变 在LocalStorage中存储// 读取背景图片 部分设置
+    // 切换背景图状态 且不影响手动设置壁纸状态
+    if (!isEnabled) {
         body.style.backgroundImage = "url(https://bing.ee123.net/img/)";
         body.style.backgroundRepeat = "no-repeat"; // 修正属性名和值格式
         body.style.backgroundSize = "cover"; // 修正属性名和值格式
@@ -91,6 +91,7 @@ function changeBgImage() {
         body.style.backgroundImage = "none";
         body.classList.remove("has-bg"); // 移除控制类
         localStorage.setItem("wallpaperEnabled", "false"); // 存储禁用状态
+        window.location.href = window.location.href; // 重新加载当前页面
     }
 }
 // ============= 壁纸背景启用禁用 ==============
