@@ -113,6 +113,11 @@
                 "bgImage": "static/ico/koyso.png"
             },
             {
+                "name": "资源避难所",
+                "target": "https://www.flysheep6.com/",
+                "bgImage": "static/ico/flysheep6.jpg"
+            },
+            {
                 "name": "9dgames",
                 "target": "http://www.9dmsgame.net/",
                 "bgImage": "static/ico/9dgames.png"
@@ -386,6 +391,16 @@
                 "name": "iiice导航",
                 "target": "https://www.iiice.cn/",
                 "bgImage": "static/ico/iiice.png"
+            },
+            {
+                "name": "Tinywow",
+                "target": "https://tinywow.com/",
+                "bgImage": "static/ico/tinywow.svg"
+            },
+            {
+                "name": "FMHY",
+                "target": "https://fmhy.net/",
+                "bgImage": "static/ico/fmhy.ico"
             }
         ]
     },
