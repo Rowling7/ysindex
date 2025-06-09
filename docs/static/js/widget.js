@@ -34,8 +34,7 @@ class WeatherWidget {
       }
       @font-face {
         font-family: 'CustomSans';
-        src: url('static/fonts/NotoSansSC-Bold.woff2') format('woff2'),
-             url('static/fonts/NotoSansSC-Bold.woff') format('woff');
+        src: url('static/fonts/NotoSansSC-Bold.woff2') format('woff2');
         font-weight: bold;
         font-display: swap;
       }
@@ -813,8 +812,7 @@ class CalendarWidget {
       }
       @font-face {
         font-family: 'CustomSans';
-        src: url('static/fonts/NotoSansSC-Bold.woff2') format('woff2'),
-             url('static/fonts/NotoSansSC-Bold.woff') format('woff');
+        src: url('static/fonts/NotoSansSC-Bold.woff2') format('woff2');
         font-weight: bold;
         font-display: swap;
       }
@@ -1067,8 +1065,7 @@ class ClockWidget {
       }
       @font-face {
         font-family: 'CustomSans';
-        src: url('static/fonts/NotoSansSC-Bold.woff2') format('woff2'),
-             url('static/fonts/NotoSansSC-Bold.woff') format('woff');
+        src: url('static/fonts/NotoSansSC-Bold.woff2') format('woff2');
         font-weight: bold;
         font-display: swap;
       }
@@ -1298,8 +1295,7 @@ class WorkTimeWidget {
       }
       @font-face {
         font-family: 'CustomSans';
-        src: url('static/fonts/NotoSansSC-Bold.woff2') format('woff2'),
-             url('static/fonts/NotoSansSC-Bold.woff') format('woff');
+        src: url('static/fonts/NotoSansSC-Bold.woff2') format('woff2');
         font-weight: bold;
         font-display: swap;
       }
