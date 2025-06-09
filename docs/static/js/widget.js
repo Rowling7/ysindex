@@ -26,7 +26,19 @@ class WeatherWidget {
     const style = document.createElement('style');
     style.id = styleId;
     style.textContent = `
-          /* 主容器 - 正方形 */
+          @font-face {
+        font-family: 'CustomSans';
+        src: url('static/fonts/NotoSansSC-Regular.woff2') format('woff2');
+        font-weight: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'CustomSans';
+        src: url('static/fonts/NotoSansSC-Bold.woff2') format('woff2'),
+             url('static/fonts/NotoSansSC-Bold.woff') format('woff');
+        font-weight: bold;
+        font-display: swap;
+      }
       #weatherWidget {
         width: 240px;
         height: 240px;
@@ -34,7 +46,7 @@ class WeatherWidget {
         padding: 19px;
         background: var(#2c3e50);
         color: var(#ecf0f1);
-        font-family: 'Noto Sans SC', sans-serif;
+        font-family: 'CustomSans', sans-serif;
         box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.1);
@@ -793,6 +805,19 @@ class CalendarWidget {
     // 注入CSS
     const style = document.createElement('style');
     style.textContent = `
+    @font-face {
+        font-family: 'CustomSans';
+        src: url('static/fonts/NotoSansSC-Regular.woff2') format('woff2');
+        font-weight: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'CustomSans';
+        src: url('static/fonts/NotoSansSC-Bold.woff2') format('woff2'),
+             url('static/fonts/NotoSansSC-Bold.woff') format('woff');
+        font-weight: bold;
+        font-display: swap;
+      }
         #calendar {
             color: var(#ecf0f1);
             font-family: 'Noto Sans SC', sans-serif;
@@ -1014,8 +1039,6 @@ class ClockWidget {
     this.defaultOptions = {
       containerId: 'clockContainer',
       use24HourFormat: true,  // 默认24小时制
-      fontFamily: '"JetBrains Mono NL", monospace', // 指定字体
-      fontWeight: "bold", // 字体加粗
       highlightColor: "#9c27b0" // 数字7的高亮颜色
     };
 
@@ -1036,6 +1059,19 @@ class ClockWidget {
     const style = document.createElement('style');
     style.id = styleId;
     style.textContent = `
+     @font-face {
+        font-family: 'CustomSans';
+        src: url('static/fonts/NotoSansSC-Regular.woff2') format('woff2');
+        font-weight: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'CustomSans';
+        src: url('static/fonts/NotoSansSC-Bold.woff2') format('woff2'),
+             url('static/fonts/NotoSansSC-Bold.woff') format('woff');
+        font-weight: bold;
+        font-display: swap;
+      }
       #clockWidget {
         width: 240px;
         height: 240px;
@@ -1043,8 +1079,8 @@ class ClockWidget {
         padding: 19px;
         background: var(--card-bg) !important;
         color: var(--text-color);
-        font-family: ${this.options.fontFamily};
-        font-weight: ${this.options.fontWeight};
+        font-family: 'CustomSans', sans-serif;
+        font-weight: bold;
         box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1254,6 +1290,19 @@ class WorkTimeWidget {
     const style = document.createElement('style');
     style.id = styleId;
     style.textContent = `
+    @font-face {
+        font-family: 'CustomSans';
+        src: url('static/fonts/NotoSansSC-Regular.woff2') format('woff2');
+        font-weight: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'CustomSans';
+        src: url('static/fonts/NotoSansSC-Bold.woff2') format('woff2'),
+             url('static/fonts/NotoSansSC-Bold.woff') format('woff');
+        font-weight: bold;
+        font-display: swap;
+      }
       #workTimeWidget {
         width: 240px;
         height: 240px;
@@ -1261,7 +1310,7 @@ class WorkTimeWidget {
         padding: 19px;
         background: var(--card-bg) !important;
         color: var(--text-color);
-        font-family: 'JetBrains Mono NL', monospace;
+        font-family: 'CustomSans', sans-serif;
         box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.1);
