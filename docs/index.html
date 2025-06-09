@@ -14,7 +14,7 @@
   <script src="static/js/HeaderControler.js" defer></script> <!--头部栏部分控制-->
   <script src="static/js/DAWS.js" defer></script> <!--引擎选择和快捷方式动态响应-->
   <script src="static/js/BGeffects.js" id="bgeffects-js" defer></script> <!--背景特效-->
-  
+
 </head>
 
 <body id="bodyId">
@@ -123,6 +123,10 @@
       <div class="widget-grid">
         <div id="weatherContainer"></div>
       </div>
+      <!-- 社畜倒计时 -->
+      <div class="widget-grid">
+        <div id="workTimeContainer"></div>
+      </div>
       <!-- 收藏 -->
       <div class="widget-grid">
         <div id="shortcutContainer"></div>
@@ -163,6 +167,10 @@
     new ClockWidget({
       containerId: 'clockContainer',
       use24HourFormat: false // 可选，默认true
+    });
+    // 初始化射出倒计时
+    new WorkTimeWidget({
+      containerId: 'workTimeContainer'
     });
   </script>
 </body>

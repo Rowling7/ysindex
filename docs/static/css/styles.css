@@ -925,20 +925,8 @@ body.has-bg #linkCard {
   padding: 20px;
   width: 100%;
   box-sizing: border-box;
-}
-
-/* 每个 widget 保持正方形 */
-/* Widget 容器布局 */
-#widget-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  width: 100%;
-  box-sizing: border-box;
   max-width: 1200px;
-  /* 控制最大宽度 */
-  margin: 0 auto;
+  margin-bottom: 60px;
 }
 
 /* 每个 widget 单元 */
