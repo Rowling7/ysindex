@@ -818,7 +818,7 @@ class CalendarWidget {
       }
         #calendar {
             color: var(#ecf0f1);
-            font-family: 'Noto Sans SC', sans-serif;
+            font-family: 'CustomSans', sans-serif;
             box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -886,6 +886,7 @@ class CalendarWidget {
             cursor: pointer;
             transition: all 0.3s ease;
             color: var(--text-color);
+            font-family: 'CustomSans', sans-serif;
             font-size: 0.95rem;
             padding: 1px 6px;
         }
@@ -925,7 +926,7 @@ class CalendarWidget {
 }
 
 
-// ShortcutWidget
+// ShortcutWidget 无字不设置字体
 class ShortcutWidget {
   constructor(options) {
     this.containerId = options.containerId || 'shortcutContainer';
