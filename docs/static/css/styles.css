@@ -929,6 +929,13 @@ body.has-bg #linkCard {
   margin-bottom: 60px;
 }
 
+/* 添加双倍宽度样式类 */
+.widget-grid.span-2 {
+  grid-column: span 2;
+  max-width: 526px;
+  aspect-ratio: auto;
+}
+
 /* 每个 widget 单元 */
 .widget-grid {
   width: 100%;

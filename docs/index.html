@@ -13,8 +13,9 @@
   <script src="static/js/LoadSearchData.js" defer></script> <!--主要部分：数据载入-->
   <script src="static/js/HeaderControler.js" defer></script> <!--头部栏部分控制-->
   <script src="static/js/DAWS.js" defer></script> <!--引擎选择和快捷方式动态响应-->
-  <script src="static/js/BGeffects.js" id="bgeffects-js" defer></script> <!--背景特效-->
+  <script src="static/js/BGeffects.js" id="bgeffects-js" defer></script>
 
+  <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
 </head>
 
 <body id="bodyId">
@@ -131,7 +132,10 @@
       <div class="widget-grid">
         <div id="shortcutContainer"></div>
       </div>
-
+      <!-- 随机一言-->
+      <div class="widget-grid" >
+        <div id="customHitokotoContainer"></div>
+      </div>
     </div>
 
 
@@ -171,6 +175,10 @@
     // 初始化射出倒计时
     new WorkTimeWidget({
       containerId: 'workTimeContainer'
+    });
+    //  初始化随机一言
+    new HitokotoWidget({
+      containerId: 'customHitokotoContainer'
     });
   </script>
 </body>

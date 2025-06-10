@@ -1226,6 +1226,7 @@ class ClockWidget {
   }
 }
 
+
 //  社畜倒计时
 class WorkTimeWidget {
   constructor(options = {}) {
@@ -1628,6 +1629,130 @@ class WorkTimeWidget {
     this.interval = setInterval(() => this.updateDisplay(), 200); // 200ms = 每秒5次
   }
 }
+
+
+//  Hitokoto组件
+class HitokotoWidget {
+  constructor(options = {}) {
+    // 默认配置
+    this.defaultOptions = {
+      containerId: 'hitokotoContainer',
+      width: 240,
+      height: 240,
+      textColor: "var(--underline-color)"
+    };
+
+    // 合并用户配置
+    this.options = { ...this.defaultOptions, ...options };
+
+    // 注入样式
+    this.injectStylesHitokoto();
+
+    // 初始化
+    this.initHitokoto();
+  }
+
+  injectStylesHitokoto() {
+    const styleId = 'hitokotoWidgetStyles';
+    if (document.getElementById(styleId)) return;
+
+    const style = document.createElement('style');
+    style.id = styleId;
+    style.textContent = `
+      @font-face {
+        font-family: 'CustomSans';
+        src: url('static/fonts/NotoSansSC-Regular.woff2') format('woff2');
+        font-weight: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'CustomSans';
+        src: url('static/fonts/NotoSansSC-Bold.woff2') format('woff2');
+        font-weight: bold;
+        font-display: swap;
+      }
+      #hitokotoWidget {
+        width: ${this.options.width}px;
+        height: ${this.options.height}px;
+        border-radius: 16px;
+        padding: 19px;
+        background: var(--card-bg) !important;
+        color: ${this.options.textColor};
+        font-family: 'CustomSans', sans-serif;
+        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        overflow: hidden;
+        margin: 20px;
+        text-align: center;
+      }
+
+      #hitokoto {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 20px;
+        font-size: 18px;
+        line-height: 1.5;
+      }
+
+      #hitokoto_text {
+        color: inherit;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      #hitokoto_text:hover {
+        opacity: 0.8;
+      }
+
+      .refresh-btn {
+        margin-top: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        border-radius: 6px;
+        padding: 6px 12px;
+        color: inherit;
+        font-family: inherit;
+        font-size: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .refresh-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  // 修改 initHitokoto 方法
+  initHitokoto() {
+    let container = document.getElementById(this.options.containerId);
+    if (!container) {
+      container = document.createElement('div');
+      container.id = this.options.containerId;
+      document.body.appendChild(container);
+    }
+
+    container.innerHTML = `
+    <div id="hitokotoWidget">
+        <p id="hitokoto">
+          <a href="#" id="hitokoto_text">:D 获取中...</a>
+        </p>
+    </div>
+  `;
+
+  }
+}
+
 
 //  导出组件
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
