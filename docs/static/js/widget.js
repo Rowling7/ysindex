@@ -1,3 +1,65 @@
+// 检测双倍宽度组件是否需要换行
+function checkDoubleWidthWrap() {
+  // 获取 widget 容器和所有双倍宽度组件
+  const widgetContainer = document.getElementById('widget-container');
+  const doubleWidthElements = document.querySelectorAll('.per-double-width');
+
+  if (!widgetContainer || doubleWidthElements.length === 0) return;
+
+  // 获取容器宽度和右边距
+  const containerWidth = widgetContainer.clientWidth;
+  const containerRight = widgetContainer.getBoundingClientRect().right;
+
+  doubleWidthElements.forEach(element => {
+    // 获取组件和其父元素的定位信息
+    const parentElement = element.parentElement;
+    const parentRight = parentElement.getBoundingClientRect().right;
+
+    // 计算剩余空间 (容器右边框 - 父元素右边框)
+    const remainingSpace = containerRight - parentRight;
+
+    // 判断是否需要换行
+    if (remainingSpace < 280) {
+      // 添加换行类 (需要在CSS中定义)
+      parentElement.classList.add('force-wrap');
+
+      // 或者直接设置样式 (可选)
+      // parentElement.style.marginRight = '100%';
+      // parentElement.style.width = '100%';
+    } else {
+      // 移除换行类
+      parentElement.classList.remove('force-wrap');
+
+      // 或者重置样式 (如果之前设置了)
+      // parentElement.style.marginRight = '';
+      // parentElement.style.width = '';
+    }
+  });
+}
+
+// 在CSS中添加换行样式
+function addWrapStyle() {
+  const style = document.createElement('style');
+  style.textContent = `
+    .widget-grid.force-wrap {
+      margin-right: 100%;
+      width: 100%;
+      clear: both;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+// 初始化时运行一次
+document.addEventListener('DOMContentLoaded', () => {
+  addWrapStyle();
+  checkDoubleWidthWrap();
+});
+
+// 窗口大小改变时重新检查
+window.addEventListener('resize', checkDoubleWidthWrap);
+
+
 // WeatherWidget
 class WeatherWidget {
   constructor(options = {}) {

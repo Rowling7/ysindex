@@ -917,7 +917,7 @@ body.has-bg #linkCard {
   height: 100%;
 }
 
-/* 容器布局 - 自适应列数 */
+
 /* Widget 容器布局 */
 #widget-container {
   display: flex;
@@ -935,6 +935,8 @@ body.has-bg #linkCard {
 
 /* 标准 Widget 样式 */
 .widget-grid {
+    grid-column: span 1;
+  grid-row: span 1;
   width: 240px;
   height: 240px;
   border-radius: 8px;
@@ -968,6 +970,8 @@ body.has-bg #linkCard {
 
 /* 两倍宽度 Widget (480x240) */
 .per-double-width {
+    grid-column: span 2;
+
   width: 520px;
   height: inherit;
 }
