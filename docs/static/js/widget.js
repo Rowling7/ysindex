@@ -53,9 +53,22 @@ class WeatherWidget {
         flex-direction: column;
         box-sizing: border-box;
         overflow: hidden;
-        /* 防止内容溢出 */
+        position: relative;
         transform: none !important; /* 确保没有变换效果 */
         transition: none !important; /* 取消所有过渡效果 */
+      }
+
+      #weatherWidget::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: inherit;
+          background-size: cover;
+          filter: blur(8px);
+          z-index: -1;
       }
 
       /* 温度区域 */
@@ -552,6 +565,19 @@ class WeatherWidget {
 
     const englishDescription = weatherData.weather[0].description.toLowerCase();
     const chineseDescription = weatherDescriptions[englishDescription] || englishDescription;
+
+    // 获取天气图标URL
+    const iconUrl = "https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/" + weatherData.weather[0].icon + ".png";
+    document.getElementById("weatherimg").src = iconUrl;
+
+    // 设置模糊背景
+    const widget = document.getElementById("weatherWidget");
+    widget.style.backgroundImage = `url(${iconUrl})`;
+    widget.style.backgroundSize = "cover";
+    widget.style.backgroundPosition = "center";
+    widget.style.backgroundRepeat = "no-repeat";
+
+
 
     // 更新UI
     document.getElementById("weatherResult").innerHTML = chineseDescription;
@@ -1638,7 +1664,7 @@ class HitokotoWidget {
     this.defaultOptions = {
       containerId: 'hitokotoContainer',
       width: 240,
-      height: 240,
+      height: 120,
       textColor: "var(--underline-color)"
     };
 
