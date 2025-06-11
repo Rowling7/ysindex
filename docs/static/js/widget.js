@@ -336,7 +336,7 @@ class WeatherWidget {
         padding: 20px;
         box-shadow: 0 2px 8px var(--shadow-color);
         transition: transform 0.3s;
-        margin: 20px;
+
       }
 
       .weather-widget:hover {
@@ -851,9 +851,6 @@ class CalendarWidget {
             display: grid;
             border-radius: 16px;
             padding: 19px;
-            margin: 20px;
-            width: 240px;
-            height: 240px;
             background: var(--card-bg);
         }
 
@@ -1007,7 +1004,7 @@ class ShortcutWidget {
         gap: 15px;
         box-sizing: border-box;
         overflow: hidden;
-        margin: 20px;
+
       }
       .shortcut-icon {
         display: flex;
@@ -1114,7 +1111,7 @@ class ClockWidget {
         align-items: center;
         box-sizing: border-box;
         overflow: hidden;
-        margin: 20px;
+
       }
 
       .time-display {
@@ -1141,7 +1138,7 @@ class ClockWidget {
       .seconds {
         font-size: 36px;
         color: var(--text-color);
-        margin-top: 10px;
+
       }
 
       .highlight-seven {
@@ -1342,7 +1339,7 @@ class WorkTimeWidget {
         flex-direction: column;
         box-sizing: border-box;
         overflow: hidden;
-        margin: 20px;
+
         position: relative;
       }
 
@@ -1453,7 +1450,7 @@ class WorkTimeWidget {
       }
 
       .save-button {
-        margin-top: 10px;
+
         padding: 6px;
         border-radius: 4px;
         border: none;
@@ -1663,8 +1660,6 @@ class HitokotoWidget {
     // 默认配置
     this.defaultOptions = {
       containerId: 'hitokotoContainer',
-      width: 240,
-      height: 120,
       textColor: "var(--text-color)",
       apiUrl: 'https://v1.hitokoto.cn/?encode=js&select=%23hitokoto_text'
     };
@@ -1702,8 +1697,7 @@ class HitokotoWidget {
         font-display: swap;
       }
       #hitokotoWidget {
-        width: ${this.options.width}px;
-        height: ${this.options.height}px;
+        height: 100%;
         border-radius: 16px;
         padding: 19px;
         background: var(--card-bg) !important;
@@ -1718,7 +1712,6 @@ class HitokotoWidget {
         align-items: center;
         box-sizing: border-box;
         overflow: hidden;
-        margin: 20px;
         text-align: center;
       }
 
@@ -1770,7 +1763,7 @@ class HitokotoWidget {
     }
 
     container.innerHTML = `
-    <div id="hitokotoWidget">
+    <div id="hitokotoWidget" >
         <p id="hitokoto">
           <a href="#" id="hitokoto_text">生气的本质就是在和自己的预期较劲</a>
         </p>

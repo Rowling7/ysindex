@@ -101,7 +101,7 @@ const searchContainer = document.getElementById("search-container");
 
 /* 初始列数设置 */
 const calculateColumns = () => {
-    return Math.min(8, Math.max(1, Math.floor(window.innerWidth / columnBaseWidth))
+    return Math.min(10, Math.max(1, Math.floor(window.innerWidth / columnBaseWidth))
     );
 };
 columnControl.value = calculateColumns(); // 统一调用

@@ -251,7 +251,7 @@ h5::after {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   height: 100vh;
   display: flex;
@@ -918,64 +918,75 @@ body.has-bg #linkCard {
 }
 
 /* 容器布局 - 自适应列数 */
+/* Widget 容器布局 */
 #widget-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  /* 靠左排列 */
+  align-content: flex-start;
+  gap: 0px;
   padding: 20px;
   width: 100%;
   box-sizing: border-box;
-  max-width: 1200px;
+  min-height: 80vh;
   margin-bottom: 60px;
 }
 
-/* 添加双倍宽度样式类 */
-.widget-grid.span-2 {
-  grid-column: span 2;
-  max-width: 526px;
-  aspect-ratio: auto;
-}
-
-/* 每个 widget 单元 */
+/* 标准 Widget 样式 */
 .widget-grid {
-  width: 100%;
-  /* 宽度自适应 */
-  aspect-ratio: 1/1;
-  /* 保持正方形 */
-  max-width: 240px;
-  /* 最大宽度限制 */
-  margin: 0 auto;
+  width: 240px;
+  height: 240px;
+  border-radius: 8px;
+  padding: 20px;
   transition: all 0.3s ease;
 }
 
-/* 响应式布局调整 */
-@media (min-width: 600px) {
-  #widget-container {
-    grid-template-columns: repeat(2, 1fr);
-    /* 最小两列 */
-  }
+/* 半高 Widget (240x120) */
+.per-half-height {
+  width: inherit;
+  height: 120px;
 }
 
-@media (min-width: 900px) {
-  #widget-container {
-    grid-template-columns: repeat(3, 1fr);
-    /* 中等宽度三列 */
-  }
+/* 半宽 Widget (120x240) */
+.per-half-width {
+  width: 120px;
+  height: inherit;
 }
 
-@media (min-width: 1200px) {
-  #widget-container {
-    grid-template-columns: repeat(4, 1fr);
-    /* 最大四列 */
-  }
+/* 半宽半高 Widget (120x120) */
+.per-half-width-height {
+  width: 120px;
+  height: 120px;
 }
 
-/* 调整现有 widget 内部样式 */
-#weatherWidget,
-#calendar,
-#shortcutWidget,
-#clockWidget {
-  width:240px !important;
-  height: 240px !important;
-  box-sizing: border-box;
+/* 两倍高度 Widget (240x480) */
+.per-double-height {
+  width: inherit;
+  height: 520px;
+}
+
+/* 两倍宽度 Widget (480x240) */
+.per-double-width {
+  width: 520px;
+  height: inherit;
+}
+
+/* 两倍宽高 Widget (480x480) */
+.per-double-width-height {
+  width: 520px;
+  height: 520px;
+}
+
+/* Widget 内部样式 */
+.widget-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+
+.widget-content {
+  color: var(--text-color);
+  opacity: 0.8;
 }
