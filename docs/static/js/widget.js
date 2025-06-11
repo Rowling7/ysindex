@@ -1665,7 +1665,8 @@ class HitokotoWidget {
       containerId: 'hitokotoContainer',
       width: 240,
       height: 120,
-      textColor: "var(--underline-color)"
+      textColor: "var(--text-color)",
+      apiUrl: 'https://v1.hitokoto.cn/?encode=js&select=%23hitokoto_text'
     };
 
     // 合并用户配置
@@ -1676,6 +1677,9 @@ class HitokotoWidget {
 
     // 初始化
     this.initHitokoto();
+
+    // 首次加载数据
+    this.fetchHitokoto();
   }
 
   injectStylesHitokoto() {
@@ -1739,27 +1743,23 @@ class HitokotoWidget {
       #hitokoto_text:hover {
         opacity: 0.8;
       }
-
-      .refresh-btn {
-        margin-top: 15px;
-        background: rgba(255, 255, 255, 0.1);
-        border: none;
-        border-radius: 6px;
-        padding: 6px 12px;
-        color: inherit;
-        font-family: inherit;
-        font-size: 12px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .refresh-btn:hover {
-        background: rgba(255, 255, 255, 0.2);
-      }
     `;
     document.head.appendChild(style);
   }
 
+  // 获取一言数据的方法
+  fetchHitokoto() {
+    const script = document.createElement('script');
+    script.src = this.options.apiUrl;
+    script.onload = () => {
+      document.body.removeChild(script);
+    };
+    script.onerror = () => {
+      document.getElementById('hitokoto_text').textContent = '小时候打喷嚏以为是有人在想我，原来是现在的自己';
+      document.body.removeChild(script);
+    };
+    document.body.appendChild(script);
+  }
   // 修改 initHitokoto 方法
   initHitokoto() {
     let container = document.getElementById(this.options.containerId);
@@ -1776,7 +1776,11 @@ class HitokotoWidget {
         </p>
     </div>
   `;
-
+    // 绑定点击事件
+    document.getElementById('hitokoto_text').addEventListener('click', (e) => {
+      e.preventDefault(); // 阻止默认跳转行为
+      this.fetchHitokoto();
+    });
   }
 }
 
