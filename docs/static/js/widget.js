@@ -1731,6 +1731,7 @@ class HitokotoWidget {
 
       #hitokoto_text {
         color: inherit;
+        color: var(--text-color);
         text-decoration: none;
         transition: all 0.3s ease;
       }
@@ -1771,7 +1772,7 @@ class HitokotoWidget {
     container.innerHTML = `
     <div id="hitokotoWidget">
         <p id="hitokoto">
-          <a href="#" id="hitokoto_text">:D 获取中...</a>
+          <a href="#" id="hitokoto_text">生气的本质就是在和自己的预期较劲</a>
         </p>
     </div>
   `;
