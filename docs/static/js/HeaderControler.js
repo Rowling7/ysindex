@@ -56,7 +56,8 @@ const elements = [
     document.getElementById('cntrSearch'),
     document.getElementById('tabsContainer'),
     document.getElementById('changePage'),
-    document.getElementById('changeBG')
+    document.getElementById('changeBG'),
+    document.getElementById('viewSwitcher')
 ].filter(Boolean);
 
 // 初始化记录原始display值
