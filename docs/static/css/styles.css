@@ -928,6 +928,7 @@ body.has-bg #linkCard {
   gap: 0px;
   padding: 20px;
   width: 100%;
+  height: auto;
   box-sizing: border-box;
   min-height: 80vh;
   margin-bottom: 60px;
@@ -935,7 +936,7 @@ body.has-bg #linkCard {
 
 /* 标准 Widget 样式 */
 .widget-grid {
-    grid-column: span 1;
+  grid-column: span 1;
   grid-row: span 1;
   width: 240px;
   height: 240px;
@@ -970,8 +971,7 @@ body.has-bg #linkCard {
 
 /* 两倍宽度 Widget (480x240) */
 .per-double-width {
-    grid-column: span 2;
-
+  grid-column: span 2;
   width: 520px;
   height: inherit;
 }

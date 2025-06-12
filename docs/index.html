@@ -99,17 +99,16 @@
     </form>
   </div>
 
-  <!-- 替换原有 container 部分 -->
-  <div class="container">
-    <!-- 视图切换按钮 (放在顶部) -->
-    <div class="view-switcher" id="viewSwitcher">
-      <a id="widgetViewBtn" class="view-btn" role="button">
-        <img src="static/ico/widget.png" class="view-icon">组件</a>
-      <span class="divider"></span>
-      <a id="linkViewBtn" class="view-btn active" role="button">
-        <img src="static/ico/link.png" class="view-icon">链接</a>
-    </div>
+  <!-- 视图切换按钮 (放在顶部) -->
+  <div class="view-switcher" id="viewSwitcher">
+    <a id="widgetViewBtn" class="view-btn" role="button">
+      <img src="static/ico/widget.png" class="view-icon">组件</a>
+    <span class="divider"></span>
+    <a id="linkViewBtn" class="view-btn active" role="button">
+      <img src="static/ico/link.png" class="view-icon">链接</a>
+  </div>
 
+  <div class="container">
     <!-- 组件视图 (首页) -->
     <div id="widget-container" class="widget-view ">
       <!-- 时钟 -->
@@ -124,20 +123,19 @@
       <div class="widget-grid">
         <div id="weatherContainer"></div>
       </div>
+
+      <!-- 随机一言-->
+      <div class="widget-grid per-double-width">
+        <div id="customHitokotoContainer"></div>
+      </div>
       <!-- 社畜倒计时 -->
       <div class="widget-grid">
         <div id="workTimeContainer"></div>
-      </div>
-      <!-- 随机一言-->
-      <div class="widget-grid">
-        <div id="customHitokotoContainer" class="per-double-width"></div>
       </div>
       <!-- 收藏 -->
       <div class="widget-grid">
         <div id="shortcutContainer"></div>
       </div>
-
-
     </div>
 
 
