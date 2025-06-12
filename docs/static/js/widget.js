@@ -1841,7 +1841,7 @@ class HitokotoWidget {
       document.body.removeChild(script);
     };
     script.onerror = () => {
-      document.getElementById('hitokoto_text').textContent = '小时候打喷嚏以为是有人在想我，原来是现在的自己';
+      document.getElementById('hitokoto').textContent = '小时候打喷嚏以为是有人在想我，原来是现在的自己';
       document.body.removeChild(script);
     };
     document.body.appendChild(script);
@@ -1863,7 +1863,7 @@ class HitokotoWidget {
     </div>
   `;
     // 绑定点击事件
-    document.getElementById('hitokoto_text').addEventListener('click', (e) => {
+    document.getElementById('hitokoto').addEventListener('click', (e) => {
       e.preventDefault(); // 阻止默认跳转行为
       this.fetchHitokoto();
     });
