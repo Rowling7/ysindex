@@ -1858,7 +1858,7 @@ class HitokotoWidget {
     container.innerHTML = `
     <div id="hitokotoWidget" >
         <p id="hitokoto">
-          <a href="#" id="hitokoto_text">生气的本质就是在和自己的预期较劲</a>
+          <a href="#" id="hitokoto_text" style="z-index=1;">生气的本质就是在和自己的预期较劲</a>
         </p>
     </div>
   `;
