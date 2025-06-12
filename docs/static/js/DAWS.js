@@ -320,15 +320,33 @@ function initDragSort() {
     const container = document.getElementById('widget-container');
     if (!container) return;
 
-    // 从 localStorage 读取保存的组件顺序
+    // 默认组件顺序
+    const defaultOrder = [
+        "widgetGgridClock",
+        "widgetGgridCalendar",
+        "widgetGgridWeather",
+        "widgetGgridWorkTime",
+        "widgetGgridShortcut",
+        "widgetGgridHitokoto"
+    ];
+
+    // 检查 localStorage 中是否已有 widgetOrder
     const savedOrder = localStorage.getItem('widgetOrder');
-    if (savedOrder) {
-        try {
-            const order = JSON.parse(savedOrder);
-            reorderWidgets(container, order);
-        } catch (e) {
-            console.error('Failed to parse saved widget order:', e);
-        }
+
+    // 如果不存在，则设置默认顺序
+    if (!savedOrder) {
+        console.log('No widgetOrder found in localStorage. Using default order.');
+        localStorage.setItem('widgetOrder', JSON.stringify(defaultOrder));
+    }
+
+    // 从 localStorage 读取保存的组件顺序
+    try {
+        const order = savedOrder ? JSON.parse(savedOrder) : defaultOrder;
+        reorderWidgets(container, order);
+    } catch (e) {
+        console.error('Failed to parse saved widget order:', e);
+        // 如果解析失败，使用默认顺序
+        reorderWidgets(container, defaultOrder);
     }
 
     // 初始化 SortableJS

@@ -927,7 +927,7 @@ body.has-bg #linkCard {
   align-content: flex-start;
   gap: 0px;
   padding: 20px;
-  width: 110%;
+  width: 100%;
   height: auto;
   box-sizing: border-box;
   min-height: 80vh;
