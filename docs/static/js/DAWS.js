@@ -1,4 +1,3 @@
-
 // 搜索功能 Search-----开始
 // 下拉菜单交互逻辑
 const trigger = document.querySelector('.triggerName');
@@ -137,4 +136,157 @@ function updateColumns() {
     });
 }
 //动态调整-----结束
+
+
+//------------组件动态调整-----开始
+/**
+ * 动态补齐网格布局中的剩余空间
+ * @param {string} containerId - 容器元素的ID
+ * @param {number} baseWidth - 基础组件的宽度（px）
+ * @param {number} baseHeight - 基础组件的高度（px）
+ */
+function fillGridGaps(containerId, baseWidth = 240, baseHeight = 240) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  // 获取所有子组件
+  const widgets = Array.from(container.children);
+  if (widgets.length === 0) return;
+
+  // 计算容器宽度
+  const containerWidth = container.clientWidth;
+
+  // 获取计算每行可以容纳的基础组件数量
+  const columns = Math.floor(containerWidth / baseWidth);
+  if (columns <= 1) return; // 单列布局不需要补齐
+
+  // 按位置分组行
+  const rows = [];
+  let currentRow = [];
+  let currentRowTop = null;
+
+  widgets.forEach(widget => {
+    const rect = widget.getBoundingClientRect();
+    if (currentRowTop === null || Math.abs(rect.top - currentRowTop) < 5) {
+      // 同一行
+      currentRow.push(widget);
+      currentRowTop = rect.top;
+    } else {
+      // 新行
+      rows.push(currentRow);
+      currentRow = [widget];
+      currentRowTop = rect.top;
+    }
+  });
+
+  if (currentRow.length > 0) {
+    rows.push(currentRow);
+  }
+
+  // 遍历每一行（除了最后一行）
+  for (let i = 0; i < rows.length - 1; i++) {
+    const row = rows[i];
+    const nextRow = rows[i + 1];
+
+    // 计算当前行已占用的宽度
+    const usedWidth = row.reduce((sum, widget) => {
+      const rect = widget.getBoundingClientRect();
+      return sum + rect.width;
+    }, 0);
+
+    // 计算剩余空间
+    const remainingWidth = containerWidth - usedWidth;
+    if (remainingWidth <= 0) continue;
+
+    // 从下一行查找可以放入剩余空间的组件
+    for (let j = 0; j < nextRow.length; j++) {
+      const widget = nextRow[j];
+      const rect = widget.getBoundingClientRect();
+
+      // 检查组件是否可以放入剩余空间
+      if (rect.width <= remainingWidth) {
+        // 移动组件到当前行
+        container.insertBefore(widget, row[row.length - 1].nextSibling);
+        row.push(widget);
+        nextRow.splice(j, 1);
+        j--; // 因为删除了一个元素
+
+        // 更新剩余空间
+        remainingWidth -= rect.width;
+        if (remainingWidth <= 0) break;
+      }
+    }
+  }
+}
+/**
+ * 组合相同宽度且都是半高的相邻组件
+ * @param {string} containerId - 容器元素的ID
+ */
+function combineHalfHeightWidgets(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  const widgets = Array.from(container.children);
+  if (widgets.length < 2) return;
+
+  // 用于存储需要移除的组件
+  const widgetsToRemove = new Set();
+
+  for (let i = 0; i < widgets.length - 1; i++) {
+    const currentWidget = widgets[i];
+    const nextWidget = widgets[i + 1];
+
+    // 检查两个组件是否都是半高且相同宽度的
+    if (currentWidget.classList.contains('per-half-height') &&
+      nextWidget.classList.contains('per-half-height') &&
+      currentWidget.offsetWidth === nextWidget.offsetWidth) {
+
+      // 创建一个新的容器来组合这两个组件
+      const combinedContainer = document.createElement('div');
+      combinedContainer.className = 'widget-grid';
+      combinedContainer.style.position = 'relative';
+      combinedContainer.style.height = '240px'; // 标准高度
+
+      // 将两个半高组件放入新容器
+      combinedContainer.appendChild(currentWidget.cloneNode(true));
+      combinedContainer.appendChild(nextWidget.cloneNode(true));
+
+      // 调整内部组件样式
+      const children = combinedContainer.children;
+      children[0].style.height = '50%';
+      children[0].style.width = '100%';
+      children[0].style.margin = '0';
+      children[1].style.height = '50%';
+      children[1].style.width = '100%';
+      children[1].style.margin = '0';
+
+      // 替换第一个组件
+      container.insertBefore(combinedContainer, currentWidget);
+
+      // 标记要移除的原组件
+      widgetsToRemove.add(currentWidget);
+      widgetsToRemove.add(nextWidget);
+
+      // 跳过下一个组件
+      i++;
+    }
+  }
+
+  // 移除原组件
+  widgetsToRemove.forEach(widget => {
+    widget.remove();
+  });
+}
+
+
+// 使用示例 - 在页面加载和窗口大小变化时调用
+window.addEventListener('load', () => {
+  fillGridGaps('widget-container');
+  combineHalfHeightWidgets('widget-container');
+});
+
+window.addEventListener('resize', () => {
+  fillGridGaps('widget-container');
+  combineHalfHeightWidgets('widget-container');
+});
 

@@ -927,7 +927,7 @@ body.has-bg #linkCard {
   align-content: flex-start;
   gap: 0px;
   padding: 20px;
-  width: 100%;
+  width: 110%;
   height: auto;
   box-sizing: border-box;
   min-height: 80vh;
@@ -963,23 +963,11 @@ body.has-bg #linkCard {
   height: 120px;
 }
 
-/* 两倍高度 Widget (240x480) */
-.per-double-height {
-  width: inherit;
-  height: 520px;
-}
-
 /* 两倍宽度 Widget (480x240) */
 .per-double-width {
   grid-column: span 2;
   width: 520px;
   height: inherit;
-}
-
-/* 两倍宽高 Widget (480x480) */
-.per-double-width-height {
-  width: 520px;
-  height: 520px;
 }
 
 /* Widget 内部样式 */
