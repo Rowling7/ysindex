@@ -337,6 +337,8 @@ function initDragSort() {
     if (!savedOrder) {
         console.log('No widgetOrder found in localStorage. Using default order.');
         localStorage.setItem('widgetOrder', JSON.stringify(defaultOrder));
+    }else {
+        console.log('widgetOrder found in localStorage.');
     }
 
     // 从 localStorage 读取保存的组件顺序
