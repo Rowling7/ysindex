@@ -14,8 +14,8 @@
   <script src="static/js/HeaderControler.js" defer></script> <!--头部栏部分控制-->
   <script src="static/js/DAWS.js" defer></script> <!--引擎选择和快捷方式动态响应-->
   <script src="static/js/BGeffects.js" id="bgeffects-js" defer></script>
-
   <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+  <script src="static/js/sortable.min.js"></script>
 </head>
 
 <body id="bodyId">
@@ -112,45 +112,45 @@
     <!-- 组件视图 (首页) -->
     <div id="widget-container" class="widget-view ">
       <!-- 时钟 -->
-      <div class="widget-grid">
+      <div class="widget-grid" id="widgetGgridClock">
         <div id="clockContainer"></div>
       </div>
       <!-- 日历 -->
-      <div class="widget-grid">
+      <div class="widget-grid" id="widgetGgridCalendar">
         <div id="calendarContainer"></div>
       </div>
       <!-- 天气 -->
-      <div class="widget-grid">
+      <div class="widget-grid" id="widgetGgridWeather">
         <div id="weatherContainer"></div>
       </div>
-      <div class="widget-grid per-half-width-height" style="background-color: antiquewhite;">
+      <div class="widget-grid per-half-width-height" style="background-color: antiquewhite;"  id="widgetGgridWeather2">
         <div id="weatherContainer2">2test</div>
       </div>
-      <div class="widget-grid per-double-width" style="height: 240px;background-color: antiquewhite;">
+      <div class="widget-grid per-double-width" style="height: 240px;background-color: antiquewhite;"id="widgetGgridWeather31">
         <div id="weatherContainer31">31test</div>
       </div>
-      <div class="widget-grid per-half-height" style="width: 240px;background-color: antiquewhite;">
+      <div class="widget-grid per-half-height" style="width: 240px;background-color: antiquewhite;"id="widgetGgridWeather21">
         <div id="weatherContainer21">21test</div>
       </div>
-      <div class="widget-grid per-half-height" style="width: 240px;background-color: antiquewhite;">
-        <div id="weatherContainer21">21test</div>
+      <div class="widget-grid per-half-height" style="width: 240px;background-color: antiquewhite;" id="widgetGgridWeather211">
+        <div id="weatherContainer211">211test</div>
       </div>
-      <div class="widget-grid per-half-width" style="height: 240px;background-color: antiquewhite;">
+      <div class="widget-grid per-half-width" style="height: 240px;background-color: antiquewhite;" id="widgetGgridWeather6">
         <div id="weatherContainer22">22test</div>
       </div>
 
 
 
       <!-- 随机一言-->
-      <div class="widget-grid per-double-width">
+      <div class="widget-grid per-double-width" id="widgetGgridHitokoto">
         <div id="customHitokotoContainer"></div>
       </div>
       <!-- 社畜倒计时 -->
-      <div class="widget-grid">
+      <div class="widget-grid" id="widgetGgridWorkTime">
         <div id="workTimeContainer"></div>
       </div>
       <!-- 收藏 -->
-      <div class="widget-grid">
+      <div class="widget-grid" id="widgetGgridShortcut">
         <div id="shortcutContainer"></div>
       </div>
     </div>

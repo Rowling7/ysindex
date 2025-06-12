@@ -43,7 +43,8 @@ const menuItems = [
         id: "BGeffectsItem",
         action: () => BGeffectsItem(),
     },
-    { text: "清除设置", id: "resetSettingsItem", action: () => resetSettingsItem() },
+    { text: "重置组件", id: "resetWidgetOrder", action: () => resetWidgetOrder() },
+    { text: "清除设置", id: "resetSettingsItem", action: () => resetSettingsItem() }
 ];
 
 // 动态生成菜单
@@ -124,6 +125,14 @@ function resetSettingsItem() {
 }
 // ============= 重置设置 ==============
 
+// ============= 重置组件顺序 ==============
+function resetWidgetOrder() {
+    // 清除组件顺序
+    localStorage.removeItem('widgetOrder');  // 组件顺序
+
+    window.location.href = window.location.href; // 重新加载当前页面
+}
+// ============= 重置组件顺序 ==============
 
 // dropdownItem 文本更新
 function updateButtonText() {

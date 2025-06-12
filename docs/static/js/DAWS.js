@@ -146,147 +146,265 @@ function updateColumns() {
  * @param {number} baseHeight - 基础组件的高度（px）
  */
 function fillGridGaps(containerId, baseWidth = 240, baseHeight = 240) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
+    const container = document.getElementById(containerId);
+    if (!container) return;
 
-  // 获取所有子组件
-  const widgets = Array.from(container.children);
-  if (widgets.length === 0) return;
+    // 获取所有子组件
+    const widgets = Array.from(container.children);
+    if (widgets.length === 0) return;
 
-  // 计算容器宽度
-  const containerWidth = container.clientWidth;
+    // 计算容器宽度
+    const containerWidth = container.clientWidth;
 
-  // 获取计算每行可以容纳的基础组件数量
-  const columns = Math.floor(containerWidth / baseWidth);
-  if (columns <= 1) return; // 单列布局不需要补齐
+    // 获取计算每行可以容纳的基础组件数量
+    const columns = Math.floor(containerWidth / baseWidth);
+    if (columns <= 1) return; // 单列布局不需要补齐
 
-  // 按位置分组行
-  const rows = [];
-  let currentRow = [];
-  let currentRowTop = null;
+    // 按位置分组行
+    const rows = [];
+    let currentRow = [];
+    let currentRowTop = null;
 
-  widgets.forEach(widget => {
-    const rect = widget.getBoundingClientRect();
-    if (currentRowTop === null || Math.abs(rect.top - currentRowTop) < 5) {
-      // 同一行
-      currentRow.push(widget);
-      currentRowTop = rect.top;
-    } else {
-      // 新行
-      rows.push(currentRow);
-      currentRow = [widget];
-      currentRowTop = rect.top;
+    widgets.forEach(widget => {
+        const rect = widget.getBoundingClientRect();
+        if (currentRowTop === null || Math.abs(rect.top - currentRowTop) < 5) {
+            // 同一行
+            currentRow.push(widget);
+            currentRowTop = rect.top;
+        } else {
+            // 新行
+            rows.push(currentRow);
+            currentRow = [widget];
+            currentRowTop = rect.top;
+        }
+    });
+
+    if (currentRow.length > 0) {
+        rows.push(currentRow);
     }
-  });
 
-  if (currentRow.length > 0) {
-    rows.push(currentRow);
-  }
+    // 遍历每一行（除了最后一行）
+    for (let i = 0; i < rows.length - 1; i++) {
+        const row = rows[i];
+        const nextRow = rows[i + 1];
 
-  // 遍历每一行（除了最后一行）
-  for (let i = 0; i < rows.length - 1; i++) {
-    const row = rows[i];
-    const nextRow = rows[i + 1];
+        // 计算当前行已占用的宽度
+        const usedWidth = row.reduce((sum, widget) => {
+            const rect = widget.getBoundingClientRect();
+            return sum + rect.width;
+        }, 0);
 
-    // 计算当前行已占用的宽度
-    const usedWidth = row.reduce((sum, widget) => {
-      const rect = widget.getBoundingClientRect();
-      return sum + rect.width;
-    }, 0);
+        // 计算剩余空间
+        const remainingWidth = containerWidth - usedWidth;
+        if (remainingWidth <= 0) continue;
 
-    // 计算剩余空间
-    const remainingWidth = containerWidth - usedWidth;
-    if (remainingWidth <= 0) continue;
+        // 从下一行查找可以放入剩余空间的组件
+        for (let j = 0; j < nextRow.length; j++) {
+            const widget = nextRow[j];
+            const rect = widget.getBoundingClientRect();
 
-    // 从下一行查找可以放入剩余空间的组件
-    for (let j = 0; j < nextRow.length; j++) {
-      const widget = nextRow[j];
-      const rect = widget.getBoundingClientRect();
+            // 检查组件是否可以放入剩余空间
+            if (rect.width <= remainingWidth) {
+                // 移动组件到当前行
+                container.insertBefore(widget, row[row.length - 1].nextSibling);
+                row.push(widget);
+                nextRow.splice(j, 1);
+                j--; // 因为删除了一个元素
 
-      // 检查组件是否可以放入剩余空间
-      if (rect.width <= remainingWidth) {
-        // 移动组件到当前行
-        container.insertBefore(widget, row[row.length - 1].nextSibling);
-        row.push(widget);
-        nextRow.splice(j, 1);
-        j--; // 因为删除了一个元素
-
-        // 更新剩余空间
-        remainingWidth -= rect.width;
-        if (remainingWidth <= 0) break;
-      }
+                // 更新剩余空间
+                remainingWidth -= rect.width;
+                if (remainingWidth <= 0) break;
+            }
+        }
     }
-  }
 }
 /**
  * 组合相同宽度且都是半高的相邻组件
  * @param {string} containerId - 容器元素的ID
  */
 function combineHalfHeightWidgets(containerId) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
+    const container = document.getElementById(containerId);
+    if (!container) return;
 
-  const widgets = Array.from(container.children);
-  if (widgets.length < 2) return;
+    const widgets = Array.from(container.children);
+    if (widgets.length < 2) return;
 
-  // 用于存储需要移除的组件
-  const widgetsToRemove = new Set();
+    // 用于存储需要移除的组件
+    const widgetsToRemove = new Set();
 
-  for (let i = 0; i < widgets.length - 1; i++) {
-    const currentWidget = widgets[i];
-    const nextWidget = widgets[i + 1];
+    for (let i = 0; i < widgets.length - 1; i++) {
+        const currentWidget = widgets[i];
+        const nextWidget = widgets[i + 1];
 
-    // 检查两个组件是否都是半高且相同宽度的
-    if (currentWidget.classList.contains('per-half-height') &&
-      nextWidget.classList.contains('per-half-height') &&
-      currentWidget.offsetWidth === nextWidget.offsetWidth) {
+        // 检查两个组件是否都是半高且相同宽度的
+        if (currentWidget.classList.contains('per-half-height') &&
+            nextWidget.classList.contains('per-half-height') &&
+            currentWidget.offsetWidth === nextWidget.offsetWidth) {
 
-      // 创建一个新的容器来组合这两个组件
-      const combinedContainer = document.createElement('div');
-      combinedContainer.className = 'widget-grid';
-      combinedContainer.style.position = 'relative';
-      combinedContainer.style.height = '240px'; // 标准高度
+            // 生成组合ID
+            const combinedId = generateCombinedId(currentWidget.id, nextWidget.id);
 
-      // 将两个半高组件放入新容器
-      combinedContainer.appendChild(currentWidget.cloneNode(true));
-      combinedContainer.appendChild(nextWidget.cloneNode(true));
+            // 创建一个新的容器来组合这两个组件
+            const combinedContainer = document.createElement('div');
+            combinedContainer.className = 'widget-grid';
+            combinedContainer.id = combinedId; // 设置组合ID
+            combinedContainer.style.position = 'relative';
+            combinedContainer.style.height = '240px'; // 标准高度
 
-      // 调整内部组件样式
-      const children = combinedContainer.children;
-      children[0].style.height = '50%';
-      children[0].style.width = '100%';
-      children[0].style.margin = '0';
-      children[1].style.height = '50%';
-      children[1].style.width = '100%';
-      children[1].style.margin = '0';
+            // 将两个半高组件放入新容器
+            combinedContainer.appendChild(currentWidget.cloneNode(true));
+            combinedContainer.appendChild(nextWidget.cloneNode(true));
 
-      // 替换第一个组件
-      container.insertBefore(combinedContainer, currentWidget);
+            // 调整内部组件样式
+            const children = combinedContainer.children;
+            children[0].style.height = '50%';
+            children[0].style.width = '100%';
+            children[0].style.margin = '0';
+            children[1].style.height = '50%';
+            children[1].style.width = '100%';
+            children[1].style.margin = '0';
 
-      // 标记要移除的原组件
-      widgetsToRemove.add(currentWidget);
-      widgetsToRemove.add(nextWidget);
+            // 替换第一个组件
+            container.insertBefore(combinedContainer, currentWidget);
 
-      // 跳过下一个组件
-      i++;
+            // 标记要移除的原组件
+            widgetsToRemove.add(currentWidget);
+            widgetsToRemove.add(nextWidget);
+
+            // 跳过下一个组件
+            i++;
+        }
     }
-  }
 
-  // 移除原组件
-  widgetsToRemove.forEach(widget => {
-    widget.remove();
-  });
+    // 移除原组件
+    widgetsToRemove.forEach(widget => {
+        widget.remove();
+    });
 }
+/**
+ * 生成组合ID (驼峰命名法)
+ * @param {string} id1 - 第一个组件ID
+ * @param {string} id2 - 第二个组件ID
+ * @returns {string} 组合后的ID
+ */
+function generateCombinedId(id1, id2) {
+    if (!id1 && !id2) return '';
 
+    // 处理空ID情况
+    const part1 = id1 || 'widget';
+    const part2 = id2 || 'widget';
+
+    // 转换为驼峰命名
+    return part1.toLowerCase() +
+        part2.charAt(0).toUpperCase() +
+        part2.slice(1).toLowerCase();
+}
 
 // 使用示例 - 在页面加载和窗口大小变化时调用
 window.addEventListener('load', () => {
-  fillGridGaps('widget-container');
-  combineHalfHeightWidgets('widget-container');
+    fillGridGaps('widget-container');
+    combineHalfHeightWidgets('widget-container');
 });
 
 window.addEventListener('resize', () => {
-  fillGridGaps('widget-container');
-  combineHalfHeightWidgets('widget-container');
+    fillGridGaps('widget-container');
+    combineHalfHeightWidgets('widget-container');
 });
 
+
+//------------ 组件拖拽排序功能 -----开始
+/**
+ * 初始化拖拽排序功能
+ */
+function initDragSort() {
+    const container = document.getElementById('widget-container');
+    if (!container) return;
+
+    // 从 localStorage 读取保存的组件顺序
+    const savedOrder = localStorage.getItem('widgetOrder');
+    if (savedOrder) {
+        try {
+            const order = JSON.parse(savedOrder);
+            reorderWidgets(container, order);
+        } catch (e) {
+            console.error('Failed to parse saved widget order:', e);
+        }
+    }
+
+    // 初始化 SortableJS
+    new Sortable(container, {
+        animation: 150,
+        ghostClass: 'sortable-ghost',
+        chosenClass: 'sortable-chosen',
+        dragClass: 'sortable-drag',
+        onEnd: function (evt) {
+            saveWidgetOrder(container);
+        }
+    });
+}
+
+/**
+ * 保存组件顺序到 localStorage
+ * @param {HTMLElement} container 
+ */
+function saveWidgetOrder(container) {
+    const order = Array.from(container.children).map(widget => widget.id);
+    localStorage.setItem('widgetOrder', JSON.stringify(order));
+}
+
+/**
+ * 根据保存的顺序重新排列组件
+ * @param {HTMLElement} container 
+ * @param {Array} order 
+ */
+function reorderWidgets(container, order) {
+    // 创建一个 id 到元素的映射
+    const idMap = {};
+    Array.from(container.children).forEach(widget => {
+        idMap[widget.id] = widget;
+    });
+
+    // 按照保存的顺序重新排列
+    order.forEach(id => {
+        const widget = idMap[id];
+        if (widget) {
+            container.appendChild(widget);
+        }
+    });
+}
+
+// 在页面加载时初始化拖拽功能
+window.addEventListener('load', () => {
+    initDragSort();
+    // 确保其他布局函数在拖拽初始化后运行
+    setTimeout(() => {
+        fillGridGaps('widget-container');
+        combineHalfHeightWidgets('widget-container');
+    }, 100);
+});
+
+// 添加一些基本样式
+const style = document.createElement('style');
+style.textContent = `
+    .sortable-ghost {
+        opacity: 0.5;
+        background: #c8ebfb;
+    }
+    .sortable-chosen {
+        opacity: 0.8;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    .sortable-drag {
+        opacity: 1!important;
+        outline: 2px dashed #4CAF50;
+    }
+    .widget-grid {
+        cursor: move;
+        transition: transform 0.2s ease;
+    }
+    .widget-grid:active {
+        cursor: grabbing;
+    }
+`;
+document.head.appendChild(style);
+//------------ 组件拖拽排序功能 -----结束
