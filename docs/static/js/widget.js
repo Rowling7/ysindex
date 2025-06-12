@@ -617,7 +617,7 @@ class CalendarWidget {
   constructor(options = {}) {
     this.containerId = options.containerId || 'calendarContainer';
     this.date = new Date();
-    this.calendarGrid = 35; // 7 * 6 grid
+    this.calendarGrid = 35; // 7 * 5 grid
     this.init();
   }
 
@@ -709,7 +709,7 @@ class CalendarWidget {
     const day = this.date.getDate();
 
     // 更新标题显示年月
-    if (title) title.innerText = `${year}-${month}`;
+    if (title) title.innerText = `${year}-${month.toString().padStart(2, '0')}`;
 
     const content = document.getElementById('content');
     if (!content) return;
@@ -719,21 +719,48 @@ class CalendarWidget {
       const fragment = document.createDocumentFragment();
       calendarData.forEach(item => {
         const button = document.createElement('button');
-        const dateString = `${item.year}/${item.month}/${item.day}`;
+        const dateStr = `${item.year}-${item.month.toString().padStart(2, '0')}-${item.day.toString().padStart(2, '0')}`;
+        const dateObj = new Date(`${item.year}/${item.month}/${item.day}`);
+        const isWeekend = dateObj.getDay() === 0 || dateObj.getDay() === 6;
+        const dateType = this.getDateType(dateStr);
 
-        button.setAttribute('date', dateString);
+        button.setAttribute('date', `${item.year}/${item.month}/${item.day}`);
         button.innerText = item.day;
 
-        // 设置样式类：非当前月显示灰色，当前日期高亮
-        if (!item.isCurrentMonth) button.classList.add('grey');
+        // 设置基本样式类
+        if (!item.isCurrentMonth) {
+          if (dateType === 'public_holiday') {
+            button.classList.add('other-month-holiday');
+          } else {
+            button.classList.add('grey');
+          }
+        }
+
+        // 按照优先级设置特殊日期样式
+        if (dateType === 'transfer_workday') {
+          button.classList.add('transfer-workday');
+        } else if (dateType === 'public_holiday') {
+          button.classList.add('public-holiday');
+        } else if (isWeekend) {
+          button.classList.add('weekend');
+        }
+
+        // 设置当前选中日期和今天样式
         if (item.day === day && item.month === month) {
-          button.classList.add('selected', 'today');
+          button.classList.add('selected');
+
+          // 如果是今天则额外添加today类
+          const today = new Date();
+          if (today.getDate() === item.day &&
+            today.getMonth() + 1 === month &&
+            today.getFullYear() === year) {
+            button.classList.add('today');
+          }
         }
 
         // 添加日期选择事件
         button.addEventListener('click', () => {
           this.selectDate(button);
-          console.log(dateString);
         });
 
         fragment.appendChild(button);
@@ -745,23 +772,44 @@ class CalendarWidget {
         const button = content.children[idx];
         if (!button) return;
 
+        const dateStr = `${item.year}-${item.month.toString().padStart(2, '0')}-${item.day.toString().padStart(2, '0')}`;
+        const dateObj = new Date(`${item.year}/${item.month}/${item.day}`);
+        const isWeekend = dateObj.getDay() === 0 || dateObj.getDay() === 6;
+        const dateType = this.getDateType(dateStr);
+
         // 重置样式并更新显示文本
         button.className = '';
         button.innerText = item.day;
 
-        // 设置样式类：非当前月显示灰色，当前日期高亮
-        if (!item.isCurrentMonth) button.classList.add('grey');
-        if (item.day === day && item.month === month) {
-          button.classList.add('selected');
+        // 设置基本样式类
+        if (!item.isCurrentMonth) {
+          if (dateType === 'public_holiday') {
+            button.classList.add('other-month-holiday');
+          } else {
+            button.classList.add('grey');
+          }
         }
 
-        // 如果是今天则添加today类
-        const today = new Date();
-        if (today.getMonth() + 1 === month &&
-          today.getFullYear() === year &&
-          today.getDate() === item.day &&
-          item.isCurrentMonth) {
-          button.classList.add('today');
+        // 按照优先级设置特殊日期样式
+        if (dateType === 'transfer_workday') {
+          button.classList.add('transfer-workday');
+        } else if (dateType === 'public_holiday') {
+          button.classList.add('public-holiday');
+        } else if (isWeekend) {
+          button.classList.add('weekend');
+        }
+
+        // 设置当前选中日期和今天样式
+        if (item.day === day && item.month === month) {
+          button.classList.add('selected');
+
+          // 如果是今天则额外添加today类
+          const today = new Date();
+          if (today.getDate() === item.day &&
+            today.getMonth() + 1 === month &&
+            today.getFullYear() === year) {
+            button.classList.add('today');
+          }
         }
       });
     }
@@ -799,9 +847,11 @@ class CalendarWidget {
     this.renderCalendar();
   }
 
-  init() {
+  async init() {
     const container = document.getElementById(this.containerId);
     if (!container) return;
+    // 加载节假日数据
+    await this.loadHolidayData();
 
     // 注入HTML结构
     container.innerHTML = `
@@ -812,16 +862,16 @@ class CalendarWidget {
                     <button class="right">></button>
                 </div>
                 <h4 id="title"></h4>
-                <button class="skipToToday">跳至今天</button>
+                <button class="skipToToday">今天</button>
                 </div>
-                <div class="week">
-                <li>日</li>
+                <div class="week" style="    margin-top: 2px;">
+                <li class="weekend">日</li>
                 <li>一</li>
                 <li>二</li>
                 <li>三</li>
                 <li>四</li>
                 <li>五</li>
-                <li>六</li>
+                <li class="weekend">六</li>
                 </div>
                 <div id="content"></div>
             </div>
@@ -852,7 +902,34 @@ class CalendarWidget {
             border-radius: 16px;
             padding: 19px;
             background: var(--card-bg);
+            font-weight: normal;
         }
+
+         /* 跨月节假日的浅红色样式 */
+          .other-month-holiday {
+              color: rgba(255, 0, 0, 0.5) !important;
+          }
+
+          /* 跨月普通日期的浅黑色样式 */
+          .grey {
+              color: rgba(0, 0, 0, 0.3) !important;
+          }
+          /* 周末样式 */
+          .weekend {
+            color: red  !important;
+          }
+
+          /* 节假日样式 */
+          .public-holiday {
+            color: red !important; /* 强制覆盖其他颜色 */
+            font-weight: bold !important
+          }
+
+          /* 调休工作日样式 */
+          .transfer-workday {
+            color: black !important;
+            font-weight: bold !important;
+          }
 
         .header {
             display: flex;
@@ -945,7 +1022,23 @@ class CalendarWidget {
       this.date = new Date();
       this.renderCalendar();
     });
+
   }
+  async loadHolidayData() {
+    try {
+      const response = await fetch('static/data/2025.json');
+      this.holidays = await response.json();
+    } catch (error) {
+      console.error('加载节假日数据失败:', error);
+      this.holidays = { dates: [] };
+    }
+  }
+
+  getDateType(dateStr) {
+    const holiday = this.holidays.dates.find(d => d.date === dateStr);
+    return holiday ? holiday.type : null;
+  }
+
 }
 
 
