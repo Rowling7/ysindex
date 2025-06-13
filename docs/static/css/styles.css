@@ -1,3 +1,13 @@
+.version-info {
+  position: fixed;
+  left: 10px;
+  bottom: 5px;
+  color: #888;
+  font-size: 12px;
+  z-index: 100;
+  user-select: none;
+}
+
 html {
   height: 100%;
   margin: 0;
