@@ -43,8 +43,8 @@ class PopupWidget {
 
       .popup-container {
         position: relative;
-        width: ${this.options.fullCover ? '95%' : '80%'};
-        height: ${this.options.fullCover ? '95%' : '80%'};
+        width: ${this.options.fullCover ? '80%' : '70%'};
+        height: ${this.options.fullCover ? '80%' : '70%'};
         background-color: var(--card-bg);
         border-radius: 8px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
@@ -194,8 +194,8 @@ class PopupWidget {
   toggleMaximize() {
     const container = this.popupElement.querySelector('.popup-container');
     if (container.style.width === '100%') {
-      container.style.width = this.options.fullCover ? '95%' : '80%';
-      container.style.height = this.options.fullCover ? '95%' : '80%';
+      container.style.width = this.options.fullCover ? '80%' : '70%';
+      container.style.height = this.options.fullCover ? '80%' : '70%';
       container.style.borderRadius = '8px';
     } else {
       container.style.width = '100%';
