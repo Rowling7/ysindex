@@ -155,31 +155,30 @@
   </div>
 
   <script>
-    // 初始化组件
-    new WeatherWidget({
-      containerId: 'weatherContainer' // 容器ID
-    });
-    // 初始化快捷方式组件
-    new ShortcutWidget({
-      containerId: 'shortcutContainer'
-    });
-    // 初始化日历插件
-    new CalendarWidget({
-      containerId: 'calendarContainer' // 容器ID
-    });
-    // 初始化时钟
-    new ClockWidget({
-      containerId: 'clockContainer',
-      use24HourFormat: true // 可选，默认true
-    });
-    // 初始化射出倒计时
-    new WorkTimeWidget({
-      containerId: 'workTimeContainer'
-    });
-    //  初始化随机一言
-    new HitokotoWidget({
-      containerId: 'customHitokotoContainer'
-    });
+    // 统一初始化函数
+    function initWidget(WidgetClass, options) {
+      try {
+        if (!WidgetClass) {
+          console.error(`Widget class ${WidgetClass?.name || 'unknown'} is not defined`);
+          return;
+        }
+        if (!document.getElementById(options.containerId)) {
+          console.error(`Container element #${options.containerId} not found`);
+          return;
+        }
+        new WidgetClass(options);
+      } catch (e) {
+        console.error(`Failed to initialize ${WidgetClass?.name || 'unknown'} widget:`, e);
+      }
+    }
+
+    // 初始化所有组件
+    initWidget(WeatherWidget, { containerId: 'weatherContainer' });
+    initWidget(ShortcutWidget, { containerId: 'shortcutContainer' });
+    initWidget(CalendarWidget, { containerId: 'calendarContainer' });
+    initWidget(ClockWidget, { containerId: 'clockContainer', use24HourFormat: true });
+    initWidget(WorkTimeWidget, { containerId: 'workTimeContainer' });
+    initWidget(HitokotoWidget, { containerId: 'customHitokotoContainer' });
   </script>
 </body>
 <!-- 版本信息 -->

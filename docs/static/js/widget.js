@@ -2123,11 +2123,13 @@ class HitokotoWidget {
 }
 
 
-//  导出组件
+// 导出组件
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-  module.exports = PopupWidget;
-  module.exports = WeatherWidget;
-  module.exports = WorkTimeWidget;
+  module.exports = {
+    PopupWidget,
+    WeatherWidget,
+    WorkTimeWidget
+  };
 } else {
   window.PopupWidget = PopupWidget;
   window.WeatherWidget = WeatherWidget;
