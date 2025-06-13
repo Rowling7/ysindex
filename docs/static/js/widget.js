@@ -1,3 +1,224 @@
+// 新增的 PopupWidget 类
+class PopupWidget {
+  constructor(options = {}) {
+    // 默认配置
+    this.defaultOptions = {
+      containerId: null,      // 必须指定挂载容器ID
+      title: '弹窗标题',      // 弹窗标题
+      content: '',           // 弹窗内容
+      darkMode: false,        // 是否暗黑模式
+      fullCover: true        // 是否完全覆盖容器
+    };
+
+    // 合并配置
+    this.options = { ...this.defaultOptions, ...options };
+
+    // 注入样式
+    this.injectStyles();
+
+    // 初始化弹窗
+    this.init();
+  }
+
+  injectStyles() {
+    const styleId = 'popupWidgetStyles';
+    if (document.getElementById(styleId)) return;
+
+    const style = document.createElement('style');
+    style.id = styleId;
+    style.textContent = `
+      .popup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .popup-container {
+        position: relative;
+        width: ${this.options.fullCover ? '95%' : '80%'};
+        height: ${this.options.fullCover ? '95%' : '80%'};
+        background-color: var(--card-bg);
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .popup-header {
+        padding: 12px 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--header-bg);
+        border-bottom: 1px solid var(--border-color);
+        flex-shrink: 0;
+      }
+
+      .popup-title {
+        font-size: 16px;
+        font-weight: bold;
+        color: var(--text-color);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .popup-controls {
+        display: flex;
+        gap: 8px;
+        flex-shrink: 0;
+      }
+
+      .popup-btn {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        font-size: 14px;
+        line-height: 1;
+      }
+
+      .popup-btn.close {
+        background-color: #ff5f56;
+      }
+
+      .popup-btn.maximize {
+        background-color: #ffbd2e;
+      }
+
+      .popup-btn:hover {
+        filter: brightness(0.9);
+      }
+
+      .popup-body {
+        flex: 1;
+        padding: 16px;
+        overflow: auto;
+        color: var(--text-color);
+      }
+
+      /* 暗黑模式适配 */
+      .dark-mode .popup-container {
+        background-color: #2c2c2c;
+      }
+
+      .dark-mode .popup-header {
+        background-color: #1e1e1e;
+        border-bottom-color: #444;
+      }
+
+      /* 确保弹窗在最上层 */
+      .popup-overlay {
+        z-index: 9999 !important;
+      }
+
+      /* 防止被其他样式影响 */
+      .popup-container * {
+        box-sizing: border-box;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  init() {
+    if (!this.options.containerId) {
+      console.error('PopupWidget: 必须指定containerId');
+      return;
+    }
+
+    const container = document.getElementById(this.options.containerId);
+    if (!container) {
+      console.error(`PopupWidget: 容器 ${this.options.containerId} 不存在`);
+      return;
+    }
+
+    // 创建弹窗结构
+    this.popupElement = document.createElement('div');
+    this.popupElement.className = 'popup-overlay';
+    this.popupElement.innerHTML = `
+      <div class="popup-container ${this.options.darkMode ? 'dark-mode' : ''}">
+        <div class="popup-header">
+          <div class="popup-title">${this.options.title}</div>
+          <div class="popup-controls">
+            <button class="popup-btn maximize">□</button>
+            <button class="popup-btn close">×</button>
+          </div>
+        </div>
+        <div class="popup-body">${this.options.content}</div>
+      </div>
+    `;
+
+    // 直接添加到body而不是容器，确保全屏覆盖
+    document.body.appendChild(this.popupElement);
+
+    // 绑定事件
+    this.bindEvents();
+  }
+
+  bindEvents() {
+    // 关闭按钮
+    this.popupElement.querySelector('.popup-btn.close').addEventListener('click', () => {
+      this.close();
+    });
+
+    // 最大化按钮
+    this.popupElement.querySelector('.popup-btn.maximize').addEventListener('click', () => {
+      this.toggleMaximize();
+    });
+
+    // 阻止事件冒泡
+    this.popupElement.querySelector('.popup-container').addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    // 点击背景关闭弹窗
+    this.popupElement.addEventListener('click', () => {
+      this.close();
+    });
+  }
+
+  toggleMaximize() {
+    const container = this.popupElement.querySelector('.popup-container');
+    if (container.style.width === '100%') {
+      container.style.width = this.options.fullCover ? '95%' : '80%';
+      container.style.height = this.options.fullCover ? '95%' : '80%';
+      container.style.borderRadius = '8px';
+    } else {
+      container.style.width = '100%';
+      container.style.height = '100%';
+      container.style.borderRadius = '0';
+    }
+  }
+
+  updateContent(newContent) {
+    const body = this.popupElement.querySelector('.popup-body');
+    if (body) {
+      body.innerHTML = newContent;
+    }
+  }
+
+  close() {
+    if (this.popupElement && this.popupElement.parentNode) {
+      this.popupElement.parentNode.removeChild(this.popupElement);
+    }
+  }
+}
+
+
 // WeatherWidget
 class WeatherWidget {
   constructor(options = {}) {
@@ -845,6 +1066,37 @@ class CalendarWidget {
       this.date.setFullYear(newYear);
     }
     this.renderCalendar();
+
+    console.log("containerid：", this.containerId);
+    // 显示弹窗
+    const popup = new PopupWidget({
+      containerId: this.containerId,
+      title: `${year}年${month}月${newDay}日`,
+      content: `
+            <div id="calendar">
+                <div class="header">
+                <div class="btn-group">
+                    <button class="left"><</button>
+                    <button class="right">></button>
+                </div>
+                <h4 id="title"></h4>
+                <button class="skipToToday">今天</button>
+                </div>
+                <div class="week" style="    margin-top: 2px;">
+                <li class="weekend">日</li>
+                <li>一</li>
+                <li>二</li>
+                <li>三</li>
+                <li>四</li>
+                <li>五</li>
+                <li class="weekend">六</li>
+                </div>
+                <div id="content"></div>
+            </div>
+    `,
+      darkMode: true
+    });
+
   }
 
   async init() {
@@ -1873,9 +2125,11 @@ class HitokotoWidget {
 
 //  导出组件
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+  module.exports = PopupWidget;
   module.exports = WeatherWidget;
   module.exports = WorkTimeWidget;
 } else {
+  window.PopupWidget = PopupWidget;
   window.WeatherWidget = WeatherWidget;
   window.WorkTimeWidget = WorkTimeWidget;
 }

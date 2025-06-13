@@ -195,7 +195,7 @@ function fillGridGaps(containerId, baseWidth = 240, baseHeight = 240) {
         }, 0);
 
         // 计算剩余空间
-        const remainingWidth = containerWidth - usedWidth;
+        let remainingWidth = containerWidth - usedWidth;
         if (remainingWidth <= 0) continue;
 
         // 从下一行查找可以放入剩余空间的组件
@@ -206,7 +206,12 @@ function fillGridGaps(containerId, baseWidth = 240, baseHeight = 240) {
             // 检查组件是否可以放入剩余空间
             if (rect.width <= remainingWidth) {
                 // 移动组件到当前行
-                container.insertBefore(widget, row[row.length - 1].nextSibling);
+                const lastInRow = row[row.length - 1];
+                if (lastInRow && lastInRow.nextSibling) {
+                    container.insertBefore(widget, lastInRow.nextSibling);
+                } else {
+                    container.appendChild(widget); // 如果没有nextSibling，直接追加到最后
+                }
                 row.push(widget);
                 nextRow.splice(j, 1);
                 j--; // 因为删除了一个元素
@@ -337,7 +342,7 @@ function initDragSort() {
     if (!savedOrder) {
         console.log('No widgetOrder found in localStorage. Using default order.');
         localStorage.setItem('widgetOrder', JSON.stringify(defaultOrder));
-    }else {
+    } else {
         console.log('widgetOrder found in localStorage.');
     }
 
