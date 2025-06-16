@@ -42,10 +42,10 @@ class PopupWidget {
 
       .popup-container {
         position: relative;
-        width: 60vw;  
-        height: 60vh; 
-        max-width: 1040px; 
-        max-height: 540px; 
+        width: 60vw;
+        height: 60vh;
+        max-width: 1040px;
+        max-height: 540px;
         background-color: var(--bg-color);
         border-radius: 8px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
@@ -263,8 +263,8 @@ class WeatherWidget {
 
       /* 天气图标 */
       #weatherimg {
-        width: 40px;
-        height: 40px;
+        width: 80px;
+        height: 80px;
         filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
       }
 
@@ -1017,7 +1017,7 @@ class CalendarWidget {
 
     // 注入HTML结构
     container.innerHTML = `
-            <div id="calendar">
+            <div id="calendarWidget">
                 <div class="header">
                 <div class="btn-group">
                     <button class="left"><</button>
@@ -1042,20 +1042,21 @@ class CalendarWidget {
     // 注入CSS
     const style = document.createElement('style');
     style.textContent = `
-    @font-face {
-        font-family: 'CustomSans';
-        src: url('static/fonts/NotoSansSC-Regular.woff2') format('woff2');
-        font-weight: normal;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: 'CustomSans';
-        src: url('static/fonts/NotoSansSC-Bold.woff2') format('woff2');
-        font-weight: bold;
-        font-display: swap;
-      }
-        #calendar {
-            color: var(#ecf0f1);
+          @font-face {
+            font-family: 'CustomSans';
+            src: url('static/fonts/NotoSansSC-Regular.woff2') format('woff2');
+            font-weight: normal;
+            font-display: swap;
+          }
+
+          @font-face {
+            font-family: 'CustomSans';
+            src: url('static/fonts/NotoSansSC-Bold.woff2') format('woff2');
+            font-weight: bold;
+            font-display: swap;
+          }
+
+          #calendarWidget {
             font-family: 'CustomSans', sans-serif;
             box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
@@ -1065,25 +1066,28 @@ class CalendarWidget {
             padding: 19px;
             background: var(--card-bg);
             font-weight: normal;
-        }
+            color: var(--text-color);
+          }
 
-         /* 跨月节假日的浅红色样式 */
+          /* 跨月节假日的浅红色样式 */
           .other-month-holiday {
-              color: rgba(255, 0, 0, 0.5) !important;
+            color: rgba(255, 0, 0, 0.5) !important;
           }
 
           /* 跨月普通日期的浅黑色样式 */
           .grey {
-              color: rgba(0, 0, 0, 0.3) !important;
+            color: rgba(0, 0, 0, 0.3) !important;
           }
+
           /* 周末样式 */
           .weekend {
-            color: red  !important;
+            color: red !important;
           }
 
           /* 节假日样式 */
           .public-holiday {
-            color: red !important; /* 强制覆盖其他颜色 */
+            color: red !important;
+            /* 强制覆盖其他颜色 */
             font-weight: bold !important
           }
 
@@ -1093,51 +1097,50 @@ class CalendarWidget {
             font-weight: bold !important;
           }
 
-        .header {
+          .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: #333;
-        }
+          }
 
-        .header h4 {
+          .header h4 {
             margin: 0;
             font-size: 1.2rem;
             font-weight: 500;
-            color: var(--text-color);
-        }
+          }
 
-        .header button {
+          .header button {
             background: var(--option-color);
             border: none;
             padding: 6px 8px;
             border-radius: 20px;
             cursor: pointer;
             transition: all 0.3s ease;
-            color: var(--text-color);
-        }
 
-        .header button:hover {
+          }
+
+          .header button:hover {
             background: var(--hover-bg);
-        }
+          }
 
-        .week {
+          .week {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             text-align: center;
-            color: var(--text-color);
             font-size: 0.9rem;
-        }
-        .week li::marker {
-          content: none;
-        }
-        #content {
-        margin-left: -4px;
+          }
+
+          .week li::marker {
+            content: none;
+          }
+
+          #content {
+            margin-left: -4px;
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-        }
+          }
 
-        #content button {
+          #content button {
             aspect-ratio: 1;
             display: flex;
             align-items: center;
@@ -1147,30 +1150,30 @@ class CalendarWidget {
             border-radius: 50%;
             cursor: pointer;
             transition: all 0.3s ease;
-            color: var(--text-color);
             font-family: 'CustomSans', sans-serif;
             font-size: 0.95rem;
             padding: 1px 6px;
-        }
+            color: inherit;
+          }
 
-        #content button:hover {
+          #content button:hover {
             background: var(--hover-bg);
-        }
+          }
 
-        #content button.today {
+          #content button.today {
             font-weight: bold;
             color: var(--underline-color);
-        }
+          }
 
-        #content button.selected {
+          #content button.selected {
             background: var(--underline-color);
             color: var(--button-text) !important;
-        }
+          }
 
-        #content button.grey {
+          #content button.grey {
             color: var(--border-color);
             opacity: 0.7;
-        }
+          }
         `;
     document.head.appendChild(style);
 
@@ -1247,7 +1250,7 @@ class ShortcutWidget {
         height: 240px ;
         border-radius: 16px;
         padding: 19px;
-        background: var(--card-bg) !important;
+        background: var(--card-bg);
         color: var(#ecf0f1);
         font-family: 'Noto Sans SC', sans-serif;
         box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
@@ -1268,7 +1271,6 @@ class ShortcutWidget {
         justify-content: center;
         transition: all 0.3s ease;
         border-radius: 8px;
-        background-color: rgba(255, 255, 255, 0.1);
       }
       .shortcut-icon:hover {
         background-color: rgba(255, 255, 255, 0.2);
@@ -1353,7 +1355,7 @@ class ClockWidget {
         height: 240px;
         border-radius: 16px;
         padding: 19px;
-        background: var(--card-bg) !important;
+        background: var(--card-bg) ;
         color: var(--text-color);
         font-family: 'CustomSans', sans-serif;
         font-weight: bold;
@@ -1392,8 +1394,6 @@ class ClockWidget {
 
       .seconds {
         font-size: 36px;
-        color: var(--text-color);
-
       }
 
       .highlight-seven {
@@ -1584,7 +1584,7 @@ class WorkTimeWidget {
         height: 240px;
         border-radius: 16px;
         padding: 19px;
-        background: var(--card-bg) !important;
+        background: var(--card-bg);
         color: var(--text-color);
         font-family: 'CustomSans', sans-serif;
         box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
@@ -1955,7 +1955,6 @@ class HitokotoWidget {
         height: 240px;
         border-radius: 16px;
         padding: 19px;
-        background: var(--card-bg) !important;
         color: ${this.options.textColor};
         font-family: 'CustomSans', sans-serif;
         box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
@@ -1968,6 +1967,9 @@ class HitokotoWidget {
         box-sizing: border-box;
         overflow: hidden;
         text-align: center;
+        background-image: url(static/background/bg006.png);
+        background-position: center;
+        background-size: cover;
       }
 
       #hitokoto {
@@ -2018,7 +2020,7 @@ class HitokotoWidget {
     }
 
     container.innerHTML = `
-    <div id="hitokotoWidget" >
+    <div id="hitokotoWidget">
         <p id="hitokoto">
           <a href="#" id="hitokoto_text" style="z-index=1;">生气的本质就是在和自己的预期较劲</a>
         </p>

@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
         canvasContainer.style.display = isVisible ? 'none' : 'block';
     }
     // 读取存储的状态（默认不显示壁纸）
-    const isEnabled = localStorage.getItem("wallpaperEnabled") === "true";
+    const iswallpaperEnabled = localStorage.getItem("wallpaperEnabled") === "false";
     const body = document.body;
-    if (isEnabled) {
+    if (iswallpaperEnabled) {
         body.style.backgroundImage = "url(https://bing.ee123.net/img/)";
         body.style.backgroundRepeat = "no-repeat";
         body.style.backgroundSize = "cover";
@@ -43,6 +43,7 @@ const menuItems = [
         id: "BGeffectsItem",
         action: () => BGeffectsItem(),
     },
+    { text: "高斯模糊", id: "gaussianBlur", action: () => gaussianBlur() },
     { text: "重置组件", id: "resetWidgetOrder", action: () => resetWidgetOrder() },
     { text: "清除设置", id: "resetSettingsItem", action: () => resetSettingsItem() }
 ];
@@ -66,23 +67,32 @@ document.getElementById("settingsBtn").addEventListener("click", function (e) {
     updateButtonText(); // 每次打开菜单时同步文本
 });
 
-// ================= 暗黑模式 =================
+
+/**
+*
+*  暗黑模式切换
+*
+*/
 function toggleTheme() {
     document.body.classList.toggle('dark-mode');
     const isDark = document.body.classList.contains('dark-mode');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
 }
-// ================= 暗黑模式 =================
 
-// ============= 壁纸背景启用禁用 ==============
+
+/**
+*
+*  壁纸背景切换
+*
+*/
 function isWallpaperEnabled() {
     return document.body.classList.contains("has-bg");
 }
 function changeBgImage() {
     const body = document.body;
-    const isEnabled = localStorage.getItem("wallpaperEnabled") === "true"; //网页加载时，默认添加false,且不随手动设置壁纸改变 在LocalStorage中存储// 读取背景图片 部分设置
+    const iswallpaperEnabled = localStorage.getItem("wallpaperEnabled") === "true"; //网页加载时，默认添加false,且不随手动设置壁纸改变 在LocalStorage中存储// 读取背景图片 部分设置
     // 切换背景图状态 且不影响手动设置壁纸状态
-    if (!isEnabled) {
+    if (!iswallpaperEnabled) {
         body.style.backgroundImage = "url(https://bing.ee123.net/img/)";
         body.style.backgroundRepeat = "no-repeat"; // 修正属性名和值格式
         body.style.backgroundSize = "cover"; // 修正属性名和值格式
@@ -95,11 +105,13 @@ function changeBgImage() {
         window.location.href = window.location.href; // 重新加载当前页面
     }
 }
-// ============= 壁纸背景启用禁用 ==============
 
 
-// ============= 背景特效隐藏显示 ==============
-// 背景特效状态存储
+/**
+*
+*  背景特效切换
+*
+*/
 function BGeffectsItem() {
     const canvasContainer = document.querySelector('.canvas-container');
     if (canvasContainer) {
@@ -109,9 +121,12 @@ function BGeffectsItem() {
         localStorage.setItem('bgEffectsVisible', !isVisible); // 存储新状态
     }
 }
-// ============= 背景特效隐藏显示 ==============
 
-// ============= 重置设置 ==============
+/**
+*
+*  重置设置
+*
+*/
 function resetSettingsItem() {
     // 清除所有相关存储项
     localStorage.removeItem('bgEffectsVisible');// 背景特效状态
@@ -120,21 +135,74 @@ function resetSettingsItem() {
     localStorage.removeItem('selectedBackground');  // 背景图片
     localStorage.removeItem('simpleModeState'); // 简易模式状态
     localStorage.removeItem('hoverState');  // hover状态
+    localStorage.removeItem('gaussianBlur'); // 高斯模糊状态
 
     window.location.href = window.location.href; // 重新加载当前页面
 }
-// ============= 重置设置 ==============
 
-// ============= 重置组件顺序 ==============
+
+/**
+*
+*  高斯模糊功能
+*
+*/function gaussianBlur() {
+    // 选择所有需要应用高斯模糊的特定widget
+    const widgets = document.querySelectorAll(`
+        #clockWidget,
+        #weatherWidget,
+        #calendarWidget,
+        #shortcutWidget,
+        #workTimeWidget,
+        #hitokotoWidget
+    `);
+
+    const isGblurEnabled = localStorage.getItem('gaussianBlur') !== 'false'; // 默认开启
+
+    widgets.forEach(widget => {
+        if (isGblurEnabled) {
+            widget.style.background = 'transparent';
+            widget.style.color = 'rgb(224, 224, 224)';
+        } else {
+            widget.style.background = '';
+            widget.style.color = '';
+        }
+    });
+
+    // 切换并保存状态
+    localStorage.setItem('gaussianBlur', !isGblurEnabled);
+
+    // 更新按钮文本
+    updateButtonText();
+}
+
+// 初始化高斯模糊状态
+function initGaussianBlur() {
+    // 默认开启高斯模糊（如果localStorage没有设置）
+    if (localStorage.getItem('gaussianBlur') === null) {
+        localStorage.setItem('gaussianBlur', 'true');
+    }
+    gaussianBlur(); // 应用当前设置
+}
+
+
+/**
+*
+*  重置组件顺序
+*
+*/
 function resetWidgetOrder() {
     // 清除组件顺序
     localStorage.removeItem('widgetOrder');  // 组件顺序
 
     window.location.href = window.location.href; // 重新加载当前页面
 }
-// ============= 重置组件顺序 ==============
 
-// dropdownItem 文本更新
+
+/**
+*
+*  dropdownItem 文本更新
+*
+*/
 function updateButtonText() {
     // 主题按钮文本更新
     const themeItem = document.getElementById('toggleThemeItem');
@@ -151,7 +219,16 @@ function updateButtonText() {
         const isVisible = window.getComputedStyle(canvasContainer).display !== 'none';
         bgEffectsBtn.textContent = isVisible ? '✓ bgeffects' : 'bgeffects';
     }
+
+    // 高斯模糊按钮文本更新
+    const gaussianBtn = document.getElementById('gaussianBlur');
+    if (gaussianBtn) {
+        const isGblurEnabled = localStorage.getItem('gaussianBlur') !== 'false';
+        console.log('isGblurEnabled:', isGblurEnabled);
+        gaussianBtn.textContent = isGblurEnabled ? 'GBlur' : '✓ GBlur';
+    }
 }
+
 
 // 点击外部关闭
 window.addEventListener("click", () => {

@@ -19,16 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
   //可快速切换视图 link or widget
   switchView('widget');
 
-  // 读取背景图片
+  // 读取背景图片gaussianBlur
   localStorage.setItem("wallpaperEnabled", "false"); // 存储禁用状态
   const selectedBackground = localStorage.getItem('selectedBackground');
-  console.log('selectedBackground:', selectedBackground);
   if (selectedBackground) {
     document.getElementById('bodyId').style.backgroundImage = `url(${selectedBackground})`;
-    console.info(document.getElementById('bodyId').style.backgroundImage)
     document.getElementById('bodyId').style.backgroundSize = 'cover';
     document.getElementById('bodyId').style.backgroundRepeat = 'no-repeat';
   }
+
+  // 高斯模糊
+  localStorage.setItem("gaussianBlur", "true");
 
   // 加载数据
   loadData();
