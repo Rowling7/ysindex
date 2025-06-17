@@ -1967,7 +1967,7 @@ class HitokotoWidget {
         box-sizing: border-box;
         overflow: hidden;
         text-align: center;
-        background-image: url(static/background/bg006.png);
+        background-image: url(static/ico/bggenerator.jpg);
         background-position: center;
         background-size: cover;
       }

@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 读取存储的状态（默认不显示壁纸）
     const iswallpaperEnabled = localStorage.getItem("wallpaperEnabled") === "false";
     const body = document.body;
-    if (iswallpaperEnabled) {
+    if (!iswallpaperEnabled) {
         body.style.backgroundImage = "url(https://bing.ee123.net/img/)";
         body.style.backgroundRepeat = "no-repeat";
         body.style.backgroundSize = "cover";
