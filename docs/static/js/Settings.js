@@ -138,6 +138,7 @@ function resetSettingsItem() {
     localStorage.removeItem('gaussianBlur'); // 高斯模糊状态
 
     window.location.href = window.location.href; // 重新加载当前页面
+    localStorage.setItem("wallpaperEnabled", "false");
 }
 
 
