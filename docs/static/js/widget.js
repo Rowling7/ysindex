@@ -1657,7 +1657,7 @@ class WorkTimeWidget {
       .salary-value {
         font-size: 18px;
         font-weight: bold;
-        color: #4CAF50;
+        color:rgb(76, 174, 79);
       }
 
       .settings-form {
@@ -1880,12 +1880,12 @@ class WorkTimeWidget {
       }
     } else if (now < startTime) {
       if (document.getElementById('salaryEarned')) {
-        document.getElementById('salaryEarned').textContent = '¥0.000';
+        document.getElementById('salaryEarned').textContent = '¥0.0000';
       }
     } else {
       if (document.getElementById('salaryEarned')) {
         document.getElementById('salaryEarned').textContent =
-          `¥${this.options.workHours.dailySalary.toFixed(3)}`;
+          `¥ ${this.options.workHours.dailySalary.toFixed(3)}`;
       }
     }
   }
