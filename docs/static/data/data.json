@@ -752,11 +752,6 @@
                 "name": "ysindex",
                 "target": "https://rowling7.github.io/ysindex/",
                 "bgImage": "static/ico/github.png"
-            },
-            {
-                "name": "PitahayaWeb",
-                "target": "https://rowling7.github.io/PitahayaWeb/",
-                "bgImage": "static/ico/github.png"
             }
         ]
     },
@@ -780,17 +775,7 @@
             },
             {
                 "name": "LS-my",
-                "target": "/index2.html",
-                "bgImage": "static/ico/loading0_compressed.gif"
-            },
-            {
-                "name": "LS-weather",
-                "target": "/static/Xproject/weather/index.html",
-                "bgImage": "static/ico/loading0_compressed.gif"
-            },
-            {
-                "name": "LS-trunOnOff",
-                "target": "/static/Xproject/trunOnOff/index.html",
+                "target": "/index.html",
                 "bgImage": "static/ico/loading0_compressed.gif"
             },
             {
