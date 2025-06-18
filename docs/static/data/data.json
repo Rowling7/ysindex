@@ -462,6 +462,11 @@
                 "target": "https://kaifa.baidu.com/",
                 "bgImage": "static/ico/kaifasearch.png"
             },
+                        {
+                "name": "GreenVideo",
+                "target": "https://greenvideo.cc/",
+                "bgImage": "static/ico/GreenVideo.png"
+            },
             {
                 "name": "WallpapersCraft",
                 "target": "https://wallpaperscraft.com/",
@@ -579,6 +584,11 @@
                 "bgImage": "static/ico/yezi.png"
             },
             {
+                "name": "虫洞传输",
+                "target": "https://wormhole.app/",
+                "bgImage": "static/ico/wormhole.png"
+            },
+                        {
                 "name": "奶牛快传",
                 "target": "https://www.cowtransfer.com",
                 "bgImage": "static/ico/cowtransfer.png"
