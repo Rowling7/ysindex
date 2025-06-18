@@ -412,7 +412,7 @@
                 "target": "https://rsjwsfw.weihai.cn/hsp",
                 "bgImage": "static/ico/weihaishebao.png"
             },
-                        {
+            {
                 "name": "威海医保",
                 "target": "https://whybdwwt.weihai.cn/SmPsc",
                 "bgImage": "static/ico/weihaiyibao.png"
@@ -462,7 +462,7 @@
                 "target": "https://kaifa.baidu.com/",
                 "bgImage": "static/ico/kaifasearch.png"
             },
-                        {
+            {
                 "name": "GreenVideo",
                 "target": "https://greenvideo.cc/",
                 "bgImage": "static/ico/GreenVideo.png"
@@ -476,6 +476,11 @@
                 "name": "极简壁纸",
                 "target": "https://bz.zzzmh.cn/",
                 "bgImage": "static/ico/zzzmh.png"
+            },
+            {
+                "name": "iconKit",
+                "target": "https://iconkit.cn/",
+                "bgImage": "static/ico/iconkit.png"
             },
             {
                 "name": "阿里图标库",
@@ -588,7 +593,7 @@
                 "target": "https://wormhole.app/",
                 "bgImage": "static/ico/wormhole.png"
             },
-                        {
+            {
                 "name": "奶牛快传",
                 "target": "https://www.cowtransfer.com",
                 "bgImage": "static/ico/cowtransfer.png"
