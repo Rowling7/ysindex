@@ -115,7 +115,7 @@
             {
                 "name": "资源避难所",
                 "target": "https://www.flysheep6.com/",
-                "bgImage": "static/ico/flysheep6.jpg"
+                "bgImage": "static/ico/flysheep6.png"
             },
             {
                 "name": "9dgames",
@@ -395,18 +395,28 @@
             {
                 "name": "Tinywow",
                 "target": "https://tinywow.com/",
-                "bgImage": "static/ico/tinywow.svg"
+                "bgImage": "static/ico/tinywow.png"
             },
             {
                 "name": "FMHY",
                 "target": "https://fmhy.net/",
-                "bgImage": "static/ico/fmhy.ico"
+                "bgImage": "static/ico/fmhy.png"
             }
         ]
     },
     {
         "name": "工具",
         "children": [
+            {
+                "name": "威海社保",
+                "target": "https://rsjwsfw.weihai.cn/hsp",
+                "bgImage": "static/ico/weihaishebao.png"
+            },
+                        {
+                "name": "威海医保",
+                "target": "https://whybdwwt.weihai.cn/SmPsc",
+                "bgImage": "static/ico/weihaiyibao.png"
+            },
             {
                 "name": "让我帮你百度",
                 "target": "https://ffis.me/baidu/index.html",
@@ -485,7 +495,7 @@
             {
                 "name": "背景生成",
                 "target": "https://bggenerator.com/",
-                "bgImage": "static/ico/bggenerator.jpg"
+                "bgImage": "static/ico/bggenerator.png"
             },
             {
                 "name": "短网址",
