@@ -602,14 +602,11 @@ body {
 }
 
 .content-wrapper {
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
   width: 100%;
   flex: 1;
   overflow: auto;
   /* 允许垂直+水平双向滚动 */
   -webkit-overflow-scrolling: touch;
-  /* 移动端顺滑滚动 */
   padding-bottom: 140px;
   /* 为底栏留出空间 */
   transition: transform 0.3s ease-in-out;
@@ -627,7 +624,6 @@ body {
 
 /* 添加CSS过渡效果 */
 .tab-content {
-  scroll-snap-align: start;
   min-width: 100%;
   display: none;
   grid-template-columns: repeat(var(--column-count), minmax(0, 1fr));
@@ -992,28 +988,3 @@ body.has-bg #linkCard {
   color: var(--text-color);
   opacity: 0.8;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
