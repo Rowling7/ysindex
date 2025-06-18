@@ -501,13 +501,6 @@ h5::after {
   display: none;
 }
 
-/* 适配暗黑模式的过渡效果 */
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: all 0.3s ease;
-}
-
 /* 新增切换按钮样式 */
 .theme-toggle {
   /*position: absolute;*/
