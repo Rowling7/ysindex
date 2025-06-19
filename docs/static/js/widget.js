@@ -1657,7 +1657,13 @@ class WorkTimeWidget {
       .salary-value {
         font-size: 18px;
         font-weight: bold;
-        color:rgb(76, 174, 79);
+        background: red;
+        /*background: linear-gradient(to right,purple,gold,red);*/
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        display: inline-block;
+        padding: 0 5px; /* 添加一些内边距让渐变更明显 */
       }
 
       .settings-form {
