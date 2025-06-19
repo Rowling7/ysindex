@@ -145,18 +145,20 @@ body.has-bg .siteFornt:hover {
 }
 
 .changePageIco {
-  height: 36px;
-  width: 36px;
+  height: 46px;
+  width: 46px;
+  /*居中*/
+  display: flex;
 }
 
 .light-mod {
-  height: 44px;
-  width: 44px;
+  height: 46px;
+  width: 46px;
 }
 
 .lightModIco {
-  height: 44px;
-  width: 44px;
+  height: 46px;
+  width: 46px;
 }
 
 .changeBG {
@@ -683,7 +685,7 @@ h5::after {
   position: relative;
   height: 30px;
   width: 30px;
-  margin: 0 8px 7px 0;
+  margin:  5px;
   border: 3px solid rgba(0, 17, 255, 0.741);
   border-radius: 25px;
   transition: width var(--transition-time) ease,
@@ -759,6 +761,8 @@ body.has-bg #linkCard {
 .settings-container {
   position: relative;
   display: inline-block;
+    height: 46px;
+  width: 46px;
 }
 
 .settings-btn {
@@ -803,8 +807,8 @@ body.has-bg #linkCard {
 }
 
 .steeingImg {
-  height: 40px;
-  width: 40px;
+  height: 46px;
+  width: 46px;
 }
 
 .dropdown-item.active::after {
