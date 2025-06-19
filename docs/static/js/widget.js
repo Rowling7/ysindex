@@ -462,7 +462,7 @@ class WeatherWidget {
       }
 
       .weather-widget {
-        background: var(--card-bg);
+        background: var(--widget-bg);
         border-radius: 10px;
         padding: 20px;
         box-shadow: 0 2px 8px var(--shadow-color);
@@ -1064,7 +1064,7 @@ class CalendarWidget {
             display: grid;
             border-radius: 16px;
             padding: 19px;
-            background: var(--card-bg);
+            background: var(--widget-bg);
             font-weight: normal;
             color: var(--text-color);
           }
@@ -1250,7 +1250,7 @@ class ShortcutWidget {
         height: 240px ;
         border-radius: 16px;
         padding: 19px;
-        background: var(--card-bg);
+        background: var(--widget-bg);
         color: var(#ecf0f1);
         font-family: 'Noto Sans SC', sans-serif;
         box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
@@ -1355,7 +1355,7 @@ class ClockWidget {
         height: 240px;
         border-radius: 16px;
         padding: 19px;
-        background: var(--card-bg) ;
+        background: var(--widget-bg) ;
         color: var(--text-color);
         font-family: 'CustomSans', sans-serif;
         font-weight: bold;
@@ -1584,7 +1584,7 @@ class WorkTimeWidget {
         height: 240px;
         border-radius: 16px;
         padding: 19px;
-        background: var(--card-bg);
+        background: var(--widget-bg);
         color: var(--text-color);
         font-family: 'CustomSans', sans-serif;
         box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
@@ -1967,6 +1967,7 @@ class HitokotoWidget {
         box-sizing: border-box;
         overflow: hidden;
         text-align: center;
+        background: var(--widget-bg);
         background-position: center;
         background-size: cover;
       }
