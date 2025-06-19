@@ -44,7 +44,7 @@ body {
   --button-text: rgb(255, 255, 255);
   --underline-color: rgb(0, 26, 255);
   --shadow-color: rgba(0, 0, 0, 0.1);
-  --input-bg: rgba(255, 255, 255, 0.95);
+  --input-bg: rgba(255, 255, 255, 0.2);
   --option-color: rgba(26, 115, 232, 0.4);
   --border-color: rgb(221, 221, 221);
   --option-border-color: rgb(238, 238, 238);
