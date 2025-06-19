@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 高斯模糊
   localStorage.setItem("gaussianBlur", "true");
 
-  localStorage.setItem("selectedBackground", "static/background/bg004.png");
+  localStorage.setItem("selectedBackground", "static/background/bg000.png");
 
   // 加载数据
   loadData();
