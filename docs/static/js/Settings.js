@@ -44,7 +44,6 @@ const menuItems = [
         action: () => BGeffectsItem(),
     },
     { text: "高斯模糊", id: "gaussianBlur", action: () => gaussianBlur() },
-    { text: "字体颜色", id: "gaussianBlur", action: () => changeTextColor() },
     { text: "重置组件", id: "resetWidgetOrder", action: () => resetWidgetOrder() },
     { text: "清除设置", id: "resetSettingsItem", action: () => resetSettingsItem() }
 ];
