@@ -44,6 +44,7 @@ const menuItems = [
         action: () => BGeffectsItem(),
     },
     { text: "高斯模糊", id: "gaussianBlur", action: () => gaussianBlur() },
+    { text: "字体颜色", id: "gaussianBlur", action: () => changeTextColor() },
     { text: "重置组件", id: "resetWidgetOrder", action: () => resetWidgetOrder() },
     { text: "清除设置", id: "resetSettingsItem", action: () => resetSettingsItem() }
 ];
@@ -162,10 +163,10 @@ function resetSettingsItem() {
     widgets.forEach(widget => {
         if (isGblurEnabled) {
             widget.style.background = 'transparent';
-            widget.style.color = 'rgb(224, 224, 224)';
+            //widget.style.color = 'rgb(224, 224, 224)';
         } else {
             widget.style.background = '';
-            widget.style.color = '';
+            //widget.style.color = '';
         }
     });
 
@@ -183,6 +184,34 @@ function initGaussianBlur() {
         localStorage.setItem('gaussianBlur', 'true');
     }
     gaussianBlur(); // 应用当前设置
+}
+
+function changeTextColor() {
+    // 选择所有需要应用高斯模糊的特定widget
+    const widgets = document.querySelectorAll(`
+        #clockWidget,
+        #weatherWidget,
+        #calendarWidget,
+        #shortcutWidget,
+        #workTimeWidget,
+        #hitokotoWidget
+    `);
+
+    const TextColor = localStorage.getItem('TextColor') !== 'false'; // 默认开启
+
+    widgets.forEach(widget => {
+        if (TextColor) {
+            widget.style.color = 'rgb(224, 224, 224)';
+        } else {
+            widget.style.color = '';
+        }
+    });
+
+    // 切换并保存状态
+    localStorage.setItem('TextColor', !TextColor);
+
+    // 更新按钮文本
+    updateButtonText();
 }
 
 
@@ -225,7 +254,6 @@ function updateButtonText() {
     const gaussianBtn = document.getElementById('gaussianBlur');
     if (gaussianBtn) {
         const isGblurEnabled = localStorage.getItem('gaussianBlur') !== 'false';
-        console.log('isGblurEnabled:', isGblurEnabled);
         gaussianBtn.textContent = isGblurEnabled ? 'GBlur' : '✓ GBlur';
     }
 }
