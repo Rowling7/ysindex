@@ -163,10 +163,10 @@ function resetSettingsItem() {
     widgets.forEach(widget => {
         if (isGblurEnabled) {
             widget.style.background = 'transparent';
-            //widget.style.color = 'rgb(224, 224, 224)';
+            widget.style.color = 'rgb(224, 224, 224)';
         } else {
             widget.style.background = '';
-            //widget.style.color = '';
+            widget.style.color = '';
         }
     });
 
@@ -185,35 +185,6 @@ function initGaussianBlur() {
     }
     gaussianBlur(); // 应用当前设置
 }
-
-function changeTextColor() {
-    // 选择所有需要应用高斯模糊的特定widget
-    const widgets = document.querySelectorAll(`
-        #clockWidget,
-        #weatherWidget,
-        #calendarWidget,
-        #shortcutWidget,
-        #workTimeWidget,
-        #hitokotoWidget
-    `);
-
-    const TextColor = localStorage.getItem('TextColor') !== 'false'; // 默认开启
-
-    widgets.forEach(widget => {
-        if (TextColor) {
-            widget.style.color = 'rgb(224, 224, 224)';
-        } else {
-            widget.style.color = '';
-        }
-    });
-
-    // 切换并保存状态
-    localStorage.setItem('TextColor', !TextColor);
-
-    // 更新按钮文本
-    updateButtonText();
-}
-
 
 /**
 *
