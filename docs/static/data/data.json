@@ -1,5 +1,6 @@
 [
     {
+        "id": "fun",
         "name": "娱乐",
         "children": [
             {
@@ -69,18 +70,8 @@
             },
             {
                 "name": "80s电影网",
-                "target": "http://www.80s.tw/",
+                "target": "https://y80s.net",
                 "bgImage": "static/ico/80s.png"
-            },
-            {
-                "name": "MVCAT",
-                "target": "https://www.mvcat.com/",
-                "bgImage": "static/ico/MVCAT.png"
-            },
-            {
-                "name": "影视",
-                "target": "https://www.yjys02.com/",
-                "bgImage": "static/ico/yjys02.png"
             },
             {
                 "name": "低端影视001",
@@ -168,11 +159,6 @@
                 "bgImage": "static/ico/yorg.png"
             },
             {
-                "name": "трекер RuTrac",
-                "target": "http://rutracker.org/forum/index.php",
-                "bgImage": "static/ico/rut.png"
-            },
-            {
                 "name": "单机游戏",
                 "target": "https://steamzg.com",
                 "bgImage": "static/ico/steamzg.png"
@@ -230,6 +216,7 @@
         ]
     },
     {
+        "id": "network",
         "name": "网络",
         "children": [
             {
@@ -391,20 +378,11 @@
                 "name": "iiice导航",
                 "target": "https://www.iiice.cn/",
                 "bgImage": "static/ico/iiice.png"
-            },
-            {
-                "name": "Tinywow",
-                "target": "https://tinywow.com/",
-                "bgImage": "static/ico/tinywow.png"
-            },
-            {
-                "name": "FMHY",
-                "target": "https://fmhy.net/",
-                "bgImage": "static/ico/fmhy.png"
             }
         ]
     },
     {
+        "id":"tools",
         "name": "工具",
         "children": [
             {
@@ -626,6 +604,7 @@
         ]
     },
     {
+        "id": "software",
         "name": "软件",
         "children": [
             {
@@ -704,16 +683,6 @@
                 "bgImage": "static/ico/gndown.png"
             },
             {
-                "name": "423Down",
-                "target": "http://www.423down.com/",
-                "bgImage": "static/ico/423Down.png"
-            },
-            {
-                "name": "APK下载",
-                "target": "https://apk.bot/",
-                "bgImage": "static/ico/apkdn.png"
-            },
-            {
                 "name": "果核剥壳",
                 "target": "https://www.ghxi.com",
                 "bgImage": "static/ico/ghxi.png"
@@ -734,29 +703,9 @@
                 "bgImage": "static/ico/coolapk.png"
             },
             {
-                "name": "蓝鲨",
-                "target": "https://www.lsapk.com",
-                "bgImage": "static/ico/lsapk.png"
-            },
-            {
-                "name": "老殁|殁漂遥",
-                "target": "https://mpyit.com",
-                "bgImage": "static/ico/mpyit.png"
-            },
-            {
-                "name": "绿色软件",
-                "target": "http://www.xdowns.com/",
-                "bgImage": "static/ico/xdowns.png"
-            },
-            {
                 "name": "ihack软件",
                 "target": "https://ihacksoft.com/",
                 "bgImage": "static/ico/ihacksoft.png"
-            },
-            {
-                "name": "亿破姐",
-                "target": "https://www.ypojie.com/",
-                "bgImage": "static/ico/ypojie.png"
             },
             {
                 "name": "异星软件空间",
@@ -781,6 +730,7 @@
         ]
     },
     {
+        "id": "temp",
         "name": "临时",
         "children": [
             {
@@ -799,39 +749,110 @@
                 "bgImage": "static/ico/LKSSite.png"
             },
             {
-                "name": "LS-my",
-                "target": "/index.html",
+                "name": "----------",
+                "target": "/",
                 "bgImage": "static/ico/loading0_compressed.gif"
             },
             {
-                "name": "LS-1",
+                "name": "----------",
                 "target": "",
                 "bgImage": "static/ico/loading0_compressed.gif"
             },
             {
-                "name": "LS-1",
+                "name": "----------",
                 "target": "",
                 "bgImage": "static/ico/loading0_compressed.gif"
             },
             {
-                "name": "LS-1",
+                "name": "----------",
                 "target": "",
                 "bgImage": "static/ico/loading0_compressed.gif"
             },
             {
-                "name": "LS-1",
+                "name": "----------",
                 "target": "",
                 "bgImage": "static/ico/loading0_compressed.gif"
             },
             {
-                "name": "LS-1",
+                "name": "----------",
                 "target": "",
                 "bgImage": "static/ico/loading0_compressed.gif"
             },
             {
-                "name": "LS-1",
+                "name": "----------",
                 "target": "",
                 "bgImage": "static/ico/loading0_compressed.gif"
+            },
+            {
+                "name": "----------",
+                "target": "",
+                "bgImage": "static/ico/loading0_compressed.gif"
+            },
+            {
+                "name": "----------",
+                "target": "",
+                "bgImage": "static/ico/loading0_compressed.gif"
+            }
+        ]
+    },
+    {
+        "id": "trash",
+        "name": "垃圾箱",
+        "children": [
+            {
+                "name": "MVCAT",
+                "target": "https://www.mvcat.com/",
+                "bgImage": "static/ico/MVCAT.png"
+            },
+            {
+                "name": "трекер RuTrac",
+                "target": "http://rutracker.org/forum/index.php",
+                "bgImage": "static/ico/rut.png"
+            },
+            {
+                "name": "影视",
+                "target": "https://www.yjys02.com/",
+                "bgImage": "static/ico/yjys02.png"
+            },
+            {
+                "name": "Tinywow",
+                "target": "https://tinywow.com/",
+                "bgImage": "static/ico/tinywow.png"
+            },
+            {
+                "name": "FMHY",
+                "target": "https://fmhy.net/",
+                "bgImage": "static/ico/fmhy.png"
+            },
+            {
+                "name": "423Down",
+                "target": "http://www.423down.com/",
+                "bgImage": "static/ico/423Down.png"
+            },
+            {
+                "name": "APK下载",
+                "target": "https://apk.bot/",
+                "bgImage": "static/ico/apkdn.png"
+            },
+            {
+                "name": "蓝鲨",
+                "target": "https://www.lsapk.com",
+                "bgImage": "static/ico/lsapk.png"
+            },
+            {
+                "name": "老殁|殁漂遥",
+                "target": "https://mpyit.com",
+                "bgImage": "static/ico/mpyit.png"
+            },
+            {
+                "name": "绿色软件",
+                "target": "http://www.xdowns.com/",
+                "bgImage": "static/ico/xdowns.png"
+            },
+            {
+                "name": "亿破姐",
+                "target": "https://www.ypojie.com/",
+                "bgImage": "static/ico/ypojie.png"
             }
         ]
     }

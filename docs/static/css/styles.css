@@ -570,6 +570,10 @@ h5::after {
   white-space: nowrap;
 }
 
+button.tab-button.active#trash {
+  background-color: red;
+}
+
 /* 暗黑模式适配 */
 .dark-mode .tab-button {
   background: rgba(45, 45, 45, 0.9);

@@ -79,6 +79,7 @@ function initLinkView(data) {
     const tabBtn = document.createElement("button");
     tabBtn.className = `tab-button${index === 0 ? " active" : ""}`;
     tabBtn.textContent = category.name;
+    tabBtn.id = category.id;
     tabBtn.dataset.tabIndex = index;
     tabBtn.addEventListener("click", () => switchTab(index));
     tabFragment.appendChild(tabBtn);
