@@ -6,7 +6,7 @@ let cardData = [
         alt: "",
     },
     {
-        imgSrc: "static/background/bg002.png",
+        imgSrc: "static/background/bg002.jpg",
         title: "",
         description: "",
         alt: "",
@@ -30,7 +30,7 @@ let cardData = [
         alt: "",
     },
     {
-        imgSrc: "static/background/bg006.png",
+        imgSrc: "static/background/bg006.jpg",
         title: "",
         description: "",
         alt: "",
@@ -48,13 +48,13 @@ let cardData = [
         alt: "",
     },
     {
-        imgSrc: "static/background/bg009.jpg",
+        imgSrc: "static/background/bg009.png",
         title: "",
         description: "",
         alt: "",
     },
     {
-        imgSrc: "static/background/bg010.jpg",
+        imgSrc: "static/background/bg010.png",
         title: "",
         description: "",
         alt: "",
@@ -120,7 +120,7 @@ function createCardElement(item) {
 
     // 组装卡片
     card.appendChild(img);
-    card.appendChild(cardBody);
+    //card.appendChild(cardBody);
     return card;
 }
 
