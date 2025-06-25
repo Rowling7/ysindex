@@ -3,61 +3,61 @@ let cardData = [
         imgSrc: "static/background/bg001.png",
         title: "",
         description: "",
-        alt: "",
+        alt: ""
     },
     {
         imgSrc: "static/background/bg002.jpg",
-        title: "",
-        description: "",
-        alt: "",
     },
     {
         imgSrc: "static/background/bg003.png",
-        title: "",
-        description: "",
-        alt: "",
     },
     {
         imgSrc: "static/background/bg004.png",
-        title: "",
-        description: "",
-        alt: "",
     },
     {
         imgSrc: "static/background/bg005.png",
-        title: "",
-        description: "",
-        alt: "",
     },
     {
         imgSrc: "static/background/bg006.jpg",
-        title: "",
-        description: "",
-        alt: "",
     },
     {
         imgSrc: "static/background/bg007.jpg",
-        title: "",
-        description: "",
-        alt: "",
     },
     {
         imgSrc: "static/background/bg008.jpg",
-        title: "",
-        description: "",
-        alt: "",
     },
     {
         imgSrc: "static/background/bg009.png",
-        title: "",
-        description: "",
-        alt: "",
     },
     {
         imgSrc: "static/background/bg010.png",
-        title: "",
-        description: "",
-        alt: "",
+    },
+    {
+        imgSrc: "static/background/bg011.png",
+    },
+    {
+        imgSrc: "static/background/bg012.png",
+    },
+    {
+        imgSrc: "static/background/bg013.png",
+    },
+    {
+        imgSrc: "static/background/bg014.png",
+    },
+    {
+        imgSrc: "static/background/bg015.png",
+    },
+    {
+        imgSrc: "static/background/bg016.png",
+    },
+    {
+        imgSrc: "static/background/bg017.png",
+    },
+    {
+        imgSrc: "static/background/bg018.png",
+    },
+    {
+        imgSrc: "static/background/bg010.png",
     }
 ];
 // 暗黑模式管理
