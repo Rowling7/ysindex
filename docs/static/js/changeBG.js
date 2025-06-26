@@ -1,65 +1,13 @@
-let cardData = [
-    {
-        imgSrc: "static/background/bg001.png",
+let cardData = Array.from({length: 25}, (_, i) => {
+    const num = (i + 1).toString().padStart(3, '0');
+    return {
+        imgSrc: `static/background/bg${num}.png`,
         title: "",
         description: "",
         alt: ""
-    },
-    {
-        imgSrc: "static/background/bg002.jpg",
-    },
-    {
-        imgSrc: "static/background/bg003.png",
-    },
-    {
-        imgSrc: "static/background/bg004.png",
-    },
-    {
-        imgSrc: "static/background/bg005.png",
-    },
-    {
-        imgSrc: "static/background/bg006.jpg",
-    },
-    {
-        imgSrc: "static/background/bg007.jpg",
-    },
-    {
-        imgSrc: "static/background/bg008.jpg",
-    },
-    {
-        imgSrc: "static/background/bg009.png",
-    },
-    {
-        imgSrc: "static/background/bg010.png",
-    },
-    {
-        imgSrc: "static/background/bg011.png",
-    },
-    {
-        imgSrc: "static/background/bg012.png",
-    },
-    {
-        imgSrc: "static/background/bg013.png",
-    },
-    {
-        imgSrc: "static/background/bg014.png",
-    },
-    {
-        imgSrc: "static/background/bg015.png",
-    },
-    {
-        imgSrc: "static/background/bg016.png",
-    },
-    {
-        imgSrc: "static/background/bg017.png",
-    },
-    {
-        imgSrc: "static/background/bg018.png",
-    },
-    {
-        imgSrc: "static/background/bg010.png",
-    }
-];
+    };
+});
+console.log(cardData);
 // 暗黑模式管理
 const themeManager = {
     init: function () {

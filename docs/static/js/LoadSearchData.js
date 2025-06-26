@@ -266,7 +266,6 @@ function activateNewContent(newContent) {
 // 更新列数
 function updateColumns() {
   const columnCount = document.getElementById("columnCount")?.value || 4;
-  console.log("columnCount:", columnCount);
   document.documentElement.style.setProperty('--column-count', columnCount);
 }
 
