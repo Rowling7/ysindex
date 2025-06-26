@@ -1655,7 +1655,7 @@ class WorkTimeWidget {
       }
 
       .salary-value {
-        font-size: 18px;
+        font-size: 24px;
         font-weight: bold;
         background: red;
         /*background: linear-gradient(to right,purple,gold,red);*/

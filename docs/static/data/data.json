@@ -259,6 +259,11 @@
                 "target": "http://24mail.chacuo.net/",
                 "bgImage": "static/ico/24mail.png"
             },
+{
+                "name": "UP云搜",
+                "target": "https://www.upyunso.com/",
+                "bgImage": "static/ico/upyunso.png"
+            },
             {
                 "name": "123云盘",
                 "target": "https://www.123pan.com/",
@@ -749,13 +754,13 @@
                 "bgImage": "static/ico/LKSSite.png"
             },
             {
-                "name": "----------",
-                "target": "/",
+                "name": "ik009",
+                "target": "https://www.ik009.top/",
                 "bgImage": "static/ico/loading0_compressed.gif"
             },
             {
-                "name": "----------",
-                "target": "",
+                "name": "xx01",
+                "target": "https://d4.xx01.my/",
                 "bgImage": "static/ico/loading0_compressed.gif"
             },
             {
