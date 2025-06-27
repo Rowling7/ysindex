@@ -802,7 +802,7 @@
     },
     {
         "id": "trash",
-        "name": "垃圾箱",
+        "name": "🗑️",
         "children": [
             {
                 "name": "MVCAT",
