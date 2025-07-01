@@ -1,4 +1,4 @@
-let cardData = Array.from({length: 25}, (_, i) => {
+let cardData = Array.from({length: 999}, (_, i) => {
     const num = (i + 1).toString().padStart(3, '0');
     return {
         imgSrc: `static/background/bg${num}.png`,
