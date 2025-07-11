@@ -259,7 +259,7 @@
                 "target": "http://24mail.chacuo.net/",
                 "bgImage": "static/ico/24mail.png"
             },
-{
+            {
                 "name": "UP云搜",
                 "target": "https://www.upyunso.com/",
                 "bgImage": "static/ico/upyunso.png"
@@ -387,7 +387,7 @@
         ]
     },
     {
-        "id":"tools",
+        "id": "tools",
         "name": "工具",
         "children": [
             {
@@ -701,6 +701,11 @@
                 "name": "正版中国",
                 "target": "https://getitfree.cn/",
                 "bgImage": "static/ico/getitfree.png"
+            },
+            {
+                "name": "apkPremier",
+                "target": "https://apkpremier.com/",
+                "bgImage": "static/ico/apkpremier.png"
             },
             {
                 "name": "酷安网",
