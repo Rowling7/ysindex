@@ -411,6 +411,11 @@
                 "bgImage": "static/ico/0cili.png"
             },
             {
+                "name": "免费API",
+                "target": "https://xxapi.cn",
+                "bgImage": "static/ico/xxapi.png"
+            },
+            {
                 "name": "在线工具",
                 "target": "https://tool.lu",
                 "bgImage": "static/ico/zxgj.png"

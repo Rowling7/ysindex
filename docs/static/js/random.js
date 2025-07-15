@@ -1,17 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
     const random1Link = document.querySelectorAll(".nav-link")[1]; // 第二个 nav-link 是 random1
+    const random2Link = document.querySelectorAll(".nav-link")[2]; // 第三个 nav-link 是 random2
     const cardContainer = document.getElementById("cardContainer");
     const batchDownloadBtn = document.getElementById("batchDownloadBtn");
     const loadingSpinner = document.getElementById("loadingSpinner");
 
     // 请求图片数据并渲染卡片
-    async function fetchAndRenderImages() {
+    async function fetchAndRenderImages(apiUrl) {
         cardContainer.innerHTML = "";
         loadingSpinner.classList.remove("d-none"); // 显示加载动画
 
         try {
             const requests = Array.from({ length: 9 }, () =>
-                fetch("https://v2.xxapi.cn/api/heisi").then((res) => res.json())
+                fetch(apiUrl).then((res) => res.json())
             );
 
             const results = await Promise.all(requests);
@@ -101,55 +102,60 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-   batchDownloadBtn.addEventListener("click", async () => {
-    const imageElements = cardContainer.querySelectorAll("img.card-img-top");
-    if (imageElements.length === 0) {
-        alert("没有可下载的图片");
-        return;
-    }
-
-    batchDownloadBtn.disabled = true;
-    batchDownloadBtn.innerHTML = '<i class="bi bi-hourglass-split"></i> 打包中...';
-
-    const zip = new JSZip();
-    const folder = zip.folder("downloaded_images");
-
-    let count = 0;
-
-    for (let i = 0; i < imageElements.length; i++) {
-        const url = imageElements[i].src;
-        try {
-            const response = await fetch(url);
-            if (!response.ok) throw new Error(`下载失败: ${url}`);
-
-            const blob = await response.blob();
-            const filename = getFileNameFromURL(url);
-
-            folder.file(filename, blob, { binary: true });
-            count++;
-        } catch (err) {
-            console.error(err);
+    batchDownloadBtn.addEventListener("click", async () => {
+        const imageElements = cardContainer.querySelectorAll("img.card-img-top");
+        if (imageElements.length === 0) {
+            alert("没有可下载的图片");
+            return;
         }
-    }
 
-    if (count === 0) {
-        alert("没有成功下载任何图片");
+        batchDownloadBtn.disabled = true;
+        batchDownloadBtn.innerHTML = '<i class="bi bi-hourglass-split"></i> 打包中...';
+
+        const zip = new JSZip();
+        const folder = zip.folder("downloaded_images");
+
+        let count = 0;
+
+        for (let i = 0; i < imageElements.length; i++) {
+            const url = imageElements[i].src;
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`下载失败: ${url}`);
+
+                const blob = await response.blob();
+                const filename = getFileNameFromURL(url);
+
+                folder.file(filename, blob, { binary: true });
+                count++;
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        if (count === 0) {
+            alert("没有成功下载任何图片");
+            batchDownloadBtn.disabled = false;
+            batchDownloadBtn.innerHTML = '<i class="bi bi-download"></i> 批量下载全部图片';
+            return;
+        }
+
+        const content = await zip.generateAsync({ type: "blob" });
+        saveAs(content, "images-batch-download.zip");
+
+        // 恢复按钮状态
         batchDownloadBtn.disabled = false;
         batchDownloadBtn.innerHTML = '<i class="bi bi-download"></i> 批量下载全部图片';
-        return;
-    }
-
-    const content = await zip.generateAsync({ type: "blob" });
-    saveAs(content, "images-batch-download.zip");
-
-    // 恢复按钮状态
-    batchDownloadBtn.disabled = false;
-    batchDownloadBtn.innerHTML = '<i class="bi bi-download"></i> 批量下载全部图片';
-});
+    });
 
     // 添加点击事件监听器
     random1Link.addEventListener("click", function (e) {
         e.preventDefault();
-        fetchAndRenderImages();
+        fetchAndRenderImages("https://v2.xxapi.cn/api/heisi");
+    });
+
+    random2Link.addEventListener("click", function (e) {
+        e.preventDefault();
+        fetchAndRenderImages("https://v2.xxapi.cn/api/meinvpic");
     });
 });
