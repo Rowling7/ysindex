@@ -2,6 +2,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const picHsLink = document.getElementById("picHsLink"); // PicHS
     const picMnLink = document.getElementById("picMnLink"); // PicMN
     const picBsLink = document.getElementById("picBsLink"); // PicBS
+    const picWallpaperLink = document.getElementById("picWallpaperLink"); // PicWallpaper
+    const picMN4PhoneLink = document.getElementById("picMN4PhoneLink"); // PicMN4Phone
+    const picMN4PCLink = document.getElementById("picMN4PCLink"); // PicMN4PCLink
+
+
     const cardContainer = document.getElementById("cardContainer");
     const batchDownloadBtn = document.getElementById("batchDownloadBtn");
     const loadingSpinner = document.getElementById("loadingSpinner");
@@ -164,4 +169,20 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
         fetchAndRenderImages("https://v2.xxapi.cn/api/baisi");
     });
+
+    picMN4PhoneLink.addEventListener("click", function (e) {
+        e.preventDefault();
+        fetchAndRenderImages("https://v2.xxapi.cn/api/wapmeinvpic");
+    });
+
+    picMN4PCLink.addEventListener("click", function (e) {
+        e.preventDefault();
+        fetchAndRenderImages("https://v2.xxapi.cn/api/pcmeinvpic");
+    });
+
+    picWallpaperLink.addEventListener("click", function (e) {
+        e.preventDefault();
+        fetchAndRenderImages("https://v2.xxapi.cn/api/random4kPic?type=wallpaper");
+    });
 });
+
