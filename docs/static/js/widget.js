@@ -2040,16 +2040,338 @@ class HitokotoWidget {
   }
 }
 
+class WeiboHotWidget {
+  constructor(options = {}) {
+    // 默认配置
+    this.defaultOptions = {
+      containerId: 'weiboHotContainer',  // 默认容器ID
+      updateInterval: 300000,             // 默认更新间隔(5分钟)
+      maxItems: 50                        // 最大显示条目
+    };
+
+    // 合并用户配置
+    this.options = { ...this.defaultOptions, ...options };
+
+    // 注入样式
+    this.injectStyles();
+
+    // 初始化
+    this.init();
+  }
+
+  injectStyles() {
+    const styleId = 'weiboHotWidgetStyles';
+    if (document.getElementById(styleId)) return;
+
+    const style = document.createElement('style');
+    style.id = styleId;
+    style.textContent = `
+      @font-face {
+        font-family: 'CustomSans';
+        src: url('static/fonts/NotoSansSC-Regular.woff2') format('woff2');
+        font-weight: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'CustomSans';
+        src: url('static/fonts/NotoSansSC-Bold.woff2') format('woff2');
+        font-weight: bold;
+        font-display: swap;
+      }
+      
+      #weiboHotWidget {
+        
+        height: 240px;
+        border-radius: 12px;
+        padding: 16px;
+        background: var(--widget-bg);
+        color: var(--text-color);
+        font-family: 'CustomSans', sans-serif;
+        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+      
+      .widget-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+      
+      .widget-title {
+        font-size: 18px;
+        font-weight: bold;
+      }
+      
+      .refresh-btn {
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        border-radius: 4px;
+        padding: 4px 8px;
+        font-size: 12px;
+        cursor: pointer;
+        color: inherit;
+        transition: all 0.3s ease;
+      }
+      
+      .refresh-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      
+      .hot-list {
+        flex: 1;
+        overflow-y: auto;
+        padding-right: 4px;
+      }
+      
+      .hot-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+        padding: 8px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+      }
+      
+      .hot-item:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+        transform: translateX(5px);
+      }
+      
+      .hot-rank {
+        width: 24px;
+        height: 24px;
+        min-width: 24px;
+        min-height: 24px;
+        border-radius: 50%;
+        background-color: #e53935;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        margin-right: 12px;
+        font-size: 14px;
+        position: relative;
+      }
+      
+      .hot-rank::after {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        border-radius: 50%;
+        box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.3);
+        pointer-events: none;
+      }
+      
+      .hot-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+      
+      .hot-title {
+        font-size: 14px;
+        color: var(--text-color);
+        margin-bottom: 4px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      
+      .hot-metric {
+        font-size: 12px;
+        color: #d32f2f;
+        background-color: rgba(255, 0, 0, 0.1);
+        border-radius: 4px;
+        padding: 2px 6px;
+        width: fit-content;
+        display: inline-block;
+      }
+      
+      /* 滚动条样式 */
+      .hot-list::-webkit-scrollbar {
+        width: 6px;
+      }
+      
+      .hot-list::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+      }
+      
+      .hot-list::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 10px;
+      }
+      
+      .hot-list::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.25);
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  init() {
+    // 创建容器
+    let container = document.getElementById(this.options.containerId);
+    if (!container) {
+      container = document.createElement('div');
+      container.id = this.options.containerId;
+      document.body.appendChild(container);
+    }
+
+    // 渲染组件
+    this.render();
+
+    // 首次加载数据
+    this.fetchHotData();
+
+    // 设置定时更新
+    this.startAutoUpdate();
+  }
+
+  render() {
+    const container = document.getElementById(this.options.containerId);
+    container.innerHTML = `
+      <div id="weiboHotWidget">
+        <div class="widget-header">
+          <div class="widget-title">微博热搜榜</div>
+          <button class="refresh-btn" id="refreshBtn">刷新</button>
+        </div>
+        <div class="hot-list" id="hotList">
+          <!-- 热搜条目将在这里动态插入 -->
+          <div class="loading">加载中...</div>
+        </div>
+      </div>
+    `;
+
+    // 绑定刷新事件
+    document.getElementById('refreshBtn').addEventListener('click', () => {
+      this.fetchHotData();
+    });
+  }
+
+  async fetchHotData() {
+    try {
+      const response = await fetch('https://v2.xxapi.cn/api/weibohot');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      
+      if (data.code === 200 && Array.isArray(data.data)) {
+        this.displayHotData(data.data.slice(0, this.options.maxItems));
+      } else {
+        throw new Error('Unexpected API response format');
+      }
+    } catch (error) {
+      console.error('获取微博热搜数据失败:', error);
+      this.showErrorState();
+    }
+  }
+
+  displayHotData(data) {
+    const hotList = document.getElementById('hotList');
+    if (!hotList) return;
+
+    // 创建文档碎片以提高性能
+    const fragment = document.createDocumentFragment();
+    
+    // 为每个热搜条目创建元素
+    data.forEach(item => {
+      const hotItem = document.createElement('div');
+      hotItem.className = 'hot-item';
+      hotItem.innerHTML = `
+        <div class="hot-rank">${item.index}</div>
+        <div class="hot-info">
+          <div class="hot-title">${item.title}</div>
+          <div class="hot-metric">${item.hot}</div>
+        </div>
+      `;
+      
+      // 添加点击事件打开链接
+      hotItem.addEventListener('click', () => {
+        window.open(item.url, '_blank');
+      });
+      
+      // 添加悬停效果
+      hotItem.addEventListener('mouseenter', () => {
+        hotItem.style.cursor = 'pointer';
+      });
+      
+      fragment.appendChild(hotItem);
+    });
+    
+    // 清空当前内容并添加新内容
+    hotList.innerHTML = '';
+    hotList.appendChild(fragment);
+  }
+
+  showErrorState() {
+    const hotList = document.getElementById('hotList');
+    if (!hotList) return;
+    
+    hotList.innerHTML = `
+      <div class="error-state">
+        <div class="error-icon">⚠️</div>
+        <div class="error-message">无法加载热搜数据</div>
+        <div class="error-details">请检查网络连接或稍后重试</div>
+        <button class="retry-btn">重试</button>
+      </div>
+    `;
+    
+    // 添加重试按钮事件
+    hotList.querySelector('.retry-btn').addEventListener('click', () => {
+      this.fetchHotData();
+    });
+  }
+
+  startAutoUpdate() {
+    // 如果已存在定时器，先清除
+    if (this.updateTimer) {
+      clearInterval(this.updateTimer);
+    }
+    
+    // 开始新的定时更新
+    this.updateTimer = setInterval(() => {
+      this.fetchHotData();
+    }, this.options.updateInterval);
+  }
+
+  // 销毁方法，用于清理资源
+  destroy() {
+    if (this.updateTimer) {
+      clearInterval(this.updateTimer);
+      this.updateTimer = null;
+    }
+    
+    const container = document.getElementById(this.options.containerId);
+    if (container && container.parentNode) {
+      container.parentNode.removeChild(container);
+    }
+  }
+}
 
 // 导出组件
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
     PopupWidget,
     WeatherWidget,
-    WorkTimeWidget
+    WorkTimeWidget,
+    WeiboHotWidget
   };
 } else {
   window.PopupWidget = PopupWidget;
   window.WeatherWidget = WeatherWidget;
   window.WorkTimeWidget = WorkTimeWidget;
+  window.WorkTimeWidget = WeiboHotWidget;
 }

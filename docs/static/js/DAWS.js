@@ -332,6 +332,7 @@ function initDragSort() {
         "widgetGgridWeather",
         "widgetGgridWorkTime",
         "widgetGgridShortcut",
+        "widgetGgridWeiboHot",
         "widgetGgridHitokoto"
     ];
 

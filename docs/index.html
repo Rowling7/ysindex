@@ -34,18 +34,18 @@
     <div class="cntr" id="cntrSearch">
       <div class="cntr-innr">
         <label class="search" for="inpt_search">
-          <input id="inpt_search" type="text"/>
+          <input id="inpt_search" type="text" />
         </label>
       </div>
     </div>
-    <a class="changePage" id="changePage" href="index2.html" >
+    <a class="changePage" id="changePage" href="index2.html">
       <img class="changePageIco" src="static/ico/change.png" alt="搜索图标" />
     </a>
     <a class="changeBG" id="changeBG" href="changeBG.html" ">
-      <img class="changeBGIco" src="static/ico/changeBG.png" alt="切换背景图" />
+      <img class=" changeBGIco" src="static/ico/changeBG.png" alt="切换背景图" />
     </a>
     <a class="light-mod" id="lightMod"">
-      <img class="lightModIco" src="static/ico/lightMod.png" alt="简洁模式" />
+      <img class=" lightModIco" src="static/ico/lightMod.png" alt="简洁模式" />
     </a>
     <!-- 暗黑切换按钮 (已被设置按钮替代)-->
     <!--<button class="theme-toggle" id="themeToggle" aria-pressed="false" hidden>暗黑</button>-->
@@ -135,6 +135,10 @@
       <div class="widget-grid per-double-width" id="widgetGgridHitokoto">
         <div id="customHitokotoContainer"></div>
       </div>
+      <!-- 微博热搜-->
+      <div class="widget-grid per-double-width" id="widgetGgridWeiboHot">
+        <div id="WeiboHotContainer"></div>
+      </div>
     </div>
 
 
@@ -178,6 +182,7 @@
     initWidget(ClockWidget, { containerId: 'clockContainer', use24HourFormat: true });
     initWidget(WorkTimeWidget, { containerId: 'workTimeContainer' });
     initWidget(HitokotoWidget, { containerId: 'customHitokotoContainer' });
+    initWidget(WeiboHotWidget, { containerId: 'WeiboHotContainer' });
   </script>
 </body>
 <!-- 版本信息 -->
