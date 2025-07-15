@@ -774,8 +774,8 @@
                 "bgImage": "static/ico/loading0_compressed.gif"
             },
             {
-                "name": "----------",
-                "target": "",
+                "name": "Random",
+                "target": "random.html",
                 "bgImage": "static/ico/loading0_compressed.gif"
             },
             {
