@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const random1Link = document.querySelectorAll(".nav-link")[1]; // 第二个 nav-link 是 random1
-    const random2Link = document.querySelectorAll(".nav-link")[2]; // 第三个 nav-link 是 random2
+    const picHsLink = document.getElementById("picHsLink"); // PicHS
+    const picMnLink = document.getElementById("picMnLink"); // PicMN
+    const picBsLink = document.getElementById("picBsLink"); // PicBS
     const cardContainer = document.getElementById("cardContainer");
     const batchDownloadBtn = document.getElementById("batchDownloadBtn");
     const loadingSpinner = document.getElementById("loadingSpinner");
@@ -149,13 +150,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // 添加点击事件监听器
-    random1Link.addEventListener("click", function (e) {
+    picHsLink.addEventListener("click", function (e) {
         e.preventDefault();
         fetchAndRenderImages("https://v2.xxapi.cn/api/heisi");
     });
 
-    random2Link.addEventListener("click", function (e) {
+    picMnLink.addEventListener("click", function (e) {
         e.preventDefault();
         fetchAndRenderImages("https://v2.xxapi.cn/api/meinvpic");
+    });
+
+    picBsLink.addEventListener("click", function (e) {
+        e.preventDefault();
+        fetchAndRenderImages("https://v2.xxapi.cn/api/baisi");
     });
 });
