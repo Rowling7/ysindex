@@ -2004,30 +2004,30 @@ class HitokotoWidget {
         opacity: 0.8;
       }
         .type-switcher {
-  background: linear-gradient(135deg, #64b5f6, #42a5f5);
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  font-size: 14px;
-  border-radius: 30px;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-weight: 500;
-}
+        background: linear-gradient(135deg, #64b5f6, #42a5f5);
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        font-size: 14px;
+        border-radius: 30px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 500;
+      }
 
-.type-switcher:hover {
-  background: linear-gradient(135deg, #42a5f5, #1e88e5);
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
+      .type-switcher:hover {
+        background: linear-gradient(135deg, #42a5f5, #1e88e5);
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      }
 
-.type-switcher:active {
-  transform: scale(0.98);
-}
+      .type-switcher:active {
+        transform: scale(0.98);
+      }
     `;
     document.head.appendChild(style);
   }
@@ -2103,6 +2103,7 @@ class HitokotoWidget {
   }
 
 }
+
 
 class WeiboHotWidget {
   constructor(options = {}) {
@@ -2223,10 +2224,13 @@ class WeiboHotWidget {
       .hot-item {
         display: flex;
         align-items: center;
-        margin-bottom: 12px;
-        padding: 8px;
+        justify-content: space-between; /* 内容分布两侧 */
+  margin-bottom: 6px;           /* 缩小底部间距 */
+  padding: 4px 8px;   
         border-radius: 6px;
         transition: all 0.3s ease;
+          height: 32px;                 /* 固定高度 */
+  overflow: hidden;
       }
       
       .hot-item:hover {
@@ -2246,8 +2250,8 @@ class WeiboHotWidget {
         align-items: center;
         justify-content: center;
         font-weight: bold;
-        margin-right: 12px;
-        font-size: 14px;
+        margin-right: 8px;
+        font-size: 12px;
         position: relative;
       }
       
@@ -2279,7 +2283,7 @@ class WeiboHotWidget {
       }
       
       .hot-title {
-        font-size: 14px;
+        font-size: 13px;
         color: var(--text-color);
         margin-bottom: 4px;
         white-space: nowrap;
@@ -2288,13 +2292,13 @@ class WeiboHotWidget {
       }
       
       .hot-metric {
-        font-size: 12px;
+        font-size: 11px;
         color: #d32f2f;
         background-color: rgba(255, 0, 0, 0.1);
         border-radius: 4px;
-        padding: 2px 6px;
+        padding: 1px 4px;
         width: fit-content;
-        display: inline-block;
+        display: flex-end;
       }
       
       /* 滚动条样式 */
@@ -2400,11 +2404,11 @@ class WeiboHotWidget {
       const hotItem = document.createElement('div');
       hotItem.className = 'hot-item';
       hotItem.innerHTML = `
-      <div class= "hot-rank"> ${item.index}</div>
-      <div class="hot-info">
-        <div class="hot-title">${item.title}</div>
+        <div class="hot-rank">${item.index}</div>
+        <div class="hot-info">
+          <div class="hot-title">${item.title}</div>
+        </div>
         <div class="hot-metric">${item.hot}</div>
-      </div>
       `;
 
 
@@ -2470,6 +2474,8 @@ class WeiboHotWidget {
     }
   }
 }
+
+
 
 // 导出组件
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
