@@ -41,3 +41,23 @@ body {
         transform: rotate(360deg);
     }
 }
+
+
+/* 新增卡片底部按钮样式 */
+.card-body {
+    position: relative;
+    /* 确保按钮定位相对于 card-body */
+    min-height: 100px;
+    /* 设置最小高度（根据内容调整） */
+}
+
+.download-btn {
+    position: absolute;
+    bottom: 1rem;
+    /* 距离底部间距 */
+    left: 50%;
+    transform: translateX(-50%);
+    /* 水平居中 */
+    width: calc(100% - 2rem);
+    /* 宽度自适应（留出边距） */
+}
