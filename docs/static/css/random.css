@@ -1,38 +1,43 @@
- .nav-link {
-     border-radius: 20px;
-     padding: 0.4rem 1rem;
-     transition: all 0.3s ease;
- }
+body {
+    padding-top: 56px;
+    /* 默认高度，根据实际导航栏高度调整 */
+}
 
- .nav-link:hover {
-     background-color: #f0f0f0;
-     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
- }
+.nav-link {
+    border-radius: 20px;
+    padding: 0.4rem 1rem;
+    transition: all 0.3s ease;
+}
 
- .nav-item+.nav-item {
-     margin-left: 8px;
- }
+.nav-link:hover {
+    background-color: #f0f0f0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
 
- .navbar {
-     border-bottom: 1px solid #e5e5e5;
- }
+.nav-item+.nav-item {
+    margin-left: 8px;
+}
 
- .loader {
-     border: 8px solid #f3f3f3;
-     border-top: 8px solid #0d6efd;
-     border-radius: 50%;
-     width: 60px;
-     height: 60px;
-     animation: spin 1s linear infinite;
-     margin: 40px auto;
- }
+.navbar {
+    border-bottom: 1px solid #e5e5e5;
+}
 
- @keyframes spin {
-     0% {
-         transform: rotate(0deg);
-     }
+.loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #0d6efd;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin: 40px auto;
+}
 
-     100% {
-         transform: rotate(360deg);
-     }
- }
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
