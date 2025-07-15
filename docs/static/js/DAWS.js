@@ -332,8 +332,8 @@ function initDragSort() {
         "widgetGgridWeather",
         "widgetGgridWorkTime",
         "widgetGgridShortcut",
-        "widgetGgridWeiboHot",
-        "widgetGgridHitokoto"
+        "widgetGgridHitokoto",
+        "widgetGgridWeiboHot"
     ];
 
     // 检查 localStorage 中是否已有 widgetOrder
