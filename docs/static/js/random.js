@@ -1,4 +1,23 @@
+// 添加视频预览元素引用
+const previewImage = document.getElementById("previewImage");
+const previewVideo = document.getElementById("previewVideo");
 document.addEventListener("DOMContentLoaded", function () {
+    // 清除图片预览
+    previewImage.src = "";
+    // 视频管理数组
+    const activeVideos = new Set();
+
+    // 全局可访问的辅助函数
+    function pauseAllVideos() {
+        console.log("暂停所有视频");
+        activeVideos.forEach(vid => {
+            if (!vid.paused) {
+                vid.pause();
+                console.log('暂停列表中的视频');
+                vid.currentTime = 0;
+            }
+        });
+    }
     const [
         picHsLink,
         picMnLink,
@@ -52,7 +71,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 img.style.cursor = "pointer";
                 img.addEventListener("click", () => {
                     const modal = new bootstrap.Modal(document.getElementById("imagePreviewModal"));
-                    document.getElementById("previewImage").src = url;
+
+                    // 隐藏视频预览，显示图片预览
+                    previewVideo.classList.add("d-none");
+                    previewImage.classList.remove("d-none");
+
+                    previewImage.src = url;
                     modal.show();
                 });
 
@@ -82,6 +106,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     // 请求视频数据并渲染卡片
     async function fetchAndRenderVideos(apiUrl) {
+        // 清除之前的视频引用
+        activeVideos.clear();
         cardContainer.innerHTML = "";
         loadingSpinner.classList.remove("d-none"); // 显示加载动画
 
@@ -106,13 +132,62 @@ document.addEventListener("DOMContentLoaded", function () {
                 video.src = url;
                 video.className = "card-img-top";
                 video.controls = true; // 显示控件
-                video.muted = true; // 静音
+                video.muted = true;
                 video.style.cursor = "pointer";
-                video.addEventListener("click", () => {
+                video.setAttribute('playsinline', ''); // 防止iOS全屏播放
+
+                // 添加播放事件监听
+                video.addEventListener('play', function () {
+                    // 暂停其他所有视频
+                    activeVideos.forEach(vid => {
+                        if (vid !== this && !vid.paused) {
+                            vid.pause();
+                            vid.currentTime = 0; // 重置播放位置
+                        }
+                    });
+                    activeVideos.add(this);
+                });
+                // 阻止视频控制栏的点击事件冒泡
+                video.querySelectorAll('*').forEach(el => {
+                    el.addEventListener('click', e => e.stopPropagation());
+                });
+                // 添加暂停事件监听
+                video.addEventListener('pause', function () {
+                    activeVideos.delete(this);
+                });
+
+                // 视频点击事件处理
+                video.addEventListener("click", function (e) {
+                    e.stopPropagation();
+
+                    pauseAllVideos();
+                    // 显示视频预览，隐藏图片预览
+                    previewVideo.classList.remove("d-none");
+                    previewImage.classList.add("d-none");
+
+                    // 设置视频源
+                    previewVideo.src = this.src;
+                    previewVideo.muted = false;
+
+                    // 初始化模态框
                     const modal = new bootstrap.Modal(document.getElementById("imagePreviewModal"));
-                    const previewVideo = document.getElementById("previewImage"); // 复用 Modal 中 img 标签
-                    previewVideo.src = url;
-                    previewVideo.onload = () => modal.show();
+
+                    // 显示模态框
+                    modal.show();
+
+                    // 尝试自动播放
+                    previewVideo.play().catch(err => {
+                        console.log("自动播放被阻止:", err);
+                    });
+
+                });
+
+                // 添加模态框关闭事件处理
+                document.getElementById('imagePreviewModal').addEventListener('hidden.bs.modal', function () {
+                    // 暂停预览视频
+                    pauseAllVideos();
+                    previewVideo.pause();
+                    previewVideo.currentTime = 0;
                 });
 
                 const cardBody = document.createElement("div");
@@ -123,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 downloadBtn.innerHTML = '<i class="bi bi-download"></i> 下载视频';
                 downloadBtn.addEventListener("click", (e) => {
                     e.stopPropagation(); // 阻止冒泡到视频点击事件
-                    downloadImage(url); // 复用已有下载函数
+                    downloadVideo(url); // 使用专用视频下载函数
                 });
 
                 cardBody.appendChild(downloadBtn);
@@ -131,10 +206,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 card.appendChild(cardBody);
                 col.appendChild(card);
                 cardContainer.appendChild(col);
+
+                // 添加到活动视频集合
+                activeVideos.add(video);
             });
+
         } catch (error) {
             console.error("获取视频失败:", error);
-            cardContainer.innerHTML = "<p class='text-danger'>加载视频失败，请重试。</p>";
+            cardContainer.innerHTML = `
+            <div class="col-12 text-center text-danger py-4">
+                <i class="bi bi-exclamation-triangle-fill fs-1"></i>
+                <p class="mt-2">加载视频失败，请重试</p>
+                <button class="btn btn-outline-primary mt-2" onclick="location.reload()">
+                    <i class="bi bi-arrow-clockwise"></i> 重新加载
+                </button>
+            </div>
+        `;
         } finally {
             loadingSpinner.classList.add("d-none"); // 隐藏加载动画
         }

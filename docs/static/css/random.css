@@ -61,3 +61,21 @@ body {
     width: calc(100% - 2rem);
     /* 宽度自适应（留出边距） */
 }
+
+video:focus,
+video:active {
+    outline: 2px solid #0d6efd;
+}
+
+/* 预览媒体样式 */
+.preview-media {
+    object-fit: contain;
+}
+
+/* 视频预览特定样式 */
+#previewVideo {
+    max-height: calc(90vh - 120px);
+    height: auto;
+    margin: 0 auto;
+    background-color: #000;
+}
