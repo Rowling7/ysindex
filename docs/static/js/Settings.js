@@ -154,7 +154,9 @@ function resetSettingsItem() {
         #calendarWidget,
         #shortcutWidget,
         #workTimeWidget,
-        #hitokotoWidget
+        #hitokotoWidget,
+        #WeiboHotWidget,
+        .weibo-hot
     `);
 
     const isGblurEnabled = localStorage.getItem('gaussianBlur') !== 'false'; // 默认开启

@@ -2003,7 +2003,7 @@ class HitokotoWidget {
       #hitokoto_text:hover {
         opacity: 0.8;
       }
-        .type-switcher {
+      .type-switcher {
         background: linear-gradient(135deg, #64b5f6, #42a5f5);
         color: white;
         border: none;
@@ -2153,13 +2153,13 @@ class WeiboHotWidget {
         font-weight: bold;
         font-display: swap;
       }
-      
+
       #weiboHotWidget {
         height: 240px;
         border-radius: 12px;
         padding: 16px;
         background: var(--widget-bg);
-        color: var(--text-color);
+        color:  ${this.options.textColor};
         font-family: 'CustomSans', sans-serif;
         box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
         backdrop-filter: blur(10px);
@@ -2169,21 +2169,22 @@ class WeiboHotWidget {
         box-sizing: border-box;
         overflow: hidden;
       }
-      
+
       .widget-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 12px;
       }
-      
+
       .widget-title {
+        color: var(--text-color);;
         font-size: 18px;
         font-weight: bold;
         display: flex;
         align-items: center;
       }
-      
+
       .switch-btn {
         background: rgba(255, 255, 255, 0.1);
         border: none;
@@ -2195,11 +2196,11 @@ class WeiboHotWidget {
         transition: all 0.3s ease;
         margin-left: 8px;
       }
-      
+
       .switch-btn:hover {
         background: rgba(255, 255, 255, 0.2);
       }
-      
+
       .refresh-btn {
         background: rgba(255, 255, 255, 0.1);
         border: none;
@@ -2210,34 +2211,34 @@ class WeiboHotWidget {
         color: inherit;
         transition: all 0.3s ease;
       }
-      
+
       .refresh-btn:hover {
         background: rgba(255, 255, 255, 0.2);
       }
-      
+
       .hot-list {
         flex: 1;
         overflow-y: auto;
         padding-right: 4px;
       }
-      
+
       .hot-item {
         display: flex;
         align-items: center;
         justify-content: space-between; /* 内容分布两侧 */
-  margin-bottom: 6px;           /* 缩小底部间距 */
-  padding: 4px 8px;   
+        margin-bottom: 6px;           /* 缩小底部间距 */
+        padding: 4px 8px;
         border-radius: 6px;
         transition: all 0.3s ease;
-          height: 32px;                 /* 固定高度 */
-  overflow: hidden;
+        height: 32px;                 /* 固定高度 */
+        overflow: hidden;
       }
-      
+
       .hot-item:hover {
         background-color: rgba(255, 255, 255, 0.05);
         transform: translateX(5px);
       }
-      
+
       .hot-rank {
         width: 24px;
         height: 24px;
@@ -2254,7 +2255,7 @@ class WeiboHotWidget {
         font-size: 12px;
         position: relative;
       }
-      
+
       .hot-rank::after {
         content: "";
         position: absolute;
@@ -2266,22 +2267,22 @@ class WeiboHotWidget {
         box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.3);
         pointer-events: none;
       }
-      
+
       .baidu-hot .hot-rank {
         background-color: #ff4040;
       }
-      
+
       .weibo-hot .hot-rank {
         background-color: #e53935;
       }
-      
+
       .hot-info {
         flex: 1;
         display: flex;
         flex-direction: column;
         min-width: 0;
       }
-      
+
       .hot-title {
         font-size: 13px;
         color: var(--text-color);
@@ -2290,7 +2291,7 @@ class WeiboHotWidget {
         overflow: hidden;
         text-overflow: ellipsis;
       }
-      
+
       .hot-metric {
         font-size: 11px;
         color: #d32f2f;
@@ -2300,22 +2301,22 @@ class WeiboHotWidget {
         width: fit-content;
         display: flex-end;
       }
-      
+
       /* 滚动条样式 */
       .hot-list::-webkit-scrollbar {
         width: 6px;
       }
-      
+
       .hot-list::-webkit-scrollbar-track {
         background: rgba(255, 255, 255, 0.05);
         border-radius: 10px;
       }
-      
+
       .hot-list::-webkit-scrollbar-thumb {
         background: rgba(255, 255, 255, 0.15);
         border-radius: 10px;
       }
-      
+
       .hot-list::-webkit-scrollbar-thumb:hover {
         background: rgba(255, 255, 255, 0.25);
       }
