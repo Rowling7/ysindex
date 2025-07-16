@@ -1174,6 +1174,10 @@ class CalendarWidget {
             color: var(--border-color);
             opacity: 0.7;
           }
+          .left,.right,.skipToToday{
+            color: inherit;
+          }
+
         `;
     document.head.appendChild(style);
 
@@ -2175,10 +2179,10 @@ class WeiboHotWidget {
         justify-content: space-between;
         align-items: center;
         margin-bottom: 12px;
+        color: inherit;
       }
 
       .widget-title {
-        color: var(--text-color);;
         font-size: 18px;
         font-weight: bold;
         display: flex;
@@ -2281,11 +2285,12 @@ class WeiboHotWidget {
         display: flex;
         flex-direction: column;
         min-width: 0;
+        color: inherit;
       }
 
       .hot-title {
         font-size: 13px;
-        color: var(--text-color);
+        color: inherit;
         margin-bottom: 4px;
         white-space: nowrap;
         overflow: hidden;
