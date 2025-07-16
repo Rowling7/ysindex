@@ -935,7 +935,7 @@ body.has-bg #linkCard {
   /* 靠左排列 */
   align-content: flex-start;
   gap: 0px;
-  padding: 20px;
+  padding: 20px 20px 60px;
   width: 100%;
   height: auto;
   box-sizing: border-box;
