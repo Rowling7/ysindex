@@ -1,6 +1,5 @@
 body {
-    padding-top: 56px;
-    /* 默认高度，根据实际导航栏高度调整 */
+    padding-top: 60px;
 }
 
 .nav-link {
