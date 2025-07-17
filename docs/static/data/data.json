@@ -54,6 +54,16 @@
                 "bgImage": "static/ico/zuiyou.png"
             },
             {
+                "name": "lookmovie",
+                "target": "https://ww1.lookmovie.pn/",
+                "bgImage": "static/ico/lookmovie.png"
+            },
+            {
+                "name": "opensubtitles",
+                "target": "https://www.opensubtitles.org/",
+                "bgImage": "static/ico/opensubtitles.png"
+            },
+            {
                 "name": "奈飞影视",
                 "target": "https://www.netflixgc.com/",
                 "bgImage": "static/ico/netflixgc.png"
@@ -784,8 +794,8 @@
                 "bgImage": "static/ico/loading0_compressed.gif"
             },
             {
-                "name": "----------",
-                "target": "",
+                "name": "Ballerina",
+                "target": "https://ww1.lookmovie.pn/movies/play/7181546-ballerina-2025?ref=os&utm_source=osub_sub&imdb=tt7181546&term=Ballerina&sub=13174865",
                 "bgImage": "static/ico/loading0_compressed.gif"
             },
             {
